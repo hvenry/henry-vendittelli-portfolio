@@ -20,10 +20,20 @@ export default function Home() {
         <div id="contact">
           <Contact />
         </div>
-        <p className="h-10 flex items-center font-mono text-2xl pl-1 bg-black"> Hello </p>
-        <p className="h-10 flex items-center font-mono text-2xl pl-1 bg-red-500"> Hello </p>
-        <p className="h-10 flex items-center font-mono text-2xl pl-1 bg-blue-500"> Hello </p>
-        <p className="h-10 flex items-center font-mono text-2xl pl-1 bg-green-500"> Hello </p>
+
+        <div className="grid grid-cols-2">
+          <div>
+            <p className="h-10 flex items-center font-mono text-2xl pl-1 bg-black "> Hello </p>
+            <p className="h-10 flex items-center font-mono text-2xl pl-1 bg-red-500"> Hello </p>
+            <p className="h-10 flex items-center font-mono text-2xl pl-1 bg-blue-500"> Hello </p>
+            <p className="h-10 flex items-center font-mono text-2xl pl-1 bg-green-500"> Hello </p>
+          </div>
+          <div className="flex items-center justify-center">
+            <p className="h-10 w-screen flex items-center justify-center font-mono text-black text-2xl pl-1 bg-white"> Hello </p>
+          </div>
+        </div>
+
+        
       </div>
     </main>
   );
