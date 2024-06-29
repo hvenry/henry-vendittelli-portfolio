@@ -20,7 +20,6 @@ export default function Home() {
         <div id="contact">
           <Contact />
         </div>
-
         <div className="grid grid-cols-2">
           <div>
             <p className="h-10 flex items-center font-mono text-2xl pl-1 bg-black "> Hello </p>
