@@ -5,9 +5,7 @@ const About = () => {
     // background
     <div className="bg-red-500 h-screen flex justify-center items-center text-3xl">
       <div
-        className="grid grid-rows-2"
-        // add small variant to the height and width
-        style={{ width: `calc(100vw - 800px)`, height: `calc(100vh - 300px)` }}
+        className="grid grid-rows-2 w-3/5"
       >
         {/* ROW 1 */}
         <div className="bg-orange-500 flex justify-center items-center">
