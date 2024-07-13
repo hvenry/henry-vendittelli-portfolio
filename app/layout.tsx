@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Oswald } from "next/font/google";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/data";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const oswald = Oswald({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+});
 
 export const metadata: Metadata = {
   title: "HENRY VENDITTELLI",
@@ -18,11 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <FloatingNav
-          navItems={navItems}
-        />
-        <div >{children}</div>
+      <body className={oswald.className}>
+        <div className="flex justify-center">
+          <FloatingNav navItems={navItems} />
+          <div className="w-full md:w-1/2 flex justify-center">{children}</div>
+        </div>
       </body>
     </html>
   );

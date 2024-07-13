@@ -1,7 +1,7 @@
 export default function Page() {
   return(
-    <div className="h-screen bg-green-500 h-screen-160 flex justify-center items-center">
-      Contact
+    <div className="bg-green-500 min-h-screen w-full flex justify-center items-center">
+      Contact (TODO)
     </div>
   )
 }
