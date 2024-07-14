@@ -44,7 +44,7 @@ export default function Page() {
               rel="noopener noreferrer"
               className="sm:text-3xl text-2xl hover:text-blue-300"
             >
-              Queen's University
+              Queen&apos;s University
             </a>
           </div>
           <p className="sm:text-xl text-md opacity-50">
@@ -54,7 +54,7 @@ export default function Page() {
         </div>
         <p className="sm:text-xl text-lg text-justify pb-2 text-gray-300">
           As of the summer of 2024, I will be going into my fourth and final
-          year of my undergraduate degree at Queen's University and will be
+          year of my undergraduate degree at Queen&apos;s University and will be
           graduating by May 2025. I am specializing in Cognitive Science, which
           is very unique learning experience that combines all of the
           fundamentals of computer science with linguistics, and philosophy.
