@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
+import { RiMenu3Fill } from "react-icons/ri";
+import { IoMdClose } from "react-icons/io";
 
 export const FloatingNav = ({
   navItems,
@@ -36,7 +38,7 @@ export const FloatingNav = ({
   }, []);
 
   return (
-    <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 bg-black bg-opacity-50 backdrop-blur border-4 border-black">
+    <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 bg-black bg-opacity-50 backdrop-blur-sm border-4 border-black drop-shadow-lg">
       {/* big navbar */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
         {/* home link */}
@@ -78,7 +80,7 @@ export const FloatingNav = ({
           onClick={() => setIsOpen(!isOpen)}
           className="text-white font-bold text-3xl hover:text-blue-300"
         >
-          {isOpen ? "/" : "+"}
+          {isOpen ? <IoMdClose /> : <RiMenu3Fill />}
         </button>
       </div>
       {/* Conditionally visible dropdown content */}

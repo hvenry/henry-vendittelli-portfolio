@@ -4,6 +4,7 @@ import empire_icon from "@/public/assets/images/icons/empire_icon.png";
 import insights_icon from "@/public/assets/images/icons/360insights_icon.png";
 import partisans_icon from "@/public/assets/images/icons/partisans_icon.png";
 import Link from "next/link";
+import BackToTop from "@/components/BackToTop";
 
 export default function Page() {
   return (
@@ -13,15 +14,15 @@ export default function Page() {
           {/* intro */}
           {/* name and basic info */}
           <div className="border border-neutral-300 p-4">
-            <div className="flex items-end gap-4 pb-4">
-              <div className="flex justify-center items-center gap-2">
+            <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 pb-4">
+              <div className="flex items-end gap-2">
                 <Image
                   src={rock_icon}
                   width={28}
                   height={28}
                   alt="Henry Vendittelli"
                 />
-                <p className="sm:text-4xl text-2xl">Henry Vendittelli</p>
+                <p className="sm:text-4xl text-3xl">Henry Vendittelli</p>
               </div>
               <p className="text-xl opacity-50">21 (he/him)</p>
             </div>
@@ -108,7 +109,7 @@ export default function Page() {
               implementations, and deploying them to production to predict
               consumer rebates. I also worked on a NLP project using K-Means
               clustering and their call center transcript database to identify
-              common complaints and consumer feedback.
+              common complaints from consumer feedback.
             </p>
           </div>
           {/* partisans */}
@@ -135,9 +136,9 @@ export default function Page() {
             <p className="sm:text-xl text-lg text-justify text-gray-300">
               Before I wanted to become a computer scientist, I wanted to be an
               architect. This is what lead me to a student position at Partisans
-              for a few summers, but after getting introduced to computer
-              programming in highschool a new passion formed, and I pivoted to
-              pursue computer science.
+              for a few summers, but after getting introduced to programming in
+              highschool a new passion formed, and I pivoted to explore my
+              passion for computer science.
             </p>
           </div>
           {/* projects */}
@@ -176,7 +177,7 @@ export default function Page() {
             {/* video 3 */}
             <div className="w-full md:w-3/4 lg:w-2/3 border border-neutral flex flex-col items-center">
               <p className="p-4 sm:text-2xl text-xl">
-                a game where you toss escaped animals into pens.
+                a game where you toss animals into pens.
               </p>
               <iframe
                 className="w-full h-96"
@@ -185,6 +186,7 @@ export default function Page() {
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               ></iframe>
             </div>
+            <BackToTop />
           </div>
         </div>
       </main>
