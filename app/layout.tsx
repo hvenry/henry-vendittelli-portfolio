@@ -10,7 +10,7 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "HENRY VENDITTELLI",
+  title: "henry vendittelli",
   description: "A next.js portfolio.",
 };
 
@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={oswald.className}>
         <div className="flex justify-center">
           <FloatingNav navItems={navItems} />
-          <div className="w-full md:w-1/2 flex justify-center">{children}</div>
+          <div className="w-full lg:w-1/2 md:w-2/3 flex justify-center">{children}</div>
         </div>
       </body>
     </html>
