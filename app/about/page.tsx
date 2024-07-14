@@ -25,7 +25,7 @@ export default function Page() {
           </div>
           <p className="sm:text-2xl text-xl text-justify text-neutral-200">
             Some more information about my formal education in computer science
-            and my club involvement in clubs.
+            and my involvement in clubs.
           </p>
         </div>
         {/* education */}
