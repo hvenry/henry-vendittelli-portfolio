@@ -5,8 +5,8 @@ import { navItems } from "@/data";
 import "./globals.css";
 
 const oswald = Oswald({
-  subsets: ['latin'],
-  weight: ['400', '700'],
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -24,7 +24,9 @@ export default function RootLayout({
       <body className={oswald.className}>
         <div className="flex justify-center">
           <FloatingNav navItems={navItems} />
-          <div className="w-full lg:w-1/2 md:w-2/3 flex justify-center">{children}</div>
+          <div className="w-full lg:w-1/2 md:w-2/3 flex justify-center">
+            {children}
+          </div>
         </div>
       </body>
     </html>

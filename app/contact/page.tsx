@@ -15,7 +15,7 @@ export default function Page() {
         </div>
         <div className="flex justify-between">
           <p>resume:</p>
-          <a className="text-blue-300" href={resume} target="_blank" rel="noopener noreferrer">
+          <a className="text-blue-300 hover:text-blue-500" href={resume} target="_blank" rel="noopener noreferrer">
             here
           </a>
         </div>

@@ -22,6 +22,9 @@ const config: Config = {
 
         'lg': '1440px',
         // => @media (min-width: 1440px) { ... }
+
+        'xl': '1900px',
+        // => @media (min-width: 1440px) { ... }
       },
     },
   },

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 
 export const FloatingNav = ({
@@ -10,7 +11,15 @@ export const FloatingNav = ({
     path: string;
   }[];
 }) => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = React.useState(false);
+  const [activeItem, setActiveItem] = useState<null | string>(null);
+
+  // update active item whenever pathname changes
+  useEffect(() => {
+    setActiveItem(pathname); 
+  }, [pathname]);
 
   // handle case where screen is extended to a larger size
   useEffect(() => {
@@ -27,12 +36,15 @@ export const FloatingNav = ({
   }, []);
 
   return (
-    <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 bg-black bg-opacity-50 backdrop-blur">
+    <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 bg-black bg-opacity-50 backdrop-blur border-4 border-black">
       {/* big navbar */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
         {/* home link */}
         <Link href={"/"} legacyBehavior>
-          <a className="text-white text-xl font-bold hover:text-blue-300">
+          <a
+            onClick={() => setActiveItem(null)}
+            className="text-white text-xl font-bold hover:text-blue-300"
+          >
             henryvendittelli.com/
           </a>
         </Link>
@@ -40,7 +52,13 @@ export const FloatingNav = ({
         <div>
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
-              <a className="text-white text-lg pl-8 hover:text-blue-300">
+              <a
+                className={`text-white text-lg px-4 hover:text-blue-300 ${
+                  activeItem === item.path
+                    ? "border border-r-0 border-l-0 border-neutral-300"
+                    : ""
+                }`}
+              >
                 {item.name}
               </a>
             </Link>
@@ -60,7 +78,7 @@ export const FloatingNav = ({
           onClick={() => setIsOpen(!isOpen)}
           className="text-white font-bold text-3xl hover:text-blue-300"
         >
-          {isOpen ? "-" : "+"}
+          {isOpen ? "/" : "+"}
         </button>
       </div>
       {/* Conditionally visible dropdown content */}
@@ -69,8 +87,11 @@ export const FloatingNav = ({
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
               <a
-                onClick={() => setIsOpen(!isOpen)}
-                className="px-4 flex justify-end text-white h-8 text-lg hover:text-blue-300"
+                className={`px-4 flex justify-end text-white h-8 text-lg hover:text-blue-300 ${
+                  activeItem === item.path
+                    ? "border border-r-0 border-l-0 border-t-0 border-white"
+                    : ""
+                }`}
               >
                 {item.name}
               </a>
