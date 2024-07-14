@@ -5,6 +5,11 @@ import insights_icon from "@/public/assets/images/icons/360insights_icon.png";
 import partisans_icon from "@/public/assets/images/icons/partisans_icon.png";
 import Link from "next/link";
 import BackToTop from "@/components/BackToTop";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithubSquare } from "react-icons/fa";
+import { FaFacebookSquare } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
+import { AiOutlineSpotify } from "react-icons/ai";
 
 export default function Page() {
   return (
@@ -44,10 +49,46 @@ export default function Page() {
               to me if you have any questions or comments.
             </p>
           </div>
-
-          {/* work experience */}
+          {/* socials TODO - turn into component */}
+          <div className="pt-4 w-full flex items-center justify-end gap-2">
+            <a
+              href="https://www.linkedin.com/in/henryvendittelli/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin className={"hover:fill-blue-300"} size={32} />
+            </a>
+            <a
+              href="https://github.com/hvenry"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithubSquare className={"hover:fill-blue-300"} size={32} />
+            </a>
+            <a
+              href="https://www.facebook.com/hvenry"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebookSquare className={"hover:fill-blue-300"} size={32} />
+            </a>
+            <a
+              href="https://leetcode.com/u/hvenry/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SiLeetcode className={"hover:fill-blue-300"} size={32} />
+            </a>
+            <a
+              href="https://open.spotify.com/user/ogprinsta?si=b4845668d4f04833"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiOutlineSpotify className={"hover:fill-blue-300"} size={32} />
+            </a>
+          </div>
+          {/* work experience TODO - turn into component */}
           <p className="pt-24 pb-4 text-4xl font-bold">work experience</p>
-          {/* empire */}
           <div className="pb-16">
             <div className="flex items-end gap-3 pb-2">
               <div className="flex justify-center items-center gap-2">

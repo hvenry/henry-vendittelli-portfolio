@@ -26,7 +26,7 @@ export default function Page() {
           </div>
         </div>
         <p className="sm:text-2xl text-xl text-justify text-neutral-200 pt-2">
-          Here you can see some of the projects that I have worked on.
+          Here you can see some of the projects that I have worked on, soon... 
         </p>
       </div>
     </main>
