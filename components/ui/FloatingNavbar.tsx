@@ -20,7 +20,7 @@ export const FloatingNav = ({
 
   // update active item whenever pathname changes
   useEffect(() => {
-    setActiveItem(pathname); 
+    setActiveItem(pathname);
   }, [pathname]);
 
   // handle case where screen is extended to a larger size
@@ -37,6 +37,11 @@ export const FloatingNav = ({
     };
   }, []);
 
+  const handleNavItemClick = (path: string) => {
+    setActiveItem(path);
+    setIsOpen(false);
+  };
+
   return (
     <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 bg-black bg-opacity-50 backdrop-blur-sm border-4 border-black drop-shadow-lg">
       {/* big navbar */}
@@ -44,7 +49,7 @@ export const FloatingNav = ({
         {/* home link */}
         <Link href={"/"} legacyBehavior>
           <a
-            onClick={() => setActiveItem(null)}
+            onClick={() => handleNavItemClick("/")}
             className="text-white text-xl font-bold hover:text-blue-300"
           >
             henryvendittelli.com/
@@ -55,6 +60,7 @@ export const FloatingNav = ({
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
               <a
+                onClick={() => handleNavItemClick(item.path)}
                 className={`text-white text-lg px-4 hover:text-blue-300 ${
                   activeItem === item.path
                     ? "border border-r-0 border-l-0 border-neutral-300"
@@ -71,7 +77,10 @@ export const FloatingNav = ({
       {/* Toggle button and dropdown navbar visible only on small screens */}
       <div className="md:hidden flex w-full h-full justify-between items-center">
         <Link href={"/"} legacyBehavior>
-          <a className="text-white text-xl font-bold hover:text-blue-300">
+          <a
+            onClick={() => handleNavItemClick("/")}
+            className="text-white text-xl font-bold hover:text-blue-300"
+          >
             henryvendittelli.com/
           </a>
         </Link>
@@ -89,6 +98,7 @@ export const FloatingNav = ({
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
               <a
+                onClick={() => handleNavItemClick(item.path)}
                 className={`px-4 flex justify-end text-white h-8 text-lg hover:text-blue-300 ${
                   activeItem === item.path
                     ? "border border-r-0 border-l-0 border-t-0 border-white"

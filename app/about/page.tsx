@@ -16,7 +16,7 @@ export default function Page() {
             <div className="flex items-end gap-2">
               <BiInfoSquare size={30} />
               <p className="text-4xl">
-                more about
+                More about
                 <Link href="/" legacyBehavior>
                   <a className="text-blue-300 hover:text-blue-500"> me</a>
                 </Link>

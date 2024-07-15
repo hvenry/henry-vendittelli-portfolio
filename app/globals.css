@@ -2,18 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root {
+  --foreground-rgb: 255, 255, 255; /* White text color */
+  --background-start-rgb: 0, 0, 0; /* Black background color */
+  --background-end-rgb: 0, 0, 0; /* Black background color */
 }
 
 body {
@@ -24,6 +17,12 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /* For Safari */
+  background: rgba(0, 0, 0, 0.5); /* Fallback for non-supporting browsers */
 }
 
 @layer utilities {

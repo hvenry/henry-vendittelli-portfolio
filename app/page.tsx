@@ -88,7 +88,7 @@ export default function Page() {
             </a>
           </div>
           {/* work experience TODO - turn into component */}
-          <p className="pt-24 pb-4 text-4xl font-bold">work experience</p>
+          <p className="pt-16 pb-4 text-4xl font-bold">work experience</p>
           <div className="pb-16">
             <div className="flex items-end gap-3 pb-2">
               <div className="flex justify-center items-center gap-2">

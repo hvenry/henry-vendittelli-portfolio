@@ -36,7 +36,6 @@ const ClubInvolvement = () => {
                 alt={club.club_name}
                 width={24}
                 height={24}
-                layout="fixed"
               />
               <a
                 href={club.club_link}
