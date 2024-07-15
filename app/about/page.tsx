@@ -24,7 +24,7 @@ export default function Page() {
             </div>
           </div>
           <p className="sm:text-2xl text-xl text-justify text-neutral-200">
-            Some more information about my formal education in computer science
+            Some information about my formal education in computer science
             and my involvement in clubs.
           </p>
         </div>
@@ -52,7 +52,7 @@ export default function Page() {
             Science
           </p>
         </div>
-        <p className="sm:text-xl text-lg text-justify pb-2 text-gray-300">
+        <p className="sm:text-lg text-md font-mono text-justify pb-2 text-gray-300">
           As of the summer of 2024, I will be going into my fourth and final
           year of my undergraduate degree at Queen&apos;s University and will be
           graduating by May 2025. I am specializing in Cognitive Science, which

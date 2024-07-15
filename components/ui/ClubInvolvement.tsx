@@ -1,7 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
-import { clubs } from '@/data'; // Make sure this path is correct
-import { StaticImageData } from 'next/image';
+import React from "react";
+import Image from "next/image";
+import { clubs } from "@/data"; // Make sure this path is correct
+import { StaticImageData } from "next/image";
 import partisans_icon from "@/public/assets/images/icons/partisans_icon.png";
 import qdaa_icon from "@/public/assets/images/icons/qdaa_icon.png";
 import quantt_icon from "@/public/assets/images/icons/quantt_icon.png";
@@ -32,7 +32,7 @@ const ClubInvolvement = () => {
           <div className="flex items-end gap-3 pb-2">
             <div className="flex justify-center items-center gap-2">
               <Image
-                src={imageMap[club.club_image]} 
+                src={imageMap[club.club_image]}
                 alt={club.club_name}
                 width={24}
                 height={24}
@@ -46,9 +46,11 @@ const ClubInvolvement = () => {
                 {club.club_name}
               </a>
             </div>
-            <p className="sm:text-xl text-md opacity-50">{club.club_position}</p>
+            <p className="sm:text-xl text-md opacity-50">
+              {club.club_position}
+            </p>
           </div>
-          <p className="sm:text-xl text-lg text-justify text-gray-300">
+          <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify text-gray-300">
             {club.club_desc}
           </p>
         </div>

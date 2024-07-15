@@ -111,7 +111,7 @@ export default function Page() {
                 Student Software Developer
               </p>
             </div>
-            <p className="sm:text-xl text-lg text-justify text-gray-300">
+            <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify text-gray-300">
               At Empire Life, I worked on an internal technology management and
               adoption tool. I was responsible for developing new features from
               start to finish from feedback of other developers using the tool,
@@ -143,7 +143,7 @@ export default function Page() {
                 Junior Data Scientist
               </p>
             </div>
-            <p className="sm:text-xl text-lg text-justify text-gray-300">
+            <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify text-gray-300">
               As a data scientist at 360insights, I worked on a variety of
               projects in a fail fast environment. I was responsible for
               researching new time series forecasting models, testing there
@@ -174,7 +174,7 @@ export default function Page() {
               </div>
               <p className="sm:text-xl text-md opacity-50">Student Intern</p>
             </div>
-            <p className="sm:text-xl text-lg text-justify text-gray-300">
+            <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify text-gray-300">
               Before I wanted to become a computer scientist, I wanted to be an
               architect. This is what lead me to a student position at Partisans
               for a few summers, but after getting introduced to programming in
