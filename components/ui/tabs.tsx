@@ -31,7 +31,7 @@ export const Tabs = ({
         <button
           key={tab.value}
           onClick={() => setActiveTab(tab)}
-          className={`sm:text-xl text-md px-4 py-2 ${
+          className={`sm:text-xl text-md px-4 ${
             tab === activeTab
               ? `border border-neutral-300 border-l-0 border-r-0 ${activeTabClassName}` // Add border styles here
               : tabClassName

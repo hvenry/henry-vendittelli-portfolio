@@ -106,17 +106,17 @@ export default function Page() {
             </a>
           </div>
           {/* work experience */}
-          <p className="pt-16 pb-4 text-4xl font-bold">work experience</p>
+          <p className="pt-16 pb-4 sm:text-4xl text-3xl font-bold">work experience</p>
           <ExperienceInfo info={work} />
 
           {/* skills */}
-          <p className="pb-4 text-4xl font-bold">skills</p>
+          <p className="pb-4 sm:text-4xl text-3xl font-bold">technologies I work with</p>
           <div className="p-4">
             <Skills />
           </div>
 
           {/* projects */}
-          <p className="text-4xl font-bold pt-16 pb-8">
+          <p className="sm:text-4xl text-3xl font-bold pt-16 pb-8">
             some {""}
             <LinkPreview
               url="https://www.henryvendittelli.com/projects"

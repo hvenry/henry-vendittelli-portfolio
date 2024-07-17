@@ -2,6 +2,7 @@ import React from "react";
 import { FaAws, FaPython, FaJava } from "react-icons/fa";
 import {
   SiGooglecloud,
+  SiGit,
   SiJavascript,
   SiTypescript,
   SiReact,
@@ -12,9 +13,13 @@ import {
   SiAuth0,
   SiGithubactions,
   SiNodedotjs,
+  SiFastapi,
+  SiGunicorn,
+  SiTensorflow,
+  SiPytorch,
+  SiMysql,
 } from "react-icons/si";
 import { RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
-import { DiMysql } from "react-icons/di";
 
 type SkillType = {
   Icon: React.ElementType;
@@ -22,15 +27,16 @@ type SkillType = {
 };
 
 const skills: SkillType[] = [
-  { Icon: FaAws, name: "Amazon Web Services" },
-  { Icon: SiGooglecloud, name: "Google Cloud Platform" },
+  { Icon: SiGooglecloud, name: "GCP" },
+  { Icon: FaAws, name: "AWS" },
+  { Icon: SiGit, name: "Git" },
   { Icon: FaPython, name: "Python" },
   { Icon: SiJavascript, name: "JavaScript" },
   { Icon: SiTypescript, name: "TypeScript" },
   { Icon: SiReact, name: "React" },
   { Icon: RiNextjsLine, name: "Next.js" },
   { Icon: RiTailwindCssFill, name: "Tailwind CSS" },
-  { Icon: DiMysql, name: "MySQL" },
+  { Icon: SiMysql, name: "MySQL" },
   { Icon: SiGraphql, name: "GraphQL" },
   { Icon: SiJirasoftware, name: "JQL" },
   { Icon: SiFirebase, name: "Firebase" },
@@ -39,6 +45,10 @@ const skills: SkillType[] = [
   { Icon: SiAuth0, name: "Auth0" },
   { Icon: SiGithubactions, name: "GitHub Actions" },
   { Icon: SiNodedotjs, name: "Node.js" },
+  { Icon: SiFastapi, name: "FastAPI" },
+  { Icon: SiGunicorn, name: "Gunicorn" },
+  { Icon: SiTensorflow, name: "TensorFlow" },
+  { Icon: SiPytorch, name: "PyTorch" },
 ];
 
 const SkillBox: React.FC<{ Icon: React.ElementType; name: string }> = ({
@@ -46,16 +56,16 @@ const SkillBox: React.FC<{ Icon: React.ElementType; name: string }> = ({
   name,
 }) => {
   return (
-    <div className="p-2 hover:border-blue-300 transition duration-300 ease-in-out inline-flex justify-center items-center gap-2 border border-neutral-300 m-2 whitespace-nowrap">
-      <Icon className={"fill-white"} size={28} />
-      <p className="font-bold text-md sm:text-xl">{name}</p>
+    <div className="flex flex-grow min-w-[60px] sm:min-w-[75px] sm:p-2 p-1 transition duration-100 ease-in-out items-center gap-2 border border-neutral-300 m-2 whitespace-nowrap justify-center">
+      <Icon className={"fill-white sm:size-7 size-5"} />
+      <p className="font-bold text-sm sm:text-xl">{name}</p>
     </div>
   );
 };
 
 const Skills = () => {
   return (
-    <div>
+    <div className="flex flex-wrap justify-between">
       {skills.map((skill) => (
         <SkillBox key={skill.name} Icon={skill.Icon} name={skill.name} />
       ))}
