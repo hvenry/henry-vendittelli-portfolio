@@ -7,8 +7,9 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { AiOutlineSpotify } from "react-icons/ai";
 import ExperienceInfo from "@/components/ui/ExperienceInfo";
-import { work } from "@/data"; // Make sure this path is correct
+import { work } from "@/data";
 import { LinkPreview } from "@/components/ui/link-preview";
+import Skills from "@/components/ui/Skills";
 
 export default function Page() {
   return (
@@ -37,8 +38,8 @@ export default function Page() {
             <p className="sm:text-2xl text-lg text-justify text-gray-300">
               Welcome to my portfolio website / blog! Before anything, I would
               like to say that I am highly appreciative of anyone that takes the
-              time to come look at my work. Programming, amongst other things, is
-              my one of my passions, and I always am looking to improve my
+              time to come look at my work. Programming, amongst other things,
+              is my one of my passions, and I always am looking to improve my
               skills and share my interest with others who are interested.
               Please enjoy your stay and feel free to {""}
               <LinkPreview
@@ -58,44 +59,64 @@ export default function Page() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaLinkedin className={"hover:fill-blue-300"} size={32} />
+              <FaLinkedin
+                className={"fill-white hover:fill-blue-300"}
+                size={32}
+              />
             </a>
             <a
               href="https://github.com/hvenry"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaGithubSquare className={"hover:fill-blue-300"} size={32} />
+              <FaGithubSquare
+                className={"fill-white hover:fill-blue-300"}
+                size={32}
+              />
             </a>
             <a
               href="https://www.facebook.com/hvenry"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaFacebookSquare className={"hover:fill-blue-300"} size={32} />
+              <FaFacebookSquare
+                className={"fill-white hover:fill-blue-300"}
+                size={32}
+              />
             </a>
             <a
               href="https://leetcode.com/u/hvenry/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <SiLeetcode className={"hover:fill-blue-300"} size={32} />
+              <SiLeetcode
+                className={"fill-white hover:fill-blue-300"}
+                size={32}
+              />
             </a>
             <a
               href="https://open.spotify.com/user/ogprinsta?si=b4845668d4f04833"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <AiOutlineSpotify className={"hover:fill-blue-300"} size={32} />
+              <AiOutlineSpotify
+                className={"fill-white hover:fill-blue-300"}
+                size={32}
+              />
             </a>
           </div>
-          {/* work experience TODO - turn into component */}
-
+          {/* work experience */}
           <p className="pt-16 pb-4 text-4xl font-bold">work experience</p>
           <ExperienceInfo info={work} />
 
+          {/* skills */}
+          <p className="pb-4 text-4xl font-bold">skills</p>
+          <div className="p-4">
+            <Skills />
+          </div>
+
           {/* projects */}
-          <p className="text-4xl font-bold pt-8 pb-8">
+          <p className="text-4xl font-bold pt-16 pb-8">
             some {""}
             <LinkPreview
               url="https://www.henryvendittelli.com/projects"

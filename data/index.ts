@@ -76,7 +76,7 @@ export const work = [
   {
     name: "Partisans",
     position: "Student Intern",
-    desc: "Before I learned about the world of computer science, I to become an architect. This is what lead me to a student position at Partisans for a few summers, but after getting introduced to programming in highschool an eager passion formed, and I pivoted to explore my newfound interest in computer science.",
+    desc: "Before I learned about the world of computer science, I wanted to become an architect. This is what lead me to a student position at Partisans for a few summers, but after getting introduced to programming in highschool, an eager passion formed, and I pivoted to explore my newfound interest in computer science.",
     link: "https://partisans.com/",
     image: "partisans_icon",
     time: "[ summer 2018 - 2020 ]",
