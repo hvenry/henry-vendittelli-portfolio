@@ -43,12 +43,12 @@ const skills: SkillType[] = [
   { Icon: FaJava, name: "Java" },
   { Icon: SiLua, name: "Lua" },
   { Icon: SiAuth0, name: "Auth0" },
-  { Icon: SiGithubactions, name: "GitHub Actions" },
   { Icon: SiNodedotjs, name: "Node.js" },
   { Icon: SiFastapi, name: "FastAPI" },
   { Icon: SiGunicorn, name: "Gunicorn" },
   { Icon: SiTensorflow, name: "TensorFlow" },
   { Icon: SiPytorch, name: "PyTorch" },
+  { Icon: SiGithubactions, name: "GitHub Actions" },
 ];
 
 const SkillBox: React.FC<{ Icon: React.ElementType; name: string }> = ({
