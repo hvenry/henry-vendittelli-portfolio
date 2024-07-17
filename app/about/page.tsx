@@ -1,9 +1,11 @@
 import Image from "next/image";
 import queens_icon from "@/public/assets/images/icons/queens_icon.png";
 import { BiInfoSquare } from "react-icons/bi";
-import ClubInvolvement from "@/components/ui/ClubInvolvement";
+import ClubInvolvement from "@/components/ui/ExperienceInfo";
 import Link from "next/link";
 import BackToTop from "@/components/BackToTop";
+import { clubs } from "@/data"; // Make sure this path is correct
+import ExperienceInfo from "@/components/ui/ExperienceInfo";
 
 export default function Page() {
   return (
@@ -24,8 +26,8 @@ export default function Page() {
             </div>
           </div>
           <p className="sm:text-2xl text-xl text-justify text-neutral-200">
-            Some information about my formal education in computer science
-            and my involvement in clubs.
+            Some information about my formal education in computer science and
+            my involvement in clubs.
           </p>
         </div>
         {/* education */}
@@ -53,19 +55,20 @@ export default function Page() {
           </p>
         </div>
         <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify pb-2 text-gray-300">
-          As of the summer of 2024, I will be going into my fourth and final
-          year of my undergraduate degree at Queen&apos;s University and will be
-          graduating by May 2025. I am specializing in Cognitive Science, which
-          is very unique learning experience that combines all of the
-          fundamentals of computer science with linguistics, and philosophy.
+          As of the summer of 2024, I will be going into my fourth year of my
+          undergraduate degree at Queen&apos;s University and will be graduating
+          by May 2025. During my time at Queen's, I have been specializing in
+          Cognitive Science within the faculty of computing, which is very
+          unique learning experience that combines all of the fundamentals of
+          computer science with linguistics and philosophy.
         </p>
-        <p className="sm:text-lg text-gray-300">
+        <p className="text-md sm:text-lg text-gray-300">
           Awards: Excellence Scholarship
         </p>
 
         {/* clubs */}
         <p className="pt-24 pb-4 text-4xl font-bold">club involvement</p>
-        <ClubInvolvement />
+        <ExperienceInfo info={clubs} />
         <BackToTop />
       </div>
     </main>
