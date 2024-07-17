@@ -49,7 +49,7 @@ export const clubs = [
   {
     name: "QFSF",
     position: "Student Model",
-    desc: "For Queen's For Sustainable Fashion (QFSF), I was student model (real) who would participate in photoshoots to help promote sustainable fashion and minimizing rampant consumerism.",
+    desc: "For Queen's For Sustainable Fashion (QFSF), I was student model (true story) who would participate in photoshoots to help promote sustainable fashion and minimizing rampant consumerism.",
     link: "https://qsf340.wixsite.com/qfsf",
     image: "qfsf_icon",
     time: "[ 2023 - 2024 ]",

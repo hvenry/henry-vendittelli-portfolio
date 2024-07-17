@@ -32,39 +32,41 @@ export default function Page() {
         </div>
         {/* education */}
         <p className="pt-24 pb-4 text-4xl font-bold">education</p>
-        <div className="flex flex-col items-start lg:flex-row lg:items-end gap-3 pb-2">
-          <div className="flex items-center gap-2">
-            <Image
-              src={queens_icon}
-              width={24}
-              height={24}
-              alt="Queen's University"
-            />
-            <a
-              href="https://www.cs.queensu.ca/undergraduate/programs/specializations/cognitive-science.php"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sm:text-3xl text-2xl hover:text-blue-300"
-            >
-              Queen&apos;s University
-            </a>
+        <div className="p-4">
+          <div className="flex flex-col items-start lg:flex-row lg:items-end gap-3 pb-2">
+            <div className="flex items-center gap-2">
+              <Image
+                src={queens_icon}
+                width={24}
+                height={24}
+                alt="Queen's University"
+              />
+              <a
+                href="https://www.cs.queensu.ca/undergraduate/programs/specializations/cognitive-science.php"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sm:text-3xl text-2xl hover:text-blue-300"
+              >
+                Queen&apos;s University
+              </a>
+            </div>
+            <p className="sm:text-xl text-md opacity-50">
+              Bachelor of Computing (Honours) – Specialization in Cognitive
+              Science
+            </p>
           </div>
-          <p className="sm:text-xl text-md opacity-50">
-            Bachelor of Computing (Honours) – Specialization in Cognitive
-            Science
+          <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify pb-2 text-gray-300">
+            As of the summer of 2024, I will be going into my fourth year of my
+            undergraduate degree at Queen&apos;s University and will be
+            graduating by May 2025. During my time at Queen&apos;s, I have been
+            specializing in Cognitive Science within the faculty of computing,
+            which is very unique learning experience that combines all of the
+            fundamentals of computer science with linguistics and philosophy.
+          </p>
+          <p className="text-md sm:text-lg text-gray-300">
+            Awards: Excellence Scholarship
           </p>
         </div>
-        <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify pb-2 text-gray-300">
-          As of the summer of 2024, I will be going into my fourth year of my
-          undergraduate degree at Queen&apos;s University and will be graduating
-          by May 2025. During my time at Queen&apos;s, I have been specializing in
-          Cognitive Science within the faculty of computing, which is very
-          unique learning experience that combines all of the fundamentals of
-          computer science with linguistics and philosophy.
-        </p>
-        <p className="text-md sm:text-lg text-gray-300">
-          Awards: Excellence Scholarship
-        </p>
 
         {/* clubs */}
         <p className="pt-24 pb-4 text-4xl font-bold">club involvement</p>

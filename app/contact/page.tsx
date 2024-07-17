@@ -3,8 +3,18 @@ export default function Page() {
 
   return (
     <div className="min-h-screen w-full flex flex-col justify-center items-center">
-      <div className="p-4 sm:w-1/2 w-2/3 border border-neutral-200">
-        <div className="text-4xl font-bold pb-4 flex justify-center">contact me</div>
+      <style>{`
+        .glow-on-hover {
+          transition: box-shadow 0.3s ease-in-out;
+        }
+        .glow-on-hover:hover {
+          box-shadow: 0 0 64px rgba(255, 255, 255, 0.2);
+        }
+      `}</style>
+      <div className="p-4 sm:w-1/2 w-2/3 border border-neutral-200 glow-on-hover">
+        <div className="text-4xl font-bold pb-4 flex justify-center">
+          contact me
+        </div>
         <div className="md:text-2xl lg:text-3xl text-xl">
           <div className="flex justify-between">
             <p>email:</p>

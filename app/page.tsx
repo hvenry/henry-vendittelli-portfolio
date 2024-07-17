@@ -1,9 +1,5 @@
 import Image from "next/image";
 import rock_icon from "@/public/assets/images/icons/rock_icon.png";
-import empire_icon from "@/public/assets/images/icons/empire_icon.png";
-import insights_icon from "@/public/assets/images/icons/360insights_icon.png";
-import partisans_icon from "@/public/assets/images/icons/partisans_icon.png";
-import Link from "next/link";
 import BackToTop from "@/components/BackToTop";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithubSquare } from "react-icons/fa";
@@ -12,6 +8,7 @@ import { SiLeetcode } from "react-icons/si";
 import { AiOutlineSpotify } from "react-icons/ai";
 import ExperienceInfo from "@/components/ui/ExperienceInfo";
 import { work } from "@/data"; // Make sure this path is correct
+import { LinkPreview } from "@/components/ui/link-preview";
 
 export default function Page() {
   return (
@@ -44,12 +41,15 @@ export default function Page() {
               time to come look at my work. Programming, among other things, is
               my one of my passions, and I always am looking to improve my
               skills and share my interest with others who are interested.
-              Please enjoy your stay and feel free to
-              <Link href="/contact" legacyBehavior>
-                <a className="text-blue-300 hover:text-blue-500"> reach out </a>
-              </Link>
-              to me if you have any questions, comments, or just want to get
-              a cup of coffee.
+              Please enjoy your stay and feel free to {""}
+              <LinkPreview
+                url="https://www.henryvendittelli.com/contact"
+                className="font-bold text-blue-300 hover:text-blue-500"
+              >
+                reach out
+              </LinkPreview>
+              {""} to me if you have any questions, comments, or just want to
+              get a cup of coffee.
             </p>
           </div>
           {/* socials TODO - turn into component */}
@@ -97,11 +97,14 @@ export default function Page() {
 
           {/* projects */}
           <p className="text-4xl font-bold pt-8 pb-8">
-            some
-            <Link href="/projects" legacyBehavior>
-              <a className="text-blue-300 hover:text-blue-500"> project </a>
-            </Link>
-            demos
+            some {""}
+            <LinkPreview
+              url="https://www.henryvendittelli.com/projects"
+              className="font-bold text-blue-300 hover:text-blue-500"
+            >
+              project
+            </LinkPreview>
+            {""} demos
           </p>
           <div className="flex flex-col items-center mx-8 gap-12">
             {/* video 1 */}
