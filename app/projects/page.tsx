@@ -64,7 +64,7 @@ export default function Page() {
       <div className="bg-black w-full mx-4">
         <div className="border border-neutral-300">
           <div className="flex justify-center">
-            <EvervaultCard className="w-full h-96">
+            <EvervaultCard className="w-full h-48 sm:h-96">
               <div className="flex gap-2 items-center justify-center text-4xl">
                 <IoHammerSharp size={30} />
                 <span>my projects</span>

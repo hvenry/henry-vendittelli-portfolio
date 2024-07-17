@@ -16,7 +16,6 @@ export default function Page() {
       <main className="min-h-screen w-full flex justify-center pt-40 pb-16 px-4">
         <div className="bg-black w-full mx-4">
           {/* intro */}
-          {/* name and basic info */}
           <div className="border border-neutral-300 p-4">
             <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 pb-4">
               <div className="flex items-end gap-2">
@@ -38,7 +37,7 @@ export default function Page() {
             <p className="sm:text-2xl text-lg text-justify text-gray-300">
               Welcome to my portfolio website / blog! Before anything, I would
               like to say that I am highly appreciative of anyone that takes the
-              time to come look at my work. Programming, among other things, is
+              time to come look at my work. Programming, amongst other things, is
               my one of my passions, and I always am looking to improve my
               skills and share my interest with others who are interested.
               Please enjoy your stay and feel free to {""}
@@ -49,7 +48,7 @@ export default function Page() {
                 reach out
               </LinkPreview>
               {""} to me if you have any questions, comments, or just want to
-              get a cup of coffee.
+              grab a cup of coffee.
             </p>
           </div>
           {/* socials TODO - turn into component */}
@@ -106,9 +105,9 @@ export default function Page() {
             </LinkPreview>
             {""} demos
           </p>
-          <div className="flex flex-col items-center mx-8 gap-12">
+          <div className="flex flex-col items-center sm:mx-8 gap-12">
             {/* video 1 */}
-            <div className="w-full md:w-3/4 lg:w-2/3 border border-neutral-200 flex flex-col items-center">
+            <div className="w-full lg:w-2/3 border border-neutral-200 flex flex-col items-center">
               <p className="p-4 sm:text-2xl text-xl">
                 a parking app for university students.
               </p>
@@ -120,7 +119,7 @@ export default function Page() {
               ></iframe>
             </div>
             {/* video 2 */}
-            <div className="w-full md:w-3/4 lg:w-2/3 border border-neutral-200 flex flex-col items-center">
+            <div className="w-full lg:w-2/3 border border-neutral-200 flex flex-col items-center">
               <p className="p-4 sm:text-2xl text-xl">
                 a kingston property rental database webapp.
               </p>
@@ -132,7 +131,7 @@ export default function Page() {
               ></iframe>
             </div>
             {/* video 3 */}
-            <div className="w-full md:w-3/4 lg:w-2/3 border border-neutral flex flex-col items-center">
+            <div className="w-full lg:w-2/3 border border-neutral flex flex-col items-center">
               <p className="p-4 sm:text-2xl text-xl">
                 a game where you toss animals into pens.
               </p>
