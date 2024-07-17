@@ -57,7 +57,7 @@ export default function Page() {
         <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify pb-2 text-gray-300">
           As of the summer of 2024, I will be going into my fourth year of my
           undergraduate degree at Queen&apos;s University and will be graduating
-          by May 2025. During my time at Queen's, I have been specializing in
+          by May 2025. During my time at Queen&apos;s, I have been specializing in
           Cognitive Science within the faculty of computing, which is very
           unique learning experience that combines all of the fundamentals of
           computer science with linguistics and philosophy.
