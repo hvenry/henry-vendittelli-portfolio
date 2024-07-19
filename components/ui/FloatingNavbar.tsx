@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { RiMenu3Fill } from "react-icons/ri";
@@ -17,6 +17,7 @@ export const FloatingNav = ({
   const pathname = usePathname();
   const [isOpen, setIsOpen] = React.useState(false);
   const [activeItem, setActiveItem] = useState<null | string>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // update active item whenever pathname changes
   useEffect(() => {
@@ -34,6 +35,20 @@ export const FloatingNav = ({
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // handle clicks outside of dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -94,7 +109,7 @@ export const FloatingNav = ({
       </div>
       {/* Conditionally visible dropdown content */}
       {isOpen && (
-        <div className="absolute flex-col top-full z-20 right-0 bg-black">
+        <div ref={dropdownRef} className="absolute flex-col top-full z-20 right-0 bg-black">
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
               <a
