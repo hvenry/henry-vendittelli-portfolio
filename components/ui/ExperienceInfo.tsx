@@ -47,9 +47,9 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
   return (
     <>
       {info.map((info, index) => (
-        <div key={index} className="pb-16">
-          <div className="p-4 transition-all duration-300 ease-in-out hover:border-neutral-300 border border-transparent">
-            <div className="flex items-end gap-3 pb-2">
+        <div key={index} className="pb-16 pr-4">
+          <div className="p-4 hover:translate-x-2 transition-all duration-300 ease-in-out hover:border-neutral-300 border border-transparent">
+            <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 gap-2 pb-2">
               <div className="flex justify-center items-center gap-2">
                 <Image
                   src={imageMap[info.image]}
@@ -71,7 +71,9 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
             <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify text-gray-300">
               {info.desc}
             </p>
-            <p className="flex justify-end sm:text-xl text-md opacity-25">{info.time}</p>
+            <p className="flex justify-end sm:text-xl text-md opacity-25">
+              {info.time}
+            </p>
           </div>
         </div>
       ))}

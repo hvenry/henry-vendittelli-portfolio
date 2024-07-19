@@ -33,7 +33,7 @@ export default function Page() {
         {/* education */}
         <p className="pt-24 pb-4 text-4xl font-bold">education</p>
         <div className="p-4">
-          <div className="flex flex-col items-start lg:flex-row lg:items-end gap-3 pb-2">
+          <div className="flex flex-col items-start lg:flex-row lg:items-end gap-2 sm:gap-4 pb-2">
             <div className="flex items-center gap-2">
               <Image
                 src={queens_icon}
