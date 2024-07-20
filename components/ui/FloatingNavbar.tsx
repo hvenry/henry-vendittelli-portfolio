@@ -76,10 +76,10 @@ export const FloatingNav = ({
             <Link key={index} href={item.path} legacyBehavior>
               <a
                 onClick={() => handleNavItemClick(item.path)}
-                className={`text-white text-lg px-4 hover:text-blue-300 ${
+                className={`text-white text-lg px-4 ${
                   activeItem === item.path
                     ? "border border-r-0 border-l-0 border-neutral-300"
-                    : ""
+                    : "hover:text-blue-300"
                 }`}
               >
                 {item.name}
@@ -114,10 +114,10 @@ export const FloatingNav = ({
             <Link key={index} href={item.path} legacyBehavior>
               <a
                 onClick={() => handleNavItemClick(item.path)}
-                className={`px-4 flex justify-end text-white h-8 text-lg hover:text-blue-300 ${
+                className={`px-4 flex justify-end text-white h-8 text-lg ${
                   activeItem === item.path
                     ? "border border-r-0 border-l-0 border-t-0 border-white"
-                    : ""
+                    : "hover:text-blue-300"
                 }`}
               >
                 {item.name}

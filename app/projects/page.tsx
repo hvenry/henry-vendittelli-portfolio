@@ -3,14 +3,7 @@ import { IoHammerSharp } from "react-icons/io5";
 import { Tabs } from "@/components/ui/tabs";
 
 export default function Page() {
-  const projects = [
-    "parkQu",
-    "bear the animal tosser",
-    "packmanAI",
-    "sentiment analysis NLP",
-    "my portfolio",
-  ];
-
+  // TODO make these into components
   const tabs = [
     {
       title: "sentiment nlp",

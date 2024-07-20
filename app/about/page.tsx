@@ -4,7 +4,7 @@ import { BiInfoSquare } from "react-icons/bi";
 import ClubInvolvement from "@/components/ui/ExperienceInfo";
 import Link from "next/link";
 import BackToTop from "@/components/BackToTop";
-import { clubs } from "@/data"; // Make sure this path is correct
+import { clubs } from "@/data";
 import ExperienceInfo from "@/components/ui/ExperienceInfo";
 
 export default function Page() {
