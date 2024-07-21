@@ -10,6 +10,7 @@ import ExperienceInfo from "@/components/ui/ExperienceInfo";
 import { work } from "@/data";
 import { LinkPreview } from "@/components/ui/link-preview";
 import Skills from "@/components/ui/Skills";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -106,24 +107,24 @@ export default function Page() {
             </a>
           </div>
           {/* work experience */}
-          <p className="pt-16 pb-4 sm:text-4xl text-3xl font-bold">work experience</p>
+          <p className="pt-16 pb-4 sm:text-4xl text-3xl font-bold">
+            work experience
+          </p>
           <ExperienceInfo info={work} />
 
           {/* skills */}
-          <p className="pb-4 sm:text-4xl text-3xl font-bold">technologies I work with</p>
+          <p className="pb-4 sm:text-4xl text-3xl font-bold">
+            technologies I work with
+          </p>
           <div className="p-4">
             <Skills />
           </div>
-
           {/* projects */}
           <p className="sm:text-4xl text-3xl font-bold pt-16 pb-8">
             some {""}
-            <LinkPreview
-              url="https://www.henryvendittelli.com/projects"
-              className="font-bold text-blue-300 hover:text-blue-500"
-            >
-              project
-            </LinkPreview>
+            <Link href="/projects" legacyBehavior>
+              <a className="text-blue-300 hover:text-blue-500">project</a>
+            </Link>
             {""} demos
           </p>
           <div className="flex flex-col items-center sm:mx-8 gap-12">

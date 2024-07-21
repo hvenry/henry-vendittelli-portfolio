@@ -1,7 +1,6 @@
 import Image from "next/image";
 import queens_icon from "@/public/assets/images/icons/queens_icon.png";
 import { BiInfoSquare } from "react-icons/bi";
-import ClubInvolvement from "@/components/ui/ExperienceInfo";
 import Link from "next/link";
 import BackToTop from "@/components/BackToTop";
 import { clubs } from "@/data";
