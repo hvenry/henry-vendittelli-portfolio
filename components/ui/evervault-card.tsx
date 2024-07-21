@@ -45,11 +45,7 @@ export const EvervaultCard = ({
           mouseY={mouseY}
           randomString={randomString}
         />
-        <div className="relative z-9 flex items-center justify-center">
-          <div className="relative flex items-center justify-center text-white text-4xl bg-black bg-opacity-50 p-2 border-4 border-black backdrop-blur-sm">
-            {children}
-          </div>
-        </div>
+        {children}
       </div>
     </div>
   );
@@ -60,6 +56,7 @@ export function CardPattern({ mouseX, mouseY, randomString }: any) {
   let style = { maskImage, WebkitMaskImage: maskImage };
 
   return (
+    // string effect based on mouse position
     <div className="pointer-events-none">
       <div className="absolute inset-0 [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-50"></div>
       <motion.div
@@ -67,7 +64,7 @@ export function CardPattern({ mouseX, mouseY, randomString }: any) {
         style={style}
       />
       <motion.div
-        className="absolute inset-0 opacity-0 mix-blend-overlay  group-hover/card:opacity-100"
+        className="absolute inset-0 opacity-0 mix-blend-overlay group-hover/card:opacity-100"
         style={style}
       >
         <p className="absolute inset-x-0 md:text-lg text-md h-full break-words whitespace-pre-wrap text-white font-mono font-bold transition duration-500">
@@ -86,20 +83,4 @@ export const generateRandomString = (length: number) => {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
   }
   return result;
-};
-
-export const Icon = ({ className, ...rest }: any) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="currentColor"
-      className={className}
-      {...rest}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
-    </svg>
-  );
 };

@@ -58,8 +58,8 @@ export const FloatingNav = ({
   };
 
   return (
-    <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 bg-black bg-opacity-50 backdrop-blur-sm border-4 border-black drop-shadow-lg">
-      {/* big navbar */}
+    <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 bg-black bg-opacity-50 backdrop-blur border-4 border-black drop-shadow-lg">
+      {/* default navbar */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
         {/* home link */}
         <Link href={"/"} legacyBehavior>
