@@ -3,15 +3,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen w-full flex flex-col justify-center items-center">
-      <style>{`
-        .glow-on-hover {
-          transition: box-shadow 0.3s ease-in-out;
-        }
-        .glow-on-hover:hover {
-          box-shadow: 0 0 64px rgba(255, 255, 255, 0.2);
-        }
-      `}</style>
-      <div className="p-4 sm:w-1/2 w-2/3 border border-neutral-200 glow-on-hover">
+      <div className="p-4 sm:w-1/2 w-2/3 border transition-all duration-300 ease-in-out border-neutral-200 basic-glow">
         <div className="text-4xl font-bold pb-4 flex justify-center">
           contact me
         </div>

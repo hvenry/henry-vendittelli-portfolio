@@ -19,10 +19,22 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-.backdrop-blur-sm {
+.backdrop-sm {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px); /* For Safari */
-  background: rgba(0, 0, 0, 0.5); /* Fallback for non-supporting browsers */
+}
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  background: rgba(0, 0, 0, .5); /* Fallback for non-supporting browsers */
+}
+
+.basic-glow {
+  box-shadow: 0 0 64px rgba(255, 255, 255, 0.0);
+}
+
+.basic-glow:hover {
+  box-shadow: 0 0 64px rgba(255, 255, 255, 0.15);
 }
 
 @layer utilities {
