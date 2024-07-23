@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 
+// education icons
+import queens_icon from "@/public/assets/images/icons/queens_icon.png";
+
 // club icons
 import qdaa_icon from "@/public/assets/images/icons/qdaa_icon.png";
 import quantt_icon from "@/public/assets/images/icons/quantt_icon.png";
@@ -32,6 +35,7 @@ interface ImageMap {
 }
 
 const imageMap: ImageMap = {
+  queens_icon,
   qdaa_icon,
   quantt_icon,
   compsa_icon,

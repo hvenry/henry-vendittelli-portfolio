@@ -56,6 +56,18 @@ export const clubs = [
   },
 ];
 
+export const education = [
+  {
+    name: "Queen's University",
+    position: "Computer Science",
+    desc: "As of the summer of 2024, I will be going into my fourth year of my undergraduate degree at Queen's University and will be graduating by May 2025. During my time at Queen's, I have been specializing in Cognitive Science within the faculty of computing, which is very unique learning experience that combines all of the fundamentals of computer science with linguistics and philosophy.",
+    link: "https://www.cs.queensu.ca/undergraduate/programs/specializations/cognitive-science.php",
+    image : "queens_icon",
+    time: "[ 2021 - 2025 ]",
+    extra: "Awards: Excellence Scholarship"
+  }
+];
+
 export const work = [
   {
     name: "Empire Life",
