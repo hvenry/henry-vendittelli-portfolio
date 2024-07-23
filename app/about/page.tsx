@@ -70,6 +70,7 @@ export default function Page() {
         {/* clubs */}
         <p className="pt-24 pb-4 text-4xl font-bold">club involvement</p>
         <ExperienceInfo info={clubs} />
+        {/* bottom page nav */}
         <BackToTop />
       </div>
     </main>

@@ -1,16 +1,13 @@
 import Image from "next/image";
 import rock_icon from "@/public/assets/images/icons/rock_icon.png";
 import BackToTop from "@/components/BackToTop";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithubSquare } from "react-icons/fa";
-import { FaFacebookSquare } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
-import { AiOutlineSpotify } from "react-icons/ai";
 import ExperienceInfo from "@/components/ui/ExperienceInfo";
 import { work } from "@/data";
 import { LinkPreview } from "@/components/ui/link-preview";
 import Skills from "@/components/ui/Skills";
+import Socials from "@/components/ui/Socials";
 import Link from "next/link";
+import YtPreview from "@/components/ui/YtPreview";
 
 export default function Page() {
   return (
@@ -53,73 +50,23 @@ export default function Page() {
               grab a cup of coffee.
             </p>
           </div>
-          {/* socials TODO - turn into component */}
+          {/* socials */}
           <div className="pt-4 w-full flex items-center justify-end gap-2">
-            <a
-              href="https://www.linkedin.com/in/henryvendittelli/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin
-                className={"fill-white hover:fill-blue-300"}
-                size={32}
-              />
-            </a>
-            <a
-              href="https://github.com/hvenry"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaGithubSquare
-                className={"fill-white hover:fill-blue-300"}
-                size={32}
-              />
-            </a>
-            <a
-              href="https://www.facebook.com/hvenry"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebookSquare
-                className={"fill-white hover:fill-blue-300"}
-                size={32}
-              />
-            </a>
-            <a
-              href="https://leetcode.com/u/hvenry/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <SiLeetcode
-                className={"fill-white hover:fill-blue-300"}
-                size={32}
-              />
-            </a>
-            <a
-              href="https://open.spotify.com/user/ogprinsta?si=b4845668d4f04833"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AiOutlineSpotify
-                className={"fill-white hover:fill-blue-300"}
-                size={32}
-              />
-            </a>
+            <Socials />
           </div>
           {/* work experience */}
           <p className="pt-16 pb-4 sm:text-4xl text-3xl font-bold">
             work experience
           </p>
           <ExperienceInfo info={work} />
-
           {/* skills */}
           <p className="pb-4 sm:text-4xl text-3xl font-bold">
             technologies I work with
           </p>
-          <div className="p-4">
+          <div className="4">
             <Skills />
           </div>
-          {/* projects */}
+          {/* project demos */}
           <p className="sm:text-4xl text-3xl font-bold pt-16 pb-8">
             some {""}
             <Link href="/projects" legacyBehavior>
@@ -127,45 +74,11 @@ export default function Page() {
             </Link>
             {""} demos
           </p>
-          <div className="flex flex-col items-center sm:mx-8 gap-12">
-            {/* video 1 */}
-            <div className="w-full lg:w-2/3 border border-neutral-200 flex flex-col items-center">
-              <p className="p-4 sm:text-2xl text-xl">
-                a parking app for university students.
-              </p>
-              <iframe
-                className="w-full h-96"
-                src="https://www.youtube.com/embed/3u5slpDZprw?si=3_ISxIoAD-RcIFKV&amp;controls=0"
-                title="YouTube video player"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
-            </div>
-            {/* video 2 */}
-            <div className="w-full lg:w-2/3 border border-neutral-200 flex flex-col items-center">
-              <p className="p-4 sm:text-2xl text-xl">
-                a kingston property rental database webapp.
-              </p>
-              <iframe
-                className="w-full h-96"
-                src="https://www.youtube.com/embed/bHJxmLcjUco?si=E5Hti0SjpxpX1BF8&amp;start=1;controls=0"
-                title="YouTube video player"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
-            </div>
-            {/* video 3 */}
-            <div className="w-full lg:w-2/3 border border-neutral flex flex-col items-center">
-              <p className="p-4 sm:text-2xl text-xl">
-                a game where you toss animals into pens.
-              </p>
-              <iframe
-                className="w-full h-96"
-                src="https://www.youtube.com/embed/YPBpoDEXPhQ?si=W0iLnaHJXuqsS2p-&amp;start=2;controls=0"
-                title="YouTube video player"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
-            </div>
-            <BackToTop />
+          <div className="flex flex-col items-center md:mx-16 gap-12 pb-16">
+            <YtPreview />
           </div>
+          {/* bottom page nav */}
+          <BackToTop />
         </div>
       </main>
     </>
