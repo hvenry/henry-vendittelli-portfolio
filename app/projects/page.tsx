@@ -4,12 +4,21 @@ import { Tabs } from "@/components/ui/tabs";
 
 export default function Page() {
   // TODO make these into components
+  // add title
+  // add description
+  // add image
+  // add socials per project (youtube, github)
+  // add tech stack
+
+  const tabStyle =
+    "p-4 w-full h-96 overflow-hidden relative text-xl md:text-4xl font-bold text-white border border-neutral-300";
+
   const tabs = [
     {
       title: "sentiment nlp",
       value: "sentimentnlp",
       content: (
-        <div className="p-4 w-full h-96 overflow-hidden relative text-xl md:text-4xl font-bold text-white border border-neutral-300">
+        <div className={tabStyle}>
           <p>Sentiment Analysis NLP for QMIND</p>
         </div>
       ),
@@ -18,7 +27,7 @@ export default function Page() {
       title: "rental db",
       value: "rentaldb",
       content: (
-        <div className="p-4 w-full h-96 overflow-hidden relative text-xl md:text-4xl font-bold text-white border border-neutral-300">
+        <div className={tabStyle}>
           <p>Kingston Rental Property Database</p>
         </div>
       ),
@@ -27,7 +36,7 @@ export default function Page() {
       title: "portfolio",
       value: "portfolio",
       content: (
-        <div className="p-4 w-full h-96 overflow-hidden relative text-xl md:text-4xl font-bold text-white border border-neutral-300">
+        <div className={tabStyle}>
           <p>My portfolio website</p>
         </div>
       ),
@@ -36,7 +45,7 @@ export default function Page() {
       title: "game",
       value: "game",
       content: (
-        <div className="p-4 w-full h-96 overflow-hidden relative text-xl md:text-4xl font-bold text-white border border-neutral-300">
+        <div className={tabStyle}>
           <p>Bear The Animal Tosser</p>
         </div>
       ),
@@ -45,7 +54,7 @@ export default function Page() {
       title: "parking app",
       value: "parkqu",
       content: (
-        <div className="p-4 w-full h-96 overflow-hidden relative text-xl md:text-4xl font-bold text-white border border-neutral-300">
+        <div className={tabStyle}>
           <p>parkQu</p>
         </div>
       ),

@@ -55,7 +55,7 @@ export default function Page() {
             <Socials />
           </div>
           {/* work experience */}
-          <p className="pt-16 pb-4 sm:text-4xl text-3xl font-bold">
+          <p className="pt-12 pb-4 sm:text-4xl text-3xl font-bold">
             work experience
           </p>
           <ExperienceInfo info={work} />
