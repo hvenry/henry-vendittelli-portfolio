@@ -35,7 +35,7 @@ body {
 }
 
 .basic-glow:hover {
-  box-shadow: 0 0 64px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 64px rgba(255, 255, 255, 0.20);
 }
 
 @layer utilities {

@@ -3,8 +3,8 @@ import React from "react";
 const YtPreview = () => {
 
   const style = {
-    border: "w-full lg:w-2/3 border border-neutral-200 flex flex-col items-center",
-    text: "p-4 sm:text-2xl text-xl",
+    border: "w-full sm:w-3/4 border border-neutral-200 flex flex-col items-center",
+    text: "text-gray-200 p-4 sm:text-2xl text-xl",
     videoStyle: "w-full h-96",
     videoAllow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
   }

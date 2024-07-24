@@ -4,17 +4,17 @@ export default function Page() {
   return (
     <div className="min-h-screen w-full flex flex-col justify-center items-center">
       <div className="p-4 sm:w-1/2 w-2/3 border transition-all duration-300 ease-in-out border-neutral-200 basic-glow">
-        <div className="text-4xl font-bold pb-4 flex justify-center">
+        <div className="text-3xl font-bold pb-4 flex justify-center">
           contact me
         </div>
-        <div className="md:text-2xl lg:text-3xl text-xl">
+        <div className="sm:text-2xl text-lg text-gray-200">
           <div className="flex justify-between">
             <p>email:</p>
             <p>hvendittelli@gmail.com</p>
           </div>
           <div className="flex justify-between">
             <p>phone:</p>
-            <p>xxx-xxx-xxxx</p>
+            <p>647-926-6820</p>
           </div>
           <div className="flex justify-between">
             <p>resume:</p>

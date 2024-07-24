@@ -1,8 +1,8 @@
 export const navItems = [
   { name: "/blog", path: "/blog" },
   { name: "/about", path: "/about" },
-  { name: "/contact", path: "/contact" },
   { name: "/projects", path: "/projects" },
+  { name: "/reach-out", path: "/reach-out" },
 ];
 
 export const clubs = [
@@ -33,7 +33,7 @@ export const clubs = [
   {
     name: "COMPSA",
     position: "Orientation Leader",
-    desc: "For the Computing Students Association, I led the computing orientation for incoming first-year students, and hosted an interactive presentation for those interested in entering the cognitive computation specialization.",
+    desc: "For the Computing Students Association, I led the computing orientation for incoming first-year students, and hosted an interactive presentation for those interested in entering the cognitive science specialization.",
     link: "https://research.cs.queensu.ca/home/dsc/",
     image: "compsa_icon",
     time: "[ 2022 - 2023 ]",

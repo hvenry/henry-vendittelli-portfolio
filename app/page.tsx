@@ -24,16 +24,16 @@ export default function Page() {
                   height={28}
                   alt="Henry Vendittelli"
                 />
-                <p className="sm:text-4xl text-3xl">Henry Vendittelli</p>
+                <p className="sm:text-3xl text-3xl">Henry Vendittelli</p>
               </div>
               <p className="text-xl opacity-50">21 (he/him)</p>
             </div>
-            <p className="sm:text-3xl text-xl text-justify pb-8">
+            <p className="text-gray-200 sm:text-2xl text-lg text-justify pb-4">
               Hi! My name is Henry, and I am a software developer based out of
               Toronto Canada.
             </p>
             {/* intro */}
-            <p className="sm:text-2xl text-lg text-justify text-gray-300">
+            <p className="sm:text-lg text-sm font-mono text-justify text-gray-300">
               Welcome to my portfolio website / blog! Before anything, I would
               like to say that I am highly appreciative of anyone that takes the
               time to come look at my work. Programming, amongst other things,
@@ -42,7 +42,7 @@ export default function Page() {
               Please enjoy your stay and feel free to {""}
               <LinkPreview
                 url="https://www.henryvendittelli.com/contact"
-                className="font-bold text-blue-300 hover:text-blue-500"
+                className="text-blue-300 hover:text-blue-500"
               >
                 reach out
               </LinkPreview>
@@ -60,7 +60,7 @@ export default function Page() {
           </p>
           <ExperienceInfo info={work} />
           {/* skills */}
-          <p className="pb-4 sm:text-4xl text-3xl font-bold">
+          <p className="pt-4 pb-4 sm:text-4xl text-3xl font-bold">
             technologies I work with
           </p>
           <div className="4">
@@ -74,7 +74,7 @@ export default function Page() {
             </Link>
             {""} demos
           </p>
-          <div className="flex flex-col items-center md:mx-16 gap-12 pb-16">
+          <div className="flex flex-col items-center gap-12 pb-16">
             <YtPreview />
           </div>
           {/* bottom page nav */}

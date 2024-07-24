@@ -17,15 +17,15 @@ export default function Page() {
           <div className="flex items-end gap-4 pb-4">
             <div className="flex items-end gap-2">
               <BiInfoSquare size={30} />
-              <p className="text-4xl">
-                More about
+              <p className="text-3xl">
+                more about
                 <Link href="/" legacyBehavior>
                   <a className="text-blue-300 hover:text-blue-500"> me</a>
                 </Link>
               </p>
             </div>
           </div>
-          <p className="sm:text-2xl text-xl text-justify text-neutral-200">
+          <p className="sm:text-2xl text-xl text-justify text-gray-200">
             Some information about my formal education in computer science and
             my involvement in clubs.
           </p>

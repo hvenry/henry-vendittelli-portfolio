@@ -11,7 +11,7 @@ export default function Page() {
   // add tech stack
 
   const tabStyle =
-    "p-4 w-full h-96 overflow-hidden relative text-xl md:text-4xl font-bold text-white border border-neutral-300";
+    "p-4 w-full h-96 overflow-hidden relative text-xl md:text-3xl font-bold text-white border border-neutral-300";
 
   const tabs = [
     {
@@ -66,18 +66,15 @@ export default function Page() {
       {/* page content */}
       <div className="bg-black w-full mx-4">
         {/* title */}
-        <div className="border border-neutral-300 flex justify-center">
-          <EvervaultCard className="w-full h-40 sm:h-80">
-            <div className="text-4xl flex justify-center border-4 p-2 gap-2 items-center border-black backdrop-blur-sm">
+        <div className="border border-neutral-300 flex flex-col justify-center mb-12">
+          <EvervaultCard className="w-full h-48 sm:h-80">
+            <div className="text-3xl flex justify-center border-4 p-2 gap-2 items-center border-black backdrop-blur-sm">
               <IoHammerSharp size={30} />
               <span>my projects</span>
             </div>
           </EvervaultCard>
+          {/* view projects */}
         </div>
-        {/* view projects */}
-        <p className="sm:text-2xl text-xl text-justify text-neutral-200 pt-2 pb-16">
-          Here you can see some of the projects that I have worked on.
-        </p>
         <Tabs tabs={tabs} />
       </div>
     </main>
