@@ -12,7 +12,7 @@ import YtPreview from "@/components/ui/YtPreview";
 export default function Page() {
   return (
     <>
-      <main className="min-h-screen w-full flex justify-center pt-40 pb-16 px-4">
+      <main className="min-h-screen w-full flex justify-center pt-32 pb-16 px-4">
         <div className="bg-black w-full mx-4">
           {/* intro */}
           <div className="border border-neutral-300 p-4">

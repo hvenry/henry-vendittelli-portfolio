@@ -53,12 +53,12 @@ export default function Page() {
   ];
 
   return (
-    <main className="min-h-screen w-full flex justify-center pt-40 pb-16 px-4">
+    <main className="min-h-screen w-full flex justify-center pt-32 pb-16 px-4">
       {/* page content */}
       <div className="bg-black w-full mx-4">
         {/* title */}
         <div className="border border-neutral-300 flex justify-center">
-          <EvervaultCard className="w-full h-48 sm:h-96">
+          <EvervaultCard className="w-full h-40 sm:h-80">
             <div className="text-4xl flex justify-center border-4 p-2 gap-2 items-center border-black backdrop-blur-sm">
               <IoHammerSharp size={30} />
               <span>my projects</span>
