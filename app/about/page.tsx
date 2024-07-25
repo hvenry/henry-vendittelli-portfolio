@@ -15,12 +15,12 @@ export default function Page() {
         {/* name and basic info */}
         <div className="border border-neutral-300 p-4">
           <div className="flex items-end gap-4 pb-4">
-            <div className="flex items-end gap-2">
+            <div className="flex items-center gap-2">
               <BiInfoSquare size={30} />
               <p className="text-3xl">
-                more about
+                More About {""}
                 <Link href="/" legacyBehavior>
-                  <a className="text-blue-300 hover:text-blue-500"> me</a>
+                  <a className="text-blue-300 hover:text-blue-500">Me</a>
                 </Link>
               </p>
             </div>
@@ -31,11 +31,11 @@ export default function Page() {
           </p>
         </div>
         {/* education */}
-        <p className="pt-16 pb-4 text-4xl font-bold">education</p>
+        <p className="pt-16 pb-4 text-4xl font-bold">Education</p>
         <ExperienceInfo info={education} />
 
         {/* clubs */}
-        <p className="pb-4 text-4xl font-bold">club involvement</p>
+        <p className="pb-4 text-4xl font-bold">Club Involvement</p>
         <ExperienceInfo info={clubs} />
         {/* bottom page nav */}
         <BackToTop />

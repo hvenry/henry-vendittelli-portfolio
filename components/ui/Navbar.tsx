@@ -4,8 +4,9 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
+// import { MdLightMode } from "react-icons/md";
 
-export const FloatingNav = ({
+export const Navbar = ({
   navItems,
 }: {
   navItems: {
@@ -71,12 +72,12 @@ export const FloatingNav = ({
           </a>
         </Link>
         {/* page links */}
-        <div>
+        <div className="flex items-center">
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
               <a
                 onClick={() => handleNavItemClick(item.path)}
-                className={`text-white text-lg px-4 pb-[2px] ${
+                className={`text-white text-lg px-3 mx-1 pb-[2px] ${
                   activeItem === item.path
                     ? "border border-r-0 border-l-0 border-neutral-300"
                     : "hover:text-blue-300"
@@ -86,6 +87,8 @@ export const FloatingNav = ({
               </a>
             </Link>
           ))}
+          {/* darkmode */}
+          {/* <MdLightMode className="size-6"/> */}
         </div>
       </div>
       {/* dropdown navbar */}
@@ -109,12 +112,12 @@ export const FloatingNav = ({
       </div>
       {/* Conditionally visible dropdown content */}
       {isOpen && (
-        <div ref={dropdownRef} className="absolute flex-col top-full z-20 right-0 bg-black">
+        <div ref={dropdownRef} className="absolute flex-col top-full z-20 right-1 bg-black">
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
               <a
                 onClick={() => handleNavItemClick(item.path)}
-                className={`px-4 flex justify-end text-white h-8 text-lg ${
+                className={`px-3 my-1 flex justify-end text-white h-8 text-lg ${
                   activeItem === item.path
                     ? "border border-r-0 border-l-0 border-t-0 border-white"
                     : "hover:text-blue-300"

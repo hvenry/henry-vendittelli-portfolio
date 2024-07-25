@@ -41,7 +41,7 @@ export default function Page() {
               skills and share my interest with others who are interested.
               Please enjoy your stay and feel free to {""}
               <LinkPreview
-                url="https://www.henryvendittelli.com/contact"
+                url="https://www.henryvendittelli.com/reach-out"
                 className="text-blue-300 hover:text-blue-500"
               >
                 reach out
@@ -56,23 +56,23 @@ export default function Page() {
           </div>
           {/* work experience */}
           <p className="pt-12 pb-4 sm:text-4xl text-3xl font-bold">
-            work experience
+            Work Experience
           </p>
           <ExperienceInfo info={work} />
           {/* skills */}
           <p className="pt-4 pb-4 sm:text-4xl text-3xl font-bold">
-            technologies I work with
+            Technologies I Work With
           </p>
           <div className="4">
             <Skills />
           </div>
           {/* project demos */}
           <p className="sm:text-4xl text-3xl font-bold pt-16 pb-8">
-            some {""}
+            Some {""}
             <Link href="/projects" legacyBehavior>
-              <a className="text-blue-300 hover:text-blue-500">project</a>
+              <a className="text-blue-300 hover:text-blue-500">Project</a>
             </Link>
-            {""} demos
+            {""} Demos
           </p>
           <div className="flex flex-col items-center gap-12 pb-16">
             <YtPreview />

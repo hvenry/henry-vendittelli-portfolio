@@ -1,4 +1,5 @@
 import React from "react";
+import { videos } from "@/data";
 
 const YtPreview = () => {
 
@@ -9,21 +10,6 @@ const YtPreview = () => {
     videoAllow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
   }
 
-  const videos = [
-    {
-      text: "a parking app for university students.",
-      video: "https://www.youtube.com/embed/3u5slpDZprw?si=3_ISxIoAD-RcIFKV&amp;&amp;rel=0"
-    },
-    {
-      text: "a kingston property rental database webapp.",
-      video: "https://www.youtube.com/embed/bHJxmLcjUco?si=E5Hti0SjpxpX1BF8&amp;start=1;&amp;rel=0"
-    },
-    {
-      text: "a game where you toss animals into pens.",
-      video: "https://www.youtube.com/embed/YPBpoDEXPhQ?si=W0iLnaHJXuqsS2p-&amp;start=2&amp;rel=0"
-    }
-  ]
-  
   return (
     <>
     {videos.map((video, index) => (

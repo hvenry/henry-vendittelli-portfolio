@@ -5,6 +5,24 @@ export const navItems = [
   { name: "/reach-out", path: "/reach-out" },
 ];
 
+export const videos = [
+  {
+    text: "Parking App For University Students",
+    video:
+      "https://www.youtube.com/embed/3u5slpDZprw?si=3_ISxIoAD-RcIFKV&amp;&amp;rel=0",
+  },
+  {
+    text: "Kingston Property Rental Webapp",
+    video:
+      "https://www.youtube.com/embed/bHJxmLcjUco?si=E5Hti0SjpxpX1BF8&amp;start=1;&amp;rel=0",
+  },
+  {
+    text: "Game Where You Toss Animals Into Pens",
+    video:
+      "https://www.youtube.com/embed/YPBpoDEXPhQ?si=W0iLnaHJXuqsS2p-&amp;start=2&amp;rel=0",
+  },
+];
+
 export const clubs = [
   {
     name: "Project Red",
@@ -62,10 +80,10 @@ export const education = [
     position: "Computer Science",
     desc: "As of the summer of 2024, I will be going into my fourth year of my undergraduate degree at Queen's University and will be graduating by May 2025. During my time at Queen's, I have been specializing in Cognitive Science within the faculty of computing, which is very unique learning experience that combines all of the fundamentals of computer science with linguistics and philosophy.",
     link: "https://www.cs.queensu.ca/undergraduate/programs/specializations/cognitive-science.php",
-    image : "queens_icon",
+    image: "queens_icon",
     time: "[ 2021 - 2025 ]",
-    extra: "Awards: Excellence Scholarship"
-  }
+    extra: "Awards: Excellence Scholarship",
+  },
 ];
 
 export const work = [

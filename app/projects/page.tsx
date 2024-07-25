@@ -15,8 +15,8 @@ export default function Page() {
 
   const tabs = [
     {
-      title: "sentiment nlp",
-      value: "sentimentnlp",
+      title: "Sentiment NLP",
+      value: "1",
       content: (
         <div className={tabStyle}>
           <p>Sentiment Analysis NLP for QMIND</p>
@@ -24,8 +24,8 @@ export default function Page() {
       ),
     },
     {
-      title: "rental db",
-      value: "rentaldb",
+      title: "Rental Webapp",
+      value: "2",
       content: (
         <div className={tabStyle}>
           <p>Kingston Rental Property Database</p>
@@ -33,8 +33,8 @@ export default function Page() {
       ),
     },
     {
-      title: "portfolio",
-      value: "portfolio",
+      title: "Portfolio",
+      value: "3",
       content: (
         <div className={tabStyle}>
           <p>My portfolio website</p>
@@ -42,8 +42,8 @@ export default function Page() {
       ),
     },
     {
-      title: "game",
-      value: "game",
+      title: "Bear The Animal Tosser",
+      value: "4",
       content: (
         <div className={tabStyle}>
           <p>Bear The Animal Tosser</p>
@@ -51,11 +51,11 @@ export default function Page() {
       ),
     },
     {
-      title: "parking app",
-      value: "parkqu",
+      title: "Student Parking App",
+      value: "5",
       content: (
         <div className={tabStyle}>
-          <p>parkQu</p>
+          <p>ParkQu</p>
         </div>
       ),
     },
@@ -70,7 +70,7 @@ export default function Page() {
           <EvervaultCard className="w-full h-48 sm:h-80">
             <div className="text-3xl flex justify-center border-4 p-2 gap-2 items-center border-black backdrop-blur-sm">
               <IoHammerSharp size={30} />
-              <span>my projects</span>
+              <span>My Projects</span>
             </div>
           </EvervaultCard>
           {/* view projects */}

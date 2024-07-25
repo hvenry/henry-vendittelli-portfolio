@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
-import { FloatingNav } from "@/components/ui/FloatingNavbar";
+import { Navbar } from "@/components/ui/Navbar";
 import { navItems } from "@/data";
 import "./globals.css";
 
@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={oswald.className}>
         <div className="flex justify-center">
-          <FloatingNav navItems={navItems} />
+          <Navbar navItems={navItems} />
           <div className="w-full lg:w-1/2 md:w-2/3 flex justify-center">
             {children}
           </div>
