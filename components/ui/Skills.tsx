@@ -56,8 +56,8 @@ const SkillBox: React.FC<{ Icon: React.ElementType; name: string }> = ({
   name,
 }) => {
   return (
-    <div className="flex flex-grow min-w-[60px] sm:min-w-[75px] sm:p-2 p-1 transition duration-100 ease-in-out items-center gap-2 border border-neutral-300 m-2 whitespace-nowrap justify-center">
-      <Icon className={"fill-white sm:size-7 size-5"} />
+    <div className="flex flex-grow min-w-[60px] sm:min-w-[75px] sm:p-2 p-1 transition duration-100 ease-in-out items-center gap-2 border border-primary m-2 whitespace-nowrap justify-center">
+      <Icon className={"sm:size-7 size-5"} />
       <p className="font-bold text-sm sm:text-xl">{name}</p>
     </div>
   );

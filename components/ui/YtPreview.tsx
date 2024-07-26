@@ -4,8 +4,8 @@ import { videos } from "@/data";
 const YtPreview = () => {
 
   const style = {
-    border: "w-full sm:w-3/4 border border-neutral-200 flex flex-col items-center",
-    text: "text-gray-200 p-4 sm:text-2xl text-xl",
+    border: "w-full sm:w-3/4 border border-primary flex flex-col items-center",
+    text: "text-primary-1 p-4 sm:text-2xl text-xl",
     videoStyle: "w-full h-96",
     videoAllow: "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
   }

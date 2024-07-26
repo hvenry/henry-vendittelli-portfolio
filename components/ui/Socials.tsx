@@ -6,7 +6,7 @@ import { SiLeetcode } from "react-icons/si";
 import { AiOutlineSpotify } from "react-icons/ai";
 
 const Socials = () => {
-  const style = "fill-white hover:fill-blue-300";
+  const style = "hover:fill-blue-300";
   return (
     <>
       <a

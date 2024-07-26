@@ -13,9 +13,9 @@ export default function Page() {
   return (
     <>
       <main className="min-h-screen w-full flex justify-center pt-32 pb-16 px-4">
-        <div className="bg-black w-full mx-4">
+        <div className="w-full mx-4">
           {/* intro */}
-          <div className="border border-neutral-300 p-4">
+          <div className="border border-primary p-4">
             <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 pb-4">
               <div className="flex items-end gap-2">
                 <Image
@@ -26,14 +26,14 @@ export default function Page() {
                 />
                 <p className="sm:text-3xl text-3xl">Henry Vendittelli</p>
               </div>
-              <p className="text-xl opacity-50">21 (he/him)</p>
+              <p className="text-xl text-gray-500">21 (he/him)</p>
             </div>
-            <p className="text-gray-200 sm:text-2xl text-lg text-justify pb-4">
+            <p className="text-primary-1 sm:text-2xl text-lg text-justify pb-4">
               Hi! My name is Henry, and I am a software developer based out of
               Toronto Canada.
             </p>
             {/* intro */}
-            <p className="sm:text-lg text-sm font-mono text-justify text-gray-300">
+            <p className="sm:text-lg text-sm font-mono text-justify primary-2">
               Welcome to my portfolio website / blog! Before anything, I would
               like to say that I am highly appreciative of anyone that takes the
               time to come look at my work. Programming, amongst other things,
@@ -42,7 +42,7 @@ export default function Page() {
               Please enjoy your stay and feel free to {""}
               <LinkPreview
                 url="https://www.henryvendittelli.com/reach-out"
-                className="text-blue-300 hover:text-blue-500"
+                className="text-blue-600 hover:text-blue-300"
               >
                 reach out
               </LinkPreview>
@@ -70,7 +70,7 @@ export default function Page() {
           <p className="sm:text-4xl text-3xl font-bold pt-16 pb-8">
             Some {""}
             <Link href="/projects" legacyBehavior>
-              <a className="text-blue-300 hover:text-blue-500">Project</a>
+              <a className="text-blue-600 hover:text-blue-300">Project</a>
             </Link>
             {""} Demos
           </p>

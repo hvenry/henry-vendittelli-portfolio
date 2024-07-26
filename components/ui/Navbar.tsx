@@ -4,7 +4,8 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
-// import { MdLightMode } from "react-icons/md";
+import { MdLightMode, MdDarkMode } from "react-icons/md";
+import { useTheme } from "next-themes";
 
 export const Navbar = ({
   navItems,
@@ -16,16 +17,24 @@ export const Navbar = ({
 }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<null | string>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  // update active item whenever pathname changes
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   useEffect(() => {
     setActiveItem(pathname);
   }, [pathname]);
 
-  // handle case where screen is extended to a larger size
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 960) {
@@ -39,14 +48,15 @@ export const Navbar = ({
     };
   }, []);
 
-  // handle clicks outside of dropdown
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -58,28 +68,27 @@ export const Navbar = ({
     setIsOpen(false);
   };
 
+  if (!mounted) return null;
+
   return (
-    <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 bg-black bg-opacity-50 backdrop-blur border-4 border-black drop-shadow-lg">
-      {/* default navbar */}
+    <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 backdrop-blur">
       <div className="hidden md:flex w-full h-full justify-between items-center">
-        {/* home link */}
         <Link href={"/"} legacyBehavior>
           <a
             onClick={() => handleNavItemClick("/")}
-            className="text-white text-xl font-bold hover:text-blue-300"
+            className="text-nav text-xl font-bold hover:text-blue-300"
           >
             henryvendittelli.com/
           </a>
         </Link>
-        {/* page links */}
-        <div className="flex items-center">
+        <div className="gap-4 flex items-center">
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
               <a
                 onClick={() => handleNavItemClick(item.path)}
-                className={`text-white text-lg px-3 mx-1 pb-[2px] ${
+                className={`text-nav text-lg px-2 pb-[2px] ${
                   activeItem === item.path
-                    ? "border border-r-0 border-l-0 border-neutral-300"
+                    ? "border border-r-0 border-l-0 border-primary"
                     : "hover:text-blue-300"
                 }`}
               >
@@ -87,39 +96,48 @@ export const Navbar = ({
               </a>
             </Link>
           ))}
-          {/* darkmode */}
-          {/* <MdLightMode className="size-6"/> */}
+          {theme === "dark" ? (
+            <MdLightMode onClick={toggleTheme} className="size-6 cursor-pointer" />
+          ) : (
+            <MdDarkMode onClick={toggleTheme} className="size-6 cursor-pointer" />
+          )}
         </div>
       </div>
-      {/* dropdown navbar */}
-      {/* Toggle button and dropdown navbar visible only on small screens */}
       <div className="md:hidden flex w-full h-full justify-between items-center">
         <Link href={"/"} legacyBehavior>
           <a
             onClick={() => handleNavItemClick("/")}
-            className="text-white text-xl font-bold hover:text-blue-300"
+            className="text-nav text-xl font-bold hover:text-blue-300"
           >
             henryvendittelli.com/
           </a>
         </Link>
-        {/* Always visible toggle button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="text-white font-bold text-3xl hover:text-blue-300"
-        >
-          {isOpen ? <IoMdClose /> : <RiMenu3Fill />}
-        </button>
+        <div className="flex items-center gap-4">
+          {theme === "dark" ? (
+            <MdLightMode onClick={toggleTheme} className="size-6 cursor-pointer" />
+          ) : (
+            <MdDarkMode onClick={toggleTheme} className="size-6 cursor-pointer" />
+          )}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="font-bold text-3xl hover:text-blue-300"
+          >
+            {isOpen ? <IoMdClose /> : <RiMenu3Fill />}
+          </button>
+        </div>
       </div>
-      {/* Conditionally visible dropdown content */}
       {isOpen && (
-        <div ref={dropdownRef} className="absolute flex-col top-full z-20 right-1 bg-black">
+        <div
+          ref={dropdownRef}
+          className="absolute flex-col top-full z-20 right-1 bg-primary"
+        >
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
               <a
                 onClick={() => handleNavItemClick(item.path)}
-                className={`px-3 my-1 flex justify-end text-white h-8 text-lg ${
+                className={`text-nav px-3 my-1 flex justify-end h-8 text-lg ${
                   activeItem === item.path
-                    ? "border border-r-0 border-l-0 border-t-0 border-white"
+                    ? "border border-r-0 border-l-0 border-t-0 border-primary"
                     : "hover:text-blue-300"
                 }`}
               >

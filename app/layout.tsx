@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import { Navbar } from "@/components/ui/Navbar";
 import { navItems } from "@/data";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -22,12 +23,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={oswald.className}>
-        <div className="flex justify-center">
-          <Navbar navItems={navItems} />
-          <div className="w-full lg:w-1/2 md:w-2/3 flex justify-center">
-            {children}
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex justify-center">
+            <Navbar navItems={navItems} />
+            <div className="transition-all w-full lg:w-1/2 md:w-2/3 flex justify-center">
+              {children}
+            </div>
           </div>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   );

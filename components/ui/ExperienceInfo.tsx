@@ -1,6 +1,9 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
+import { useTheme } from "next-themes";
 
 // education icons
 import queens_icon from "@/public/assets/images/icons/queens_icon.png";
@@ -48,11 +51,20 @@ const imageMap: ImageMap = {
 };
 
 const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // Ensures theme is rendered correctly on the client side
+
   return (
     <>
       {info.map((info, index) => (
         <div key={index} className="pb-8 pr-4">
-          <div className="p-4 pb-2 hover:translate-x-2 transition-all duration-300 ease-in-out hover:border-neutral-300 border border-transparent basic-glow">
+          <div className="p-4 pb-2 hover:translate-x-2 transition-all duration-300 ease-in-out border border-transparent hover:border-white basic-glow">
             <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 gap-2 pb-2">
               <div className="flex justify-center items-center gap-2">
                 <Image
@@ -60,6 +72,13 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
                   alt={info.name}
                   width={24}
                   height={24}
+                  className={
+                    info.image === "partisans_icon"
+                      ? theme === "light"
+                        ? "icon-light"
+                        : "icon-dark"
+                      : ""
+                  }
                 />
                 <a
                   href={info.link}
@@ -70,12 +89,14 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
                   {info.name}
                 </a>
               </div>
-              <p className="sm:text-xl text-md opacity-50">{info.position}</p>
+              <p className="sm:text-xl text-md text-primary-1">
+                {info.position}
+              </p>
             </div>
-            <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify text-gray-300">
+            <p className="lg:text-xl sm:text-lg text-sm font-mono text-justify text-primary-2">
               {info.desc}
             </p>
-            <p className="pt-1 flex justify-end sm:text-lg text-sm opacity-25 font-mono">
+            <p className="pt-1 flex justify-end sm:text-lg text-sm text-gray-500 font-mono">
               {info.time}
             </p>
           </div>

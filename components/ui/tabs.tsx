@@ -33,8 +33,8 @@ export const Tabs = ({
           onClick={() => setActiveTab(tab)}
           className={`sm:text-xl text-md px-2 pb-[2px] m-1 ${
             tab === activeTab
-              ? `border border-neutral-300 border-l-0 border-r-0 ${activeTabClassName}` // Add border styles here
-              : `border hover:text-blue-300 border-black border-l-0 border-r-0 ${tabClassName}`
+              ? `border border-primary border-l-0 border-r-0 ${activeTabClassName}` // Add border styles here
+              : `border hover:text-blue-300 border-transparent border-l-0 border-r-0 ${tabClassName}`
           }`}
         >
           {tab.title}
