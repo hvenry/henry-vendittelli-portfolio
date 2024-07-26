@@ -20,34 +20,46 @@ export const Navbar = ({
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<null | string>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    // listener for system theme changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      setTheme(mediaQuery.matches ? "dark" : "light");
+    };
+    mediaQuery.addEventListener("change", handleChange);
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, [setTheme]);
 
+  // toggle between themes
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
   useEffect(() => {
     setActiveItem(pathname);
   }, [pathname]);
 
+  // handle resize of nav
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 960) {
         setIsOpen(false);
       }
     };
-
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
+
+  // account for clicks outside nav
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -63,15 +75,18 @@ export const Navbar = ({
     };
   }, []);
 
+  // handle click of nav item
   const handleNavItemClick = (path: string) => {
     setActiveItem(path);
     setIsOpen(false);
   };
 
+  // if not mounted, don't render
   if (!mounted) return null;
 
   return (
     <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 backdrop-blur">
+      {/* medium or larger nav */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
         <Link href={"/"} legacyBehavior>
           <a
@@ -96,13 +111,14 @@ export const Navbar = ({
               </a>
             </Link>
           ))}
-          {theme === "dark" ? (
-            <MdLightMode onClick={toggleTheme} className="size-6 cursor-pointer" />
+          {resolvedTheme === "dark" ? (
+            <MdLightMode onClick={toggleTheme} className="size-6 cursor-pointer icon-nav" />
           ) : (
-            <MdDarkMode onClick={toggleTheme} className="size-6 cursor-pointer" />
+            <MdDarkMode onClick={toggleTheme} className="size-6 cursor-pointer icon-nav" />
           )}
         </div>
       </div>
+      {/* small nav */}
       <div className="md:hidden flex w-full h-full justify-between items-center">
         <Link href={"/"} legacyBehavior>
           <a
@@ -113,14 +129,14 @@ export const Navbar = ({
           </a>
         </Link>
         <div className="flex items-center gap-4">
-          {theme === "dark" ? (
-            <MdLightMode onClick={toggleTheme} className="size-6 cursor-pointer" />
+          {resolvedTheme === "dark" ? (
+            <MdLightMode onClick={toggleTheme} className="size-6 cursor-pointer icon-nav" />
           ) : (
-            <MdDarkMode onClick={toggleTheme} className="size-6 cursor-pointer" />
+            <MdDarkMode onClick={toggleTheme} className="size-6 cursor-pointer icon-nav" />
           )}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="font-bold text-3xl hover:text-blue-300"
+            className="font-bold text-3xl hover:text-blue-300 icon-nav"
           >
             {isOpen ? <IoMdClose /> : <RiMenu3Fill />}
           </button>
