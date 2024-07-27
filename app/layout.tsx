@@ -31,7 +31,7 @@ export default function RootLayout({
         >
           <div className="flex justify-center">
             <Navbar navItems={navItems} />
-            <div className="transition-all w-full lg:w-1/2 md:w-2/3 flex justify-center">
+            <div className="w-full lg:w-1/2 md:w-2/3 flex justify-center">
               {children}
             </div>
           </div>

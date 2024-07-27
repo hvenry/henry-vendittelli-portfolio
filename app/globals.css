@@ -78,14 +78,26 @@ body {
   -webkit-backdrop-filter: blur(10px); /* For Safari */
 }
 
+/* glows for cards */
+/* dark */
 .basic-glow {
   box-shadow: 0 0 64px rgba(var(--white-rgb), 0);
 }
 
-.basic-glow:hover {
+ .basic-glow:hover {
   box-shadow: 0 0 64px rgba(var(--white-rgb), 0.2);
 }
 
+ /* light */
+[data-theme="light"] .basic-glow {
+  box-shadow: 0 0 64px rgba(var(--black-rgb), 0);
+}
+
+[data-theme="light"] .basic-glow:hover {
+  box-shadow: 0 0 64px rgba(var(--black-rgb), 0.1);
+}
+
+/* handle icons that are all black */
 .icon-dark {
   filter: invert(0%);
 }
@@ -94,11 +106,6 @@ body {
   filter: invert(100%);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
 
 /* Background color classes */
 .bg-primary {
@@ -109,20 +116,29 @@ body {
 [data-theme="light"] .bg-primary {
   background-color: rgb(var(--white-rgb)); /* Ensure transparency for blur */
 }
+
+/* navbar text */
+/* TODO: figure out how to blend with background */
 .text-nav {
   color: rgb(var(--white-rgb));
-  text-shadow: 
+  /* text-shadow: 
     -1px -1px 0 rgba(0, 0, 0, 1),
      1px -1px 0 rgba(0, 0, 0, 1),
     -1px  1px 0 rgba(0, 0, 0, 1),
-     1px  1px 0 rgba(0, 0, 0, 1); /* Black stroke for dark mode */
+     1px  1px 0 rgba(0, 0, 0, 1); */
 }
 
 [data-theme="light"] .text-nav {
   color: rgb(var(--black-rgb));
-  text-shadow: 
+  /* text-shadow: 
     -1px -1px 0 rgba(255, 255, 255, 1),
      1px -1px 0 rgba(255, 255, 255, 1),
     -1px  1px 0 rgba(255, 255, 255, 1),
-     1px  1px 0 rgba(255, 255, 255, 1); /* White stroke for light mode */
+     1px  1px 0 rgba(255, 255, 255, 1); */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
