@@ -11,7 +11,7 @@ export default function Page() {
   // add tech stack
 
   const tabStyle =
-    "p-4 w-full h-96 overflow-hidden relative text-xl md:text-3xl font-bold border border-primary";
+    "p-4 w-full h-80 overflow-hidden relative text-xl md:text-3xl font-bold border border-primary";
 
   const tabs = [
     {
@@ -42,7 +42,7 @@ export default function Page() {
       ),
     },
     {
-      title: "Bear The Animal Tosser",
+      title: "C# Game",
       value: "4",
       content: (
         <div className={tabStyle}>
