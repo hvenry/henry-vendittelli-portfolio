@@ -145,7 +145,7 @@ export const Navbar = ({
       {isOpen && (
         <div
           ref={dropdownRef}
-          className="absolute flex-col top-full z-20 right-1 bg-primary"
+          className="absolute flex-col top-full z-20 right-[24px] bg-primary rounded-b-lg"
         >
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
