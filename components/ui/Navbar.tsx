@@ -84,7 +84,7 @@ export const Navbar = ({
   if (!mounted) return null;
 
   return (
-    <div className="w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 backdrop-blur rounded-3xl">
+    <div className="bg-gray-500 bg-opacity-5 w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 backdrop-blur rounded-3xl">
       {/* medium or larger nav */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
         <Link href={"/"} legacyBehavior>
