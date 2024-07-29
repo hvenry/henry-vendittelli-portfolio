@@ -58,7 +58,6 @@ export const Navbar = ({
     };
   }, []);
 
-
   // account for clicks outside nav
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -142,27 +141,25 @@ export const Navbar = ({
           </button>
         </div>
       </div>
-      {isOpen && (
-        <div
-          ref={dropdownRef}
-          className="absolute flex-col top-full z-20 right-[24px] bg-primary rounded-b-lg"
-        >
-          {navItems.map((item, index) => (
-            <Link key={index} href={item.path} legacyBehavior>
-              <a
-                onClick={() => handleNavItemClick(item.path)}
-                className={`text-nav px-3 my-1 flex justify-end h-8 text-lg ${
-                  activeItem === item.path
-                    ? "border border-r-0 border-l-0 border-t-0 border-primary"
-                    : "hover:text-blue-300"
-                }`}
-              >
-                {item.name}
-              </a>
-            </Link>
-          ))}
-        </div>
-      )}
+      <div
+        ref={dropdownRef}
+        className={`absolute flex-col top-full z-20 right-[24px] bg-primary rounded-b-lg nav-dropdown ${isOpen ? "open" : ""}`}
+      >
+        {navItems.map((item, index) => (
+          <Link key={index} href={item.path} legacyBehavior>
+            <a
+              onClick={() => handleNavItemClick(item.path)}
+              className={`text-nav px-3 my-1 flex justify-end h-8 text-lg ${
+                activeItem === item.path
+                  ? "border border-r-0 border-l-0 border-t-0 border-primary"
+                  : "hover:text-blue-300"
+              }`}
+            >
+              {item.name}
+            </a>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

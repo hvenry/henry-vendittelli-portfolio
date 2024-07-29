@@ -24,7 +24,7 @@ export default function Page() {
       ),
     },
     {
-      title: "Rental Webapp",
+      title: "Rental DB",
       value: "2",
       content: (
         <div className={tabStyle}>
@@ -75,7 +75,7 @@ export default function Page() {
           </EvervaultCard>
           {/* view projects */}
         </div>
-        <Tabs tabs={tabs} />
+        <Tabs containerClassName="flex flex-wrap justify-center" tabs={tabs} />
       </div>
     </main>
   );
