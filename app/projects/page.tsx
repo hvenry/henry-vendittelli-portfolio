@@ -4,7 +4,7 @@ import { Tabs } from "@/components/ui/tabs";
 
 export default function Page() {
   const tabStyle =
-    "w-full h-full p-4 text-xl overflow-auto md:text-3xl font-bold border border-primary";
+    "w-full h-[calc(50vh-128px)] p-4 text-xl overflow-auto md:text-3xl font-bold border border-primary";
 
   const tabs = [
     {
@@ -12,7 +12,23 @@ export default function Page() {
       value: "1",
       content: (
         <div className={tabStyle}>
-          <p>Sentiment Analysis NLP for QMIND</p>
+          <p className="text-xl font-mono text-primary-1">
+            Sentiment Analysis NLP for QMIND
+          </p>
+          <p className="text-4xl font-mono text-primary-2 text-justify">
+            @ % # @ * % # @ * % # @ * % # @ * % # @ * % # @ * % # @ * % # @ * @
+            # * % @ # * % @ # * % @ # * % @ # * % @ # * % @ # * % @ # * # @ % #
+            @ * % # @ * % # @ * % # @ * % # @ * % # @ * % # @ * % # @ * % # @ %
+            # @ * % # @ * % # @ * % # @ * % # @ * % # @ * % # @ * % # @ % # * %
+            # @ * % # @ * % # @ * % # @ * % # @ * % # @ * % # @ * % # @ % # @ *
+            % # @ * % # @ * % # @ * % # @ * % # @ * % # @ % # @ * % # @ * % # @
+            * % # @ * % # @ * % # @ * % # @ * % # @ * @ # * % @ # * % @ # * % @
+            # * % @ # * % @ # * % @ # * % @ # * # @ % # @ * % # @ * % # @ * % #
+            @ * % # @ * % # @ * % # @ * % # @ * % # @ % # @ * % # @ * % # @ * %
+            # @ * % # @ * % # @ * % # @ * % # @ % # * % # @ * % # @ * % # @ * %
+            # @ * % # @ * % # @ * % # @ * % # @ % # @ * % # @ * % # @ * % # @ *
+            % # @ * % # @ * % #
+          </p>
         </div>
       ),
     },
@@ -21,7 +37,27 @@ export default function Page() {
       value: "2",
       content: (
         <div className={tabStyle}>
-          <p>Kingston Rental Property Database</p>
+          <p className="text-xl font-mono text-primary-1">
+            Kingston Rental Property Database
+          </p>
+          <p className="text-4xl font-mono text-primary-2 text-justify">
+            ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+            ^ ^ ^ * * * * * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * * * * * * ^ ^ ^ ^ ^ ^
+            ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ *
+            * * * * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * * * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+            ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * * *
+            * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * * * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+            ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * * * * * * ^
+            ^ ^ ^ ^ ^ ^ ^ ^ * * * * * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+            ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * * * * * * ^ ^ ^ ^ ^
+            ^ ^ ^ ^ * * * * * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+            ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * * * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^
+            * * * * * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+            ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * * * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * *
+            * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+            ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * * * * * * ^ ^ ^ ^ ^ ^ ^ ^ ^ * * * * * * * *
+            ^ ^
+          </p>
         </div>
       ),
     },
@@ -30,7 +66,32 @@ export default function Page() {
       value: "3",
       content: (
         <div className={tabStyle}>
-          <p>My portfolio website</p>
+          <p className="text-xl font-mono text-primary-1">
+            My portfolio website
+          </p>
+          <p className="text-4xl font-mono text-primary-2 text-justify">
+            % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+            % % % & % % % % % % % % % % % % % % % % % % % % & % % % % % % % % %
+            % % % & & % % % % % % % % % % % % % % & & % % % % % % % % % % % % %
+            % % % & & & & & & & & % % % % % % % % & & & & & & % % % % % % % % %
+            % % % % & & & & % % % % % % % % % % % & & % % % % % % % % % % % % %
+            % % % & & % % % % % % % % % % % % % & % % % % % % % % % % % % % % %
+            % & & % % % % % % % % % % % % % & % % % % % % % % % % % % % % % & &
+            & & & & & & % % % % % % % % & & & % % % % % % % % % & & % % % % % %
+            % % % % % % % % & & % % % % % % % % % % % & % % % % % % % % % % % %
+            % % % % % % % % % % & % % % % % % % % % % % % % % % % % % % % % % %
+            % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+            % % % % % % % % % % % % % % % & % % % % % % % % % % % % % % % % % %
+            % % & % % % % % % % % % % % % & & % % % % % % % % % % % % % % & & %
+            % % % % % % % % % % % % % % % & & & & & & & & % % % % % % % % & & &
+            & & & % % % % % % % % % % % % % & & & & % % % % % % % % % % % & & %
+            % % % % % % % % % % % % % % % & & % % % % % % % % % % % % % & % % %
+            % % % % % % % % % % % % % & & % % % % % % % % % % % % % & % % % % %
+            % % % % % % % % % % & & & & & & & & % % % % % % % % & & & % % % % %
+            % % % % & & % % % % % % % % % % % % % % & & % % % % % % % % % % % &
+            % % % % % % % % % % % % % % % % % % % % % % & % % % % % % % % % % %
+            % % % % % % % % % % % % % % % % % % % % % % % %
+          </p>
         </div>
       ),
     },
@@ -39,7 +100,32 @@ export default function Page() {
       value: "4",
       content: (
         <div className={tabStyle}>
-          <p>Bear The Animal Tosser</p>
+          <p className="text-xl font-mono text-primary-1">
+            Bear The Animal Tosser
+          </p>
+          <p className="text-4xl font-mono text-primary-2 text-justify">
+            % % * * % % * * % % * * % % * * % % * * % % * * % % * * % % * * * *
+            % % * * % % * * % % * * % % * * % % * * % % * * % % * * % % % * % *
+            % * % * % * % * % * % * % * % * % * % * % * % * % * % * * % * % * %
+            * % * % * % * % * % * % * % * % * % * % * % * % * % % % * * % % * *
+            % % * * % % * * % % * * % % * * % % * * % % * * * * % % * * % % * *
+            % % * * % % * * % % * * % % * * % % * * % % % * % * % * % * % * % *
+            % * % * % * % * % * % * % * % * % * % * * % * % * % * % * % * % * %
+            * % * % * % * % * % * % * % * % * % % % * * % % * * % % * * % % * *
+            % % * * % % * * % % * * % % * * * * % % * * % % * * % % * * % % * *
+            % % * * % % * * % % * * % % % * % * % * % * % * % * % * % * % * % *
+            % * % * % * % * % * % * % % * * % % * * % % * * % % * * % % * * % %
+            * * % % * * % % * * * * % % * * % % * * % % * * % % * * % % * * % %
+            * * % % * * % % % * % * % * % * % * % * % * % * % * % * % * % * % *
+            % * % * % * * % * % * % * % * % * % * % * % * % * % * % * % * % * %
+            * % * % % % * * % % * * % % * * % % * * % % * * % % * * % % * * % %
+            * * * * % % * * % % * * % % * * % % * * % % * * % % * * % % * * % %
+            % * % * % * % * % * % * % * % * % * % * % * % * % * % * % * % * * %
+            * % * % * % * % * % * % * % * % * % * % * % * % * % * % * % % % * *
+            % % * * % % * * % % * * % % * * % % * * % % * * % % * * * * % % * *
+            % % * * % % * * % % * * % % * * % % * * % % * * % % % * % * % * % *
+            % * % * % * % * % * % * % * % * % * % * % * % *
+          </p>
         </div>
       ),
     },
@@ -48,7 +134,23 @@ export default function Page() {
       value: "5",
       content: (
         <div className={tabStyle}>
-          <p>ParkQu</p>
+          <p className="text-xl font-mono text-primary-1">ParkQu</p>
+          <p className="text-4xl font-mono text-primary-2 text-justify">
+            & * % & * % & * % & * % & * % & * % & * % & * % & * % & * % & * * &
+            % * & % * & % * & % * & % * & % * & % * & % * & % * & % * & % * & %
+            * & % * & % * & % * & % * & % * & % * & % * & % * & % * & % * & % *
+            & % * & % * & % * & % * & % * & % * & % * & % * & % * % & * % & * %
+            & * % & * % & * % & * % & * % & * % & * % & * & % & * % & * % & * %
+            & * % & * % & * % & * % & * % & * % & * % & & * % & * % & * % & * %
+            & * % & * % & * % & * % & * % & * % & * & * % & * % & * % & * % & *
+            % & * % & * % & * % & * % & * % & * * & % * & % * & % * & % * & % *
+            & % * & % * & % * & % * & % * & % * & % * & % * & % * & % * & % * &
+            % * & % * & % * & % * & % * & % * & % * & % * & % * & % * & % * & %
+            * & % * & % * & % * & % * % & * % & * % & * % & * % & * % & * % & *
+            % & * % & * % & * & % & * % & * % & * % & * % & * % & * % & * % & *
+            % & * % & * % & & * % & * % & * % & * % & * % & * % & * % & * % & *
+            % & * % & *
+          </p>
         </div>
       ),
     },
@@ -57,7 +159,7 @@ export default function Page() {
   return (
     <main className="gap-8 w-full h-full flex flex-col items-center justify-center px-4">
       {/* title */}
-      <div className="w-full lg:w-3/4 h-1/4">
+      <div className="w-full sm:w-3/4 lg:w-2/3 h-1/4">
         <EvervaultCard className="border border-primary">
           <div className="text-3xl text-white flex justify-center p-2 gap-2 items-center backdrop-blur-sm">
             <IoHammerSharp size={30} />
@@ -66,7 +168,7 @@ export default function Page() {
         </EvervaultCard>
       </div>
       {/* projects */}
-      <div className="w-full lg:w-3/4 h-1/2 ">
+      <div className="w-full sm:w-3/4 lg:w-2/3">
         <Tabs
           tabs={tabs}
           tabClassName="border hover:text-blue-300 border-transparent border-l-0 border-r-0"
