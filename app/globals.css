@@ -109,6 +109,15 @@ body {
   background-color: rgb(var(--white-rgb));
 }
 
+/* nav-bg */
+.nav-primary {
+  background-color: rgba(var(--black-rgb), 0.05);
+}
+[data-theme="light"] .bg-primary {
+  background-color: rgba(var(--white-rgb), 0.05);
+}
+
+
 /* navbar text */
 .text-nav {
   color: rgb(var(--white-rgb));
@@ -121,7 +130,7 @@ body {
 .nav-dropdown {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-in-out;
+  transition: max-height 0.2s; 
 }
 .nav-dropdown.open {
   max-height: 150px;

@@ -84,7 +84,7 @@ export const Navbar = ({
   if (!mounted) return null;
 
   return (
-    <div className="bg-gray-500 bg-opacity-5 w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 backdrop-blur rounded-3xl">
+    <div className="nav-primary bg-opacity-25 w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 backdrop-blur rounded-3xl">
       {/* medium or larger nav */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
         <Link href={"/"} legacyBehavior>
@@ -111,9 +111,15 @@ export const Navbar = ({
             </Link>
           ))}
           {resolvedTheme === "dark" ? (
-            <MdLightMode onClick={toggleTheme} className="size-6 cursor-pointer icon-nav" />
+            <MdLightMode
+              onClick={toggleTheme}
+              className="size-6 cursor-pointer hover:text-yellow-500"
+            />
           ) : (
-            <MdDarkMode onClick={toggleTheme} className="size-6 cursor-pointer icon-nav" />
+            <MdDarkMode
+              onClick={toggleTheme}
+              className="size-6 cursor-pointer hover:text-blue-300"
+            />
           )}
         </div>
       </div>
@@ -129,9 +135,15 @@ export const Navbar = ({
         </Link>
         <div className="flex items-center gap-4">
           {resolvedTheme === "dark" ? (
-            <MdLightMode onClick={toggleTheme} className="size-6 cursor-pointer icon-nav" />
+            <MdLightMode
+              onClick={toggleTheme}
+              className="size-6 cursor-pointer hover:text-yellow-500"
+            />
           ) : (
-            <MdDarkMode onClick={toggleTheme} className="size-6 cursor-pointer icon-nav" />
+            <MdDarkMode
+              onClick={toggleTheme}
+              className="size-6 cursor-pointer hover:text-blue-300"
+            />
           )}
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -143,7 +155,9 @@ export const Navbar = ({
       </div>
       <div
         ref={dropdownRef}
-        className={`absolute flex-col top-full z-20 right-[24px] bg-primary rounded-b-lg nav-dropdown ${isOpen ? "open" : ""}`}
+        className={`absolute flex-col top-full z-20 right-[24px] bg-primary rounded-b-lg nav-dropdown ${
+          isOpen ? "open" : ""
+        }`}
       >
         {navItems.map((item, index) => (
           <Link key={index} href={item.path} legacyBehavior>

@@ -14,7 +14,7 @@ export default function BackToTop() {
     <div className="w-full flex justify-center">
       <button
         onClick={scrollToTop}
-        className="px-5 py-1 border-2 border-primary text-3xl font-bold hover:text-blue-300 hover:border-blue-300"
+        className="rounded-3xl px-5 py-1 border-2 border-primary text-3xl font-bold hover:text-blue-300 hover:border-blue-300"
         aria-label="Go to top"
       >
         <div className="flex items-center justify-center"><MdArrowUpward size={28}/></div>

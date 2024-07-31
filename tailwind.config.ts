@@ -13,10 +13,13 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      variants: {
+        fill: ["hover", "focus"], // Enable fill for hover and focus states
+      },
       screens: {
-        'sm': '640px',
-        'md': '1024px',
-        'lg': '1600px',
+        sm: "640px",
+        md: "1024px",
+        lg: "1600px",
       },
     },
   },
