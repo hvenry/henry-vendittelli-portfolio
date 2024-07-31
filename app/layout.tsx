@@ -31,7 +31,8 @@ export default function RootLayout({
         >
           <div className="flex justify-center">
             <Navbar navItems={navItems} />
-            <div className="w-full lg:w-1/2 md:w-2/3 flex justify-center">
+            {/* page content auto-sizing margins and space for nav */}
+            <div className="mx-4 mt-28 min-h-[calc(100vh-192px)] w-full md:w-2/3 lg:w-1/2">
               {children}
             </div>
           </div>

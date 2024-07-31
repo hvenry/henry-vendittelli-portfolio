@@ -2,8 +2,8 @@ export default function Page() {
   const resume = "/assets/pdfs/HenryVendittelliResume2024.pdf";
 
   return (
-    <div className="min-h-screen w-full flex flex-col justify-center items-center">
-      <div className="p-4 sm:w-1/2 w-2/3 border transition-all duration-300 ease-in-out border-primary basic-glow">
+    <main className="h-full w-full flex justify-center items-center">
+      <div className="p-4 w-3/4 sm:w-1/2 border transition-all duration-300 ease-in-out border-primary basic-glow">
         <div className="text-3xl font-bold pb-4 flex justify-center">
           Contact Me
         </div>
@@ -29,6 +29,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

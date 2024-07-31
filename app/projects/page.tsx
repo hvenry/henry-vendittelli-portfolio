@@ -3,15 +3,8 @@ import { IoHammerSharp } from "react-icons/io5";
 import { Tabs } from "@/components/ui/tabs";
 
 export default function Page() {
-  // TODO make these into components
-  // add title
-  // add description
-  // add image
-  // add socials per project (youtube, github)
-  // add tech stack
-
   const tabStyle =
-    "p-4 w-full h-80 overflow-hidden relative text-xl md:text-3xl font-bold border border-primary";
+    "w-full h-full p-4 text-xl overflow-auto md:text-3xl font-bold border border-primary";
 
   const tabs = [
     {
@@ -62,20 +55,23 @@ export default function Page() {
   ];
 
   return (
-    <main className="min-h-screen w-full flex justify-center pt-32 pb-16 px-4">
-      {/* page content */}
-      <div className="w-full mx-4">
-        {/* title */}
-        <div className="border border-primary flex flex-col justify-center mb-12">
-          <EvervaultCard className="w-full h-48 sm:h-80">
-            <div className="text-3xl text-white flex justify-center p-2 gap-2 items-center backdrop-blur-sm">
-              <IoHammerSharp size={30} />
-              <span>My Projects</span>
-            </div>
-          </EvervaultCard>
-          {/* view projects */}
-        </div>
-        <Tabs containerClassName="flex flex-wrap justify-center" tabs={tabs} />
+    <main className="gap-8 w-full h-full flex flex-col items-center justify-center px-4">
+      {/* title */}
+      <div className="w-full lg:w-3/4 h-1/4">
+        <EvervaultCard className="border border-primary">
+          <div className="text-3xl text-white flex justify-center p-2 gap-2 items-center backdrop-blur-sm">
+            <IoHammerSharp size={30} />
+            <span>My Projects</span>
+          </div>
+        </EvervaultCard>
+      </div>
+      {/* projects */}
+      <div className="w-full lg:w-3/4 h-1/2 ">
+        <Tabs
+          tabs={tabs}
+          tabClassName="border hover:text-blue-300 border-transparent border-l-0 border-r-0"
+          activeTabClassName="border border-primary border-l-0 border-r-0"
+        />
       </div>
     </main>
   );
