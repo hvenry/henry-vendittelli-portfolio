@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --black-rgb: 0, 0, 0;
   --white-rgb: 255, 255, 255;
@@ -19,14 +18,12 @@
   --text-primary-2-light: 55, 65, 81;
 }
 
-
 /* light-mode (white background) */
 [data-theme="light"] {
   --foreground-rgb: var(--black-rgb);
   --background-start-rgb: var(--white-rgb);
   --background-end-rgb: var(--white-rgb);
 }
-
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -37,7 +34,6 @@ body {
     ),
     rgb(var(--background-start-rgb));
 }
-
 
 /* primary text 1 */
 .text-primary-1 {
@@ -111,12 +107,11 @@ body {
 
 /* nav-bg */
 .nav-primary {
-  background-color: rgba(var(--black-rgb), 0.05);
+  background-color: rgba(var(--black-rgb), 0.1);
 }
-[data-theme="light"] .bg-primary {
-  background-color: rgba(var(--white-rgb), 0.05);
+[data-theme="light"] .nav-primary {
+  background-color: rgba(var(--white-rgb), 0.1);
 }
-
 
 /* navbar text */
 .text-nav {
@@ -130,7 +125,7 @@ body {
 .nav-dropdown {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s; 
+  transition: max-height 0.2s;
 }
 .nav-dropdown.open {
   max-height: 150px;
