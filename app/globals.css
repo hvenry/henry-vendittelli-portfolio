@@ -2,29 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Define reusable black and white RGB values */
+
 :root {
   --black-rgb: 0, 0, 0;
   --white-rgb: 255, 255, 255;
 
+  /* dark-mode (black background) */
   --foreground-rgb: var(--white-rgb);
   --background-start-rgb: var(--black-rgb);
   --background-end-rgb: var(--black-rgb);
 
-  --text-primary-1-dark: 229, 231, 235; /* Tailwind text-gray-200 */
-  --text-primary-1-light: 31, 41, 55; /* Tailwind text-gray-800 */
-  --text-primary-2-dark: 209, 213, 219; /* Tailwind text-gray-300 */
-  --text-primary-2-light: 55, 65, 81; /* Tailwind text-gray-700 */
-
-  --border-primary-dark: var(--white-rgb);
-  --border-primary-light: var(--black-rgb);
+  /* text colors */
+  --text-primary-1-dark: 229, 231, 235;
+  --text-primary-1-light: 31, 41, 55;
+  --text-primary-2-dark: 209, 213, 219;
+  --text-primary-2-light: 55, 65, 81;
 }
 
+
+/* light-mode (white background) */
 [data-theme="light"] {
   --foreground-rgb: var(--black-rgb);
   --background-start-rgb: var(--white-rgb);
   --background-end-rgb: var(--white-rgb);
 }
+
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -36,63 +38,57 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+
+/* primary text 1 */
 .text-primary-1 {
   color: rgb(var(--text-primary-1-dark));
 }
-
-.text-primary-2 {
-  color: rgb(var(--text-primary-2-dark));
-}
-
 [data-theme="light"] .text-primary-1 {
   color: rgb(var(--text-primary-1-light));
 }
 
+/* primary text 2 */
+.text-primary-2 {
+  color: rgb(var(--text-primary-2-dark));
+}
 [data-theme="light"] .text-primary-2 {
   color: rgb(var(--text-primary-2-light));
 }
 
+/* borders */
 .border-primary {
-  border-color: rgb(var(--border-primary-dark));
+  border-color: rgb(var(--white-rgb));
 }
-
 [data-theme="light"] .border-primary {
-  border-color: rgb(var(--border-primary-light));
+  border-color: rgb(var(--black-rgb));
 }
-
 .hover\:border-primary:hover {
-  border-color: rgb(var(--border-primary-dark));
+  border-color: rgb(var(--white-rgb));
 }
-
 [data-theme="light"] .hover\:border-primary:hover {
-  border-color: rgb(var(--border-primary-light));
+  border-color: rgb(var(--black-rgb));
 }
 
+/* blur effects */
 .backdrop-blur-sm {
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px); /* For Safari */
+  -webkit-backdrop-filter: blur(4px);
 }
-
 .backdrop-blur {
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* glows for cards */
-/* dark */
+/* glow hover effect */
 .basic-glow {
   box-shadow: 0 0 64px rgba(var(--white-rgb), 0);
 }
-
- .basic-glow:hover {
+.basic-glow:hover {
   box-shadow: 0 0 64px rgba(var(--white-rgb), 0.2);
 }
-
- /* light */
 [data-theme="light"] .basic-glow {
   box-shadow: 0 0 64px rgba(var(--black-rgb), 0);
 }
-
 [data-theme="light"] .basic-glow:hover {
   box-shadow: 0 0 64px rgba(var(--black-rgb), 0.1);
 }
@@ -101,49 +97,32 @@ body {
 .icon-dark {
   filter: invert(0%);
 }
-
 .icon-light {
   filter: invert(100%);
 }
 
-
-/* Background color classes */
+/* background color classes */
 .bg-primary {
-  background-color: rgba(255, 255, 255, 0.1); /* Ensure transparency for blur */
-  background-color: rgb(var(--black-rgb)); /* Ensure transparency for blur */
+  background-color: rgb(var(--black-rgb));
 }
-
 [data-theme="light"] .bg-primary {
-  background-color: rgb(var(--white-rgb)); /* Ensure transparency for blur */
+  background-color: rgb(var(--white-rgb));
 }
 
 /* navbar text */
-/* TODO: figure out how to blend with background */
-[data-theme="dark"] .text-nav {
+.text-nav {
   color: rgb(var(--white-rgb));
-  /* text-shadow: 
-    -1px -1px 0 rgba(0, 0, 0, 1),
-     1px -1px 0 rgba(0, 0, 0, 1),
-    -1px  1px 0 rgba(0, 0, 0, 1),
-     1px  1px 0 rgba(0, 0, 0, 1); */
 }
-
 [data-theme="light"] .text-nav {
   color: rgb(var(--black-rgb));
-  /* text-shadow: 
-    -1px -1px 0 rgba(255, 255, 255, 1),
-     1px -1px 0 rgba(255, 255, 255, 1),
-    -1px  1px 0 rgba(255, 255, 255, 1),
-     1px  1px 0 rgba(255, 255, 255, 1); */
 }
 
 /* navdropdown animation */
 .nav-dropdown {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-in-out
+  transition: max-height 0.2s ease-in-out;
 }
-
 .nav-dropdown.open {
   max-height: 150px;
 }
