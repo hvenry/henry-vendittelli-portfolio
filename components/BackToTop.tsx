@@ -11,7 +11,7 @@ export default function BackToTop() {
   };
 
   return (
-    <div className="w-full flex justify-center">
+    <div className="p-16 w-full flex justify-center">
       <button
         onClick={scrollToTop}
         className="rounded-3xl px-5 py-1 border-2 border-primary text-3xl font-bold hover:text-blue-300 hover:border-blue-300"

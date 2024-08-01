@@ -12,24 +12,24 @@ import headshot from "@/public/assets/images/headshot.jpeg";
 
 export default function Page() {
   return (
-    <main className="w-full pb-16">
+    <main>
       {/* intro */}
       <div className="border border-primary p-4">
         <div className="flex flex-row items-center gap-4">
-            <Image
-              src={headshot}
-              alt="Henry Vendittelli"
-              className="transition-all duration-300 ease-in-out basic-glow border border-primary size-28 mb-4 p-1"
-            />
+          <Image
+            src={headshot}
+            alt="Henry Vendittelli"
+            className="transition-all duration-300 ease-in-out basic-glow border border-primary size-28 mb-4 p-1"
+          />
           <div>
-            <div className="flex flex-col sm:flex-row sm:items-end sm:gap-4 pb-2 sm:pb-4">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:gap-4 sm:pb-4">
               <div className="flex items-end gap-2">
                 <Image
                   src={rock_icon}
                   alt="Henry Vendittelli"
                   className="size-5 sm:size-8"
                 />
-                <p className="sm:text-3xl text-xl">Henry Vendittelli</p>
+                <p className="sm:text-3xl text-lg">Henry Vendittelli</p>
               </div>
               <p className="sm:text-xl text-md text-gray-500">21 (he/him)</p>
             </div>
@@ -61,29 +61,30 @@ export default function Page() {
         <Socials />
       </div>
       {/* work experience */}
-      <p className="pt-12 pb-4 sm:text-4xl text-3xl font-bold">
+      <p className="mt-12 mb-4 sm:text-4xl text-3xl font-bold">
         Work Experience
       </p>
       <ExperienceInfo info={work} />
       {/* skills */}
-      <p className="pt-4 pb-4 sm:text-4xl text-3xl font-bold">
+      <p className="mt-8 mb-4 sm:text-4xl text-3xl font-bold">
         Technologies I Work With
       </p>
       <div className="4">
         <Skills />
       </div>
       {/* project demos */}
-      <p className="sm:text-4xl text-3xl font-bold pt-16 pb-8">
+      <p className="mt-12 mb-4 sm:text-4xl text-3xl font-bold">
         Some {""}
         <Link href="/projects" legacyBehavior>
           <a className="text-blue-600 hover:text-blue-300">Project</a>
         </Link>
         {""} Demos
       </p>
-      <div className="flex flex-col items-center gap-12 pb-16">
+      <div className="flex flex-col items-center gap-12">
         <YtPreview />
       </div>
       {/* bottom page nav */}
+
       <BackToTop />
     </main>
   );

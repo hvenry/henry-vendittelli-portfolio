@@ -25,12 +25,12 @@ export const Tabs = ({
   return (
     <>
       {/* nav items */}
-      <div className="w-full flex flex-wrap justify-center">
+      <div className="w-full flex flex-wrap justify-center gap-4 mb-4">
         {tabs.map((tab) => (
           <button
             key={tab.value}
             onClick={() => setActiveTab(tab)}
-            className={`flex flex-col items-center sm:text-xl text-md px-2 pb-[2px] m-2 ${
+            className={`flex flex-col items-center sm:text-xl text-md px-1 pb-[2px] ${
               tab === activeTab ? `${activeTabClassName}` : `${tabClassName}`
             }`}
           >

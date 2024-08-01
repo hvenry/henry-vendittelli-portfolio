@@ -28,11 +28,11 @@ export default function Page() {
       </div>
 
       {/* education */}
-      <p className="pt-16 pb-4 text-4xl font-bold">Education</p>
+      <p className="mt-16 mb-4 text-4xl font-bold">Education</p>
       <ExperienceInfo info={education} />
 
       {/* clubs */}
-      <p className="pb-4 text-4xl font-bold">Club Involvement</p>
+      <p className="mt-8 mb-4 text-4xl font-bold">Club Involvement</p>
       <ExperienceInfo info={clubs} />
       {/* bottom page nav */}
       <BackToTop />
