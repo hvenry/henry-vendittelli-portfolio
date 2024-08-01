@@ -29,7 +29,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="ml-4 h-screen flex justify-center">
+          <div className="sm:pl-4 h-screen flex justify-center">
             {/* page content auto-sizing margins and space for nav */}
             <div className="flex justify-center mx-4 px-4 mt-28 h-[calc(100vh-196px)] w-full md:w-2/3 lg:w-1/2">
               <Navbar navItems={navItems} />

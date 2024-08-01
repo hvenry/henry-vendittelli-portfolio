@@ -25,10 +25,6 @@
   --background-end-rgb: var(--white-rgb);
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -153,13 +149,16 @@ body {
   background-color: rgba(var(--background-start-rgb), 0.15);
 }
 
-/* light mode scrollbar styles */
 [data-theme="light"] ::-webkit-scrollbar-thumb {
   background-color: rgba(var(--black-rgb), 0.15);
 }
 
 [data-theme="light"] ::-webkit-scrollbar-track {
   background-color: rgba(var(--white-rgb), 0.15);
+}
+
+.container {
+  margin-left: calc(100vw - 100%);
 }
 
 @layer utilities {
