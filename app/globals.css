@@ -25,6 +25,10 @@
   --background-end-rgb: var(--white-rgb);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -33,6 +37,7 @@ body {
       rgb(var(--background-end-rgb))
     ),
     rgb(var(--background-start-rgb));
+  overflow-y: scroll;
 }
 
 /* primary text 1 */
@@ -129,6 +134,32 @@ body {
 }
 .nav-dropdown.open {
   max-height: 150px;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--foreground-rgb), 0.15);
+  border-radius: 0px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(var(--background-start-rgb), 0.15);
+}
+
+/* light mode scrollbar styles */
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--black-rgb), 0.15);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background-color: rgba(var(--white-rgb), 0.15);
 }
 
 @layer utilities {

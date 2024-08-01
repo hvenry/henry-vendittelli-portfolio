@@ -8,17 +8,17 @@ export const navItems = [
 
 export const videos = [
   {
-    text: "Parking App For University Students",
+    text: "parkqu | Parking App for University Students",
     video:
       "https://www.youtube.com/embed/3u5slpDZprw?si=3_ISxIoAD-RcIFKV&amp;&amp;rel=0",
   },
   {
-    text: "Kingston Property Rental Webapp",
+    text: "Kingston Rental Property Webapp | Database",
     video:
-      "https://www.youtube.com/embed/bHJxmLcjUco?si=E5Hti0SjpxpX1BF8&amp;start=1;&amp;rel=0",
+      "https://www.youtube.com/embed/bHJxmLcjUco?si=E5Hti0SjpxpX1BF8&amp;start=7;&amp;rel=0",
   },
   {
-    text: "Game Where You Toss Animals Into Pens",
+    text: "Bear the Animal Tosser | Video Game",
     video:
       "https://www.youtube.com/embed/YPBpoDEXPhQ?si=W0iLnaHJXuqsS2p-&amp;start=2&amp;rel=0",
   },
@@ -91,7 +91,7 @@ export const work = [
   {
     name: "Empire Life",
     position: "Student Software Developer",
-    desc: "Currently at Empire Life, I am working on a technology management and adoption tool. I am responsible for developing new features start to finish from user feedback, maintaining a healthy production database, designing new API endpoints, and managing deployments. Doing this requires constant collaboration with other developers, and leveraging a variety of DevOps tools for CI/CD. My most notable task would have been my Jira REST API integration to track new reported technologies with Atlassian management tools.",
+    desc: "Currently at Empire Life, I am working on a technology management and adoption tool. I am responsible for developing new features start to finish from user feedback, maintaining a healthy production database, designing new API endpoints, and managing deployments. Doing this requires constant collaboration with other developers, and leveraging a variety of DevOps tools for CI/CD. My most notable task has been my Jira REST API integration for the service to track reported technologies with Atlassian management tools.",
     link: "https://www.empire.ca/",
     image: "empire_icon",
     time: "[ summer 2024 ]",
@@ -107,7 +107,7 @@ export const work = [
   {
     name: "Partisans",
     position: "Studio Intern",
-    desc: "Before I learned about the world of computer science, I wanted to become an architect. This is what lead me to a student position at Partisans for a few summers, but after getting introduced to programming in highschool, an eager passion formed, and I pivoted to explore my newfound interest in computer science.",
+    desc: "Before I learned about the world of computer science, I wanted to become an architect. This is what led me to a student position at Partisans for a few summers, but after getting introduced to programming in highschool, an eager passion formed, and I pivoted to explore my newfound interest in computer science.",
     link: "https://partisans.com/",
     image: "partisans_icon",
     time: "[ summer 2018 - 2020 ]",

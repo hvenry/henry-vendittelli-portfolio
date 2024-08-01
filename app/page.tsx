@@ -35,17 +35,17 @@ export default function Page() {
             </div>
             <p className="sm:w-3/4 text-primary-1 sm:text-xl md:text-2xl text-md text-justify pb-4">
               Hi! My name is Henry, and I am a software developer based out of
-              Toronto Canada.
+              Toronto, Canada.
             </p>
           </div>
         </div>
         <p className="sm:text-lg text-sm font-mono text-justify primary-2">
           Welcome to my portfolio website / blog! Before anything, I would like
           to say that I am highly appreciative of anyone that takes the time to
-          come look at my work. Programming, amongst other things, is my one of
-          my passions, and I always am looking to improve my skills and share my
-          interest with others who are interested. Please enjoy your stay and
-          feel free to {""}
+          come look at my work. Programming is my one of my greatest passions, and I
+          always am looking to improve my skills and share my interest with
+          others who are interested. Please enjoy your stay and feel free to{" "}
+          {""}
           <LinkPreview
             url="https://www.henryvendittelli.com/reach-out"
             className="text-blue-600 hover:text-blue-300"
