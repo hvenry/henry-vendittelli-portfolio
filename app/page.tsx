@@ -16,7 +16,11 @@ export default function Page() {
       {/* intro */}
       <div className="border border-primary p-4">
         <div className="flex flex-row items-center gap-4">
-          <Image src={headshot} alt="Henry Vendittelli" className="transition-all duration-300 ease-in-out basic-glow border border-primary sm:size-24 size-20 mb-4 p-1"/>
+            <Image
+              src={headshot}
+              alt="Henry Vendittelli"
+              className="transition-all duration-300 ease-in-out basic-glow border border-primary size-24 mb-4 p-1"
+            />
           <div>
             <div className="flex flex-col sm:flex-row sm:items-end sm:gap-4 pb-2 sm:pb-4">
               <div className="flex items-end gap-2">
