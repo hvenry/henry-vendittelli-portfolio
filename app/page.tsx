@@ -8,29 +8,33 @@ import Skills from "@/components/ui/Skills";
 import Socials from "@/components/ui/Socials";
 import Link from "next/link";
 import YtPreview from "@/components/ui/YtPreview";
+import headshot from "@/public/assets/images/headshot.jpeg";
 
 export default function Page() {
   return (
-    <main className="w-full pb-16 px-4">
+    <main className="w-full pb-16">
       {/* intro */}
       <div className="border border-primary p-4">
-        <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 pb-4">
-          <div className="flex items-end gap-2">
-            <Image
-              src={rock_icon}
-              width={28}
-              height={28}
-              alt="Henry Vendittelli"
-            />
-            <p className="sm:text-3xl text-3xl">Henry Vendittelli</p>
+        <div className="flex flex-row items-center gap-4">
+          <Image src={headshot} alt="Henry Vendittelli" className="transition-all duration-300 ease-in-out basic-glow border border-primary sm:size-24 size-20 mb-4 p-1"/>
+          <div>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:gap-4 pb-2 sm:pb-4">
+              <div className="flex items-end gap-2">
+                <Image
+                  src={rock_icon}
+                  alt="Henry Vendittelli"
+                  className="size-5 sm:size-8"
+                />
+                <p className="sm:text-3xl text-xl">Henry Vendittelli</p>
+              </div>
+              <p className="sm:text-xl text-md text-gray-500">21 (he/him)</p>
+            </div>
+            <p className="text-primary-1 sm:text-2xl text-md text-justify pb-4">
+              Hi! My name is Henry, and I am a software developer based out of
+              Toronto Canada.
+            </p>
           </div>
-          <p className="text-xl text-gray-500">21 (he/him)</p>
         </div>
-        <p className="text-primary-1 sm:text-2xl text-lg text-justify pb-4">
-          Hi! My name is Henry, and I am a software developer based out of
-          Toronto Canada.
-        </p>
-        {/* intro */}
         <p className="sm:text-lg text-sm font-mono text-justify primary-2">
           Welcome to my portfolio website / blog! Before anything, I would like
           to say that I am highly appreciative of anyone that takes the time to

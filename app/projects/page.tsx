@@ -157,7 +157,7 @@ export default function Page() {
   ];
 
   return (
-    <main className="gap-8 w-full h-full flex flex-col items-center justify-center px-4">
+    <main className="gap-8 w-full h-full flex flex-col items-center justify-center">
       {/* title */}
       <div className="w-full sm:w-3/4 lg:w-2/3 h-1/4">
         <EvervaultCard className="border border-primary">

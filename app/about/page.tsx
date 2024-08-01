@@ -7,7 +7,7 @@ import ExperienceInfo from "@/components/ui/ExperienceInfo";
 
 export default function Page() {
   return (
-    <main className="w-full pb-16 px-4">
+    <main className="w-full pb-16">
       {/* intro */}
       <div className="border border-primary p-4">
         <div className="flex items-end gap-4 pb-4">
@@ -26,6 +26,7 @@ export default function Page() {
           involvement in clubs.
         </p>
       </div>
+
       {/* education */}
       <p className="pt-16 pb-4 text-4xl font-bold">Education</p>
       <ExperienceInfo info={education} />

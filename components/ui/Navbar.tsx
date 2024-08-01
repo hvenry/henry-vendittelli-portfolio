@@ -84,8 +84,8 @@ export const Navbar = ({
   if (!mounted) return null;
 
   return (
-    <div className="nav-primary bg-opacity-25 w-[calc(100vw-32px)] lg:w-[calc(50vw-32px)] md:w-[calc(67vw-32px)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 backdrop-blur rounded-3xl">
-      {/* medium or larger nav */}
+    <div className="nav-primary bg-opacity-25 w-[calc(100vw)] lg:w-[calc(50vw)] md:w-[calc(67vw)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 backdrop-blur rounded-3xl">
+      {/* home page */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
         <Link href={"/"} legacyBehavior>
           <a
@@ -95,6 +95,7 @@ export const Navbar = ({
             henryvendittelli.com/
           </a>
         </Link>
+        {/* nav pages */}
         <div className="gap-4 flex items-center">
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
