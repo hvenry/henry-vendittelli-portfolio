@@ -19,7 +19,7 @@ export default function Page() {
             <Image
               src={headshot}
               alt="Henry Vendittelli"
-              className="transition-all duration-300 ease-in-out basic-glow border border-primary size-24 mb-4 p-1"
+              className="transition-all duration-300 ease-in-out basic-glow border border-primary size-28 mb-4 p-1"
             />
           <div>
             <div className="flex flex-col sm:flex-row sm:items-end sm:gap-4 pb-2 sm:pb-4">
@@ -33,7 +33,7 @@ export default function Page() {
               </div>
               <p className="sm:text-xl text-md text-gray-500">21 (he/him)</p>
             </div>
-            <p className="text-primary-1 sm:text-2xl text-md text-justify pb-4">
+            <p className="sm:w-3/4 text-primary-1 sm:text-xl md:text-2xl text-md text-justify pb-4">
               Hi! My name is Henry, and I am a software developer based out of
               Toronto Canada.
             </p>
