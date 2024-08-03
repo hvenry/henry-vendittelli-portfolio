@@ -33,7 +33,6 @@ body {
       rgb(var(--background-end-rgb))
     ),
     rgb(var(--background-start-rgb));
-  overflow-y: scroll;
 }
 
 .text-reversed {
@@ -147,8 +146,7 @@ body {
 }
 
 /* scrollbar */
-
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 16px;
 }
 
@@ -169,11 +167,7 @@ body {
 
 [data-theme="light"] ::-webkit-scrollbar-track {
   background-color: rgba(var(--white-rgb), 0.15);
-}
-
-.container {
-  margin-left: calc(100vw - 100%);
-}
+} */
 
 @layer utilities {
   .text-balance {

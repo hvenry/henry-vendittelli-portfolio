@@ -81,7 +81,7 @@ export const Tabs = ({
           alt={tab.title}
           width={1}
           height={1}
-          className="bg-reversed sm:my-4 border border-primary w-full h-auto rounded-xl"
+          className="bg-reversed mb-2 sm:my-4 border border-primary w-full h-auto rounded-xl"
           layout="responsive" // Use layout options for responsive images
         />
       )}

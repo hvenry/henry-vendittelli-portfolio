@@ -32,7 +32,7 @@ export default function Page() {
         </EvervaultCard>
       </div>
       {/* projects */}
-      <div className="w-full sm:w-4/5">
+      <div className="w-full sm:w-4/5 mb-4">
         <Tabs
           tabs={tabs}
           activeTab={activeTab}

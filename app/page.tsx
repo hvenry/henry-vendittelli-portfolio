@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <main>
       {/* intro */}
-      <div className="border border-primary p-4">
+      <div className="mt-8 border border-primary p-4">
         <div className="flex flex-row items-center gap-4">
           <Image
             src={headshot}

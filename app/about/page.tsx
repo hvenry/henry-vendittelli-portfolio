@@ -7,9 +7,9 @@ import ExperienceInfo from "@/components/ui/ExperienceInfo";
 
 export default function Page() {
   return (
-    <main className="w-full pb-16">
+    <main>
       {/* intro */}
-      <div className="border border-primary p-4">
+      <div className="mt-8 border border-primary p-4">
         <div className="flex items-end gap-4 pb-4">
           <div className="flex items-center gap-2">
             <BiInfoSquare size={30} />
