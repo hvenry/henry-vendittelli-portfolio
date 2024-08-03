@@ -36,6 +36,13 @@ body {
   overflow-y: scroll;
 }
 
+.text-reversed {
+  color: rgb(var(--text-primary-1-light));
+}
+[data-theme="light"] .text-reversed {
+  color: rgb(var(--text-primary-1-dark));
+}
+
 /* primary text 1 */
 .text-primary-1 {
   color: rgb(var(--text-primary-1-dark));
@@ -96,6 +103,13 @@ body {
 }
 .icon-light {
   filter: invert(100%);
+}
+
+.bg-reversed {
+  background-color: rgb(var(--white-rgb));
+}
+[data-theme="light"] .bg-reversed {
+  background-color: rgb(var(--black-rgb));
 }
 
 /* background color classes */
