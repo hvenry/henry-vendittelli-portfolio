@@ -168,9 +168,3 @@ body {
 [data-theme="light"] ::-webkit-scrollbar-track {
   background-color: rgba(var(--white-rgb), 0.15);
 } */
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
