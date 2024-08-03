@@ -23,7 +23,7 @@ export default function Page() {
   return (
     <main className="gap-4 sm:gap-8 w-full h-full flex flex-col items-center justify-center">
       {/* title */}
-      <div className="w-full sm:w-4/5 h-1/4">
+      <div className="w-full sm:w-4/5 h-1/5 sm:h-1/4">
         <EvervaultCard className="border border-primary">
           <div className="text-3xl text-white flex justify-center p-2 gap-2 items-center backdrop-blur-sm">
             <IoHammerSharp size={30} />
