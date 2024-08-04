@@ -40,8 +40,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar navItems={navItems} />
           <div className="flex justify-center">
+            <Navbar navItems={navItems} />
+          </div>
+          <div className="flex justify-center w-full overflow-y-auto">
             <div className="h-[calc(var(--vh)_*100)] mx-4 px-4 pt-20 w-full md:w-2/3 lg:w-1/2">
               {children}
             </div>
