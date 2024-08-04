@@ -84,26 +84,90 @@ export const Navbar = ({
   if (!mounted) return null;
 
   return (
-    <div className="nav-primary bg-opacity-25 w-[calc(100vw)] lg:w-[calc(50vw)] md:w-[calc(67vw)] fixed top-4 z-10 px-4 flex justify-between items-center h-16 backdrop-blur rounded-3xl">
-      {/* home page */}
-      <div className="hidden md:flex w-full h-full justify-between items-center">
-        <Link href={"/"} legacyBehavior>
-          <a
-            onClick={() => handleNavItemClick("/")}
-            className="text-nav text-xl font-bold hover:text-blue-300"
-          >
-            henryvendittelli.com/
-          </a>
-        </Link>
-        {/* nav pages */}
-        <div className="gap-4 flex items-center">
+    <div className="flex justify-center">
+      <div className="nav-primary bg-opacity-25 w-[calc(100vw)] lg:w-[calc(50vw)] md:w-[calc(67vw)] fixed top-4 z-10 px-4 flex justify-between h-16 backdrop-blur rounded-3xl">
+        {/* home page */}
+        <div className="hidden md:flex w-full h-full justify-between items-center">
+          <Link href={"/"} legacyBehavior>
+            <a
+              onClick={() => handleNavItemClick("/")}
+              className="text-nav text-xl font-bold hover:text-blue-300"
+            >
+              henryvendittelli.com/
+            </a>
+          </Link>
+          {/* nav pages */}
+          <div className="gap-4 flex items-center">
+            {navItems.map((item, index) => (
+              <Link key={index} href={item.path} legacyBehavior>
+                <a
+                  onClick={() => handleNavItemClick(item.path)}
+                  className={`text-nav text-lg px-2 pb-[2px] ${
+                    activeItem === item.path
+                      ? "border border-r-0 border-l-0 border-primary"
+                      : "hover:text-blue-300"
+                  }`}
+                >
+                  {item.name}
+                </a>
+              </Link>
+            ))}
+            {resolvedTheme === "dark" ? (
+              <MdLightMode
+                onClick={toggleTheme}
+                className="size-6 cursor-pointer hover:text-yellow-500"
+              />
+            ) : (
+              <MdDarkMode
+                onClick={toggleTheme}
+                className="size-6 cursor-pointer hover:text-blue-300"
+              />
+            )}
+          </div>
+        </div>
+        {/* small nav */}
+        <div className="md:hidden flex w-full h-full justify-between items-center">
+          <Link href={"/"} legacyBehavior>
+            <a
+              onClick={() => handleNavItemClick("/")}
+              className="text-nav text-xl font-bold hover:text-blue-300"
+            >
+              henryvendittelli.com/
+            </a>
+          </Link>
+          <div className="flex items-center gap-4">
+            {resolvedTheme === "dark" ? (
+              <MdLightMode
+                onClick={toggleTheme}
+                className="size-6 cursor-pointer hover:text-yellow-500"
+              />
+            ) : (
+              <MdDarkMode
+                onClick={toggleTheme}
+                className="size-6 cursor-pointer hover:text-blue-300"
+              />
+            )}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="font-bold text-3xl hover:text-blue-300 icon-nav"
+            >
+              {isOpen ? <IoMdClose /> : <RiMenu3Fill />}
+            </button>
+          </div>
+        </div>
+        <div
+          ref={dropdownRef}
+          className={`absolute flex-col top-full z-20 right-[24px] bg-primary rounded-b-lg nav-dropdown ${
+            isOpen ? "open" : ""
+          }`}
+        >
           {navItems.map((item, index) => (
             <Link key={index} href={item.path} legacyBehavior>
               <a
                 onClick={() => handleNavItemClick(item.path)}
-                className={`text-nav text-lg px-2 pb-[2px] ${
+                className={`text-nav px-3 my-1 flex justify-end h-8 text-lg ${
                   activeItem === item.path
-                    ? "border border-r-0 border-l-0 border-primary"
+                    ? "border border-r-0 border-l-0 border-t-0 border-primary"
                     : "hover:text-blue-300"
                 }`}
               >
@@ -111,69 +175,7 @@ export const Navbar = ({
               </a>
             </Link>
           ))}
-          {resolvedTheme === "dark" ? (
-            <MdLightMode
-              onClick={toggleTheme}
-              className="size-6 cursor-pointer hover:text-yellow-500"
-            />
-          ) : (
-            <MdDarkMode
-              onClick={toggleTheme}
-              className="size-6 cursor-pointer hover:text-blue-300"
-            />
-          )}
         </div>
-      </div>
-      {/* small nav */}
-      <div className="md:hidden flex w-full h-full justify-between items-center">
-        <Link href={"/"} legacyBehavior>
-          <a
-            onClick={() => handleNavItemClick("/")}
-            className="text-nav text-xl font-bold hover:text-blue-300"
-          >
-            henryvendittelli.com/
-          </a>
-        </Link>
-        <div className="flex items-center gap-4">
-          {resolvedTheme === "dark" ? (
-            <MdLightMode
-              onClick={toggleTheme}
-              className="size-6 cursor-pointer hover:text-yellow-500"
-            />
-          ) : (
-            <MdDarkMode
-              onClick={toggleTheme}
-              className="size-6 cursor-pointer hover:text-blue-300"
-            />
-          )}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="font-bold text-3xl hover:text-blue-300 icon-nav"
-          >
-            {isOpen ? <IoMdClose /> : <RiMenu3Fill />}
-          </button>
-        </div>
-      </div>
-      <div
-        ref={dropdownRef}
-        className={`absolute flex-col top-full z-20 right-[24px] bg-primary rounded-b-lg nav-dropdown ${
-          isOpen ? "open" : ""
-        }`}
-      >
-        {navItems.map((item, index) => (
-          <Link key={index} href={item.path} legacyBehavior>
-            <a
-              onClick={() => handleNavItemClick(item.path)}
-              className={`text-nav px-3 my-1 flex justify-end h-8 text-lg ${
-                activeItem === item.path
-                  ? "border border-r-0 border-l-0 border-t-0 border-primary"
-                  : "hover:text-blue-300"
-              }`}
-            >
-              {item.name}
-            </a>
-          </Link>
-        ))}
       </div>
     </div>
   );
