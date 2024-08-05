@@ -42,7 +42,12 @@ export const Navbar = ({
   };
 
   useEffect(() => {
-    setActiveItem(pathname);
+    // Check if the current path starts with /projects
+    if (pathname.startsWith("/projects")) {
+      setActiveItem("/projects");
+    } else {
+      setActiveItem(pathname);
+    }
   }, [pathname]);
 
   // handle resize of nav
@@ -84,7 +89,7 @@ export const Navbar = ({
   if (!mounted) return null;
 
   return (
-    <div className="nav-primary bg-opacity-25 w-[calc(100vw)] lg:w-[calc(50vw)] md:w-[calc(67vw)] fixed top-4 z-10 px-4 flex justify-between h-16 backdrop-blur rounded-3xl">
+    <div className="nav-primary bg-opacity-25 w-full md:w-[calc(67vw)] lg:w-[calc(50vw)] fixed top-4 z-10 px-4 flex justify-between h-16 backdrop-blur rounded-3xl">
       {/* home page */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
         <Link href={"/"} legacyBehavior>
@@ -102,7 +107,8 @@ export const Navbar = ({
               <a
                 onClick={() => handleNavItemClick(item.path)}
                 className={`text-nav text-lg px-2 pb-[2px] ${
-                  activeItem === item.path
+                  activeItem === item.path ||
+                  (item.path === "/projects" && pathname.startsWith("/projects"))
                     ? "border border-r-0 border-l-0 border-primary"
                     : "hover:text-blue-300"
                 }`}
@@ -165,7 +171,8 @@ export const Navbar = ({
             <a
               onClick={() => handleNavItemClick(item.path)}
               className={`text-nav px-3 my-1 flex justify-end h-8 text-lg ${
-                activeItem === item.path
+                activeItem === item.path ||
+                (item.path === "/projects" && pathname.startsWith("/projects"))
                   ? "border border-r-0 border-l-0 border-t-0 border-primary"
                   : "hover:text-blue-300"
               }`}

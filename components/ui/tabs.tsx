@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { FaGithubSquare, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type Tab = {
   title: string;
@@ -30,6 +31,14 @@ export const Tabs = ({
   activeTab,
   onTabChange,
 }: TabsProps) => {
+  const router = useRouter();
+  // Update URL on tab change
+  useEffect(() => {
+    if (activeTab) {
+      router.push(`${activeTab}`);
+    }
+  }, [activeTab, router]);
+
   useEffect(() => {
     const activeContentElement = document.getElementById(
       `tab-content-${activeTab}`

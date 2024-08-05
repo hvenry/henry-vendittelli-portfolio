@@ -62,16 +62,19 @@ export const videos = [
     text: "parkqu | Parking App for University Students",
     video:
       "https://www.youtube.com/embed/3u5slpDZprw?si=3_ISxIoAD-RcIFKV&amp;&amp;rel=0",
+    href: "/projects/5",
   },
   {
-    text: "Kingston Rental Webapp | Database",
+    text: "Kingston Rental Webapp | Rental Database",
     video:
       "https://www.youtube.com/embed/bHJxmLcjUco?si=E5Hti0SjpxpX1BF8&amp;start=7;&amp;rel=0",
+    href: "/projects/3",
   },
   {
-    text: "Bear the Animal Tosser | Video Game",
+    text: "Bear the Animal Tosser | C# Game",
     video:
       "https://www.youtube.com/embed/YPBpoDEXPhQ?si=W0iLnaHJXuqsS2p-&amp;start=2&amp;rel=0",
+    href: "/projects/4",
   },
 ];
 
