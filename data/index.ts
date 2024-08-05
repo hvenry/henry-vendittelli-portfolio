@@ -15,7 +15,9 @@ export const projects = [
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     description:
       "This portfolio website that you are currently reading about was built with Next.js, TypeScript, and Tailwind CSS from the ground up with no template. This website was developed iteratively with constant feedback from peers and other people in the industry, which is why it has an extensive version history. \n My portfolio is hosted on Vercel, which excels in deployment due to its seamless integration with Next.js, automatic HTTPS, serverless architecture, and was also selected because it costs a grand total of zero dollars to use. This choice ensures fast, reliable performance, easy scalability, and makes my wallet happy. \n The website features both light and dark modes for enhanced accessibility, a responsive design using Tailwind CSS that looks seamless on any device, and exemplifies my attention to detail and commitment to a high-quality user experience.",
-    imageName: "portfolio_project.jpg",
+    smallDescription:
+      "Responsive portfolio using Next.js, TypeScript, and Tailwind CSS with Vercel hosting for seamless deployment and accessibility.",
+    imageName: "portfolio_project.png",
   },
   {
     title: "Sentiment NLP",
@@ -24,6 +26,8 @@ export const projects = [
     technologies: ["Python", "PyTorch", "spaCy", "NLTK", "Pandas"],
     description:
       "For QMIND (Canada's largest undergraduate artificial intelligence and machine learning organization) I was part of an innovation design team that developed a machine learning program that could analyze sentiment from typed text using large quantities of data, and natural language processing techniques. \n During my time at QMIND, I researched use cases of multiple ML models and sourced data to develop an innovative solution for mapping sentiment to text, using a dataset of Reddit comments representing 1 of 27 emotions provided by Google. NLP techniques such as tokenization, stemming, lemmatization, and stop word removal were used to preprocess our large dataset, and that dataset was used to fine-tune an ALBERT model to classify a sentence based on which emotion is most prevalent.",
+    smallDescription:
+      "Developed NLP model for sentiment analysis using ALBERT and Reddit data to classify emotions in text.",
   },
   {
     title: "Rental Database",
@@ -34,7 +38,9 @@ export const projects = [
     technologies: ["MySQL", "PHP", "HTML", "CSS", "Apache"],
     description:
       "The Kingston Rental Property Database is a web application designed to manage and display rental property listings in Kingston. \n This database was originally designed using an entity relation diagram, composed of entity types with relationships, then was implemented using a MySQL database for database implementation, PHP for server-side scripting, Apache as the web server, and HTML/CSS for the frontend interface.",
-    imageName: "rental_database.png",
+    smallDescription:
+      "Web app for managing rental listings using MySQL, PHP, HTMl/CSS and an Apache HTTP server.",
+    imageName: "rental_database_project.png",
   },
   {
     title: "C# Game",
@@ -43,7 +49,10 @@ export const projects = [
     githubLink: "https://github.com/hvenry/CISC-226-GAME",
     youtubeLink: "https://youtu.be/YPBpoDEXPhQ",
     technologies: ["C#", "Unity", "Git"],
-    description: "Bear The Animal Tosser is an arcade-style game where players control a zookeeper named Bear who captures escaped zoo animals. The game's unique stacking mechanic lets players pick up and stack animals on their heads based on weight, requiring strategic planning and a LIFO mindset. \n Developed in C#, the game uses principles such as state machines for animal behaviour and physics-based collision systems. The focus of this project was to build a minimal viable product with the core novel mechanics from user feedback, before expanding with optional features like power-ups and cosmetics. \n The core gameplay revolved around the stacking mechanic, so players would have to strategically stack and throw animals into pens based on location, time remaining, and the animal's weight constraints. The game features a charming 2D pixel art aesthetic with a cartoony and humorous tone, created from original assets, and maps with diverse zoo settings worldwide.",
+    description:
+      "Bear The Animal Tosser is an arcade-style game where players control a zookeeper named Bear who captures escaped zoo animals. The game's unique stacking mechanic lets players pick up and stack animals on their heads based on weight, requiring strategic planning and a LIFO mindset. \n Developed in C#, the game uses principles such as state machines for animal behaviour and physics-based collision systems. The focus of this project was to build a minimal viable product with the core novel mechanics from user feedback, before expanding with optional features like power-ups and cosmetics. \n The core gameplay revolved around the stacking mechanic, so players would have to strategically stack and throw animals into pens based on location, time remaining, and the animal's weight constraints. The game features a charming 2D pixel art aesthetic with a cartoony and humorous tone, created from original assets, and maps with diverse zoo settings worldwide.",
+    smallDescription:
+      "Arcade game developed in C# and Unity, featuring a unique animal stacking mechanic and 2D pixel art.",
     imageName: "bear_project.png",
   },
   {
@@ -52,8 +61,11 @@ export const projects = [
     bodyTitle: "parkQu",
     youtubeLink: "https://youtu.be/3u5slpDZprw",
     technologies: ["Figma"],
-    description: "ParkQu is a parking app designed for university students at Queen's University to successfully address and reduce the challenges faced by those who lack parking passes. Through user-centred design principles and conducting multiple interviews, we identified an issue and user group to tailor a service that would accommodate their needs. \n Utilizing Figma for high-fidelity prototyping and iterative testing, parkQu delivers an innovative solution that allows students to book parking spots near campus through people who have access to extra parking on their properties, similar to how Airbnb operates, but instead of people listing their homes, they are instead listing their driveways, parking lots, or dirt roads-basically any piece of private property that a car can park in. \n The project shows how to plan and deliver large-scale applications that tackle a niche problem, by incorporating user feedback and iterative prototyping to have a user-centred app that does not stray away from its original mission statement.",
-    imageName: "parkqu.jpg",
+    description:
+      "ParkQu is a parking app designed for university students at Queen's University to successfully address and reduce the challenges faced by those who lack parking passes. Through user-centred design principles and conducting multiple interviews, we identified an issue and user group to tailor a service that would accommodate their needs. \n Utilizing Figma for high-fidelity prototyping and iterative testing, parkQu delivers an innovative solution that allows students to book parking spots near campus through people who have access to extra parking on their properties, similar to how Airbnb operates, but instead of people listing their homes, they are instead listing their driveways, parking lots, or dirt roads-basically any piece of private property that a car can park in. \n The project shows how to plan and deliver large-scale applications that tackle a niche problem, by incorporating user feedback and iterative prototyping to have a user-centred app that does not stray away from its original mission statement.",
+    smallDescription:
+      "Parking app for students to book spots near campus, iteratively designed using user-centered feedback.",
+    imageName: "parkqu_project.png",
   },
 ];
 

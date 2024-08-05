@@ -7,6 +7,7 @@ import Skills from "@/components/ui/Skills";
 import Socials from "@/components/ui/Socials";
 import Link from "next/link";
 import YtPreview from "@/components/ui/YtPreview";
+import ProjectsGrid from "@/components/ProjectsGrid";
 import headshot from "@/public/assets/images/headshot.jpeg";
 
 export const metadata = {
@@ -17,14 +18,14 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <main className="pt-8 pb-16">
+    <main className="pt-8 pb-16 sm:pb-24">
       {/* intro */}
       <div className="border border-primary p-4">
         <div className="flex flex-row items-center gap-4">
           <Image
             src={headshot}
             alt="Henry Vendittelli"
-            className="transition-all duration-300 ease-in-out basic-glow border border-primary size-28 mb-4 p-1"
+            className="border border-primary size-28 mb-4 p-1"
           />
           <div>
             <div className="flex flex-col sm:flex-row sm:items-end sm:gap-4 sm:pb-4">
@@ -71,19 +72,20 @@ export default function Page() {
       </p>
       <ExperienceInfo info={work} />
       {/* skills */}
-      <p className="mt-8 mb-4 sm:text-4xl text-3xl font-bold">
+      <p className="mt-12 mb-6 sm:text-4xl text-3xl font-bold">
         Technologies I Work With
       </p>
       <Skills />
       {/* project demos */}
-      <p className="mt-12 mb-4 sm:text-4xl text-3xl font-bold">
+      <p className="mt-16 mb-6 sm:text-4xl text-3xl font-bold">
         Some {""}
         <Link href="/projects" className="text-blue-600 hover:text-blue-300">
           Project
         </Link>
         {""} Demos
       </p>
-      <YtPreview />
+      {/* <YtPreview /> */}
+      <ProjectsGrid projectIds={["5", "3", "4"]} />
     </main>
   );
 }

@@ -99,14 +99,15 @@ export const Tabs = ({
         ))}
       </div>
       {tab.imageName && (
-        <Image
-          src={`/assets/images/projects/${tab.imageName}`}
-          alt={tab.title}
-          width={1}
-          height={1}
-          className="bg-reversed mb-2 sm:my-4 border border-primary w-full h-auto rounded-xl"
-          layout="responsive"
-        />
+        <div className="flex justify-center">
+          <Image
+            src={`/assets/images/projects/${tab.imageName}`}
+            alt={tab.title}
+            width={1000}
+            height={500}
+            className="bg-reversed w-full sm:w-3/4 mb-2 sm:my-4 border border-primary h-auto rounded-xl"
+          />
+        </div>
       )}
     </div>
   );

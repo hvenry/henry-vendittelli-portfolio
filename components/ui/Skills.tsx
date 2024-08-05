@@ -57,7 +57,7 @@ const SkillBox: React.FC<{ Icon: React.ElementType; name: string }> = ({
 }) => {
   return (
     <div className="flex flex-grow sm:p-2 p-1 gap-2 border border-primary justify-center">
-      <Icon className={"sm:size-7 size-5"} />
+      <Icon className={"sm:w-7 w-5 sm:h-7 h-5"} />
       <p className="font-bold text-sm sm:text-xl">{name}</p>
     </div>
   );
@@ -65,7 +65,7 @@ const SkillBox: React.FC<{ Icon: React.ElementType; name: string }> = ({
 
 const Skills = () => {
   return (
-    <div className="gap-4 flex flex-wrap justify-between">
+    <div className="mx-2 gap-4 flex flex-wrap justify-between">
       {skills.map((skill) => (
         <SkillBox key={skill.name} Icon={skill.Icon} name={skill.name} />
       ))}
