@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "Reach Out! - henryvendittelli.com",
+  description:
+    "Henry's contact information + resume.",
+};
+
 export default function Page() {
   const resume = "/assets/pdfs/HenryVendittelliResume2024.pdf";
 

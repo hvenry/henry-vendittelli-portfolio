@@ -9,6 +9,12 @@ import Link from "next/link";
 import YtPreview from "@/components/ui/YtPreview";
 import headshot from "@/public/assets/images/headshot.jpeg";
 
+export const metadata = {
+  title: "Hello! 👋 - henryvendittelli.com",
+  description:
+    "Henry's portfolio introduction, work experience, and some project demos.",
+};
+
 export default function Page() {
   return (
     <main className="pt-8 pb-16">
@@ -68,9 +74,7 @@ export default function Page() {
       <p className="mt-8 mb-4 sm:text-4xl text-3xl font-bold">
         Technologies I Work With
       </p>
-      <div className="4">
-        <Skills />
-      </div>
+      <Skills />
       {/* project demos */}
       <p className="mt-12 mb-4 sm:text-4xl text-3xl font-bold">
         Some {""}
@@ -79,9 +83,7 @@ export default function Page() {
         </Link>
         {""} Demos
       </p>
-      <div className="flex flex-col items-center gap-12">
-        <YtPreview />
-      </div>
+      <YtPreview />
     </main>
   );
 }

@@ -4,6 +4,11 @@ import { clubs } from "@/data";
 import { education } from "@/data";
 import ExperienceInfo from "@/components/ui/ExperienceInfo";
 
+export const metadata = {
+  title: "About Me - henryvendittelli.com",
+  description: "More about Henry, including education and involvement in clubs.",
+};
+
 export default function Page() {
   return (
     <main className="pt-8 pb-16">

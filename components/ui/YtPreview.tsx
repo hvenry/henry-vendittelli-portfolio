@@ -12,7 +12,7 @@ const YtPreview = () => {
   };
 
   return (
-    <>
+      <div className="flex flex-col items-center gap-12">
       {videos.map((video, index) => {
         // Split the text on "|"
         const [linkText, description] = video.text.split(" | ");
@@ -36,7 +36,7 @@ const YtPreview = () => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

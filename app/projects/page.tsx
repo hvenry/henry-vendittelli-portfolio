@@ -7,7 +7,6 @@ export default function ProjectsPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // Redirect to the first tab
     router.replace("/projects/1");
   }, [router]);
 

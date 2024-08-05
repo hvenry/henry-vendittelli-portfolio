@@ -1,12 +1,15 @@
-"use client";
-
-import { useEffect } from "react";
+import { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import { Navbar } from "@/components/ui/Navbar";
 import { navItems } from "@/data";
 import { ThemeProvider } from "next-themes";
+import ViewportHeightSetter from "@/components/ViewportHeightSetter";
 import "./globals.css";
-import { metadata } from "@/app/metadata"
+
+export const metadata: Metadata = {
+  title: "henryvendittelli.com",
+  description: "Henry Vendittelli's next.js portfolio.",
+};
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -15,24 +18,16 @@ const oswald = Oswald({
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  useEffect(() => {
-    const setViewportHeight = () => {
-      const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    };
-
-    window.addEventListener("resize", setViewportHeight);
-    setViewportHeight();
-
-    return () => window.removeEventListener("resize", setViewportHeight);
-  }, []);
-
+}) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+      </head>
       <body className={oswald.className}>
+        <ViewportHeightSetter />
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="system"

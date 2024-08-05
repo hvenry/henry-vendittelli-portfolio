@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaGithubSquare, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 type Tab = {
   title: string;
@@ -21,7 +21,6 @@ interface TabsProps {
   activeTabClassName?: string;
   tabClassName?: string;
   activeTab: string;
-  onTabChange: (tabId: string) => void;
 }
 
 export const Tabs = ({
@@ -29,24 +28,29 @@ export const Tabs = ({
   activeTabClassName,
   tabClassName,
   activeTab,
-  onTabChange,
 }: TabsProps) => {
   const router = useRouter();
-  // Update URL on tab change
-  useEffect(() => {
-    if (activeTab) {
-      router.push(`${activeTab}`);
-    }
-  }, [activeTab, router]);
+  const pathname = usePathname();
+  // set the initial tab based on the URL
+  const initialTab = pathname.split("/").pop() || activeTab;
+  const [currentTab, setCurrentTab] = useState(initialTab);
 
+  // Update URL and scroll to top on tab change
   useEffect(() => {
-    const activeContentElement = document.getElementById(
-      `tab-content-${activeTab}`
-    );
-    if (activeContentElement) {
-      activeContentElement.scrollTop = 0;
+    if (currentTab) {
+      router.push(`/projects/${currentTab}`);
+      const activeContentElement = document.getElementById(
+        `tab-content-${currentTab}`
+      );
+      if (activeContentElement) {
+        activeContentElement.scrollTop = 0;
+      }
     }
-  }, [activeTab]);
+  }, [currentTab, router]);
+
+  const handleTabChange = (tabId: string) => {
+    setCurrentTab(tabId);
+  };
 
   const renderTabContent = (tab: Tab) => (
     <div
@@ -57,12 +61,22 @@ export const Tabs = ({
       <div className="flex items-end gap-2">
         <p className="text-xl sm:text-3xl">{tab.bodyTitle}</p>
         {tab.githubLink && (
-          <a href={tab.githubLink} target="_blank" rel="noopener noreferrer">
+          <a
+            href={tab.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
             <FaGithubSquare className="size-6 sm:size-8 hover:fill-blue-300" />
           </a>
         )}
         {tab.youtubeLink && (
-          <a href={tab.youtubeLink} target="_blank" rel="noopener noreferrer">
+          <a
+            href={tab.youtubeLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Youtube"
+          >
             <FaYoutube className="size-6 sm:size-8 fill-red-600 hover:fill-blue-300" />
           </a>
         )}
@@ -91,7 +105,7 @@ export const Tabs = ({
           width={1}
           height={1}
           className="bg-reversed mb-2 sm:my-4 border border-primary w-full h-auto rounded-xl"
-          layout="responsive" // Use layout options for responsive images
+          layout="responsive"
         />
       )}
     </div>
@@ -104,9 +118,10 @@ export const Tabs = ({
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            onClick={() => onTabChange(tab.id)}
+            // change tab using handler
+            onClick={() => handleTabChange(tab.id)}
             className={`flex flex-col items-center sm:text-xl text-md px-1 pb-[2px] ${
-              tab.id === activeTab ? `${activeTabClassName}` : `${tabClassName}`
+              tab.id === currentTab ? activeTabClassName : tabClassName
             }`}
           >
             {tab.title}
@@ -115,7 +130,7 @@ export const Tabs = ({
       </div>
       {/* Tab content */}
       {tabs
-        .filter((tab) => tab.id === activeTab)
+        .filter((tab) => tab.id === currentTab)
         .map((tab) => renderTabContent(tab))}
     </>
   );

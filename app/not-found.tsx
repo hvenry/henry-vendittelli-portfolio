@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "Not Found - henryvendittelli.com",
+  description:
+    "404 Page not found.",
+};
+
 export default function NotFound() {
   return (
     <main className="h-full w-full flex justify-center items-center">

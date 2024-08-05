@@ -1,26 +1,35 @@
-"use client";
-
 import { EvervaultCard } from "@/components/ui/evervault-card";
 import { IoHammerSharp } from "react-icons/io5";
 import { Tabs } from "@/components/ui/tabs";
-import { useEffect, useState } from "react";
 import { projects } from "@/data";
-import { usePathname } from "next/navigation";
 
-export default function Page() {
+interface Params {
+  tabId: string;
+}
+
+// Dynamically generate metadata for the page
+export async function generateMetadata({ params }: { params: Params }) {
+  const { tabId } = params;
+  const currentTab = projects.find((tab) => tab.id === tabId);
+
+  const title = currentTab
+    ? `${currentTab.title} Project - henryvendittelli.com`
+    : "Projects - henryvendittelli.com";
+
+  const description = currentTab
+    ? `Information about the ${currentTab.title} project by Henry Vendittelli.`
+    : "Explore various projects by Henry Vendittelli.";
+
+  return {
+    title,
+    description,
+  };
+}
+
+export default function ProjectsPage({ params }: { params: Params }) {
   const tabs = projects;
-  const pathname = usePathname();
-  const initialTab = pathname.split("/").pop() || "1";
-  const [activeTab, setActiveTab] = useState(initialTab);
-
-  useEffect(() => {
-    const activeContentElement = document.getElementById(
-      `tab-content-${activeTab}`
-    );
-    if (activeContentElement) {
-      activeContentElement.scrollTop = 0;
-    }
-  }, [activeTab]);
+  // Default to first project tab if no tab is specified
+  const initialTab = params.tabId || "1";
 
   return (
     <main className="gap-4 sm:gap-8 w-full h-full flex flex-col items-center justify-center">
@@ -37,8 +46,7 @@ export default function Page() {
       <div className="w-full sm:w-4/5 mb-4">
         <Tabs
           tabs={tabs}
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
+          activeTab={initialTab}
           tabClassName="border hover:text-blue-300 border-transparent border-l-0 border-r-0"
           activeTabClassName="border border-primary border-l-0 border-r-0"
         />
