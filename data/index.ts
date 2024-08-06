@@ -64,7 +64,7 @@ export const projects = [
     description:
       "ParkQu is a parking app designed for university students at Queen's University to successfully address and reduce the challenges faced by those who lack parking passes. Through user-centred design principles and conducting multiple interviews, we identified an issue and user group to tailor a service that would accommodate their needs. \n Utilizing Figma for high-fidelity prototyping and iterative testing, parkQu delivers an innovative solution that allows students to book parking spots near campus through people who have access to extra parking on their properties, similar to how Airbnb operates, but instead of people listing their homes, they are instead listing their driveways, parking lots, or dirt roads-basically any piece of private property that a car can park in. \n The project shows how to plan and deliver large-scale applications that tackle a niche problem, by incorporating user feedback and iterative prototyping to have a user-centred app that does not stray away from its original mission statement.",
     smallDescription:
-      "Parking app for students to book spots near campus, iteratively designed using user-centered feedback.",
+      "Parking app for students to book spots near campus, iteratively designed using user feedback.",
     imageName: "parkqu_project.png",
   },
 ];

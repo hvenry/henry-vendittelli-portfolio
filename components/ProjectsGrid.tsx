@@ -16,11 +16,11 @@ const ProjectsGrid: React.FC<ProjectGridProps> = ({ projectIds }) => {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:w-2/3 md:w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 sm:w-2/3 md:w-full">
         {selectedProjects.map((project) => (
           <div
             key={project.id}
-            className="border transition ease-in-out duration-300 basic-glow border-primary p-4 h-full"
+            className="basic-glow border transition-all ease-in-out duration-300 transform hover:scale-105 border-primary p-4 pt-2 h-full"
           >
             {/* title */}
             <div className="flex justify-between lg:mb-2">
