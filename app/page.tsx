@@ -2,6 +2,7 @@ import Image from "next/image";
 import rock_icon from "@/public/assets/images/icons/rock_icon.png";
 import ExperienceInfo from "@/components/ui/ExperienceInfo";
 import { work } from "@/data";
+import { intro } from "@/data";
 import { LinkPreview } from "@/components/ui/link-preview";
 import Skills from "@/components/ui/Skills";
 import Socials from "@/components/ui/Socials";
@@ -15,6 +16,24 @@ export const metadata = {
   description:
     "Henry's portfolio introduction, work experience, and some project demos.",
 };
+
+function formatBodyWithLink(
+  body: string,
+  linkText: string,
+  url: string
+): JSX.Element {
+  const parts = body.split(linkText);
+
+  return (
+    <>
+      {parts[0]}
+      <a href={url} className="text-blue-600 hover:text-blue-300">
+        {linkText}
+      </a>
+      {parts[1]}
+    </>
+  );
+}
 
 export default function Page() {
   return (
@@ -32,7 +51,7 @@ export default function Page() {
               <div className="flex items-end gap-2">
                 <Image
                   src={rock_icon}
-                  alt="Henry Vendittelli"
+                  alt="Icon"
                   className="size-5 sm:size-8"
                 />
                 <p className="sm:text-3xl text-lg">Henry Vendittelli</p>
@@ -40,24 +59,13 @@ export default function Page() {
               <p className="sm:text-xl text-md text-gray-500">21 (he/him)</p>
             </div>
             <p className="sm:w-3/4 text-primary-1 sm:text-xl md:text-2xl text-md text-justify pb-4">
-              Hi! My name is Henry, and I am a software developer based out of
-              Toronto, Canada.
+              {intro.intro}
             </p>
           </div>
         </div>
         <p className="sm:text-lg text-sm font-mono text-justify primary-2">
-          Welcome to my portfolio website! I really appreciate you taking the
-          time to view my work. Programming is one of my greatest passions, and
-          I am always looking to improve my skills and share my work with others
-          who are interested. I hope you enjoy your time here, and feel free to{" "}
-          <LinkPreview
-            url="https://www.henryvendittelli.com/reach-out"
-            className="text-blue-600 hover:text-blue-300"
-          >
-            reach out
-          </LinkPreview>{" "}
-          to me if you have any questions, feedback, or just want to grab a cup
-          of coffee (I am a big-time Java enjoyer).
+          {intro.description}{" "}
+          {formatBodyWithLink(intro.body, "reach out", intro.link)}
         </p>
       </div>
       {/* socials */}
