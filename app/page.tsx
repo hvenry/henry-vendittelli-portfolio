@@ -49,16 +49,15 @@ export default function Page() {
           Welcome to my portfolio website! I really appreciate you taking the
           time to view my work. Programming is one of my greatest passions, and
           I am always looking to improve my skills and share my work with others
-          who are interested. I hope you enjoy your time here, and feel free to
-          {""}
+          who are interested. I hope you enjoy your time here, and feel free to{" "}
           <LinkPreview
             url="https://www.henryvendittelli.com/reach-out"
             className="text-blue-600 hover:text-blue-300"
           >
             reach out
-          </LinkPreview>
-          {""} to me if you have any questions, feedback, or just want to grab a
-          cup of coffee (I am a big-time Java enjoyer).
+          </LinkPreview>{" "}
+          to me if you have any questions, feedback, or just want to grab a cup
+          of coffee (I am a big-time Java enjoyer).
         </p>
       </div>
       {/* socials */}
