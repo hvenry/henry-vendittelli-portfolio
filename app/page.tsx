@@ -3,11 +3,9 @@ import rock_icon from "@/public/assets/images/icons/rock_icon.png";
 import ExperienceInfo from "@/components/ui/ExperienceInfo";
 import { work } from "@/data";
 import { intro } from "@/data";
-import { LinkPreview } from "@/components/ui/link-preview";
 import Skills from "@/components/ui/Skills";
 import Socials from "@/components/ui/Socials";
 import Link from "next/link";
-import YtPreview from "@/components/ui/YtPreview";
 import ProjectsGrid from "@/components/ProjectsGrid";
 import headshot from "@/public/assets/images/headshot.jpeg";
 
@@ -65,7 +63,7 @@ export default function Page() {
         </div>
         <p className="sm:text-lg text-sm font-mono text-justify primary-2">
           {intro.description}{" "}
-          {formatBodyWithLink(intro.body, "reach out", intro.link)}
+          {formatBodyWithLink(intro.body, "reach out", "/reach-out")}
         </p>
       </div>
       {/* socials */}

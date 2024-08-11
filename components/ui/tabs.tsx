@@ -31,11 +31,10 @@ export const Tabs = ({
 }: TabsProps) => {
   const router = useRouter();
   const pathname = usePathname();
-  // set the initial tab based on the URL
   const initialTab = pathname.split("/").pop() || activeTab;
   const [currentTab, setCurrentTab] = useState(initialTab);
 
-  // Update URL and scroll to top on tab change
+  // Update URL and scroll to top
   useEffect(() => {
     if (currentTab) {
       router.push(`/projects/${currentTab}`);
@@ -54,6 +53,7 @@ export const Tabs = ({
 
   const renderTabContent = (tab: Tab) => (
     <div
+      key={`content-${tab.id}`} // Ensure unique key for content
       className="flex flex-col gap-4 h-[calc(60vh-128px)] sm:h-[calc(50vh-128px)] p-4 overflow-auto border border-primary"
       id={`tab-content-${tab.id}`}
     >
@@ -92,10 +92,10 @@ export const Tabs = ({
           </span>
         ))}
       </div>
-      {/* body */}
+      {/* Info */}
       <div className="text-sm sm:text-lg font-mono text-primary-2 text-justify flex flex-col gap-4">
         {tab.description.split("\n").map((line, index) => (
-          <p key={index}>{line}</p>
+          <p key={`desc-${index}`}>{line}</p>
         ))}
       </div>
       {tab.imageName && (
@@ -119,7 +119,6 @@ export const Tabs = ({
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            // change tab using handler
             onClick={() => handleTabChange(tab.id)}
             className={`flex flex-col items-center sm:text-xl text-md px-1 pb-[2px] ${
               tab.id === currentTab ? activeTabClassName : tabClassName
