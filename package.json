@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-hover-card": "^1.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.2",
     "next": "^14.2.5",
