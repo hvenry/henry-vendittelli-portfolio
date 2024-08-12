@@ -16,6 +16,9 @@
   --text-primary-1-light: 31, 41, 55;
   --text-primary-2-dark: 209, 213, 219;
   --text-primary-2-light: 55, 65, 81;
+
+  /* height fallback for page load */
+  --vh: 1vh;
 }
 
 /* light-mode (white background) */
