@@ -5,7 +5,7 @@ export default function BackToTop() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: "smooth"
     });
   };
 
@@ -16,7 +16,9 @@ export default function BackToTop() {
         className="rounded-3xl px-5 py-1 border-2 border-primary text-3xl font-bold hover:text-blue-300 hover:border-blue-300"
         aria-label="Go to top"
       >
-        <div className="flex items-center justify-center"><MdArrowUpward size={28}/></div>
+        <div className="flex items-center justify-center">
+          <MdArrowUpward size={28} />
+        </div>
       </button>
     </div>
   );

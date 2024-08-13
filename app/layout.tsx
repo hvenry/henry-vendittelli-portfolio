@@ -4,20 +4,21 @@ import { Navbar } from "@/components/ui/Navbar";
 import { navItems } from "@/data";
 import { ThemeProvider } from "next-themes";
 import ViewportHeightSetter from "@/components/ViewportHeightSetter";
+import React from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "henryvendittelli.com",
-  description: "Henry Vendittelli's next.js portfolio.",
+  description: "Henry Vendittelli's next.js portfolio."
 };
 
 const oswald = Oswald({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "700"]
 });
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {

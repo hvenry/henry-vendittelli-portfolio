@@ -27,7 +27,7 @@ export const Tabs = ({
   tabs,
   activeTabClassName,
   tabClassName,
-  activeTab,
+  activeTab
 }: TabsProps) => {
   const router = useRouter();
   const pathname = usePathname();

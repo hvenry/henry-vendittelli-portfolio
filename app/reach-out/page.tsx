@@ -2,7 +2,7 @@ import ContactCard from "@/components/ContactCard";
 
 export const metadata = {
   title: "Reach Out! - henryvendittelli.com",
-  description: "Henry's contact information + resume.",
+  description: "Henry's contact information + resume."
 };
 
 export default function Page() {

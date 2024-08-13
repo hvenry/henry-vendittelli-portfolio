@@ -1,7 +1,6 @@
 export const metadata = {
   title: "Blog - henryvendittelli.com",
-  description:
-    "Henry's personal Blog (coming soon).",
+  description: "Henry's personal Blog (coming soon)."
 };
 
 export default function Page() {

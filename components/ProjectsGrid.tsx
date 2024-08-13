@@ -1,5 +1,5 @@
 import React from "react";
-import { FaGithubSquare, FaYoutube } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 
 import { projects } from "@/data";

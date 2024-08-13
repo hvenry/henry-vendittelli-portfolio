@@ -17,7 +17,7 @@ import {
   SiGunicorn,
   SiTensorflow,
   SiPytorch,
-  SiMysql,
+  SiMysql
 } from "react-icons/si";
 import { RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
 
@@ -48,12 +48,12 @@ const skills: SkillType[] = [
   { Icon: SiGunicorn, name: "Gunicorn" },
   { Icon: SiTensorflow, name: "TensorFlow" },
   { Icon: SiPytorch, name: "PyTorch" },
-  { Icon: SiGithubactions, name: "GitHub Actions" },
+  { Icon: SiGithubactions, name: "GitHub Actions" }
 ];
 
 const SkillBox: React.FC<{ Icon: React.ElementType; name: string }> = ({
   Icon,
-  name,
+  name
 }) => {
   return (
     <div className="flex flex-grow sm:p-2 p-1 gap-2 border border-primary justify-center">

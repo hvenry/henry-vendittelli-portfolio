@@ -6,7 +6,7 @@ import ExperienceInfo from "@/components/ui/ExperienceInfo";
 
 export const metadata = {
   title: "About Me - henryvendittelli.com",
-  description: "More about Henry, including education and involvement in clubs.",
+  description: "More about Henry, including education and involvement in clubs."
 };
 
 export default function Page() {

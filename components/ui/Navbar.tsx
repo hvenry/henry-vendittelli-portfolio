@@ -9,7 +9,7 @@ import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { useTheme } from "next-themes";
 
 export const Navbar = ({
-  navItems,
+  navItems
 }: {
   navItems: {
     name: string;

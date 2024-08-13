@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export const EvervaultCard = ({
   children,
-  className,
+  className
 }: {
   children?: React.ReactNode;
   className?: string;

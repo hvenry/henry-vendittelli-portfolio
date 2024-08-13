@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Params }) {
 
   return {
     title,
-    description,
+    description
   };
 }
 
