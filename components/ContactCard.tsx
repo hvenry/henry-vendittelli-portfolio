@@ -26,14 +26,14 @@ export default function ContactCard() {
             <p>647-926-6820</p>
           </div>
           <div className="flex justify-between">
-            <p>Resume:</p>
+            <p>More Info:</p>
             <a
               className="text-blue-600 hover:text-blue-300"
               href={resume}
               target="_blank"
               rel="noopener noreferrer"
             >
-              here
+              resume
             </a>
           </div>
         </div>
