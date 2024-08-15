@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 interface Experience {
   name: string;
@@ -10,11 +12,11 @@ interface Experience {
   desc: string;
   link: string;
   time: string;
-  image: string; // Name of the icon image file
+  image: string;
 }
 
 interface ExperienceProps {
-  info: Experience[];
+  info: Experience[] | null;
 }
 
 const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
@@ -25,10 +27,51 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
-
   const getImagePath = (imageName: string) =>
     `/assets/images/icons/${imageName}.png`;
+
+  if (!mounted || !info) {
+    // Render number of skeletons equal to the expected number of cards
+    const skeletons = Array.from(
+      { length: info ? info.length : 1 },
+      (_, index) => (
+        <div key={index} className="pr-4">
+          <div className="px-4 py-2">
+            <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 gap-2 pb-2">
+              {/* title + image placeholder */}
+              <div className="flex justify-center items-center gap-2">
+                <Skeleton height={24} width={24} circle className="skeleton" />
+                <Skeleton height={30} width={150} className="skeleton" />
+              </div>
+              {/* position placeholder */}
+              <Skeleton height={20} width={100} className="skeleton" />
+            </div>
+            {/* description placeholder */}
+            <Skeleton
+              height={15}
+              width={"100%"}
+              count={5}
+              className="skeleton"
+            />
+            {/* extend description on smaller screens */}
+            <div className="sm:hidden">
+              <Skeleton
+                height={15}
+                width={"100%"}
+                count={5}
+                className="skeleton"
+              />
+            </div>
+            <Skeleton height={15} width={"40%"} className="skeleton" />
+            <div className="mt-1 flex justify-end">
+              <Skeleton height={15} width={125} className="skeleton" />
+            </div>
+          </div>
+        </div>
+      )
+    );
+    return <div className="flex flex-col gap-8">{skeletons}</div>;
+  }
 
   return (
     <div className="flex flex-col gap-8">

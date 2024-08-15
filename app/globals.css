@@ -147,3 +147,12 @@ body {
 .nav-dropdown.open {
   max-height: 150px;
 }
+
+/* skeleton styling based on theme */
+.skeleton {
+  filter: invert(100%);
+}
+/* Invert colors for light mode */
+[data-theme="light"] .skeleton {
+  filter: invert(5%);
+}
