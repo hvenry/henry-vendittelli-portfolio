@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AiOutlineUpSquare, AiOutlineDownSquare } from "react-icons/ai";
+import React from "react";
 
 interface CollapsibleTabProps {
   title: string;
