@@ -83,14 +83,14 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
                 <Image
                   src={getImagePath(experience.image)}
                   alt={experience.name}
-                  width={24}
-                  height={24}
+                  width={256}
+                  height={256}
                   className={
                     experience.image === "partisans_icon"
                       ? theme === "light"
-                        ? "icon-light"
-                        : "icon-dark"
-                      : ""
+                        ? "size-6 icon-light"
+                        : "size-6 icon-dark"
+                      : "size-6"
                   }
                 />
                 <a

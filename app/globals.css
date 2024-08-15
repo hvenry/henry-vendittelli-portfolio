@@ -145,7 +145,7 @@ body {
   transition: max-height 0.2s;
 }
 .nav-dropdown.open {
-  max-height: 150px;
+  max-height: 185px;
 }
 
 /* skeleton styling based on theme */
