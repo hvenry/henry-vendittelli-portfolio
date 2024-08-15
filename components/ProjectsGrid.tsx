@@ -20,7 +20,7 @@ const ProjectsGrid: React.FC<ProjectGridProps> = ({ projectIds }) => {
         {selectedProjects.map((project) => (
           <div
             key={project.id}
-            className="basic-glow border transition-all ease-in-out duration-300 transform hover:scale-105 border-primary p-4 pt-2 h-full"
+            className="basic-glow border transition-transform ease-in-out duration-300 transform hover:scale-105 border-primary p-4 pt-2 h-full"
           >
             {/* title */}
             <div className="flex justify-between lg:mb-2">

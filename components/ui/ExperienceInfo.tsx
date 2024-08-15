@@ -77,7 +77,7 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
     <div className="flex flex-col gap-8">
       {info.map((experience, index) => (
         <div key={index} className="pr-4">
-          <div className="px-4 py-2 hover:translate-x-2 transition-all duration-300 ease-in-out border border-transparent hover:border-primary basic-glow">
+          <div className="px-4 py-2 hover:translate-x-2 transition-transform transition-border-color duration-300 ease-in-out border border-transparent hover:border-primary basic-glow">
             <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 gap-2 pb-2">
               <div className="flex justify-center items-center gap-2">
                 <Image
