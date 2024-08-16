@@ -1,5 +1,5 @@
 export const navItems = [
-  { name: "/blog", path: "/blog" },
+  // { name: "/blog", path: "/blog" },
   { name: "/about", path: "/about" },
   { name: "/random", path: "/random" },
   { name: "/projects", path: "/projects" },

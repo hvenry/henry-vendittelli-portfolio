@@ -12,7 +12,7 @@ export default function ContactCard() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="p-4 border transition-all duration-300 ease-in-out border-primary basic-glow hover:scale-105">
+      <div className="p-4 border transition-transform duration-300 ease-in-out border-primary basic-glow hover:scale-105">
         <div className="text-3xl font-bold pb-4 flex justify-center">
           Contact Me
         </div>
