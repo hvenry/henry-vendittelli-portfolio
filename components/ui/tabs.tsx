@@ -106,6 +106,9 @@ export const Tabs = ({
             width={1000}
             height={500}
             className="bg-reversed w-full sm:w-3/4 mb-2 sm:my-4 border border-primary h-auto rounded-xl"
+            priority
+            placeholder="blur"
+            blurDataURL={`/assets/images/projects/placeholder-${tab.imageName}`}
           />
         </div>
       )}
