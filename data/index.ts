@@ -6,6 +6,7 @@ export const navItems = [
   { name: "/reach-out", path: "/reach-out" }
 ];
 
+// INDEX PAGE
 export const intro = {
   intro:
     "Hi! My name is Henry, and I am a software developer based out of Toronto, Canada.",
@@ -13,96 +14,6 @@ export const intro = {
     "Welcome to my portfolio website! I really appreciate you taking the time to view my work.",
   body: "Programming is one of my greatest passions, and I am always looking to improve my skills and share my work with others who are interested. I hope you enjoy your time here, and feel free to reach out to me if you have any questions, feedback, or just want to grab a cup of coffee (I am a big-time Java enjoyer)."
 };
-
-export const mac_software = [
-  {
-    name: "Homebrew",
-    description: "Package manager for macOS.",
-    link: "https://brew.sh/",
-    icon: "homebrew_icon"
-  },
-  {
-    name: "iTerm2",
-    description: "Terminal emulator for macOS.",
-    link: "https://iterm2.com/",
-    icon: "iterm2_icon"
-  },
-  {
-    name: "oh my zsh",
-    description:
-      "Open source framework for managing Zsh configuration. I also use zsh-autosuggestions and zsh-syntax-highlighting plugins with it.",
-    link: "https://ohmyz.sh/",
-    icon: "ohmyzsh_icon"
-  },
-  {
-    name: "Raycast",
-    description:
-      "Productivity software that is a spotlight search replacement. Offers fast access to applications, files, clipboard, and much more, overall just a better experience than spotlight.",
-    link: "https://raycast.com/",
-    icon: "raycast_icon"
-  },
-  {
-    name: "Rectangle",
-    description:
-      "Window manager, used to move and resize windows using keyboard shortcuts or snap areas.",
-    link: "https://rectangleapp.com/",
-    icon: "rectangle_icon"
-  },
-  {
-    name: "AltTab",
-    description:
-      "Brings the power of Windows's alt+tab window switcher to macOS.",
-    link: "https://alt-tab-macos.netlify.app/",
-    icon: "alttab_icon"
-  },
-  {
-    name: "Stats",
-    description:
-      "Monitor my macOS system, I use it for CPU utilization, memory usage, and network usage.",
-    link: "https://formulae.brew.sh/cask/stats",
-    icon: "stats_icon"
-  },
-  {
-    name: "HiddenBar",
-    description:
-      "Grants the ability to hide menu bar items, reducing clutter for a cleaner look.",
-    link: "https://formulae.brew.sh/cask/hiddenbar",
-    icon: "hiddenbar_icon"
-  }
-];
-
-export const setup = [
-  {
-    name: "Main Monitor",
-    description: "LG 34WR53QB-B Curved Monitor",
-    link: "https://www.lg.com/ca_en/monitors/ultrawide/34wr50qc-b/"
-  },
-  {
-    name: "Ergonomic Keyboard",
-    description: "Bastard Keyboards TBK-mini",
-    link: "https://github.com/Bastardkb/TBK-Mini"
-  },
-  {
-    name: "Work Keyboard",
-    description: "Apple Magic Keyboard",
-    link: "https://www.apple.com/ca/shop/product/MMMR3LL/A/magic-keyboard-with-touch-id-and-numeric-keypad-for-mac-models-with-apple-silicon-us-english-black-keys?afid=p238%7Cs15cBR7Gb-dc_mtid_1870765e38482_pcrid_703843849102_pgrid_169137981492_pntwk_g_pchan_online_pexid__ptid_pla-2298479982371_&cid=aos-ca-kwgo-pla---slid---product-MMMR3LL/A-CA"
-  },
-  {
-    name: "Mouse",
-    description: "Logitech G Pro X Superlight",
-    link: "https://www.logitechg.com/en-ca/products/gaming-mice/pro-x-superlight-wireless-mouse.910-005940.html"
-  },
-  {
-    name: "Trackpad",
-    description: "Apple Magic Trackpad",
-    link: "https://www.apple.com/ca/shop/product/MMMP3AM/A/magic-trackpad-black-multi-touch-surface"
-  },
-  {
-    name: "Headphones",
-    description: "Bose QC35 II Wireless Headphones",
-    link: "https://global.bose.com/content/consumer_electronics/b2c_catalog/worldwide/websites/en_ae/product/qc35_ii.html"
-  }
-];
 
 export const work = [
   {
@@ -131,6 +42,7 @@ export const work = [
   }
 ];
 
+// ABOUT PAGE
 export const education = [
   {
     name: "Queen's University",
@@ -194,6 +106,98 @@ export const clubs = [
   }
 ];
 
+// RANDOM PAGE
+export const setup = [
+  {
+    name: "Main Monitor",
+    description: "LG 34WR53QB-B Curved Monitor",
+    link: "https://www.lg.com/ca_en/monitors/ultrawide/34wr50qc-b/"
+  },
+  {
+    name: "Ergonomic Keyboard",
+    description: "Bastard Keyboards TBK-mini",
+    link: "https://github.com/Bastardkb/TBK-Mini"
+  },
+  {
+    name: "Work Keyboard",
+    description: "Apple Magic Keyboard",
+    link: "https://www.apple.com/ca/shop/product/MMMR3LL/A/magic-keyboard-with-touch-id-and-numeric-keypad-for-mac-models-with-apple-silicon-us-english-black-keys?afid=p238%7Cs15cBR7Gb-dc_mtid_1870765e38482_pcrid_703843849102_pgrid_169137981492_pntwk_g_pchan_online_pexid__ptid_pla-2298479982371_&cid=aos-ca-kwgo-pla---slid---product-MMMR3LL/A-CA"
+  },
+  {
+    name: "Mouse",
+    description: "Logitech G Pro X Superlight",
+    link: "https://www.logitechg.com/en-ca/products/gaming-mice/pro-x-superlight-wireless-mouse.910-005940.html"
+  },
+  {
+    name: "Trackpad",
+    description: "Apple Magic Trackpad",
+    link: "https://www.apple.com/ca/shop/product/MMMP3AM/A/magic-trackpad-black-multi-touch-surface"
+  },
+  {
+    name: "Headphones",
+    description: "Bose QC35 II Wireless Headphones",
+    link: "https://global.bose.com/content/consumer_electronics/b2c_catalog/worldwide/websites/en_ae/product/qc35_ii.html"
+  }
+];
+
+export const mac_software = [
+  {
+    name: "Homebrew",
+    description: "Package manager for macOS.",
+    link: "https://brew.sh/",
+    icon: "homebrew_icon"
+  },
+  {
+    name: "iTerm2",
+    description: "Terminal emulator for macOS.",
+    link: "https://iterm2.com/",
+    icon: "iterm2_icon"
+  },
+  {
+    name: "oh my zsh",
+    description:
+      "Open source framework for managing Zsh configuration. I also use zsh-autosuggestions and zsh-syntax-highlighting plugins with it.",
+    link: "https://ohmyz.sh/",
+    icon: "ohmyzsh_icon"
+  },
+  {
+    name: "Raycast",
+    description:
+      "Productivity software that is a spotlight search replacement. Offers fast access to applications, files, clipboard, and much more, overall just a better experience than spotlight.",
+    link: "https://raycast.com/",
+    icon: "raycast_icon"
+  },
+  {
+    name: "Rectangle",
+    description:
+      "Window manager, used to move and resize windows using keyboard shortcuts or snap areas.",
+    link: "https://rectangleapp.com/",
+    icon: "rectangle_icon"
+  },
+  {
+    name: "AltTab",
+    description:
+      "Brings the power of Windows's alt+tab window switcher to macOS.",
+    link: "https://alt-tab-macos.netlify.app/",
+    icon: "alttab_icon"
+  },
+  {
+    name: "Stats",
+    description:
+      "Monitor my macOS system, I use it for CPU utilization, memory usage, and network usage.",
+    link: "https://formulae.brew.sh/cask/stats",
+    icon: "stats_icon"
+  },
+  {
+    name: "HiddenBar",
+    description:
+      "Grants the ability to hide menu bar items, reducing clutter for a cleaner look.",
+    link: "https://formulae.brew.sh/cask/hiddenbar",
+    icon: "hiddenbar_icon"
+  }
+];
+
+// PROJECTS PAGE
 export const projects = [
   {
     title: "Portfolio",
@@ -257,6 +261,7 @@ export const projects = [
   }
 ];
 
+// VIDEOS (for ytpreview)
 export const videos = [
   {
     text: "parkqu | Parking App for University Students",
