@@ -7,15 +7,15 @@ import ViewportHeightSetter from "@/components/ViewportHeightSetter";
 import React from "react";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "henryvendittelli.com",
-  description: "Henry Vendittelli's next.js portfolio."
-};
-
 const oswald = Oswald({
   subsets: ["latin"],
   weight: ["400", "700"]
 });
+
+export const metadata: Metadata = {
+  title: "henryvendittelli.com",
+  description: "Henry Vendittelli's portfolio website."
+};
 
 export default function RootLayout({
   children
@@ -24,9 +24,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <meta charSet="UTF-8" />
-      </head>
       <body className={oswald.className}>
         <ViewportHeightSetter />
         <ThemeProvider

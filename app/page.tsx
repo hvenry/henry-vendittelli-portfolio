@@ -12,7 +12,7 @@ import headshot from "@/public/assets/images/headshot.jpeg";
 export const metadata = {
   title: "Hello! 👋 - henryvendittelli.com",
   description:
-    "Henry's portfolio introduction, work experience, and some project demos."
+    "Welcome to my portfolio! Explore my experience, projects, and hobbies. Let's connect and build something!"
 };
 
 function formatBodyWithLink(
