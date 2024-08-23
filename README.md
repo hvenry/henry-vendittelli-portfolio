@@ -1,31 +1,39 @@
-<div align="center">
+# Henry Vendittelli's Next.js Portfolio
 
-# Henry Vendittelli Next.js Portfolio
+![screenshot](public/assets/images/projects/portfolio_project.png?raw=true "Layer 0")
 
-</div>
+## About
 
-I wanted to upgrade my old crappy React portfolio, to one that uses Next.js, tailwind, typescript.
+Welcome to my portfolio website! This site is a showcase of my work, skills, and projects built from the ground up. This site was iteratively prototyped, with constant feedback from peers and professionals in the industry.
 
-This is a [Next.js](https://nextjs.org/) portfolio bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Technology Stack
 
-## Details
+- **Next.js**: A framework that handles React config, many optimizations, and also enables server-side rendering.
+- **TypeScript**: For type safety.
+- **Tailwind CSS**: I just personally love tailwind over regular CSS.
 
-- Hero/Home/Henry section.
-- About me.
-- Projects.
-- Contact.
+## Hosting
 
-Things to add:
+- **Vercel**: The site is hosted on Vercel, which offers seamless integration with Next.js, automatic HTTPS, and a serverless architecture. Vercel was chosen for its performance, scalability, and zero cost.
 
-- About: Most recent listened to music using lastfm, espresso, keyboards, cd list, clubs.
-- Projects: (QMIND, BEAR, RentalDB, QUANTT)
-- Contact: Resume preview.
+## Pages
+
+- [**henryvendittelli.com/**](https://henryvendittelli.com/): Introduction, work experience, and some projects
+- [**henryvendittelli.com/about**](https://henryvendittelli.com/about): Education, volunteer experience
+- [**henryvendittelli.com/random**:](https://henryvendittelli.com/random) Setup, OS, Configs, Books, etc
+- [**henryvendittelli.com/reach-out**:](https://henryvendittelli.com/reach-out) Contact information
+
+## Key Features
+
+- **Light and Dark Modes:** To enhance accessibility and provide a comfortable viewing experience, the website includes both light and dark themes, allowing users to switch based on their preference.
+- **Responsive Design:** The layout adapts seamlessly to any device, whether it's a desktop, tablet, or mobile phone, ensuring a consistent and optimized user experience.
+- **Attention to Detail:** Every element of the site reflects my commitment to quality, from the smooth transitions to the thoughtfully chosen color schemes and typography.
 
 ## Setup
 
 Install packages:
 
-```
+```bash
 npm install
 ```
 
@@ -37,4 +45,10 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-This portfolio uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Deployment
+
+This portfolio is hosted on Vercel so deployment is streamlined and automated. Every push to the `main` branch triggers a deployment, ensuring that this live site is always up to date.
+
+## Contact
+
+hvendittelli@gmail.com
