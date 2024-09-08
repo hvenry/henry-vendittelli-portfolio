@@ -19,7 +19,7 @@ export default function ContactCard() {
         <div className="sm:text-2xl text-lg text-primary-1">
           <div className="flex justify-between gap-6 sm:gap-12">
             <p>Email:</p>
-            <p>hvendittelli@gmail.com</p>
+            <a href="mailto:hvendittelli@gmail.com" className="hover:text-blue-300">hvendittelli@gmail.com</a>
           </div>
           <div className="flex justify-between">
             <p>Phone:</p>
