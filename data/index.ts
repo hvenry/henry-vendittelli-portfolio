@@ -18,11 +18,19 @@ export const intro = {
 export const work = [
   {
     name: "Empire Life",
-    position: "Student Software Developer",
-    desc: "In my current role at Empire Life, I am developing a technology adoption tool that streamlines the onboarding of emerging technologies through full stack development with React, FastAPI, Auth0, Firebase, and GCP.  I am responsible for planning, designing, implementing, and testing (in that order) new features based on user feedback. Additionally, I am tasked with maintaining a robust production database, designing new API endpoints, and managing deployments to ensure this service is healthy and scalable. My work requires constant collaboration with other developers, and leveraging a variety of DevOps tools for CI/CD. My most notable task has been my Jira REST API integration, to track reported technologies with Atlassian management tools.",
+    position: "Software Developer (Part-Time)",
+    desc: "After my summer term at Empire Life, I have accepted an offer to work part time to help make their services more accessible and compliant for AODA.",
     link: "https://www.empire.ca/",
     image: "empire_icon",
-    time: "[ summer 2024 ]"
+    time: "[ Fall 2024 ]"
+  },
+  {
+    name: "Empire Life",
+    position: "Student Software Developer",
+    desc: "During my summer term at Empire Life, I developed a technology adoption tool that streamlines the onboarding of emerging technologies through full stack development with React, FastAPI, Auth0, Firebase, and GCP.  I was responsible for planning, designing, implementing, and testing (in that order) new features based on user feedback. Additionally, I maintained a robust production database, designed new API endpoints, and managing deployments to ensure the service was healthy and scalable. My work required constant collaboration with other developers, and leveraging a variety of DevOps tools for CI/CD. During my term, my most notable task would have been my Jira REST API integration to the service I was developing, which streamlined tracking reported technologies with Atlassian management tools.",
+    link: "https://www.empire.ca/",
+    image: "empire_icon",
+    time: "[ Summer 2024 ]"
   },
   {
     name: "360insights",
@@ -30,7 +38,7 @@ export const work = [
     desc: "As a data scientist at 360insights, my role was centered around improving predictive modelling and customer satisfaction, through numerous Python libraries focused on natural language processing and time series forecasting. I worked in a move-fast and break-things environment, where trying new things and innovating without fear of failure was the top priority. I was responsible for researching new time series forecasting models and techniques, testing their implementations, and deploying them to end users to help predict consumer rebates. At the end of my term, I worked on an NLP project using K-Means clustering powered by their call center transcript database that identified the most common complaints from consumer feedback.",
     link: "https://www.360insights.com/",
     image: "insights_icon",
-    time: "[ summer 2023 ]"
+    time: "[ Summer 2023 ]"
   },
   {
     name: "Partisans",
@@ -38,7 +46,7 @@ export const work = [
     desc: "Before I learned about the world of computer science, my passion for creating things and designing led me to pursue architecture as a student intern at Partisans. Once I discovered my true passion, computer science, I left architecture behind but took with me important lessons about the principles of design that I continue to apply to my work to this day.",
     link: "https://partisans.com/",
     image: "partisans_icon",
-    time: "[ summer 2018 - 2020 ]"
+    time: "[ Summer 2018 - 2020 ]"
   }
 ];
 
