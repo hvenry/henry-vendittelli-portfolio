@@ -16,7 +16,7 @@ const ProjectsGrid: React.FC<ProjectGridProps> = ({ projectIds }) => {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 sm:w-2/3 md:w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 sm:w-2/3 md:w-full mx-2 sm:mx-0">
         {selectedProjects.map((project) => (
           <div
             key={project.id}

@@ -32,7 +32,7 @@ export default function ProjectsPage({ params }: { params: Params }) {
   const initialTab = params.tabId || "1";
 
   return (
-    <main className="gap-4 sm:gap-8 w-full h-full flex flex-col items-center justify-center">
+    <main className="px-2 gap-4 sm:gap-8 w-full h-full flex flex-col items-center justify-center">
       {/* title */}
       <div className="w-full sm:w-4/5 h-1/5 sm:h-1/4">
         <EvervaultCard className="border border-primary">

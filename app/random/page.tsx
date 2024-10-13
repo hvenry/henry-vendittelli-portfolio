@@ -14,7 +14,7 @@ const getImagePath = (imageName: string) =>
 export default function Page() {
   return (
     <main className="pt-8 pb-16 sm:pb-24">
-      <div className="border border-primary p-4 mb-16">
+      <div className="border border-primary p-4 mx-2 mb-16">
         <div className="flex items-end gap-4 pb-4">
           <div className="flex items-center gap-2">
             <LiaRandomSolid size={30} />
@@ -25,7 +25,7 @@ export default function Page() {
           Setup, OS, Configs, Software, Books, and more to come.
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-12 md:w-full">
+      <div className="grid grid-cols-1 gap-12 md:w-full mx-2">
         <CollapsibleTab title="Setup Equipment">
           <ul className="text-primary-1 font-mono flex flex-col gap-2">
             {setup.map((item, index) => (

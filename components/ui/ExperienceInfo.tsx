@@ -33,12 +33,12 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
   // Group experiences by 'name'
   const groupedExperiences = info
     ? info.reduce((acc: Record<string, Experience[]>, experience) => {
-        if (!acc[experience.name]) {
-          acc[experience.name] = [];
-        }
-        acc[experience.name].push(experience);
-        return acc;
-      }, {})
+      if (!acc[experience.name]) {
+        acc[experience.name] = [];
+      }
+      acc[experience.name].push(experience);
+      return acc;
+    }, {})
     : {};
 
   if (!mounted || !info) {
@@ -73,7 +73,7 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
     <div className="flex flex-col gap-8">
       {Object.keys(groupedExperiences).map((name) => (
         <div key={name} className="mr-4">
-          <div className="pl-2 pr-6 pt-2 pb-4 hover:translate-x-2 transition-transform transition-border-color duration-300 ease-in-out border border-transparent hover:border-primary basic-glow">
+          <div className="pl-2 pr-5 pt-2 pb-4 hover:translate-x-2 transition-transform transition-border-color duration-300 ease-in-out border border-transparent hover:border-primary basic-glow">
             <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 gap-2">
               <div className="flex justify-center items-center gap-2">
                 <Image
@@ -105,15 +105,15 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
                   {/* Position Title Bullet */}
                   <div className="flex flex-col items-center">
                     <div className="flex h-full items-center justify-center">
-                      <div className="w-2 h-2 bg-gray-500"></div>
+                      <div className="w-[6px] h-[6px] sm:w-2 sm:h-2 bg-gray-500"></div>
                     </div>
                   </div>
                   {/* Position Title */}
-                  <div className="py-2 sm:flex sm:justify-between">
+                  <div className="py-2 flex justify-between items-center">
                     <p className="sm:text-2xl text-md text-primary-1">
                       {role.position}
                     </p>
-                    <p className="pt-1 flex sm:justify-end sm:text-xl text-md text-gray-500">
+                    <p className="pt-1 flex justify-end sm:text-xl text-sm text-gray-500">
                       {role.time}
                     </p>
                   </div>
