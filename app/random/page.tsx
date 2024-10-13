@@ -25,7 +25,7 @@ export default function Page() {
           Setup, OS, Configs, Software, Books, and more to come.
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-12 md:w-full mx-2">
+      <div className="grid grid-cols-1 gap-12 md:w-full px-2">
         <CollapsibleTab title="Setup Equipment">
           <ul className="text-primary-1 font-mono flex flex-col gap-2">
             {setup.map((item, index) => (

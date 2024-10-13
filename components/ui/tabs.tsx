@@ -105,7 +105,7 @@ export const Tabs = ({
             alt={tab.title}
             width={1000}
             height={500}
-            className="bg-reversed w-full sm:w-3/4 mb-2 sm:my-4 border border-primary h-auto rounded-xl"
+            className="bg-reversed w-full sm:w-3/4 mb-2 sm:my-4 border border-primary h-auto rounded-sm"
             priority
             placeholder="blur"
             blurDataURL={`/assets/images/projects/placeholder-${tab.imageName}`}
@@ -123,9 +123,8 @@ export const Tabs = ({
           <button
             key={tab.id}
             onClick={() => handleTabChange(tab.id)}
-            className={`flex flex-col items-center sm:text-xl text-md px-1 pb-[2px] ${
-              tab.id === currentTab ? activeTabClassName : tabClassName
-            }`}
+            className={`flex flex-col items-center sm:text-xl text-md px-1 pb-[2px] ${tab.id === currentTab ? activeTabClassName : tabClassName
+              }`}
           >
             {tab.title}
           </button>

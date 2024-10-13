@@ -19,7 +19,7 @@ export const work = [
   {
     name: "Empire Life",
     position: "Software Developer (Part-Time)",
-    desc: "After my summer term at Empire Life, I have accepted an offer to work part time to help make their services more accessible and compliant for AODA.",
+    desc: "As a part-time Software Developer at Empire Life, I contribute to enhancing the accessibility and compliance of their main website, focusing on AODA standards. I work with Pantheon, CI/CD pipelines, PHP, Drupal, DDEV, and Docker to streamline development and ensure scalable solutions. My role includes collaborating with the web development team to implement best practices, improve user experience, and make services more accessible to all users.",
     link: "https://www.empire.ca/",
     image: "empire_icon",
     time: "[ Fall 2024 ]"
@@ -27,7 +27,7 @@ export const work = [
   {
     name: "Empire Life",
     position: "Student Software Developer",
-    desc: "During my summer term at Empire Life, I developed a technology adoption tool that streamlines the onboarding of emerging technologies through full stack development with React, FastAPI, Auth0, Firebase, and GCP.  I was responsible for planning, designing, implementing, and testing (in that order) new features based on user feedback. Additionally, I maintained a robust production database, designed new API endpoints, and managing deployments to ensure the service was healthy and scalable. My work required constant collaboration with other developers, and leveraging a variety of DevOps tools for CI/CD. During my term, my most notable task would have been my Jira REST API integration to the service I was developing, which streamlined tracking reported technologies with Atlassian management tools.",
+    desc: "During my summer term at Empire Life, I developed a technology adoption tool that streamlines the onboarding of emerging technologies through full stack development with React, FastAPI, Auth0, Firebase, and GCP.  I was responsible for planning, designing, implementing, and testing (in that order) new features based on user feedback. Additionally, I maintained a robust production database, designed new API endpoints, and managed deployments to ensure the service was healthy and scalable. My work required constant collaboration with other developers and leveraging various DevOps tools for CI/CD. My most notable task during my term would have been my Jira REST API integration to the service I was developing, which streamlined tracking reported technologies with Atlassian management tools.",
     link: "https://www.empire.ca/",
     image: "empire_icon",
     time: "[ Summer 2024 ]"
@@ -35,7 +35,7 @@ export const work = [
   {
     name: "360insights",
     position: "Junior Data Scientist",
-    desc: "As a data scientist at 360insights, my role was centered around improving predictive modelling and customer satisfaction, through numerous Python libraries focused on natural language processing and time series forecasting. I worked in a move-fast and break-things environment, where trying new things and innovating without fear of failure was the top priority. I was responsible for researching new time series forecasting models and techniques, testing their implementations, and deploying them to end users to help predict consumer rebates. At the end of my term, I worked on an NLP project using K-Means clustering powered by their call center transcript database that identified the most common complaints from consumer feedback.",
+    desc: "As a data scientist at 360insights, my role was improving predictive modelling and customer satisfaction through numerous Python libraries focused on natural language processing and time series forecasting. I worked in a move-fast and break-things environment, where trying new things and innovating without fear of failure was the top priority. I researched new time series forecasting models and techniques, tested their implementations, and deployed them to end users to help predict consumer rebates. At the end of my term, I worked on an NLP project using K-Means clustering powered by their call center transcript database that identified the most common complaints from consumer feedback.",
     link: "https://www.360insights.com/",
     image: "insights_icon",
     time: "[ Summer 2023 ]"
@@ -43,7 +43,7 @@ export const work = [
   {
     name: "Partisans",
     position: "Studio Intern",
-    desc: "Before I learned about the world of computer science, my passion for creating things and designing led me to pursue architecture as a student intern at Partisans. Once I discovered my true passion, computer science, I left architecture behind but took with me important lessons about the principles of design that I continue to apply to my work to this day.",
+    desc: "Before I learned about computer science, my passion for creating things and designing led me to pursue architecture as a student intern at Partisans. Once I discovered my true passion, computer science, I left architecture behind. Still, I took important lessons about design principles that I continue to apply to my work.",
     link: "https://partisans.com/",
     image: "partisans_icon",
     time: "[ Summer 2018 - 2020 ]"
@@ -55,7 +55,7 @@ export const education = [
   {
     name: "Queen's University",
     position: "Computer Science",
-    desc: "As of the summer of 2024, I will be going into my fourth year of my undergraduate degree at Queen's University and will be graduating by May 2025. During my time at Queen's, I have been specializing in Cognitive Science within the faculty of computing, which is very unique learning experience that combines all of the fundamentals of computer science with linguistics and philosophy.",
+    desc: "As of the summer of 2024, I have entered the fourth and final year of my undergraduate degree at Queen's University and will graduate by May 2025. During my time at Queen's, I have specialized in Cognitive Science within the computing faculty, a unique learning experience combining all computer science fundamentals with linguistics and philosophy.",
     link: "https://www.cs.queensu.ca/undergraduate/programs/specializations/cognitive-science.php",
     image: "queens_icon",
     time: "[ 2021 - 2025 ]",
@@ -66,16 +66,40 @@ export const education = [
 export const clubs = [
   {
     name: "Project Red",
-    position: "Co-Head of Web Development",
-    desc: "During my time at Project Red, redesigned their website from the ground up to boost awareness and donations for the Heart & Stroke Foundation. I also promoted important events, including the annual Charity Fashion Show to widen participation, and through implementing online fundraising tools, I helped us get over our $200,000 fundraising goal for victims of heart disease and stroke.",
+    position: "Head of Web Development",
+    desc: "As Head of Web Development for Project Red, I orchestrate our website's design, development, and upkeep. This website promotes events like the annual Charity Fashion Show and drives donations for the Heart & Stroke Foundation. Collaborating with other club executives, I help coordinate the implementation of features supporting our fundraising goals, ensuring our platform amplifies Project Red’s mission. Through continuous collaboration and strategic planning, I drive the technical success of our online platform, supporting Project Red’s mission to make a lasting impact.",
     link: "https://www.queensprojectred.ca/",
     image: "project_red_icon",
-    time: "[ 2023 - 2025 ]"
+    time: "[ 2024 - 2025 ]"
+  },
+  {
+    name: "Project Red",
+    position: "Web Development Intern",
+    desc: "As a Web Development Intern at Project Red, I redesigned their website from the ground up to boost awareness and donations for the Heart & Stroke Foundation. I also promoted important events, including the annual Charity Fashion Show, to widen participation. By implementing online fundraising tools, I helped us exceed our $200,000 fundraising goal for heart disease and stroke victims.",
+    link: "https://www.queensprojectred.ca/",
+    image: "project_red_icon",
+    time: "[ 2023 - 2024 ]"
+  },
+  {
+    name: "QDAA",
+    position: "Project Manager",
+    desc: "As Project Manager at the Queen’s Data Analytics Association (QDAA), I lead a technical team of five developers on an autonomous driving project utilizing computer vision. My role involves coordinating project tasks, overseeing development, and ensuring the successful delivery of insights to advance autonomous driving technology.",
+    link: "https://qdaa.github.io/",
+    image: "qdaa_icon",
+    time: "[ 2024 - 2025 ]"
+  },
+  {
+    name: "QDAA",
+    position: "General Member",
+    desc: "At Queen's Data Analytics Association (QDAA), I was a general member who attended meetings and participated in learning about data science.",
+    link: "https://qdaa.github.io/",
+    image: "qdaa_icon",
+    time: "[ 2023 - 2024 ]"
   },
   {
     name: "QMIND",
     position: "Innovation Design Team",
-    desc: "In QMIND I contributed to Canada's largest undergraduate artificial intelligence and machine learning organization by creating solutions for understanding typed sentiment through ML and AI technologies. Through investigating high-level programming languages, and researching use cases of multiple models, my team developed an innovative solution for a sentiment analysis natural language processing program.",
+    desc: "In QMIND, I contributed to Canada's largest undergraduate artificial intelligence and machine learning organization by creating solutions for understanding typed sentiment through ML and AI technologies. My team developed an innovative solution for a sentiment analysis natural language processing program by investigating high-level programming languages and researching use cases of multiple models.",
     link: "https://qmind.ca/",
     image: "qmind_icon",
     time: "[ 2022 - 2023 ]"
@@ -91,23 +115,15 @@ export const clubs = [
   {
     name: "COMPSA",
     position: "Orientation Leader",
-    desc: "For the Computing Students Association, I led the computing orientation for incoming first-year students, and hosted an interactive presentation for those interested in entering the cognitive science specialization.",
+    desc: "For the Computing Students Association, I led the computing orientation for incoming first-year students and hosted an interactive presentation for those interested in entering the cognitive science specialization.",
     link: "https://research.cs.queensu.ca/home/dsc/",
     image: "compsa_icon",
     time: "[ 2022 - 2023 ]"
   },
   {
-    name: "QDAA",
-    position: "General Member",
-    desc: "At Queen's Data Analytics Association Team (QDAA), I was a general member who would attend meetings and participate in learning about data science.",
-    link: "https://qdaa.github.io/",
-    image: "qdaa_icon",
-    time: "[ 2023 - 2024 ]"
-  },
-  {
     name: "QFSF",
     position: "Student Model",
-    desc: "For Queen's For Sustainable Fashion (QFSF), I was student model (true story) who would participate in photoshoots to help promote sustainable fashion and minimizing rampant consumerism.",
+    desc: "For Queen's For Sustainable Fashion (QFSF), I was a student model (true story) who would participate in photoshoots to help promote sustainable fashion and minimize rampant consumerism.",
     link: "https://qsf340.wixsite.com/qfsf",
     image: "qfsf_icon",
     time: "[ 2023 - 2024 ]"
@@ -214,59 +230,70 @@ export const projects = [
     githubLink: "https://github.com/hvenry/henry-vendittelli-portfolio",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     description:
-      "This portfolio website that you are currently reading about was built with Next.js, TypeScript, and Tailwind CSS from the ground up with no template. This website was developed iteratively with constant feedback from peers and other people in the industry, which is why it has an extensive version history. \n My portfolio is hosted on Vercel, which excels in deployment due to its seamless integration with Next.js, automatic HTTPS, serverless architecture, and was also selected because it costs a grand total of zero dollars to use. This choice ensures fast, reliable performance, easy scalability, and makes my wallet happy. \n The website features both light and dark modes for enhanced accessibility, a responsive design using Tailwind CSS that looks seamless on any device, and exemplifies my attention to detail and commitment to a high-quality user experience.",
+      "This portfolio website you are currently reading about was built with Next.js, TypeScript, and Tailwind CSS from the ground up with no template. This website was developed iteratively with constant feedback from peers and other people in the industry, which is why it has an extensive version history. \n My portfolio is hosted on Vercel, which excels in deployment due to its seamless integration with Next.js, automatic HTTPS, and serverless architecture. It was also selected because it costs a grand total of zero dollars to use. This choice ensures fast, reliable performance and easy scalability, making my wallet happy. \n, The website features light and dark modes for enhanced accessibility, a responsive design using Tailwind CSS that looks seamless on any device and exemplifies my attention to detail and commitment to a high-quality user experience.",
     smallDescription:
       "Responsive portfolio using Next.js, TypeScript, and Tailwind CSS with Vercel hosting for seamless deployment and accessibility.",
     imageName: "portfolio_project.png"
   },
   {
-    title: "Sentiment NLP",
+    title: "Simple Shell",
     id: "2",
+    bodyTitle: "Simple C Shell",
+    githubLink: "https://github.com/hvenry/simple-c-shell",
+    technologies: ["C", "Unix", "Makefile"],
+    description:
+      "The Simple C Shell is a command-line shell program developed in C to explore the essential workings of shell environments. It supports several built-in commands, including $cd for changing directories, $help for displaying command information, $exit to terminate the session, and $history to review previously executed commands in the current session. Additionally, this shell allows for executing external commands available within the system's PATH, such as $ls, $pwd, and $echo. \n\n This project is based on Stephen Brennan's lsh and serves as an educational tool to demonstrate the primary loop in a shell program, which involves reading, parsing, and executing commands. The shell emphasizes fundamental shell operations and provides insights into how command-line interfaces function at a basic level.",
+    smallDescription:
+      "A basic Unix shell built in C, supporting essential commands like cd, help, and external command execution.",
+    imageName: "simple_c_shell_project.png"
+  },
+  {
+    title: "Sentiment NLP",
+    id: "3",
     bodyTitle: "Sentiment Analysis NLP for QMIND",
     technologies: ["Python", "PyTorch", "spaCy", "NLTK", "Pandas"],
     description:
-      "For QMIND (Canada's largest undergraduate artificial intelligence and machine learning organization) I was part of an innovation design team that developed a machine learning program that could analyze sentiment from typed text using large quantities of data, and natural language processing techniques. \n During my time at QMIND, I researched use cases of multiple ML models and sourced data to develop an innovative solution for mapping sentiment to text, using a dataset of Reddit comments representing 1 of 27 emotions provided by Google. NLP techniques such as tokenization, stemming, lemmatization, and stop word removal were used to preprocess our large dataset, and that dataset was used to fine-tune an ALBERT model to classify a sentence based on which emotion is most prevalent.",
+      "For QMIND (Canada's largest undergraduate artificial intelligence and machine learning organization), I was part of an innovation design team that developed a machine learning program to analyze sentiment from typed text using large quantities of data and natural language processing techniques. \n During my time at QMIND, I researched use cases of multiple ML models and sourced data to develop an innovative solution for mapping sentiment to text, using a dataset of Reddit comments representing 1 of 27 emotions provided by Google. We used NLP techniques such as tokenization, stemming, lemmatization, and stop word removal to preprocess our large dataset. That dataset was used to fine-tune an ALBERT model to classify a sentence based on which emotion is most prevalent.",
     smallDescription:
-      "Developed NLP model for sentiment analysis using ALBERT and Reddit data to classify emotions in text."
+      "Developed NLP model for sentiment analysis using ALBERT and Reddit data to classify emotions in text.",
   },
   {
     title: "Rental Database",
-    id: "3",
+    id: "4",
     bodyTitle: "Kingston Rental Webapp",
     githubLink: "https://github.com/hvenry/kingston-rental-webapp",
     youtubeLink: "https://youtu.be/bHJxmLcjUco",
     technologies: ["MySQL", "PHP", "HTML", "CSS", "Apache"],
     description:
-      "The Kingston Rental Property Database is a web application designed to manage and display rental property listings in Kingston. \n This database was originally designed using an entity relation diagram, composed of entity types with relationships, then was implemented using a MySQL database for database implementation, PHP for server-side scripting, Apache as the web server, and HTML/CSS for the frontend interface.",
+      "The Kingston Rental Property Database is a web application designed to manage and display rental property listings in Kingston. \n This database was originally designed using an entity relation diagram composed of entity types with relationships. It was then implemented using a MySQL database for database implementation, PHP for server-side scripting, Apache as the web server, and HTML/CSS for the front-end interface.",
     smallDescription:
-      "Web app for managing rental listings using MySQL, PHP, HTMl/CSS and an Apache HTTP server.",
+      "Web app for managing rental listings using MySQL, PHP, HTML/CSS and an Apache HTTP server.",
     imageName: "rental_database_project.png"
   },
   {
     title: "C# Game",
-    id: "4",
+    id: "5",
     bodyTitle: "Bear the Animal Tosser",
     githubLink: "https://github.com/hvenry/CISC-226-GAME",
     youtubeLink: "https://youtu.be/YPBpoDEXPhQ",
     technologies: ["C#", "Unity", "Git"],
     description:
-      "Bear The Animal Tosser is an arcade-style game where players control a zookeeper named Bear who captures escaped zoo animals. The game's unique stacking mechanic lets players pick up and stack animals on their heads based on weight, requiring strategic planning and a LIFO mindset. \n Developed in C#, the game uses principles such as state machines for animal behaviour and physics-based collision systems. The focus of this project was to build a minimal viable product with the core novel mechanics from user feedback, before expanding with optional features like power-ups and cosmetics. \n The core gameplay revolved around the stacking mechanic, so players would have to strategically stack and throw animals into pens based on location, time remaining, and the animal's weight constraints. The game features a charming 2D pixel art aesthetic with a cartoony and humorous tone, created from original assets, and maps with diverse zoo settings worldwide.",
+      "Bear The Animal Tosser is an arcade-style game where players control a zookeeper named Bear, who captures escaped zoo animals. The game's unique stacking mechanic lets players pick up and stack animals on their heads based on weight, requiring strategic planning and a LIFO mindset. \n Developed in C#, the game uses principles such as state machines for animal behaviour and physics-based collision systems. This project aimed to build a minimal viable product with the core novel mechanics from user feedback before expanding with optional features like power-ups and cosmetics. \n The core gameplay revolved around the stacking mechanic, so players would have to strategically stack and throw animals into pens based on location, time remaining, and the animal's weight constraints. The game features a charming 2D-pixel art aesthetic with a cartoony and humorous tone, created from original assets and maps with diverse zoo settings worldwide.",
     smallDescription:
-      "Arcade game developed in C# and Unity, featuring a unique animal stacking mechanic and 2D pixel art.",
+      "Arcade game developed in C# and Unity, featuring a unique animal stacking mechanic and 2D-pixel art",
     imageName: "bear_project.png"
   },
   {
     title: "Parking App",
-    id: "5",
+    id: "6",
     bodyTitle: "parkQu",
     youtubeLink: "https://youtu.be/3u5slpDZprw",
     technologies: ["Figma"],
     description:
-      "ParkQu is a parking app designed for university students at Queen's University to successfully address and reduce the challenges faced by those who lack parking passes. Through user-centred design principles and conducting multiple interviews, we identified an issue and user group to tailor a service that would accommodate their needs. \n Utilizing Figma for high-fidelity prototyping and iterative testing, parkQu delivers an innovative solution that allows students to book parking spots near campus through people who have access to extra parking on their properties, similar to how Airbnb operates, but instead of people listing their homes, they are instead listing their driveways, parking lots, or dirt roads-basically any piece of private property that a car can park in. \n The project shows how to plan and deliver large-scale applications that tackle a niche problem, by incorporating user feedback and iterative prototyping to have a user-centred app that does not stray away from its original mission statement.",
-    smallDescription:
-      "Parking app for students to book spots near campus, iteratively designed using user feedback.",
+      "ParkQu is a parking app designed for university students at Queen's University to successfully address and reduce the challenges faced by those who lack parking passes. Through user-centred design principles and conducting multiple interviews, we identified an issue and user group to tailor a service that would accommodate their needs. \n Utilizing Figma for high-fidelity prototyping and iterative testing, parkQu delivers an innovative solution that allows students to book parking spots near campus through people with access to extra parking on their properties, similar to how Airbnb operates. Still, instead of people listing their homes, they list their driveways, parking lots, dirt roads, and any piece of private property that a car can park. \n The project shows how to plan and deliver large-scale applications that tackle a niche problem by incorporating user feedback and iterative prototyping to have a user-centred app that does not stray from its original mission statement.",
+    smallDescription: " Parking app for students to book spots near campus, iteratively designed using user feedback",
     imageName: "parkqu_project.png"
-  }
+  },
 ];
 
 // VIDEOS (for ytpreview)
