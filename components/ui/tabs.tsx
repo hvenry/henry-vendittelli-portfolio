@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FaGithubSquare, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
+import { MdArrowRight, MdArrowLeft } from "react-icons/md";
 
 type Tab = {
   title: string;
@@ -33,6 +34,33 @@ export const Tabs = ({
   const pathname = usePathname();
   const initialTab = pathname.split("/").pop() || activeTab;
   const [currentTab, setCurrentTab] = useState(initialTab);
+
+  // Reference for the scrollable container
+  const tabContainerRef = useRef<HTMLDivElement>(null);
+
+  // Save scroll position on tab container scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (tabContainerRef.current) {
+        localStorage.setItem("tabScrollPosition", tabContainerRef.current.scrollLeft.toString());
+      }
+    };
+
+    const tabContainer = tabContainerRef.current;
+    tabContainer?.addEventListener("scroll", handleScroll);
+
+    return () => {
+      tabContainer?.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Restore scroll position on component mount
+  useEffect(() => {
+    const savedScrollPosition = localStorage.getItem("tabScrollPosition");
+    if (tabContainerRef.current && savedScrollPosition) {
+      tabContainerRef.current.scrollLeft = parseInt(savedScrollPosition, 10);
+    }
+  }, []);
 
   // Update URL and scroll to top
   useEffect(() => {
@@ -94,41 +122,75 @@ export const Tabs = ({
       </div>
       {/* Info */}
       <div className="text-sm sm:text-lg font-mono text-primary-2 text-justify flex flex-col gap-4">
+        {tab.imageName && (
+          <div className="flex justify-center">
+            <Image
+              src={`/assets/images/projects/${tab.imageName}`}
+              alt={tab.title}
+              width={1000}
+              height={500}
+              className="bg-reversed w-full sm:w-3/4 mb-2 border border-primary h-auto rounded-sm"
+              priority
+              placeholder="blur"
+              blurDataURL={`/assets/images/projects/placeholder-${tab.imageName}`}
+            />
+          </div>
+        )}
         {tab.description.split("\n").map((line, index) => (
           <p key={`desc-${index}`}>{line}</p>
         ))}
       </div>
-      {tab.imageName && (
-        <div className="flex justify-center">
-          <Image
-            src={`/assets/images/projects/${tab.imageName}`}
-            alt={tab.title}
-            width={1000}
-            height={500}
-            className="bg-reversed w-full sm:w-3/4 mb-2 sm:my-4 border border-primary h-auto rounded-sm"
-            priority
-            placeholder="blur"
-            blurDataURL={`/assets/images/projects/placeholder-${tab.imageName}`}
-          />
-        </div>
-      )}
     </div>
   );
 
+  // Scroll functionality for holding down the arrow buttons
+  const scrollInterval = useRef<ReturnType<typeof setInterval> | null>(null);
+  const startScrolling = (direction: "left" | "right") => {
+    // Scroll 8px per interval
+    const scrollAmount = direction === "left" ? -8 : 8;
+    scrollInterval.current = setInterval(() => {
+      if (tabContainerRef.current) {
+        tabContainerRef.current.scrollLeft += scrollAmount;
+      }
+    }, 16); // About 60fps
+  };
+
+  const stopScrolling = () => {
+    if (scrollInterval.current) {
+      clearInterval(scrollInterval.current);
+    }
+  };
   return (
     <>
-      {/* Tab */}
-      <div className="w-full flex flex-wrap justify-center gap-4 mb-4">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => handleTabChange(tab.id)}
-            className={`flex flex-col items-center sm:text-xl text-md px-1 pb-[2px] ${tab.id === currentTab ? activeTabClassName : tabClassName
-              }`}
-          >
-            {tab.title}
-          </button>
-        ))}
+      {/* Scroll prompt and arrows */}
+      <div className="flex mb-4">
+        <MdArrowLeft
+          className="cursor-pointer size-10"
+          onMouseDown={() => startScrolling("left")}
+          onMouseUp={stopScrolling}
+          onMouseLeave={stopScrolling}
+        />
+        <div
+          ref={tabContainerRef}
+          className="border border-primary border-t-0 border-b-0 border-l-1 border-r-1 w-full flex overflow-x-auto scrollbar-hide"
+        >
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => handleTabChange(tab.id)}
+              className={`flex-shrink-0 sm:text-xl text-md px-2 mx-2 ${tab.id === currentTab ? activeTabClassName : tabClassName
+                }`}
+            >
+              {tab.title}
+            </button>
+          ))}
+        </div>
+        <MdArrowRight
+          className="cursor-pointer size-10"
+          onMouseDown={() => startScrolling("right")}
+          onMouseUp={stopScrolling}
+          onMouseLeave={stopScrolling}
+        />
       </div>
       {/* Tab content */}
       {tabs
