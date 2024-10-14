@@ -89,7 +89,7 @@ export default function Page() {
         {""} Demos
       </p>
       {/* <YtPreview /> */}
-      <ProjectsGrid projectIds={["5", "3", "4"]} />
+      <ProjectsGrid projectIds={["6", "4", "5"]} />
     </main>
   );
 }
