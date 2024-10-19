@@ -61,7 +61,6 @@ export default function Page() {
                 A Handbook of Agile Software Craftsmanship
               </p>
               <p className="text-md text-primary-2">By: Robert C. Martin</p>
-              <p className="text-md text-gray-500">98/411</p>
             </div>
             <div className="flex justify-center items-center">
               <Image
