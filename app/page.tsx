@@ -1,5 +1,4 @@
 import Image from "next/image";
-import rock_icon from "@/public/assets/images/icons/rock_icon.png";
 import ExperienceInfo from "@/components/ui/ExperienceInfo";
 import { work } from "@/data";
 import { intro } from "@/data";
@@ -8,6 +7,7 @@ import Socials from "@/components/ui/Socials";
 import Link from "next/link";
 import ProjectsGrid from "@/components/ProjectsGrid";
 import headshot from "@/public/assets/images/headshot.jpeg";
+import RockLink from "@/components/ui/RockLink"
 
 export const metadata = {
   title: "Hello! 👋 - henryvendittelli.com",
@@ -47,11 +47,7 @@ export default function Page() {
           <div>
             <div className="flex flex-col sm:flex-row sm:items-end sm:gap-4 sm:pb-4">
               <div className="flex items-end gap-2">
-                <Image
-                  src={rock_icon}
-                  alt="Icon"
-                  className="size-5 sm:size-8"
-                />
+                <RockLink />
                 <p className="sm:text-3xl text-lg">Henry Vendittelli</p>
               </div>
               <p className="sm:text-xl text-md text-gray-500">21 (he/him)</p>
