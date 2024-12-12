@@ -7,7 +7,7 @@ import Socials from "@/components/ui/Socials";
 import Link from "next/link";
 import ProjectsGrid from "@/components/projects/ProjectsGrid";
 import headshot from "@/public/assets/images/headshot.jpeg";
-import RockLink from "@/components/ui/RockLink"
+import RockLink from "@/components/ui/RockLink";
 
 export const metadata = {
   title: "Hello! 👋 - henryvendittelli.com",
@@ -84,7 +84,9 @@ export default function Page() {
         </Link>
         {""} Demos
       </p>
-      <ProjectsGrid projectSlugs={['parking-app', 'rental-database', 'c-game']} />
+      <ProjectsGrid
+        projectSlugs={["parking-app", "rental-database", "c-game"]}
+      />
     </main>
   );
 }

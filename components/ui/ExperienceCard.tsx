@@ -33,12 +33,12 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
   // Group experiences by 'name'
   const groupedExperiences = info
     ? info.reduce((acc: Record<string, Experience[]>, experience) => {
-      if (!acc[experience.name]) {
-        acc[experience.name] = [];
-      }
-      acc[experience.name].push(experience);
-      return acc;
-    }, {})
+        if (!acc[experience.name]) {
+          acc[experience.name] = [];
+        }
+        acc[experience.name].push(experience);
+        return acc;
+      }, {})
     : {};
 
   if (!mounted || !info) {
@@ -54,9 +54,19 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
               </div>
               <Skeleton height={20} width={100} className="skeleton" />
             </div>
-            <Skeleton height={15} width={"100%"} count={5} className="skeleton" />
+            <Skeleton
+              height={15}
+              width={"100%"}
+              count={5}
+              className="skeleton"
+            />
             <div className="sm:hidden">
-              <Skeleton height={15} width={"100%"} count={5} className="skeleton" />
+              <Skeleton
+                height={15}
+                width={"100%"}
+                count={5}
+                className="skeleton"
+              />
             </div>
             <Skeleton height={15} width={"40%"} className="skeleton" />
             <div className="mt-1 flex justify-end">

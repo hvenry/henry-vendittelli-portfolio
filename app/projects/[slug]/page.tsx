@@ -10,7 +10,9 @@ type Params = {
 
 export async function generateMetadata({ params }: { params: Params }) {
   const { slug } = params;
-  const currentTab = projects.find((project) => slugify(project.title) === slug);
+  const currentTab = projects.find(
+    (project) => slugify(project.title) === slug
+  );
 
   const title = currentTab
     ? `${currentTab.title} Project - henryvendittelli.com`

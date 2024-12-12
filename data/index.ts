@@ -252,7 +252,7 @@ export const projects = [
     description:
       "For QMIND (Canada's largest undergraduate artificial intelligence and machine learning organization), I was part of an innovation design team that developed a machine learning program to analyze sentiment from typed text using large quantities of data and natural language processing techniques. \n During my time at QMIND, I researched use cases of multiple ML models and sourced data to develop an innovative solution for mapping sentiment to text, using a dataset of Reddit comments representing 1 of 27 emotions provided by Google. We used NLP techniques such as tokenization, stemming, lemmatization, and stop word removal to preprocess our large dataset. That dataset was used to fine-tune an ALBERT model to classify a sentence based on which emotion is most prevalent.",
     smallDescription:
-      "Developed NLP model for sentiment analysis using ALBERT and Reddit data to classify emotions in text.",
+      "Developed NLP model for sentiment analysis using ALBERT and Reddit data to classify emotions in text."
   },
   {
     title: "Rental Database",
@@ -285,7 +285,8 @@ export const projects = [
     technologies: ["Figma"],
     description:
       "ParkQu is a parking app designed for university students at Queen's University to successfully address and reduce the challenges faced by those who lack parking passes. Through user-centred design principles and conducting multiple interviews, we identified an issue and user group to tailor a service that would accommodate their needs. \n Utilizing Figma for high-fidelity prototyping and iterative testing, parkQu delivers an innovative solution that allows students to book parking spots near campus through people with access to extra parking on their properties, similar to how Airbnb operates. Still, instead of people listing their homes, they list their driveways, parking lots, dirt roads, and any piece of private property that a car can park. \n The project shows how to plan and deliver large-scale applications that tackle a niche problem by incorporating user feedback and iterative prototyping to have a user-centred app that does not stray from its original mission statement.",
-    smallDescription: " Parking app for students to book spots near campus, iteratively designed using user feedback.",
+    smallDescription:
+      " Parking app for students to book spots near campus, iteratively designed using user feedback.",
     imageName: "parkqu_project.png"
-  },
+  }
 ];

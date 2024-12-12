@@ -1,2 +1,2 @@
-export { ProjectTabs } from './ProjectTabs';
-export type { ProjectTabsProps, Tab } from './ProjectTabs.types';
+export { ProjectTabs } from "./ProjectTabs";
+export type { ProjectTabsProps, Tab } from "./ProjectTabs.types";

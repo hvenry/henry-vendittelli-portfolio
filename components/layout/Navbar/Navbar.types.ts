@@ -1,6 +1,6 @@
 export interface NavbarProps {
-    navItems: {
-      name: string;
-      path: string;
-    }[];
-  }
+  navItems: {
+    name: string;
+    path: string;
+  }[];
+}

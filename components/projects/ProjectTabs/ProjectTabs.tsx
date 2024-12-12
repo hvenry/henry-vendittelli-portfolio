@@ -24,7 +24,10 @@ export const ProjectTabs = ({
   useEffect(() => {
     const handleScroll = () => {
       if (tabContainerRef.current) {
-        localStorage.setItem("tabScrollPosition", tabContainerRef.current.scrollLeft.toString());
+        localStorage.setItem(
+          "tabScrollPosition",
+          tabContainerRef.current.scrollLeft.toString()
+        );
       }
     };
 
@@ -159,8 +162,8 @@ export const ProjectTabs = ({
               key={slugify(tab.title)}
               onClick={() => handleTabChange(tab)}
               className={`flex-shrink-0 sm:text-xl text-md px-2 mx-2 ${
-                slugify(tab.title) === currentSlug 
-                  ? activeTabClassName 
+                slugify(tab.title) === currentSlug
+                  ? activeTabClassName
                   : tabClassName
               }`}
             >
