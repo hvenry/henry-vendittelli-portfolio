@@ -19,7 +19,7 @@ interface ExperienceProps {
   info: Experience[] | null;
 }
 
-const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
+const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -137,4 +137,4 @@ const ExperienceInfo: React.FC<ExperienceProps> = ({ info }) => {
   );
 };
 
-export default ExperienceInfo;
+export default ExperienceCard;

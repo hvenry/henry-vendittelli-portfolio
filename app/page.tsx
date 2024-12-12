@@ -1,11 +1,11 @@
 import Image from "next/image";
-import ExperienceInfo from "@/components/ui/ExperienceInfo";
+import ExperienceCard from "@/components/ui/ExperienceCard";
 import { work } from "@/data";
 import { intro } from "@/data";
 import Skills from "@/components/ui/Skills";
 import Socials from "@/components/ui/Socials";
 import Link from "next/link";
-import ProjectsGrid from "@/components/ProjectsGrid";
+import ProjectsGrid from "@/components/projects/ProjectsGrid";
 import headshot from "@/public/assets/images/headshot.jpeg";
 import RockLink from "@/components/ui/RockLink"
 
@@ -70,7 +70,7 @@ export default function Page() {
       <p className="mt-12 mb-4 sm:text-4xl text-3xl font-bold">
         Work Experience
       </p>
-      <ExperienceInfo info={work} />
+      <ExperienceCard info={work} />
       {/* skills */}
       <p className="mt-12 mb-6 sm:text-4xl text-3xl font-bold">
         Technologies I Work With
@@ -84,7 +84,6 @@ export default function Page() {
         </Link>
         {""} Demos
       </p>
-      {/* <YtPreview /> */}
       <ProjectsGrid projectSlugs={['parking-app', 'rental-database', 'c-game']} />
     </main>
   );

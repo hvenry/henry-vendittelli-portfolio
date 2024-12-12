@@ -7,15 +7,9 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { useTheme } from "next-themes";
+import { NavbarProps } from "./Navbar.types";
 
-export const Navbar = ({
-  navItems
-}: {
-  navItems: {
-    name: string;
-    path: string;
-  }[];
-}) => {
+export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);

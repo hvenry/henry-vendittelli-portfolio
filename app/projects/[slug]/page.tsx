@@ -1,20 +1,12 @@
-import { EvervaultCard } from "@/components/ui/evervault-card";
+import { FancyCard } from "@/components/ui/FancyCard";
 import { IoHammerSharp } from "react-icons/io5";
-import { Tabs } from "@/components/ui/tabs";
+import { ProjectTabs } from "@/components/projects/ProjectTabs";
 import { projects } from "@/data";
+import { slugify } from "@/utils/string";
 
-// Utility function for generating slugs
-const slugify = (text: string): string => {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .trim();
-};
-
-interface Params {
+type Params = {
   slug: string;
-}
+};
 
 export async function generateMetadata({ params }: { params: Params }) {
   const { slug } = params;
@@ -36,21 +28,20 @@ export async function generateMetadata({ params }: { params: Params }) {
 
 export default function ProjectsPage({ params }: { params: Params }) {
   const tabs = projects;
-  // Default to first project's slug if no tab is specified
   const initialTab = params.slug || slugify(projects[0].title);
 
   return (
     <main className="px-2 gap-4 sm:gap-8 w-full h-full flex flex-col items-center justify-center">
       <div className="w-full sm:w-4/5 h-1/5 sm:h-1/4">
-        <EvervaultCard className="border border-primary">
+        <FancyCard className="border border-primary">
           <div className="text-3xl text-white flex justify-center p-2 gap-2 items-center backdrop-blur-sm">
             <IoHammerSharp size={30} />
             <span>My Projects</span>
           </div>
-        </EvervaultCard>
+        </FancyCard>
       </div>
       <div className="w-full sm:w-4/5 mb-4">
-        <Tabs
+        <ProjectTabs
           tabs={tabs}
           activeTab={initialTab}
           tabClassName="border hover:text-blue-300 border-transparent border-l-0 border-r-0"

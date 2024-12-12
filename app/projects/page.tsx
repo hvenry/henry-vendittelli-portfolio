@@ -3,15 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { projects } from "@/data";
-
-// Utility function for generating slugs
-const slugify = (text: string): string => {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .trim();
-};
+import { slugify } from "@/utils/string";
 
 export default function ProjectsPage() {
   const router = useRouter();

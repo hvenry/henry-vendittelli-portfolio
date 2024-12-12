@@ -1,21 +1,11 @@
+import React from "react";
 import Image from "next/image";
 import { FaYoutube } from "react-icons/fa";
 import { projects } from "@/data";
-
-const slugify = (text: string): string => {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .trim();
-};
-
-interface ProjectGridProps {
-  projectSlugs: string[]; // Changed from projectIds
-}
+import { slugify } from "@/utils/string";
+import { ProjectGridProps } from "./ProjectsGrid.types";
 
 const ProjectsGrid: React.FC<ProjectGridProps> = ({ projectSlugs }) => {
-  // Filter and sort projects based on the order of projectSlugs
   const selectedProjects = projectSlugs
     .map((slug) => projects.find((project) => slugify(project.title) === slug))
     .filter((project) => project !== undefined) as typeof projects;

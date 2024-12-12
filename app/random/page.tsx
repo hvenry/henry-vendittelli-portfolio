@@ -1,7 +1,7 @@
 import { LiaRandomSolid } from "react-icons/lia";
 import { setup, mac_software } from "@/data";
 import Image from "next/image";
-import { CollapsibleTab } from "@/components/ui/CollapsibleTab"; // Import your new Tab component
+import { CollapsibleTab } from "@/components/ui/CollapsibleTab";
 
 export const metadata = {
   title: "Random - henryvendittelli.com",

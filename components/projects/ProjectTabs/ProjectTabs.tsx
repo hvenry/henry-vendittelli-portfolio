@@ -5,39 +5,15 @@ import { FaGithubSquare, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { MdArrowRight, MdArrowLeft } from "react-icons/md";
+import { slugify } from "@/utils/string";
+import { Tab, ProjectTabsProps } from "./ProjectTabs.types";
 
-// slug generation
-const slugify = (text: string): string => {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .trim();
-};
-
-type Tab = {
-  title: string;
-  bodyTitle?: string;
-  githubLink?: string;
-  youtubeLink?: string;
-  technologies?: string[];
-  description: string;
-  imageName?: string;
-};
-
-interface TabsProps {
-  tabs: Tab[];
-  activeTabClassName?: string;
-  tabClassName?: string;
-  activeTab: string;
-}
-
-export const Tabs = ({
+export const ProjectTabs = ({
   tabs,
   activeTabClassName,
   tabClassName,
   activeTab
-}: TabsProps) => {
+}: ProjectTabsProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const initialSlug = pathname.split("/").pop() || slugify(activeTab);
@@ -150,7 +126,6 @@ export const Tabs = ({
   // Scroll functionality for holding down the arrow buttons
   const scrollInterval = useRef<ReturnType<typeof setInterval> | null>(null);
   const startScrolling = (direction: "left" | "right") => {
-    // Scroll 8px per interval
     const scrollAmount = direction === "left" ? -8 : 8;
     scrollInterval.current = setInterval(() => {
       if (tabContainerRef.current) {
@@ -164,6 +139,7 @@ export const Tabs = ({
       clearInterval(scrollInterval.current);
     }
   };
+
   return (
     <>
       {/* Scroll prompt and arrows */}

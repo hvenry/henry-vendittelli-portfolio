@@ -19,7 +19,7 @@ const RotatingRock = () => {
 
   useFrame(() => {
     if (rockRef.current) {
-      rockRef.current.rotation.y += 0.005; // Adjust rotation speed here
+      rockRef.current.rotation.y += 0.005;
     }
   });
 
