@@ -2,7 +2,7 @@ import { BiInfoSquare } from "react-icons/bi";
 import Link from "next/link";
 import { clubs } from "@/data";
 import { education } from "@/data";
-import ExperienceInfo from "@/components/ui/ExperienceInfo";
+import ExperienceCard from "@/components/ui/ExperienceCard";
 
 export const metadata = {
   title: "About Me - henryvendittelli.com",
@@ -32,10 +32,10 @@ export default function Page() {
       </div>
       {/* education */}
       <p className="mt-16 mb-4 text-4xl font-bold">Education</p>
-      <ExperienceInfo info={education} />
+      <ExperienceCard info={education} />
       {/* clubs */}
       <p className="mt-8 mb-4 text-4xl font-bold">Club Involvement</p>
-      <ExperienceInfo info={clubs} />
+      <ExperienceCard info={clubs} />
     </main>
   );
 }

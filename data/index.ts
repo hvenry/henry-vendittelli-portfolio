@@ -225,7 +225,6 @@ export const mac_software = [
 export const projects = [
   {
     title: "Portfolio",
-    id: "1",
     bodyTitle: "henryvendittelli.com",
     githubLink: "https://github.com/hvenry/henry-vendittelli-portfolio",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
@@ -237,7 +236,6 @@ export const projects = [
   },
   {
     title: "Simple Shell",
-    id: "2",
     bodyTitle: "Simple C Shell",
     githubLink: "https://github.com/hvenry/simple-c-shell",
     technologies: ["C", "Unix", "Makefile"],
@@ -249,17 +247,15 @@ export const projects = [
   },
   {
     title: "Sentiment NLP",
-    id: "3",
     bodyTitle: "Sentiment Analysis NLP for QMIND",
     technologies: ["Python", "PyTorch", "spaCy", "NLTK", "Pandas"],
     description:
       "For QMIND (Canada's largest undergraduate artificial intelligence and machine learning organization), I was part of an innovation design team that developed a machine learning program to analyze sentiment from typed text using large quantities of data and natural language processing techniques. \n During my time at QMIND, I researched use cases of multiple ML models and sourced data to develop an innovative solution for mapping sentiment to text, using a dataset of Reddit comments representing 1 of 27 emotions provided by Google. We used NLP techniques such as tokenization, stemming, lemmatization, and stop word removal to preprocess our large dataset. That dataset was used to fine-tune an ALBERT model to classify a sentence based on which emotion is most prevalent.",
     smallDescription:
-      "Developed NLP model for sentiment analysis using ALBERT and Reddit data to classify emotions in text.",
+      "Developed NLP model for sentiment analysis using ALBERT and Reddit data to classify emotions in text."
   },
   {
     title: "Rental Database",
-    id: "4",
     bodyTitle: "Kingston Rental Webapp",
     githubLink: "https://github.com/hvenry/kingston-rental-webapp",
     youtubeLink: "https://youtu.be/bHJxmLcjUco",
@@ -272,7 +268,6 @@ export const projects = [
   },
   {
     title: "C# Game",
-    id: "5",
     bodyTitle: "Bear the Animal Tosser",
     githubLink: "https://github.com/hvenry/CISC-226-GAME",
     youtubeLink: "https://youtu.be/YPBpoDEXPhQ",
@@ -280,40 +275,18 @@ export const projects = [
     description:
       "Bear The Animal Tosser is an arcade-style game where players control a zookeeper named Bear, who captures escaped zoo animals. The game's unique stacking mechanic lets players pick up and stack animals on their heads based on weight, requiring strategic planning and a LIFO mindset. \n Developed in C#, the game uses principles such as state machines for animal behaviour and physics-based collision systems. This project aimed to build a minimal viable product with the core novel mechanics from user feedback before expanding with optional features like power-ups and cosmetics. \n The core gameplay revolved around the stacking mechanic, so players would have to strategically stack and throw animals into pens based on location, time remaining, and the animal's weight constraints. The game features a charming 2D-pixel art aesthetic with a cartoony and humorous tone, created from original assets and maps with diverse zoo settings worldwide.",
     smallDescription:
-      "Arcade game developed in C# and Unity, featuring a unique animal stacking mechanic and 2D-pixel art",
+      "Arcade game developed in C# and Unity, featuring a unique animal stacking mechanic and 2D-pixel art.",
     imageName: "bear_project.png"
   },
   {
     title: "Parking App",
-    id: "6",
     bodyTitle: "parkQu",
     youtubeLink: "https://youtu.be/3u5slpDZprw",
     technologies: ["Figma"],
     description:
       "ParkQu is a parking app designed for university students at Queen's University to successfully address and reduce the challenges faced by those who lack parking passes. Through user-centred design principles and conducting multiple interviews, we identified an issue and user group to tailor a service that would accommodate their needs. \n Utilizing Figma for high-fidelity prototyping and iterative testing, parkQu delivers an innovative solution that allows students to book parking spots near campus through people with access to extra parking on their properties, similar to how Airbnb operates. Still, instead of people listing their homes, they list their driveways, parking lots, dirt roads, and any piece of private property that a car can park. \n The project shows how to plan and deliver large-scale applications that tackle a niche problem by incorporating user feedback and iterative prototyping to have a user-centred app that does not stray from its original mission statement.",
-    smallDescription: " Parking app for students to book spots near campus, iteratively designed using user feedback",
+    smallDescription:
+      " Parking app for students to book spots near campus, iteratively designed using user feedback.",
     imageName: "parkqu_project.png"
-  },
-];
-
-// VIDEOS (for ytpreview)
-export const videos = [
-  {
-    text: "parkqu | Parking App for University Students",
-    video:
-      "https://www.youtube.com/embed/3u5slpDZprw?si=3_ISxIoAD-RcIFKV&amp;&amp;rel=0",
-    href: "/projects/5"
-  },
-  {
-    text: "Kingston Rental Webapp | Rental Database",
-    video:
-      "https://www.youtube.com/embed/bHJxmLcjUco?si=E5Hti0SjpxpX1BF8&amp;start=7;&amp;rel=0",
-    href: "/projects/3"
-  },
-  {
-    text: "Bear the Animal Tosser | C# Game",
-    video:
-      "https://www.youtube.com/embed/YPBpoDEXPhQ?si=W0iLnaHJXuqsS2p-&amp;start=2&amp;rel=0",
-    href: "/projects/4"
   }
 ];

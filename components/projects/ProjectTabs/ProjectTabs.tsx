@@ -5,53 +5,35 @@ import { FaGithubSquare, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { MdArrowRight, MdArrowLeft } from "react-icons/md";
+import { slugify } from "@/utils/string";
+import { Tab, ProjectTabsProps } from "./ProjectTabs.types";
 
-type Tab = {
-  title: string;
-  id: string;
-  bodyTitle?: string;
-  githubLink?: string;
-  youtubeLink?: string;
-  technologies?: string[];
-  description: string;
-  imageName?: string;
-};
-
-interface TabsProps {
-  tabs: Tab[];
-  activeTabClassName?: string;
-  tabClassName?: string;
-  activeTab: string;
-}
-
-export const Tabs = ({
+export const ProjectTabs = ({
   tabs,
   activeTabClassName,
   tabClassName,
   activeTab
-}: TabsProps) => {
+}: ProjectTabsProps) => {
   const router = useRouter();
   const pathname = usePathname();
-  const initialTab = pathname.split("/").pop() || activeTab;
-  const [currentTab, setCurrentTab] = useState(initialTab);
-
-  // Reference for the scrollable container
+  const initialSlug = pathname.split("/").pop() || slugify(activeTab);
+  const [currentSlug, setCurrentSlug] = useState(initialSlug);
   const tabContainerRef = useRef<HTMLDivElement>(null);
 
   // Save scroll position on tab container scroll
   useEffect(() => {
     const handleScroll = () => {
       if (tabContainerRef.current) {
-        localStorage.setItem("tabScrollPosition", tabContainerRef.current.scrollLeft.toString());
+        localStorage.setItem(
+          "tabScrollPosition",
+          tabContainerRef.current.scrollLeft.toString()
+        );
       }
     };
 
     const tabContainer = tabContainerRef.current;
     tabContainer?.addEventListener("scroll", handleScroll);
-
-    return () => {
-      tabContainer?.removeEventListener("scroll", handleScroll);
-    };
+    return () => tabContainer?.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Restore scroll position on component mount
@@ -64,26 +46,27 @@ export const Tabs = ({
 
   // Update URL and scroll to top
   useEffect(() => {
-    if (currentTab) {
-      router.push(`/projects/${currentTab}`);
+    if (currentSlug) {
+      router.push(`/projects/${currentSlug}`);
       const activeContentElement = document.getElementById(
-        `tab-content-${currentTab}`
+        `tab-content-${currentSlug}`
       );
       if (activeContentElement) {
         activeContentElement.scrollTop = 0;
       }
     }
-  }, [currentTab, router]);
+  }, [currentSlug, router]);
 
-  const handleTabChange = (tabId: string) => {
-    setCurrentTab(tabId);
+  const handleTabChange = (tab: Tab) => {
+    const slug = slugify(tab.title);
+    setCurrentSlug(slug);
   };
 
   const renderTabContent = (tab: Tab) => (
     <div
-      key={`content-${tab.id}`} // Ensure unique key for content
+      key={`content-${slugify(tab.title)}`}
       className="flex flex-col gap-4 h-[calc(60vh-128px)] sm:h-[calc(50vh-128px)] p-4 overflow-auto border border-primary"
-      id={`tab-content-${tab.id}`}
+      id={`tab-content-${slugify(tab.title)}`}
     >
       {/* Title + Links */}
       <div className="flex items-end gap-2">
@@ -146,7 +129,6 @@ export const Tabs = ({
   // Scroll functionality for holding down the arrow buttons
   const scrollInterval = useRef<ReturnType<typeof setInterval> | null>(null);
   const startScrolling = (direction: "left" | "right") => {
-    // Scroll 8px per interval
     const scrollAmount = direction === "left" ? -8 : 8;
     scrollInterval.current = setInterval(() => {
       if (tabContainerRef.current) {
@@ -160,6 +142,7 @@ export const Tabs = ({
       clearInterval(scrollInterval.current);
     }
   };
+
   return (
     <>
       {/* Scroll prompt and arrows */}
@@ -176,10 +159,13 @@ export const Tabs = ({
         >
           {tabs.map((tab) => (
             <button
-              key={tab.id}
-              onClick={() => handleTabChange(tab.id)}
-              className={`flex-shrink-0 sm:text-xl text-md px-2 mx-2 ${tab.id === currentTab ? activeTabClassName : tabClassName
-                }`}
+              key={slugify(tab.title)}
+              onClick={() => handleTabChange(tab)}
+              className={`flex-shrink-0 sm:text-xl text-md px-2 mx-2 ${
+                slugify(tab.title) === currentSlug
+                  ? activeTabClassName
+                  : tabClassName
+              }`}
             >
               {tab.title}
             </button>
@@ -194,7 +180,7 @@ export const Tabs = ({
       </div>
       {/* Tab content */}
       {tabs
-        .filter((tab) => tab.id === currentTab)
+        .filter((tab) => slugify(tab.title) === currentSlug)
         .map((tab) => renderTabContent(tab))}
     </>
   );

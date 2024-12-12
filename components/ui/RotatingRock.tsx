@@ -19,7 +19,7 @@ const RotatingRock = () => {
 
   useFrame(() => {
     if (rockRef.current) {
-      rockRef.current.rotation.y += 0.005; // Adjust rotation speed here
+      rockRef.current.rotation.y += 0.005;
     }
   });
 
@@ -32,14 +32,9 @@ const RotatingRockCanvas = () => {
     <Canvas style={{ height: "80%", width: "100%" }}>
       <Environment preset="studio" />
       <RotatingRock />
-      <OrbitControls
-        target={[0, 0, 0]}
-        minDistance={1}
-        maxDistance={1.5}
-      />
+      <OrbitControls target={[0, 0, 0]} minDistance={1} maxDistance={1.5} />
     </Canvas>
   );
 };
 
 export default RotatingRockCanvas;
-

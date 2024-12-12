@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import rock_icon from '../../public/assets/images/icons/rock_icon.png';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import rock_icon from "../../public/assets/images/icons/rock_icon.png";
 
 export default function RockLink() {
   const [isShaking, setIsShaking] = useState(false);
@@ -11,7 +11,7 @@ export default function RockLink() {
 
   // Check localStorage on mount to see if the animation should be disabled
   useEffect(() => {
-    const clicked = localStorage.getItem('rockClicked');
+    const clicked = localStorage.getItem("rockClicked");
     if (!clicked) {
       const interval = setInterval(() => {
         setIsShaking(true);
@@ -26,7 +26,7 @@ export default function RockLink() {
 
   // Handle link click
   const handleClick = () => {
-    localStorage.setItem('rockClicked', 'true');
+    localStorage.setItem("rockClicked", "true");
     setHasClicked(true);
   };
 
@@ -35,9 +35,8 @@ export default function RockLink() {
       <Image
         src={rock_icon}
         alt="Icon"
-        className={`size-5 sm:size-8 ${!hasClicked && isShaking ? 'animate-shake' : ''}`}
+        className={`size-5 sm:size-8 ${!hasClicked && isShaking ? "animate-shake" : ""}`}
       />
     </Link>
   );
 }
-
