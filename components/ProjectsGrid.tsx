@@ -1,33 +1,38 @@
-import React from "react";
-import { FaYoutube } from "react-icons/fa";
 import Image from "next/image";
-
+import { FaYoutube } from "react-icons/fa";
 import { projects } from "@/data";
 
-type ProjectGridProps = {
-  projectIds: string[];
+const slugify = (text: string): string => {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .trim();
 };
 
-const ProjectsGrid: React.FC<ProjectGridProps> = ({ projectIds }) => {
-  // Filter and sort projects based on the order of projectIds
-  const selectedProjects = projectIds
-    .map((id) => projects.find((project) => project.id === id))
-    .filter((project) => project !== undefined) as typeof projects; // Ensure all items exist
+interface ProjectGridProps {
+  projectSlugs: string[]; // Changed from projectIds
+}
+
+const ProjectsGrid: React.FC<ProjectGridProps> = ({ projectSlugs }) => {
+  // Filter and sort projects based on the order of projectSlugs
+  const selectedProjects = projectSlugs
+    .map((slug) => projects.find((project) => slugify(project.title) === slug))
+    .filter((project) => project !== undefined) as typeof projects;
 
   return (
     <div className="w-full flex justify-center">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 sm:w-2/3 md:w-full mx-2 sm:mx-0">
         {selectedProjects.map((project) => (
           <div
-            key={project.id}
+            key={slugify(project.title)}
             className="basic-glow border transition-transform ease-in-out duration-300 transform hover:scale-105 border-primary p-4 pt-2 h-full"
           >
-            {/* title */}
             <div className="flex justify-between lg:mb-2">
               <div>
                 <a
                   className="text-blue-600 hover:text-blue-300"
-                  href={`/projects/${project.id}`}
+                  href={`/projects/${slugify(project.title)}`}
                 >
                   <p className="text-2xl lg:text-3xl">{project.title}</p>
                 </a>
@@ -51,7 +56,6 @@ const ProjectsGrid: React.FC<ProjectGridProps> = ({ projectIds }) => {
             <p className="mb-2 mt-1 text-primary-2 font-mono text-sm md:text-md lg:text-lg">
               {project.smallDescription}
             </p>
-            {/* image */}
             {project.imageName && (
               <div className="w-full items-center flex justify-center">
                 <Image

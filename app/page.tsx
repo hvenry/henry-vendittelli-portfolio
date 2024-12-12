@@ -85,7 +85,7 @@ export default function Page() {
         {""} Demos
       </p>
       {/* <YtPreview /> */}
-      <ProjectsGrid projectIds={["6", "4", "5"]} />
+      <ProjectsGrid projectSlugs={['parking-app', 'rental-database', 'c-game']} />
     </main>
   );
 }
