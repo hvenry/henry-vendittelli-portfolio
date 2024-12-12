@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { navItems } from "@/data";
-import ThemeProvider from "@/components/layout/ThemeProvider/ThemeProvider";
+import { ThemeProvider } from "next-themes";
 import ViewportHeightSetter from "@/components/layout/ViewportHeightSetter";
 import React from "react";
 import "./globals.css";
