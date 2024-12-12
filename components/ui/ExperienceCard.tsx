@@ -89,8 +89,8 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
                 <Image
                   src={getImagePath(groupedExperiences[name][0].image)}
                   alt={name}
-                  width={32}
-                  height={32}
+                  width={128}
+                  height={128}
                   className={
                     groupedExperiences[name][0].image === "partisans_icon"
                       ? theme === "light"
@@ -98,6 +98,7 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
                         : "size-9 icon-dark"
                       : "size-9"
                   }
+                  priority={true}
                 />
                 <a
                   href={groupedExperiences[name][0].link}
