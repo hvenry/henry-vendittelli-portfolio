@@ -5,7 +5,6 @@ export const navItems = [
   { name: "/projects", path: "/projects" },
   { name: "/reach-out", path: "/reach-out" }
 ];
-
 // INDEX PAGE
 export const intro = {
   intro:
@@ -229,10 +228,23 @@ export const projects = [
     githubLink: "https://github.com/hvenry/henry-vendittelli-portfolio",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     description:
-      "This portfolio website you are currently reading about was built with Next.js, TypeScript, and Tailwind CSS from the ground up with no template. This website was developed iteratively with constant feedback from peers and other people in the industry, which is why it has an extensive version history. \n My portfolio is hosted on Vercel, which excels in deployment due to its seamless integration with Next.js, automatic HTTPS, and serverless architecture. It was also selected because it costs a grand total of zero dollars to use. This choice ensures fast, reliable performance and easy scalability, making my wallet happy. \n The website features light and dark modes for enhanced accessibility, a responsive design using Tailwind CSS that looks seamless on any device and exemplifies my attention to detail and commitment to a high-quality user experience.",
+      "This portfolio website you are currently reading this on was built with Next.js, TypeScript, and Tailwind CSS from the ground up with no template. This website has been developed iteratively with constant feedback from peers and other people in the industry, leading to it's extensive version history. \n This portfolio is hosted on Vercel, which excels in deployment due to its seamless integration with Next.js and was also selected because it costs a grand total of zero dollars to use, allowing for easy scalability while making my wallet happy. \n The website features light and dark modes for enhanced accessibility, a responsive design using Tailwind CSS that looks seamless on any device and exemplifies my attention to detail and commitment to high-quality experiences.",
     smallDescription:
       "Responsive portfolio using Next.js, TypeScript, and Tailwind CSS with Vercel hosting for seamless deployment and accessibility.",
     imageName: "portfolio_project.png"
+  },
+  {
+    title: "RAG System",
+    bodyTitle: "Local RAG System",
+    githubLink: "https://github.com/hvenry/Local-RAG-System",
+    youtubeLink:
+      "https://www.loom.com/share/da198d42181a49499ee7a808308f3a31?sid=eb6969fb-a676-4505-84ad-0bfe38e98bc0",
+    technologies: ["Python", "Langchain", "Ollama", "Lama3.2", "FAISS"],
+    description:
+      "A local implementation of a Retrieval-Augmented Generation (RAG) pipeline using a local Llama 3.2 via Ollama. This project allows document-based question answering by integrating document loading, vector database storage, and a conversational retrieval system. \n This project was derived from a Caselaw RAG project I worked on using Harvard's Caselaw Access Project which used the OpenAI API and Pinecone. This project is an extension of it's capabilities, but takes into consideration privacy concerns by doing the augmentation locally instead of with a vector store in the cloud.",
+    smallDescription:
+      "A local RAG system that embeds PDF, CSV, and docx files for improved LLM context.",
+    imageName: "local_rag_system.png"
   },
   {
     title: "Simple Shell",
@@ -250,7 +262,7 @@ export const projects = [
     bodyTitle: "Sentiment Analysis NLP for QMIND",
     technologies: ["Python", "PyTorch", "spaCy", "NLTK", "Pandas"],
     description:
-      "For QMIND (Canada's largest undergraduate artificial intelligence and machine learning organization), I was part of an innovation design team that developed a machine learning program to analyze sentiment from typed text using large quantities of data and natural language processing techniques. \n During my time at QMIND, I researched use cases of multiple ML models and sourced data to develop an innovative solution for mapping sentiment to text, using a dataset of Reddit comments representing 1 of 27 emotions provided by Google. We used NLP techniques such as tokenization, stemming, lemmatization, and stop word removal to preprocess our large dataset. That dataset was used to fine-tune an ALBERT model to classify a sentence based on which emotion is most prevalent.",
+      "For QMIND (Canada's largest undergraduate artificial intelligence and machine learning organization), I was part of an innovation design team that developed a machine learning program to analyze sentiment from typed text using large quantities of data and natural language processing techniques. \n On the team, I researched use cases of multiple ML models and helped source data to develop an innovative solution for mapping sentiment to text by using a dataset of Reddit comments representing 1 of 27 emotions provided by Google. We used NLP techniques such as tokenization, stemming, lemmatization, and stop word removal to preprocess our dataset, then fine-tune an ALBERT model to classify a sentence based on which emotion is most prevalent.",
     smallDescription:
       "Developed NLP model for sentiment analysis using ALBERT and Reddit data to classify emotions in text."
   },
@@ -273,7 +285,7 @@ export const projects = [
     youtubeLink: "https://youtu.be/YPBpoDEXPhQ",
     technologies: ["C#", "Unity", "Git"],
     description:
-      "Bear The Animal Tosser is an arcade-style game where players control a zookeeper named Bear, who captures escaped zoo animals. The game's unique stacking mechanic lets players pick up and stack animals on their heads based on weight, requiring strategic planning and a LIFO mindset. \n Developed in C#, the game uses principles such as state machines for animal behaviour and physics-based collision systems. This project aimed to build a minimal viable product with the core novel mechanics from user feedback before expanding with optional features like power-ups and cosmetics. \n The core gameplay revolved around the stacking mechanic, so players would have to strategically stack and throw animals into pens based on location, time remaining, and the animal's weight constraints. The game features a charming 2D-pixel art aesthetic with a cartoony and humorous tone, created from original assets and maps with diverse zoo settings worldwide.",
+      "Bear The Animal Tosser is an arcade-style game where players control a zookeeper named Bear, who captures escaped zoo animals. The game's unique stacking mechanic lets players pick up and stack animals on their heads based on weight, requiring strategic planning and a LIFO mindset. \n Developed in C#, the game uses principles such as state machines for animal behavior and physics-based collision systems. This project aimed to build a minimal viable product with the core novel mechanics from user feedback before expanding with optional features like power-ups and cosmetics. \n The core gameplay revolved around the stacking mechanic, so players would have to strategically stack and throw animals into pens based on location, time remaining, and the animal's weight constraints. The game features a charming 2D-pixel art aesthetic with a cartoony and humorous tone, created from original assets and maps with diverse zoo settings worldwide.",
     smallDescription:
       "Arcade game developed in C# and Unity, featuring a unique animal stacking mechanic and 2D-pixel art.",
     imageName: "bear_project.png"

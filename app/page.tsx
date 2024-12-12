@@ -84,9 +84,7 @@ export default function Page() {
         </Link>
         {""} Demos
       </p>
-      <ProjectsGrid
-        projectSlugs={["parking-app", "rental-database", "c-game"]}
-      />
+      <ProjectsGrid projectSlugs={["parking-app", "rag-system", "c-game"]} />
     </main>
   );
 }
