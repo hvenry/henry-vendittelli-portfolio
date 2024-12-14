@@ -186,7 +186,7 @@ export const mac_software = [
   {
     name: "Raycast",
     description:
-      "Productivity software that is a spotlight search replacement. Offers fast access to applications, files, clipboard, and much more, overall just a better experience than spotlight.",
+      "Spotlight search replacement, offers fast access to applications, files, clipboard, and much more.",
     link: "https://raycast.com/",
     icon: "raycast_icon"
   },

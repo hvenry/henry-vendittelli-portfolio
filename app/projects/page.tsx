@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { projects } from "@/data";
 import { slugify } from "@/utils/string";
+import { ImSpinner2 } from "react-icons/im";
 
 export default function ProjectsPage() {
   const router = useRouter();
@@ -14,8 +15,8 @@ export default function ProjectsPage() {
   }, [router]);
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="animate-pulse">Loading Projects...</div>
+    <div className="flex h-full animate-spin items-center justify-center">
+      <ImSpinner2 />
     </div>
   );
 }
