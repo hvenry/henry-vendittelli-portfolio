@@ -226,7 +226,7 @@ export const projects = [
     title: "Portfolio",
     bodyTitle: "henryvendittelli.com",
     githubLink: "https://github.com/hvenry/henry-vendittelli-portfolio",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Auth0", "Prisma", "Neon PostgreSQL", "Vercel"],
     description:
       "This portfolio website you are currently reading this on was built with Next.js, TypeScript, and Tailwind CSS from the ground up with no template. This website has been developed iteratively with constant feedback from peers and other people in the industry, leading to it's extensive version history. \n This portfolio is hosted on Vercel, which excels in deployment due to its seamless integration with Next.js and was also selected because it costs a grand total of zero dollars to use, allowing for easy scalability while making my wallet happy. \n The website features light and dark modes for enhanced accessibility, a responsive design using Tailwind CSS that looks seamless on any device and exemplifies my attention to detail and commitment to high-quality experiences.",
     smallDescription:
