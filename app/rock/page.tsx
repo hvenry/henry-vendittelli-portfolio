@@ -52,7 +52,7 @@ export default function Page() {
     fetchComments();
   }, []);
 
-  const CHAR_LIMIT = 30;
+  const CHAR_LIMIT = 25;
 
   const handleSubmit = async () => {
     if (!user?.nickname) {
@@ -115,29 +115,29 @@ export default function Page() {
       <div className="h-2/3 w-full">
         <RotatingRockCanvas />
       </div>
-
       <AuthModal
         isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}
       />
-
       <div className="h-1/3 w-full px-4 pb-4 sm:pb-8">
-        <div className="h-full border transition-transform duration-300 ease-in-out border-primary rounded-xl basic-glow hover:scale-105 p-2 sm:p-4 grid grid-cols-2">
+        <div className="h-full border transition-transform duration-300 ease-in-out border-primary rounded-xl basic-glow hover:scale-105 p-1 sm:p-4 grid grid-cols-2 ">
           {/* Left Side - Auth & Comment Section */}
-          <div className="overflow-y-auto">
-            <div className="h-full flex flex-col justify-center border border-primary border-l-0 border-t-0 border-b-0 pr-2 sm:pr-4">
-              <div className="pb-1 sm:pb-4 flex justify-center items-center gap-1 sm:gap-2">
-                <FaGithub className="size-5 sm:size-6" />
-                <p className="text-xl sm:text-2xl font-bold">Sign my site!</p>
-              </div>
-
+          <div className="overflow-y-auto mx-auto px-2">
+            <div className="min-h-full flex flex-col justify-center">
+              {!user && (
+                <div className="pb-2 sm:pb-4 flex justify-center items-center gap-1 sm:gap-2">
+                  <FaGithub className="size-5 sm:size-6" />
+                  <p className="text-xl sm:text-2xl font-bold">Sign my site!</p>
+                </div>
+              )}
+              {/* comments */}
               {isCommentsLoading ? (
                 <div className="flex justify-center items-center h-12">
                   <ImSpinner2 className="animate-spin size-3 sm:size-5" />
                 </div>
               ) : !user ? (
                 <button
-                  className="flex justify-center items-center gap-1 sm:gap-2 w-full bg-reversed text-reversed rounded-xl h-6 sm:h-12"
+                  className="flex justify-center items-center gap-1 sm:gap-2 w-full bg-reversed text-reversed rounded-xl h-8 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105"
                   onClick={handleLogin}
                 >
                   <SiAuth0 className="size-3 sm:size-5" />
@@ -145,17 +145,18 @@ export default function Page() {
                 </button>
               ) : (
                 <>
-                  <button
-                    className="flex justify-center items-center gap-2 w-full bg-reversed text-reversed rounded-xl h-6 sm:h-12"
-                    onClick={handleLogout}
-                  >
-                    <p className="text-sm sm:text-xl">Logout</p>
-                  </button>
-
                   {hasCommented ? (
-                    <p className="h-8 sm:h-12 flex justify-center items-center text-md sm:text-xl p-2 mt-4 border border-primary">
-                      Thank you for signing!
-                    </p>
+                    <>
+                      <p className="h-8 sm:h-12 flex justify-center items-center text-sm sm:text-xl p-2 sm:p-4 mt-4 border border-primary mb-4">
+                        Thank you for signing!
+                      </p>
+                      <button
+                        className="flex justify-center items-center gap-2 w-full bg-reversed text-reversed rounded-xl h-6 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105"
+                        onClick={handleLogout}
+                      >
+                        <p className="text-sm sm:text-xl">Logout</p>
+                      </button>
+                    </>
                   ) : (
                     <div className="mt-4">
                       <div className="flex justify-between">
@@ -192,7 +193,7 @@ export default function Page() {
           </div>
 
           {/* Right Side - Comments List */}
-          <div className="overflow-y-auto overflow-x-hidden">
+          <div className="overflow-y-auto overflow-x-hidden border border-primary border-r-0 border-t-0 border-b-0">
             {isCommentsLoading ? (
               <div className="flex justify-center items-center h-full">
                 <ImSpinner2 className="animate-spin size-5 sm:size-6" />
