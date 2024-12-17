@@ -29,10 +29,10 @@ const RotatingRock = () => {
 // RotatingRockCanvas Component
 const RotatingRockCanvas = () => {
   return (
-    <Canvas style={{ height: "80%", width: "100%" }}>
+    <Canvas style={{ height: "100%", width: "100%" }}>
       <Environment preset="studio" />
       <RotatingRock />
-      <OrbitControls target={[0, 0, 0]} minDistance={1} maxDistance={1.5} />
+      <OrbitControls target={[0, 0, 0]} minDistance={1.1} maxDistance={1.1} />
     </Canvas>
   );
 };
