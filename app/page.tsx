@@ -50,7 +50,7 @@ export default function Page() {
                 <RockLink />
                 <p className="sm:text-3xl text-lg">Henry Vendittelli</p>
               </div>
-              <p className="sm:text-xl text-md text-gray-500">21 (he/him)</p>
+              <p className="sm:text-xl text-md text-gray-500">22 (he/him)</p>
             </div>
             <p className="sm:w-3/4 text-primary-1 sm:text-xl md:text-2xl text-md text-justify pb-4">
               {intro.intro}
