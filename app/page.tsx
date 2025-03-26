@@ -72,8 +72,8 @@ export default function Page() {
       </p>
       <ExperienceCard info={work} />
       {/* skills */}
-      <p className="mt-12 mb-6 sm:text-4xl text-3xl font-bold">
-        Technologies I Work With
+      <p className="mt-12 mb-4 sm:text-4xl text-3xl font-bold">
+        Technologies I Build With
       </p>
       <Skills />
       {/* project demos */}
