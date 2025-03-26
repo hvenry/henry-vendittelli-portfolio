@@ -84,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
   if (!mounted) return null;
 
   return (
-    <div className="nav-primary bg-opacity-25 w-full md:w-[calc(67vw)] lg:w-[calc(50vw)] fixed top-4 z-50 px-4 flex justify-between h-16 backdrop-blur rounded-3xl">
+    <div className="nav-primary bg-opacity-25 w-full md:w-[calc(67vw)] lg:w-[calc(50vw)] xl:w-1/3 fixed top-4 z-50 px-4 flex justify-between h-16 backdrop-blur rounded-3xl">
       {/* Home page */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
         <Link href="/" legacyBehavior>

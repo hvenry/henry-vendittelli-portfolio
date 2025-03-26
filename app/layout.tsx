@@ -41,7 +41,7 @@ export default function RootLayout({
             </div>
             {/* page content */}
             <div className="flex justify-center w-full overflow-y-auto">
-              <div className="h-[calc(var(--vh)_*100)] px-0 mx-2 sm:mx-4 sm:px-4 pt-20 w-full md:w-2/3 lg:w-1/2">
+              <div className="h-[calc(var(--vh)_*100)] px-0 mx-2 sm:mx-4 sm:px-4 pt-20 w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
                 {children}
               </div>
             </div>
