@@ -1,6 +1,6 @@
-import { FancyCard } from "@/components/ui/FancyCard";
+import { FancyCard } from "@/components/FancyCard";
 import { IoHammerSharp } from "react-icons/io5";
-import { ProjectTabs } from "@/components/projects/ProjectTabs";
+import { ProjectTab } from "@/components/ProjectTab";
 import { projects } from "@/data";
 import { slugify } from "@/utils/string";
 
@@ -43,7 +43,7 @@ export default function ProjectsPage({ params }: { params: Params }) {
         </FancyCard>
       </div>
       <div className="w-full sm:w-4/5 mb-4">
-        <ProjectTabs
+        <ProjectTab
           tabs={tabs}
           activeTab={initialTab}
           tabClassName="border hover:text-blue-300 border-transparent border-l-0 border-r-0"

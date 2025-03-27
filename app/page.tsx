@@ -1,13 +1,13 @@
 import Image from "next/image";
-import ExperienceCard from "@/components/ui/ExperienceCard";
+import ExperienceCard from "@/components/ExperienceCard";
 import { work } from "@/data";
 import { intro } from "@/data";
-import Skills from "@/components/ui/Skills";
-import Socials from "@/components/ui/Socials";
+import Skills from "@/components/Skills";
+import Socials from "@/components/Socials";
 import Link from "next/link";
-import ProjectsGrid from "@/components/projects/ProjectsGrid";
+import ProjectsGrid from "@/components/ProjectGrid";
 import headshot from "@/public/assets/images/headshot.jpeg";
-import RockLink from "@/components/ui/RockLink";
+import RockLink from "@/components/RockLink";
 
 export const metadata = {
   title: "Hello! 👋 - henryvendittelli.com",

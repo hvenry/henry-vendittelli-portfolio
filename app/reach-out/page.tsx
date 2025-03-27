@@ -1,4 +1,4 @@
-import ContactCard from "@/components/ui/ContactCard";
+import ContactCard from "@/components/ContactCard";
 
 export const metadata = {
   title: "Reach Out! - henryvendittelli.com",

@@ -1,4 +1,4 @@
-import TabsContainer from "@/components/ui/TabsContainer";
+import TabsContainer from "@/components/TabsContainer";
 import { LiaRandomSolid } from "react-icons/lia";
 
 export const metadata = {

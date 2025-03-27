@@ -6,14 +6,30 @@ import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { MdArrowRight, MdArrowLeft } from "react-icons/md";
 import { slugify } from "@/utils/string";
-import { Tab, ProjectTabsProps } from "./ProjectTabs.types";
 
-export const ProjectTabs = ({
+interface Tab {
+  title: string;
+  bodyTitle?: string;
+  githubLink?: string;
+  youtubeLink?: string;
+  technologies?: string[];
+  description: string;
+  imageName?: string;
+}
+
+interface ProjectTabProps {
+  tabs: Tab[];
+  activeTabClassName?: string;
+  tabClassName?: string;
+  activeTab: string;
+}
+
+export const ProjectTab = ({
   tabs,
   activeTabClassName,
   tabClassName,
   activeTab
-}: ProjectTabsProps) => {
+}: ProjectTabProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const initialSlug = pathname.split("/").pop() || slugify(activeTab);
@@ -114,8 +130,6 @@ export const ProjectTabs = ({
               height={500}
               className="bg-reversed w-full sm:w-3/4 mb-2 border border-primary h-auto rounded-sm"
               priority
-              placeholder="blur"
-              blurDataURL={`/assets/images/projects/placeholder-${tab.imageName}`}
             />
           </div>
         )}

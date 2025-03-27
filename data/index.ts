@@ -1,5 +1,4 @@
 export const navItems = [
-  // { name: "/blog", path: "/blog" },
   { name: "/about", path: "/about" },
   { name: "/random", path: "/random" },
   { name: "/projects", path: "/projects" },
@@ -64,22 +63,6 @@ export const education = [
 
 export const clubs = [
   {
-    name: "Project Red",
-    position: "Head of Web Development",
-    desc: "As Head of Web Development for Project Red, I orchestrate our website's design, development, and upkeep. This website promotes events like the annual Charity Fashion Show and drives donations for the Heart & Stroke Foundation. Collaborating with other club executives, I help coordinate the implementation of features supporting our fundraising goals, ensuring our platform amplifies Project Red’s mission. Through continuous collaboration and strategic planning, I drive the technical success of our online platform, supporting Project Red’s mission to make a lasting impact.",
-    link: "https://www.queensprojectred.ca/",
-    image: "project_red_icon",
-    time: "[ 2024 - 2025 ]"
-  },
-  {
-    name: "Project Red",
-    position: "Web Development Intern",
-    desc: "As a Web Development Intern at Project Red, I redesigned their website from the ground up to boost awareness and donations for the Heart & Stroke Foundation. I also promoted important events, including the annual Charity Fashion Show, to widen participation. By implementing online fundraising tools, I helped us exceed our $200,000 fundraising goal for heart disease and stroke victims.",
-    link: "https://www.queensprojectred.ca/",
-    image: "project_red_icon",
-    time: "[ 2023 - 2024 ]"
-  },
-  {
     name: "QDAA",
     position: "Project Manager",
     desc: "As Project Manager at the Queen’s Data Analytics Association (QDAA), I lead a technical team of five developers on an autonomous driving project utilizing computer vision. My role involves coordinating project tasks, overseeing development, and ensuring the successful delivery of insights to advance autonomous driving technology.",
@@ -93,6 +76,22 @@ export const clubs = [
     desc: "At Queen's Data Analytics Association (QDAA), I was a general member who attended meetings and participated in learning about data science.",
     link: "https://qdaa.github.io/",
     image: "qdaa_icon",
+    time: "[ 2023 - 2024 ]"
+  },
+  {
+    name: "Project Red",
+    position: "Head of Web Development",
+    desc: "As Head of Web Development for Project Red, I orchestrate our website's design, development, and upkeep. This website promotes events like the annual Charity Fashion Show and drives donations for the Heart & Stroke Foundation. Collaborating with other club executives, I help coordinate the implementation of features supporting our fundraising goals, ensuring our platform amplifies Project Red’s mission. Through continuous collaboration and strategic planning, I drive the technical success of our online platform, supporting Project Red’s mission to make a lasting impact.",
+    link: "https://www.queensprojectred.ca/",
+    image: "project_red_icon",
+    time: "[ 2024 - 2025 ]"
+  },
+  {
+    name: "Project Red",
+    position: "Web Development Intern",
+    desc: "As a Web Development Intern at Project Red, I redesigned their website from the ground up to boost awareness and donations for the Heart & Stroke Foundation. I also promoted important events, including the annual Charity Fashion Show, to widen participation. By implementing online fundraising tools, I helped us exceed our $200,000 fundraising goal for heart disease and stroke victims.",
+    link: "https://www.queensprojectred.ca/",
+    image: "project_red_icon",
     time: "[ 2023 - 2024 ]"
   },
   {

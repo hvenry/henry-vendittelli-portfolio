@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { setup, mac_software } from "@/data";
 import Image from "next/image";
-import { CollapsibleTab } from "@/components/ui/CollapsibleTab";
-import { ZIndexProvider } from "@/components/ui/ZIndexContext";
+import { CollapsibleTab } from "@/components/CollapsibleTab";
+import { ZIndexProvider } from "@/components/ZIndexContext";
 import { ImSpinner2 } from "react-icons/im";
 
 const getImagePath = (imageName: string) =>

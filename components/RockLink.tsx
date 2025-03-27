@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import rock_icon from "../../public/assets/images/icons/rock_icon.png";
+import rock_icon from "@/public/assets/images/icons/rock_icon.png";
 
 export default function RockLink() {
   const [isShaking, setIsShaking] = useState(false);

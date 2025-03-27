@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import RotatingRockCanvas from "@/components/ui/RotatingRock";
+import RotatingRockCanvas from "@/components/RotatingRock";
 import { SiAuth0 } from "react-icons/si";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { ImSpinner2 } from "react-icons/im";
 import { FaGithub } from "react-icons/fa";
-import AuthModal from "@/components/ui/AuthModal";
+import AuthModal from "@/components/AuthModal";
 
 type Comment = {
   id: string;

@@ -2,7 +2,7 @@ import { BiInfoSquare } from "react-icons/bi";
 import Link from "next/link";
 import { clubs } from "@/data";
 import { education } from "@/data";
-import ExperienceCard from "@/components/ui/ExperienceCard";
+import ExperienceCard from "@/components/ExperienceCard";
 
 export const metadata = {
   title: "About Me - henryvendittelli.com",

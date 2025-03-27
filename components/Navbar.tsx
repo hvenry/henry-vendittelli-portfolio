@@ -7,7 +7,13 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { useTheme } from "next-themes";
-import { NavbarProps } from "./Navbar.types";
+
+interface NavbarProps {
+  navItems: {
+    name: string;
+    path: string;
+  }[];
+}
 
 export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
   const pathname = usePathname();

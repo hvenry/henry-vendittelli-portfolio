@@ -3,9 +3,12 @@ import Image from "next/image";
 import { FaYoutube } from "react-icons/fa";
 import { projects } from "@/data";
 import { slugify } from "@/utils/string";
-import { ProjectGridProps } from "./ProjectsGrid.types";
 
-const ProjectsGrid: React.FC<ProjectGridProps> = ({ projectSlugs }) => {
+interface ProjectGridProps {
+  projectSlugs: string[];
+}
+
+const ProjectGrid: React.FC<ProjectGridProps> = ({ projectSlugs }) => {
   const selectedProjects = projectSlugs
     .map((slug) => projects.find((project) => slugify(project.title) === slug))
     .filter((project) => project !== undefined) as typeof projects;
@@ -63,4 +66,4 @@ const ProjectsGrid: React.FC<ProjectGridProps> = ({ projectSlugs }) => {
   );
 };
 
-export default ProjectsGrid;
+export default ProjectGrid;
