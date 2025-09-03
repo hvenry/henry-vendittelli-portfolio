@@ -16,16 +16,32 @@ export const intro = {
 export const work = [
   {
     name: "Empire Life",
-    position: "Software Developer (Part-Time)",
-    desc: "As a part-time Software Developer at Empire Life, I contribute to enhancing the accessibility and compliance of their main website, focusing on AODA standards. I work with Pantheon, CI/CD pipelines, PHP, Drupal, DDEV, and Docker to streamline development and ensure scalable solutions. My role includes collaborating with the web development team to implement best practices, improve user experience, and make services more accessible to all users.",
+    position: "Software Developer" ,
+    desc: "Building secure and scalable Identity & Access Management (IAM) solutions for consumer-facing applications. Leading the migration from App Engine to GitOps deployments using ArgoCD, Kubernetes, Helm, GitHub Actions, and Google Cloud for all IAM applications. Designing full-stack platforms with Django, React, TypeScript, TailwindCSS, Postgres, and Docker. Partnered with infrastructure, security, and SRE teams to release resilient applications, address vulnerabilities, and enhance monitoring across production systems.",
+    link: "https://www.empire.ca/",
+    image: "empire_icon",
+    time: "[ Fall 2025 ]"
+  },
+  {
+    name: "Empire Life",
+    position: "Identity and Access Management Analyst" ,
+    desc: "Supported the design and operation of IAM services that enabled seamless access for 350k+ users. Managed authentication and authorization workflows in Auth0, integrating platforms such as SendGrid and Twilio. Built dashboards and performed log analysis using Datadog and Sumo Logic to identify and resolve incidents. Developed scripts to streamline user data management, security investigations, and IP tracking. Transitioned into a development-focused role to continue advancing IAM capabilities at scale.",
+    link: "https://www.empire.ca/",
+    image: "empire_icon",
+    time: "[ Summer 2025 ]"
+  },
+  {
+    name: "Empire Life",
+    position: "Software Developer Intern (Part-Time)",
+    desc: "Collaborated with the UX team to enhance the accessibility and compliance of the corporate website with AODA standards. Enhanced CI/CD processes with Pantheon, Drupal, PHP, DDEV, and Docker to streamline deployments. Collaborated closely with designers and developers to improve user experience while ensuring performance, scalability, and compliance.",
     link: "https://www.empire.ca/",
     image: "empire_icon",
     time: "[ Fall 2024 ]"
   },
   {
     name: "Empire Life",
-    position: "Student Software Developer",
-    desc: "During my summer term at Empire Life, I developed a technology adoption tool that streamlines the onboarding of emerging technologies through full stack development with React, FastAPI, Auth0, Firebase, and GCP.  I was responsible for planning, designing, implementing, and testing (in that order) new features based on user feedback. Additionally, I maintained a robust production database, designed new API endpoints, and managed deployments to ensure the service was healthy and scalable. My work required constant collaboration with other developers and leveraging various DevOps tools for CI/CD. My most notable task during my term would have been my Jira REST API integration to the service I was developing, which streamlined tracking reported technologies with Atlassian management tools.",
+    position: "Software Developer Intern",
+    desc: "Developed a technology adoption platform to simplify onboarding of emerging tools, leveraging React, FastAPI, Auth0, Firebase, and GCP. Designed new API endpoints, maintained production databases, and implemented CI/CD pipelines to ensure scalable deployments. Collaborated with end users to refine features and integrated Jira’s REST API to streamline reporting and tracking workflows across the organization.",
     link: "https://www.empire.ca/",
     image: "empire_icon",
     time: "[ Summer 2024 ]"
@@ -33,7 +49,7 @@ export const work = [
   {
     name: "360insights",
     position: "Junior Data Scientist",
-    desc: "As a data scientist at 360insights, my role was improving predictive modelling and customer satisfaction through numerous Python libraries focused on natural language processing and time series forecasting. I worked in a move-fast and break-things environment, where trying new things and innovating without fear of failure was the top priority. I researched new time series forecasting models and techniques, tested their implementations, and deployed them to end users to help predict consumer rebates. At the end of my term, I worked on an NLP project using K-Means clustering powered by their call center transcript database that identified the most common complaints from consumer feedback.",
+    desc: "Researched, tested, and deployed predictive models to improve rebate forecasting and customer satisfaction. Experimented with cutting-edge time series forecasting methods and implemented solutions using Python’s data science ecosystem. Delivered an NLP project that utilized K-Means clustering on call center transcripts, identifying common customer issues and generating actionable insights for service improvement.",
     link: "https://www.360insights.com/",
     image: "insights_icon",
     time: "[ Summer 2023 ]"
@@ -53,7 +69,7 @@ export const education = [
   {
     name: "Queen's University",
     position: "Computer Science",
-    desc: "As of the summer of 2024, I have entered the fourth and final year of my undergraduate degree at Queen's University and will graduate by May 2025. During my time at Queen's, I have specialized in Cognitive Science within the computing faculty, a unique learning experience combining all computer science fundamentals with linguistics and philosophy.",
+    desc: "Graduated from Queen's University with a specialization in Cognitive Science within the Faculty of Computing, a program that combined core computer science fundamentals with insights from linguistics and philosophy.",
     link: "https://www.cs.queensu.ca/undergraduate/programs/specializations/cognitive-science.php",
     image: "queens_icon",
     time: "[ 2021 - 2025 ]",
@@ -225,7 +241,15 @@ export const projects = [
     title: "Portfolio",
     bodyTitle: "henryvendittelli.com",
     githubLink: "https://github.com/hvenry/henry-vendittelli-portfolio",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Auth0", "Prisma", "Neon PostgreSQL", "Vercel"],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Auth0",
+      "Prisma",
+      "Neon PostgreSQL",
+      "Vercel"
+    ],
     description:
       "This portfolio website you are currently reading this on was built with Next.js, TypeScript, and Tailwind CSS from the ground up with no template. This website has been developed iteratively with constant feedback from peers and other people in the industry, leading to it's extensive version history. \n This portfolio is hosted on Vercel, which excels in deployment due to its seamless integration with Next.js and was also selected because it costs a grand total of zero dollars to use, allowing for easy scalability while making my wallet happy. \n The website features light and dark modes for enhanced accessibility, a responsive design using Tailwind CSS that looks seamless on any device and exemplifies my attention to detail and commitment to high-quality experiences.",
     smallDescription:
