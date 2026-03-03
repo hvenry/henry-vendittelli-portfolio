@@ -5,10 +5,7 @@ type AuthModalProps = {
   onClose: () => void;
 };
 
-export default function AuthModal({
-  isOpen,
-  onClose
-}: AuthModalProps) {
+export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -18,7 +15,9 @@ export default function AuthModal({
           <FaGithub className="size-6" />
           Authentication Required
         </h2>
-        <p className="mb-4 text-sm sm:text-lg">Please authenticate via GitHub to leave a signature ヽ(`Д´)ﾉ </p>
+        <p className="mb-4 text-sm sm:text-lg">
+          Please authenticate via GitHub to leave a signature ヽ(`Д´)ﾉ{" "}
+        </p>
         <div className="flex justify-center gap-4 text-md sm:text-lg">
           <button
             className="px-4 py-2 border border-primary transition-transform duration-100 ease-in-out hover:scale-105"

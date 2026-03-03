@@ -93,28 +93,27 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
     <div className="nav-primary bg-opacity-25 w-full md:w-[calc(67vw)] lg:w-[calc(50vw)] xl:w-1/3 fixed top-4 z-50 px-4 flex justify-between h-16 backdrop-blur rounded-3xl">
       {/* Home page */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
-        <Link href="/" legacyBehavior>
-          <a
-            onClick={() => handleNavItemClick("/")}
-            className="text-nav text-xl font-bold hover:text-blue-300"
-          >
-            henryvendittelli.com/
-          </a>
+        <Link
+          href="/"
+          onClick={() => handleNavItemClick("/")}
+          className="text-nav text-xl font-bold hover:text-blue-300"
+        >
+          henryvendittelli.com/
         </Link>
         {/* Nav pages */}
         <div className="gap-4 flex items-center">
           {navItems.map((item, index) => (
-            <Link key={index} href={item.path} legacyBehavior>
-              <a
-                onClick={() => handleNavItemClick(item.path)}
-                className={`text-nav text-lg px-2 pb-[2px] ${
-                  activeItem === item.path
-                    ? "border border-r-0 border-l-0 border-primary"
-                    : "hover:text-blue-300"
-                }`}
-              >
-                {item.name}
-              </a>
+            <Link
+              key={index}
+              href={item.path}
+              onClick={() => handleNavItemClick(item.path)}
+              className={`text-nav text-lg px-2 pb-[2px] ${
+                activeItem === item.path
+                  ? "border border-r-0 border-l-0 border-primary"
+                  : "hover:text-blue-300"
+              }`}
+            >
+              {item.name}
             </Link>
           ))}
           {resolvedTheme === "dark" ? (
@@ -132,13 +131,12 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
       </div>
       {/* Small nav */}
       <div className="md:hidden flex w-full h-full justify-between items-center">
-        <Link href="/" legacyBehavior>
-          <a
-            onClick={() => handleNavItemClick("/")}
-            className="text-nav text-xl font-bold hover:text-blue-300"
-          >
-            henryvendittelli.com/
-          </a>
+        <Link
+          href="/"
+          onClick={() => handleNavItemClick("/")}
+          className="text-nav text-xl font-bold hover:text-blue-300"
+        >
+          henryvendittelli.com/
         </Link>
         <div className="flex items-center gap-4">
           {resolvedTheme === "dark" ? (
@@ -171,17 +169,17 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
         }`}
       >
         {navItems.map((item, index) => (
-          <Link key={index} href={item.path} legacyBehavior>
-            <a
-              onClick={() => handleNavItemClick(item.path)}
-              className={`text-nav px-3 my-1 flex justify-end h-8 text-lg ${
-                activeItem === item.path
-                  ? "border border-r-0 border-l-0 border-t-0 border-primary"
-                  : "hover:text-blue-300"
-              }`}
-            >
-              {item.name}
-            </a>
+          <Link
+            key={index}
+            href={item.path}
+            onClick={() => handleNavItemClick(item.path)}
+            className={`text-nav px-3 my-1 flex justify-end h-8 text-lg ${
+              activeItem === item.path
+                ? "border border-r-0 border-l-0 border-t-0 border-primary"
+                : "hover:text-blue-300"
+            }`}
+          >
+            {item.name}
           </Link>
         ))}
       </div>

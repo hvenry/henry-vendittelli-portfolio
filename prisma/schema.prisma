@@ -15,3 +15,15 @@ model Comment {
   content    String
   createdAt  DateTime @default(now())
 }
+
+model BlogComment {
+  id         String   @id @default(cuid())
+  postSlug   String
+  userId     String
+  name       String
+  profileUrl String
+  content    String
+  createdAt  DateTime @default(now())
+
+  @@index([postSlug])
+}

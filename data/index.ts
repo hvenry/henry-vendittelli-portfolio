@@ -1,4 +1,5 @@
 export const navItems = [
+  { name: "/blog", path: "/blog" },
   { name: "/about", path: "/about" },
   { name: "/random", path: "/random" },
   { name: "/projects", path: "/projects" },
@@ -16,7 +17,7 @@ export const intro = {
 export const work = [
   {
     name: "Empire Life",
-    position: "Software Developer" ,
+    position: "Software Developer",
     desc: "Building secure and scalable Identity & Access Management (IAM) solutions for consumer-facing applications. Leading the migration from App Engine to GitOps deployments using ArgoCD, Kubernetes, Helm, GitHub Actions, and Google Cloud for all IAM applications. Designing full-stack platforms with Django, React, TypeScript, TailwindCSS, Postgres, and Docker. Partnered with infrastructure, security, and SRE teams to release resilient applications, address vulnerabilities, and enhance monitoring across production systems.",
     link: "https://www.empire.ca/",
     image: "empire_icon",
@@ -24,7 +25,7 @@ export const work = [
   },
   {
     name: "Empire Life",
-    position: "Identity and Access Management Analyst" ,
+    position: "Identity and Access Management Analyst",
     desc: "Supported the design and operation of IAM services that enabled seamless access for 350k+ users. Managed authentication and authorization workflows in Auth0, integrating platforms such as SendGrid and Twilio. Built dashboards and performed log analysis using Datadog and Sumo Logic to identify and resolve incidents. Developed scripts to streamline user data management, security investigations, and IP tracking. Transitioned into a development-focused role to continue advancing IAM capabilities at scale.",
     link: "https://www.empire.ca/",
     image: "empire_icon",

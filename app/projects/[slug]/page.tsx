@@ -4,12 +4,12 @@ import { ProjectTab } from "@/components/ProjectTab";
 import { projects } from "@/data";
 import { slugify } from "@/utils/string";
 
-type Params = {
+type Params = Promise<{
   slug: string;
-};
+}>;
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const currentTab = projects.find(
     (project) => slugify(project.title) === slug
   );
@@ -28,9 +28,10 @@ export async function generateMetadata({ params }: { params: Params }) {
   };
 }
 
-export default function ProjectsPage({ params }: { params: Params }) {
+export default async function ProjectsPage({ params }: { params: Params }) {
+  const { slug } = await params;
   const tabs = projects;
-  const initialTab = params.slug || slugify(projects[0].title);
+  const initialTab = slug || slugify(projects[0].title);
 
   return (
     <main className="px-2 gap-4 sm:gap-8 w-full h-full flex flex-col items-center justify-center">

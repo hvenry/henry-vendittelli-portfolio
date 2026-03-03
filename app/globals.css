@@ -167,3 +167,35 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/* Increase bullet/counter contrast in light mode */
+[data-theme="light"] .prose {
+  --tw-prose-bullets: rgb(55, 65, 81);
+  --tw-prose-counters: rgb(55, 65, 81);
+}
+
+/* Remove backtick pseudo-elements and force mono font on all prose code elements */
+.prose code::before,
+.prose code::after {
+  content: "" !important;
+}
+
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    monospace !important;
+}
+
+/* Code block styling overrides */
+.prose pre,
+pre[class*="language-"],
+code[class*="language-"] {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.prose pre {
+  background: #0a0a0a !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
