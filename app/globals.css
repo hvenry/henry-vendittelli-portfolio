@@ -58,6 +58,14 @@ body {
   color: rgb(var(--text-primary-2-light));
 }
 
+/* primary background 2 (mirrors text-primary-2 palette) */
+.bg-primary-2 {
+  background-color: rgb(var(--text-primary-2-dark));
+}
+[data-theme="light"] .bg-primary-2 {
+  background-color: rgb(var(--text-primary-2-light));
+}
+
 /* borders */
 .border-primary {
   border-color: rgb(var(--white-rgb));
@@ -163,6 +171,17 @@ body {
 .scrollbar-hide {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+/* Improve link and hover contrast in light mode */
+[data-theme="light"] .text-blue-600 {
+  color: #1d4ed8; /* blue-700 — better contrast on white */
+}
+[data-theme="light"] .hover\:text-blue-300:hover {
+  color: #1e3a8a; /* blue-900 — dark, high-contrast hover */
+}
+[data-theme="light"] .hover\:text-blue-600:hover {
+  color: #1e3a8a;
 }
 
 /* Increase bullet/counter contrast in light mode */

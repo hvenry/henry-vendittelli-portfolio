@@ -15,6 +15,17 @@ export const metadata = {
     "Welcome to my portfolio! Explore my experience, projects, and hobbies. Let's connect and build something!"
 };
 
+function getAge(): number {
+  const birthDate = new Date(2003, 2, 5); // March 5, 2003
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
 function formatBodyWithLink(
   body: string,
   linkText: string,
@@ -50,14 +61,16 @@ export default function Page() {
                 <RockLink />
                 <p className="sm:text-3xl text-lg">Henry Vendittelli</p>
               </div>
-              <p className="sm:text-xl text-md text-gray-500">22 (he/him)</p>
+              <p className="sm:text-xl text-md text-primary-2">
+                {getAge()} (he/him)
+              </p>
             </div>
-            <p className="sm:w-3/4 text-primary-1 sm:text-xl md:text-2xl text-md text-justify pb-4">
+            <p className="sm:w-3/4 text-primary-1 sm:text-xl md:text-2xl text-sm text-justify pb-4">
               {intro.intro}
             </p>
           </div>
         </div>
-        <p className="sm:text-lg text-sm font-mono text-justify primary-2">
+        <p className="sm:text-md text-sm font-mono text-primary-1 ">
           {intro.description}{" "}
           {formatBodyWithLink(intro.body, "reach out", "/reach-out")}
         </p>
@@ -67,17 +80,17 @@ export default function Page() {
         <Socials />
       </div>
       {/* work experience */}
-      <p className="mt-12 mb-4 sm:text-4xl text-3xl font-bold">
+      <p className="mt-6 mb-4 sm:text-5xl text-3xl font-bold">
         Work Experience
       </p>
       <ExperienceCard info={work} />
       {/* skills */}
-      <p className="mt-12 mb-4 sm:text-4xl text-3xl font-bold">
+      <p className="mt-12 mb-4 sm:text-5xl text-3xl font-bold">
         Technologies I Build With
       </p>
       <Skills />
       {/* project demos */}
-      <p className="mt-16 mb-6 sm:text-4xl text-3xl font-bold">
+      <p className="mt-16 mb-6 sm:text-5xl text-3xl font-bold">
         Some {""}
         <Link href="/projects" className="text-blue-600 hover:text-blue-300">
           Project

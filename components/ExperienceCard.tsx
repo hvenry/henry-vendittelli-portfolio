@@ -83,7 +83,7 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
     <div className="flex flex-col gap-8">
       {Object.keys(groupedExperiences).map((name) => (
         <div key={name} className="mr-4">
-          <div className="pl-2 pr-5 pt-2 pb-4 hover:translate-x-2 transition-transform transition-border-color duration-300 ease-in-out border border-transparent hover:border-primary basic-glow">
+          <div className="pl-4 pr-6 pt-3 pb-5 hover:translate-x-2 transition-transform transition-border-color duration-300 ease-in-out border border-transparent hover:border-primary basic-glow">
             <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 gap-2">
               <div className="flex justify-center items-center gap-2">
                 <Image
@@ -112,11 +112,14 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
             </div>
             <div className="flex flex-col gap-4">
               {groupedExperiences[name].map((role, idx) => (
-                <div key={idx} className="grid grid-cols-[36px_auto]">
+                <div
+                  key={idx}
+                  className="grid grid-cols-[36px_auto] transition-transform duration-300 ease-in-out hover:scale-[1.02]"
+                >
                   {/* Position Title Bullet */}
                   <div className="flex flex-col items-center">
                     <div className="flex h-full items-center justify-center">
-                      <div className="w-[6px] h-[6px] sm:w-2 sm:h-2 bg-gray-500"></div>
+                      <div className="w-[6px] h-[6px] sm:w-2 sm:h-2 bg-primary-2"></div>
                     </div>
                   </div>
                   {/* Position Title */}
@@ -124,18 +127,18 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
                     <p className="sm:text-2xl text-md text-primary-1">
                       {role.position}
                     </p>
-                    <p className="pt-1 flex justify-end sm:text-xl text-sm text-gray-500">
+                    <p className="pt-1 flex justify-end sm:text-xl text-sm text-primary-2">
                       {role.time}
                     </p>
                   </div>
                   {/* Description Vertical Line */}
                   <div className="flex items-start justify-center">
                     {idx < groupedExperiences[name].length && (
-                      <div className="w-[2px] bg-gray-500 h-full"></div>
+                      <div className="w-[2px] bg-primary-2 h-full"></div>
                     )}
                   </div>
                   {/* Description */}
-                  <p className="lg:text-xl sm:text-lg text-xs font-mono text-justify text-primary-2">
+                  <p className="lg:text-xl sm:text-lg text-xs font-mono text-primary-2 text-justify">
                     {role.desc}
                   </p>
                 </div>

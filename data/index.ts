@@ -17,11 +17,11 @@ export const intro = {
 export const work = [
   {
     name: "Empire Life",
-    position: "Software Developer",
+    position: "Software Developer - Identity Engineer",
     desc: "Building secure and scalable Identity & Access Management (IAM) solutions for consumer-facing applications. Leading the migration from App Engine to GitOps deployments using ArgoCD, Kubernetes, Helm, GitHub Actions, and Google Cloud for all IAM applications. Designing full-stack platforms with Django, React, TypeScript, TailwindCSS, Postgres, and Docker. Partnered with infrastructure, security, and SRE teams to release resilient applications, address vulnerabilities, and enhance monitoring across production systems.",
     link: "https://www.empire.ca/",
     image: "empire_icon",
-    time: "[ Fall 2025 ]"
+    time: "[ Sept 2025 - Present ]"
   },
   {
     name: "Empire Life",
@@ -29,15 +29,7 @@ export const work = [
     desc: "Supported the design and operation of IAM services that enabled seamless access for 350k+ users. Managed authentication and authorization workflows in Auth0, integrating platforms such as SendGrid and Twilio. Built dashboards and performed log analysis using Datadog and Sumo Logic to identify and resolve incidents. Developed scripts to streamline user data management, security investigations, and IP tracking. Transitioned into a development-focused role to continue advancing IAM capabilities at scale.",
     link: "https://www.empire.ca/",
     image: "empire_icon",
-    time: "[ Summer 2025 ]"
-  },
-  {
-    name: "Empire Life",
-    position: "Software Developer Intern (Part-Time)",
-    desc: "Collaborated with the UX team to enhance the accessibility and compliance of the corporate website with AODA standards. Enhanced CI/CD processes with Pantheon, Drupal, PHP, DDEV, and Docker to streamline deployments. Collaborated closely with designers and developers to improve user experience while ensuring performance, scalability, and compliance.",
-    link: "https://www.empire.ca/",
-    image: "empire_icon",
-    time: "[ Fall 2024 ]"
+    time: "[ May - Aug 2025 ]"
   },
   {
     name: "Empire Life",
@@ -45,7 +37,7 @@ export const work = [
     desc: "Developed a technology adoption platform to simplify onboarding of emerging tools, leveraging React, FastAPI, Auth0, Firebase, and GCP. Designed new API endpoints, maintained production databases, and implemented CI/CD pipelines to ensure scalable deployments. Collaborated with end users to refine features and integrated Jira’s REST API to streamline reporting and tracking workflows across the organization.",
     link: "https://www.empire.ca/",
     image: "empire_icon",
-    time: "[ Summer 2024 ]"
+    time: "[ May - Dec 2024 ]"
   },
   {
     name: "360insights",
@@ -53,7 +45,7 @@ export const work = [
     desc: "Researched, tested, and deployed predictive models to improve rebate forecasting and customer satisfaction. Experimented with cutting-edge time series forecasting methods and implemented solutions using Python’s data science ecosystem. Delivered an NLP project that utilized K-Means clustering on call center transcripts, identifying common customer issues and generating actionable insights for service improvement.",
     link: "https://www.360insights.com/",
     image: "insights_icon",
-    time: "[ Summer 2023 ]"
+    time: "[ May - Aug 2023 ]"
   },
   {
     name: "Partisans",
