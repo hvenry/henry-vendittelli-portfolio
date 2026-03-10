@@ -2,7 +2,11 @@
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import RotatingRockCanvas from "@/components/RotatingRock";
+import dynamic from "next/dynamic";
+
+const RotatingRockCanvas = dynamic(() => import("@/components/RotatingRock"), {
+  ssr: false
+});
 import { SiAuth0 } from "react-icons/si";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { ImSpinner2 } from "react-icons/im";
