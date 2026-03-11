@@ -1,19 +1,15 @@
 "use client";
 
 import * as THREE from "three";
-import React, { useRef, forwardRef } from "react";
+import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 
-// RockModel Component
-const RockModel = forwardRef((props, ref) => {
+function RockModel({ ref }: { ref?: React.Ref<THREE.Object3D> }) {
   const { scene } = useGLTF("/models/rock.glb");
-  return <primitive object={scene} ref={ref} {...props} />;
-});
+  return <primitive object={scene.clone()} ref={ref} />;
+}
 
-RockModel.displayName = "RockModel";
-
-// RotatingRock Component
 const RotatingRock = () => {
   const rockRef = useRef<THREE.Object3D>(null);
 
@@ -26,11 +22,12 @@ const RotatingRock = () => {
   return <RockModel ref={rockRef} />;
 };
 
-// RotatingRockCanvas Component
 const RotatingRockCanvas = () => {
   return (
     <Canvas style={{ height: "100%", width: "100%" }}>
-      <Environment preset="studio" />
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 5, 5]} intensity={1} />
+      <directionalLight position={[-5, -2, -3]} intensity={0.4} />
       <RotatingRock />
       <OrbitControls target={[0, 0, 0]} minDistance={1.1} maxDistance={1.1} />
     </Canvas>

@@ -35,7 +35,7 @@ import {
 } from "react-icons/si";
 
 type SkillType = {
-  Icon: React.ElementType;
+  Icon: React.ComponentType<{ className?: string }>;
   name: string;
 };
 
@@ -97,7 +97,10 @@ const skillCategories: { title: string; skills: SkillType[] }[] = [
   }
 ];
 
-const SkillBox: React.FC<{ Icon: React.ElementType; name: string }> = ({
+const SkillBox: React.FC<{
+  Icon: React.ComponentType<{ className?: string }>;
+  name: string;
+}> = ({
   Icon,
   name
 }) => {

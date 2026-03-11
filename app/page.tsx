@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import ExperienceCard from "@/components/ExperienceCard";
 import { work } from "@/data";
@@ -30,7 +31,7 @@ function formatBodyWithLink(
   body: string,
   linkText: string,
   url: string
-): JSX.Element {
+): React.JSX.Element {
   const parts = body.split(linkText);
 
   return (
