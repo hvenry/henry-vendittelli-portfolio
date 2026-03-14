@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.5.0",
+    "@pmndrs/assets": "^1.7.0",
     "@prisma/client": "^6.0.1",
     "@radix-ui/react-hover-card": "^1.1.1",
     "@react-three/drei": "^10.7.7",
