@@ -2,7 +2,7 @@ import { FancyCard } from "@/components/FancyCard";
 import { IoHammerSharp } from "react-icons/io5";
 import { ProjectTab } from "@/components/ProjectTab";
 import { projects } from "@/data";
-import { slugify } from "@/utils/string";
+import { slugify } from "@/lib/string";
 
 type Params = Promise<{
   slug: string;
@@ -36,7 +36,7 @@ export default async function ProjectsPage({ params }: { params: Params }) {
   return (
     <main className="px-2 gap-4 sm:gap-8 w-full h-full flex flex-col items-center justify-center">
       <div className="w-full sm:w-4/5 h-1/5 sm:h-1/4">
-        <FancyCard className="border border-primary">
+        <FancyCard className="border border-foreground">
           <div className="text-3xl text-white flex justify-center p-2 gap-2 items-center backdrop-blur-sm">
             <IoHammerSharp size={30} />
             <span>My Projects</span>
@@ -47,8 +47,8 @@ export default async function ProjectsPage({ params }: { params: Params }) {
         <ProjectTab
           tabs={tabs}
           activeTab={initialTab}
-          tabClassName="border hover:text-blue-300 border-transparent border-l-0 border-r-0"
-          activeTabClassName="border border-primary border-l-0 border-r-0"
+          tabClassName="border hover:text-accent-hover border-transparent border-l-0 border-r-0"
+          activeTabClassName="border border-foreground border-l-0 border-r-0"
         />
       </div>
     </main>

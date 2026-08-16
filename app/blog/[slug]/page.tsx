@@ -28,20 +28,20 @@ export default async function BlogPostPage({ params }: Props) {
     <div className="flex flex-col mt-8 pb-32">
       <Link
         href="/blog"
-        className="text-sm opacity-75 hover:text-primary-1 hover:underline mb-6 block text-center"
+        className="text-sm opacity-75 hover:text-muted hover:underline mb-6 block text-center"
       >
         ← blog
       </Link>
 
-      <article className="border border-primary p-6 sm:p-8 md:p-10 max-w-4xl mx-auto w-full">
+      <article className="border border-foreground p-8 sm:p-16 md:p-20 max-w-4xl mx-auto w-full">
         <header className="mb-8">
           <h1
-            className="text-4xl sm:text-5xl font-bold text-primary-1 mb-6 text-center"
+            className="text-4xl sm:text-5xl font-bold text-muted mb-6 text-center"
             style={{ WebkitTextStroke: "0.5px currentColor" }}
           >
             {post.title}
           </h1>
-          <div className="flex justify-between items-center text-sm text-primary-2 pb-6 border-b border-primary">
+          <div className="flex justify-between items-center text-sm text-subtle pb-6 border-b border-foreground">
             <CopyUrlButton />
             <span>
               {new Date(post.date).toLocaleDateString("en-US", {

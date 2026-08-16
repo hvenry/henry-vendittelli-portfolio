@@ -7,6 +7,7 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { IoMdClose } from "react-icons/io";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 import { useTheme } from "next-themes";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface NavbarProps {
   navItems: {
@@ -22,10 +23,10 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   useEffect(() => {
     setMounted(true);
-    // Listener for system theme changes
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
       setTheme(mediaQuery.matches ? "dark" : "light");
@@ -36,13 +37,11 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
     };
   }, [setTheme]);
 
-  // Toggle between themes
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
   useEffect(() => {
-    // Determine active nav item based on pathname
     const activePath = pathname.split("/")[1];
     if (activePath === "projects") {
       setActiveItem("/projects");
@@ -51,20 +50,12 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
     }
   }, [pathname]);
 
-  // Handle resize of nav
+  // Close mobile nav on resize to desktop
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 960) {
-        setIsOpen(false);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+    if (isDesktop) setIsOpen(false);
+  }, [isDesktop]);
 
-  // Account for clicks outside nav
+  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -80,79 +71,69 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
     };
   }, []);
 
-  // Handle click of nav item
   const handleNavItemClick = (path: string) => {
     setActiveItem(path);
     setIsOpen(false);
   };
 
-  // If not mounted, don't render
   if (!mounted) return null;
 
+  const themeToggle =
+    resolvedTheme === "dark" ? (
+      <MdLightMode
+        onClick={toggleTheme}
+        className="size-6 cursor-pointer hover:text-yellow-500"
+      />
+    ) : (
+      <MdDarkMode
+        onClick={toggleTheme}
+        className="size-6 cursor-pointer hover:text-accent-hover"
+      />
+    );
+
   return (
-    <div className="nav-primary bg-opacity-25 w-full md:w-[calc(67vw)] lg:w-[calc(50vw)] xl:w-1/3 fixed top-4 z-50 px-4 flex justify-between h-16 backdrop-blur rounded-3xl">
-      {/* Home page */}
+    <div className="bg-background/10 w-full md:w-[calc(67vw)] lg:w-[calc(50vw)] xl:w-1/3 fixed top-4 z-50 px-4 flex justify-between h-16 backdrop-blur rounded-3xl">
+      {/* Desktop nav */}
       <div className="hidden md:flex w-full h-full justify-between items-center">
         <Link
           href="/"
           onClick={() => handleNavItemClick("/")}
-          className="text-nav text-xl font-bold hover:text-blue-300"
+          className="text-foreground text-xl font-bold hover:text-accent-hover"
         >
           henryvendittelli.com/
         </Link>
-        {/* Nav pages */}
         <div className="gap-4 flex items-center">
           {navItems.map((item, index) => (
             <Link
               key={index}
               href={item.path}
               onClick={() => handleNavItemClick(item.path)}
-              className={`text-nav text-lg px-2 pb-[2px] ${
+              className={`text-foreground text-lg px-2 pb-[2px] ${
                 activeItem === item.path
-                  ? "border border-r-0 border-l-0 border-primary"
-                  : "hover:text-blue-300"
+                  ? "border border-r-0 border-l-0 border-foreground"
+                  : "hover:text-accent-hover"
               }`}
             >
               {item.name}
             </Link>
           ))}
-          {resolvedTheme === "dark" ? (
-            <MdLightMode
-              onClick={toggleTheme}
-              className="size-6 cursor-pointer hover:text-yellow-500"
-            />
-          ) : (
-            <MdDarkMode
-              onClick={toggleTheme}
-              className="size-6 cursor-pointer hover:text-blue-300"
-            />
-          )}
+          {themeToggle}
         </div>
       </div>
-      {/* Small nav */}
+      {/* Mobile nav */}
       <div className="md:hidden flex w-full h-full justify-between items-center">
         <Link
           href="/"
           onClick={() => handleNavItemClick("/")}
-          className="text-nav text-xl font-bold hover:text-blue-300"
+          className="text-foreground text-xl font-bold hover:text-accent-hover"
         >
           henryvendittelli.com/
         </Link>
         <div className="flex items-center gap-4">
-          {resolvedTheme === "dark" ? (
-            <MdLightMode
-              onClick={toggleTheme}
-              className="size-6 cursor-pointer hover:text-yellow-500"
-            />
-          ) : (
-            <MdDarkMode
-              onClick={toggleTheme}
-              className="size-6 cursor-pointer hover:text-blue-300"
-            />
-          )}
+          {themeToggle}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="font-bold text-3xl hover:text-blue-300 icon-nav"
+            className="font-bold text-3xl hover:text-accent-hover"
           >
             {isOpen ? (
               <IoMdClose aria-label="close navigation" />
@@ -164,7 +145,7 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
       </div>
       <div
         ref={dropdownRef}
-        className={`absolute flex-col top-full z-50 right-[24px] bg-primary rounded-b-lg nav-dropdown ${
+        className={`absolute flex-col top-full z-50 right-[24px] bg-background rounded-b-lg nav-dropdown ${
           isOpen ? "open" : ""
         }`}
       >
@@ -173,10 +154,10 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
             key={index}
             href={item.path}
             onClick={() => handleNavItemClick(item.path)}
-            className={`text-nav px-3 my-1 flex justify-end h-8 text-lg ${
+            className={`text-foreground px-3 my-1 flex justify-end h-8 text-lg ${
               activeItem === item.path
-                ? "border border-r-0 border-l-0 border-t-0 border-primary"
-                : "hover:text-blue-300"
+                ? "border border-r-0 border-l-0 border-t-0 border-foreground"
+                : "hover:text-accent-hover"
             }`}
           >
             {item.name}

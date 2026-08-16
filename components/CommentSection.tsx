@@ -171,11 +171,11 @@ export default function CommentSection({ postSlug }: CommentSectionProps) {
   return (
     <section className="mt-12 max-w-4xl mx-auto w-full">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6 pb-4 border-b border-primary/10">
-        <h2 className="text-xl sm:text-2xl font-bold text-primary-1">
+      <div className="flex items-center justify-between mb-6 pb-4 border-b border-foreground/10">
+        <h2 className="text-xl sm:text-2xl font-bold text-muted">
           Discussion
         </h2>
-        <span className="text-sm text-primary-2">
+        <span className="text-sm text-subtle">
           {comments.length} {comments.length === 1 ? "comment" : "comments"}
         </span>
       </div>
@@ -192,7 +192,7 @@ export default function CommentSection({ postSlug }: CommentSectionProps) {
                     alt={user.nickname}
                     width={32}
                     height={32}
-                    className="w-8 h-8 rounded-full object-cover border border-primary/20"
+                    className="w-8 h-8 rounded-full object-cover border border-foreground/20"
                   />
                 </div>
                 <div className="flex-1 space-y-2">
@@ -200,7 +200,7 @@ export default function CommentSection({ postSlug }: CommentSectionProps) {
                     value={content}
                     onChange={handleContentChange}
                     placeholder="Add your thoughts..."
-                    className="w-full px-3 py-2 text-sm border border-primary/20 bg-primary text-primary-1 placeholder:text-primary-2 placeholder:opacity-50 focus:outline-none focus:border-primary/40 transition-all resize-none"
+                    className="w-full px-3 py-2 text-sm border border-foreground/20 bg-background text-muted placeholder:text-subtle placeholder:opacity-50 focus:outline-none focus:border-foreground/40 transition-all resize-none"
                     rows={3}
                     disabled={isSubmitting}
                     maxLength={MAX_COMMENT_LENGTH}
@@ -211,7 +211,7 @@ export default function CommentSection({ postSlug }: CommentSectionProps) {
                       <button
                         type="submit"
                         disabled={isSubmitting || !content.trim()}
-                        className="px-4 py-1.5 text-sm border border-primary bg-primary text-primary-1 hover:bg-reversed hover:text-reversed disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-primary disabled:hover:text-primary-1 transition-all duration-200"
+                        className="px-4 py-1.5 text-sm border border-foreground bg-background text-muted hover:bg-foreground hover:text-background disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-background disabled:hover:text-muted transition-all duration-200"
                       >
                         {isSubmitting ? (
                           <span className="flex items-center gap-2">
@@ -228,7 +228,7 @@ export default function CommentSection({ postSlug }: CommentSectionProps) {
                       className={`text-xs transition-colors ${
                         charCount > MAX_COMMENT_LENGTH * 0.9
                           ? "text-red-500"
-                          : "text-primary-2 opacity-60"
+                          : "text-subtle opacity-60"
                       }`}
                     >
                       {charCount}/{MAX_COMMENT_LENGTH}
@@ -238,13 +238,13 @@ export default function CommentSection({ postSlug }: CommentSectionProps) {
               </div>
             </form>
           ) : (
-            <div className="border border-primary/10 p-6 text-center bg-reversed/5">
-              <p className="text-sm text-primary-2 mb-3">
+            <div className="border border-foreground/10 p-6 text-center bg-foreground/5">
+              <p className="text-sm text-subtle mb-3">
                 Sign in with GitHub to join the discussion
               </p>
               <a
                 href={`/api/auth/login?returnTo=/blog/${postSlug}`}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm border border-primary bg-primary text-primary-1 hover:bg-reversed hover:text-reversed transition-all duration-200"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm border border-foreground bg-background text-muted hover:bg-foreground hover:text-background transition-all duration-200"
               >
                 <FaGithub size={14} />
                 Sign In
@@ -255,15 +255,15 @@ export default function CommentSection({ postSlug }: CommentSectionProps) {
       )}
 
       {/* Comments List */}
-      <div className="space-y-0 border-t border-primary/10">
+      <div className="space-y-0 border-t border-foreground/10">
         {loadingComments ? (
           <div className="flex flex-col items-center justify-center py-16 gap-3">
-            <ImSpinner2 className="animate-spin text-primary-2" size={24} />
-            <p className="text-sm text-primary-2">Loading comments...</p>
+            <ImSpinner2 className="animate-spin text-subtle" size={24} />
+            <p className="text-sm text-subtle">Loading comments...</p>
           </div>
         ) : comments.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-sm text-primary-2 opacity-60">
+            <p className="text-sm text-subtle opacity-60">
               No comments yet. Start the conversation!
             </p>
           </div>
@@ -271,7 +271,7 @@ export default function CommentSection({ postSlug }: CommentSectionProps) {
           comments.map((comment, index) => (
             <article
               key={comment.id}
-              className="group border-b border-primary/10 last:border-b-0 py-4 hover:bg-reversed/5 transition-colors duration-150"
+              className="group border-b border-foreground/10 last:border-b-0 py-4 hover:bg-foreground/5 transition-colors duration-150"
               style={{
                 animation: `fadeIn 0.3s ease-out ${index * 0.05}s both`
               }}
@@ -289,7 +289,7 @@ export default function CommentSection({ postSlug }: CommentSectionProps) {
                       alt={comment.name}
                       width={32}
                       height={32}
-                      className="w-8 h-8 rounded-full object-cover border border-primary/20 group-hover:border-primary/40 transition-colors"
+                      className="w-8 h-8 rounded-full object-cover border border-foreground/20 group-hover:border-foreground/40 transition-colors"
                     />
                   </a>
                 </div>
@@ -300,16 +300,16 @@ export default function CommentSection({ postSlug }: CommentSectionProps) {
                       href={`https://github.com/${comment.name}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-semibold text-sm text-primary-1 hover:opacity-70 transition-opacity inline-flex items-center gap-1.5"
+                      className="font-semibold text-sm text-muted hover:opacity-70 transition-opacity inline-flex items-center gap-1.5"
                     >
                       {comment.name}
                       <FaGithub size={11} className="opacity-60" />
                     </a>
-                    <span className="text-xs text-primary-2 opacity-60">
+                    <span className="text-xs text-subtle opacity-60">
                       {formatDate(comment.createdAt)}
                     </span>
                   </div>
-                  <p className="text-sm text-primary-2 leading-relaxed whitespace-pre-wrap break-words">
+                  <p className="text-sm text-subtle leading-relaxed whitespace-pre-wrap break-words">
                     {comment.content}
                   </p>
                 </div>

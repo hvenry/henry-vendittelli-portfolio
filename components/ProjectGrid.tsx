@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { FaYoutube } from "react-icons/fa";
 import { projects } from "@/data";
-import { slugify } from "@/utils/string";
+import { slugify } from "@/lib/string";
 
 interface ProjectGridProps {
   projectSlugs: string[];
@@ -19,12 +19,12 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projectSlugs }) => {
         {selectedProjects.map((project) => (
           <div
             key={slugify(project.title)}
-            className="basic-glow border transition-transform ease-in-out duration-300 transform hover:scale-105 border-primary p-4 pt-2 h-full"
+            className="basic-glow border transition-transform ease-in-out duration-300 transform hover:scale-105 border-foreground p-4 pt-2 h-full"
           >
             <div className="flex justify-between lg:mb-2">
               <div>
                 <a
-                  className="text-blue-600 hover:text-blue-300"
+                  className="text-accent hover:text-accent-hover"
                   href={`/projects/${slugify(project.title)}`}
                 >
                   <p className="text-2xl lg:text-3xl">{project.title}</p>
@@ -38,15 +38,15 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projectSlugs }) => {
                     rel="noopener noreferrer"
                     aria-label="YouTube"
                   >
-                    <FaYoutube className="size-8 fill-red-600 hover:fill-blue-300" />
+                    <FaYoutube className="size-8 fill-red-600 hover:fill-accent-hover" />
                   </a>
                 )}
               </div>
             </div>
-            <p className="text-lg lg:text-xl text-primary-1">
+            <p className="text-lg lg:text-xl text-muted">
               {project.bodyTitle}
             </p>
-            <p className="mb-2 mt-1 text-primary-2 font-mono text-sm md:text-md lg:text-lg">
+            <p className="mb-2 mt-1 text-subtle font-mono text-sm md:text-md lg:text-lg">
               {project.smallDescription}
             </p>
             {project.imageName && (

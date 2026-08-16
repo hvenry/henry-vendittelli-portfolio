@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineUpSquare, AiOutlineDownSquare } from "react-icons/ai";
 import Draggable, { DraggableData, DraggableEvent } from "react-draggable";
 import { useZIndex } from "./ZIndexContext";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 interface CollapsibleTabProps {
   title: string;
@@ -23,22 +24,13 @@ export const CollapsibleTab = ({
   );
 
   const { zIndexMap, bringToFront, highestZIndex } = useZIndex();
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const isSmallScreen = useMediaQuery("(max-width: 639px)");
   const nodeRef = useRef<HTMLDivElement>(null);
 
   // Generate stable ID on mount only
   const tabIdRef = useRef<string>("");
   useEffect(() => {
     tabIdRef.current = `tab-${Math.random().toString(36).substr(2, 9)}`;
-  }, []);
-
-  useEffect(() => {
-    const checkScreenSize = () => setIsSmallScreen(window.innerWidth < 640);
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => {
-      window.removeEventListener("resize", checkScreenSize);
-    };
   }, []);
 
   const toggleCollapsibleTab = () => setIsOpen(!isOpen);
@@ -60,27 +52,29 @@ export const CollapsibleTab = ({
   // Restrict dragging above page title
   const bounds = { top: 0 };
 
+  const collapseButton = isOpen ? (
+    <AiOutlineUpSquare
+      onClick={toggleCollapsibleTab}
+      className="cursor-pointer text-2xl text-red-500"
+    />
+  ) : (
+    <AiOutlineDownSquare
+      onClick={toggleCollapsibleTab}
+      className="cursor-pointer text-2xl"
+    />
+  );
+
   if (isSmallScreen) {
     return (
       <div
         ref={nodeRef}
         id={tabIdRef.current}
-        className="border border-primary bg-primary"
+        className="border border-foreground bg-background"
         style={{ zIndex: currentZIndex }}
       >
-        <div className="flex items-center justify-between border-b border-primary p-2">
+        <div className="flex items-center justify-between border-b border-foreground p-2">
           <p className="text-4xl mr-8">{title}</p>
-          {isOpen ? (
-            <AiOutlineUpSquare
-              onClick={toggleCollapsibleTab}
-              className="cursor-pointer text-2xl text-red-500"
-            />
-          ) : (
-            <AiOutlineDownSquare
-              onClick={toggleCollapsibleTab}
-              className="cursor-pointer text-2xl"
-            />
-          )}
+          {collapseButton}
         </div>
         {isOpen && <div className="p-4">{children}</div>}
       </div>
@@ -98,8 +92,8 @@ export const CollapsibleTab = ({
       <div
         ref={nodeRef}
         id={tabIdRef.current}
-        className={`border border-primary bg-primary basic-glow ${
-          isSelected ? "shadow-lg shadow-primary/50" : ""
+        className={`border border-foreground bg-background basic-glow ${
+          isSelected ? "shadow-lg shadow-foreground/50" : ""
         } absolute`}
         style={{
           zIndex: currentZIndex
@@ -107,21 +101,11 @@ export const CollapsibleTab = ({
         onMouseDown={handleMouseDown}
       >
         <div
-          className="flex items-center justify-between border-b border-primary p-2 cursor-move drag-handle"
+          className="flex items-center justify-between border-b border-foreground p-2 cursor-move drag-handle"
           onMouseDown={handleMouseDown}
         >
           <p className="text-4xl mr-8">{title}</p>
-          {isOpen ? (
-            <AiOutlineUpSquare
-              onClick={toggleCollapsibleTab}
-              className="cursor-pointer text-2xl text-red-500"
-            />
-          ) : (
-            <AiOutlineDownSquare
-              onClick={toggleCollapsibleTab}
-              className="cursor-pointer text-2xl"
-            />
-          )}
+          {collapseButton}
         </div>
         {isOpen && <div className="p-4">{children}</div>}
       </div>

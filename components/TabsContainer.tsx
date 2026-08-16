@@ -6,6 +6,7 @@ import Image from "next/image";
 import { CollapsibleTab } from "@/components/CollapsibleTab";
 import { ZIndexProvider } from "@/components/ZIndexContext";
 import { ImSpinner2 } from "react-icons/im";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const getImagePath = (imageName: string) =>
   `/assets/images/icons/${imageName}.png`;
@@ -15,7 +16,7 @@ const TabsContainer = () => {
   const [positions, setPositions] = useState<{ x: number; y: number }[] | null>(
     null
   );
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   // Function to shuffle an array
   const shuffleArray = (array: number[]) => {
@@ -26,14 +27,6 @@ const TabsContainer = () => {
     return array;
   };
 
-  useEffect(() => {
-    const checkScreenSize = () => setIsSmallScreen(window.innerWidth <= 640);
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => {
-      window.removeEventListener("resize", checkScreenSize);
-    };
-  }, []);
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -102,13 +95,13 @@ const TabsContainer = () => {
                         href={software.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="sm:text-2xl text-xl hover:text-blue-300"
+                        className="sm:text-2xl text-xl hover:text-accent-hover"
                         draggable="false"
                       >
                         {software.name}
                       </a>
                     </div>
-                    <p className="lg:text-lg sm:text-md text-sm font-mono text-justify text-primary-2">
+                    <p className="lg:text-lg sm:text-md text-sm font-mono text-justify text-subtle">
                       {software.description}
                     </p>
                   </li>
@@ -131,7 +124,7 @@ const TabsContainer = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         href={item.link}
-                        className="font-mono text-md sm:text-lg text-blue-600 hover:text-blue-300"
+                        className="font-mono text-md sm:text-lg text-accent hover:text-accent-hover"
                         draggable="false"
                       >
                         {item.description}
@@ -153,16 +146,16 @@ const TabsContainer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   href="https://www.amazon.ca/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882"
-                  className="text-2xl hover:text-blue-300 inline-block"
+                  className="text-2xl hover:text-accent-hover inline-block"
                   draggable="false"
                 >
                   Clean Code
                 </a>
               </div>
-              <p className="text-xl text-primary-1">
+              <p className="text-xl text-muted">
                 A Handbook of Agile Software Craftsmanship
               </p>
-              <p className="text-md text-primary-2 font-mono">
+              <p className="text-md text-subtle font-mono">
                 By: Robert C. Martin
               </p>
             </div>
@@ -172,7 +165,7 @@ const TabsContainer = () => {
                 alt="Clean Code"
                 width={1920}
                 height={1080}
-                className="border border-primary p-1 h-48 w-auto"
+                className="border border-foreground p-1 h-48 w-auto"
                 priority
                 draggable="false"
               />
@@ -195,10 +188,10 @@ const TabsContainer = () => {
             <div className="flex flex-col justify-center items-center gap-2">
               <Image
                 src={"/assets/images/velocity_design_comfort.png"}
-                alt="Clean Code"
+                alt="Velocity Design Comfort"
                 width={512}
                 height={512}
-                className="border border-primary p-1 h-48 w-auto"
+                className="border border-foreground p-1 h-48 w-auto"
                 priority
                 draggable="false"
               />
@@ -206,7 +199,7 @@ const TabsContainer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://open.spotify.com/album/0eUUQ4rly8Q8PyJPWLgde2"
-                className="text-lg hover:text-blue-300 inline-block"
+                className="text-lg hover:text-accent-hover inline-block"
                 draggable="false"
               >
                 Velocity : Design : Comfort
@@ -218,10 +211,10 @@ const TabsContainer = () => {
             <div className="flex justify-center items-center">
               <Image
                 src={"/assets/images/rocco.png"}
-                alt="Clean Code"
+                alt="Rocco"
                 width={512}
                 height={512}
-                className="border border-primary p-1 h-64 w-auto"
+                className="border border-foreground p-1 h-64 w-auto"
                 priority
                 draggable="false"
               />

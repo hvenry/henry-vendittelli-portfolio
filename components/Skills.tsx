@@ -105,9 +105,8 @@ const SkillBox: React.FC<{
   name
 }) => {
   return (
-    <div className="flex flex-grow sm:p-2 p-1.5 gap-2 border border-primary justify-center max-w-[150px] sm:max-w-[200px]">
+    <div className="flex flex-grow sm:p-2 p-1.5 gap-2 border border-foreground justify-center max-w-[150px] sm:max-w-[200px]">
       <Icon className={"sm:w-7 w-5 sm:h-7 h-5"} />
-
       {name !== "" && <p className="font-bold text-sm sm:text-xl">{name}</p>}
     </div>
   );
@@ -119,9 +118,9 @@ const Skills = () => {
       {skillCategories.map((category) => (
         <div
           key={category.title}
-          className="px-2 py-4 border transition-transform duration-300 ease-in-out border-transparent hover:border-primary basic-glow hover:scale-[1.02] "
+          className="px-2 py-4 border transition-transform duration-300 ease-in-out border-transparent hover:border-foreground basic-glow hover:scale-[1.02] "
         >
-          <p className="sm:text-2xl text-xl font-bold pl-2 pb-2 text-primary-1">
+          <p className="sm:text-2xl text-xl font-bold pl-2 pb-2 text-muted">
             [ {category.title} ]
           </p>
           <div className="mx-2 gap-4 flex flex-wrap justify-start">

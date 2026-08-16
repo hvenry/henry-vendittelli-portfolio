@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { projects } from "@/data";
-import { slugify } from "@/utils/string";
+import { slugify } from "@/lib/string";
 import { ImSpinner2 } from "react-icons/im";
 
 export default function ProjectsPage() {

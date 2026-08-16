@@ -5,7 +5,7 @@ import { FaGithubSquare, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { MdArrowRight, MdArrowLeft } from "react-icons/md";
-import { slugify } from "@/utils/string";
+import { slugify } from "@/lib/string";
 
 interface Tab {
   title: string;
@@ -81,7 +81,7 @@ export const ProjectTab = ({
   const renderTabContent = (tab: Tab) => (
     <div
       key={`content-${slugify(tab.title)}`}
-      className="flex flex-col gap-4 h-[calc(60vh-128px)] sm:h-[calc(50vh-128px)] p-4 overflow-auto border border-primary"
+      className="flex flex-col gap-4 h-[calc(60vh-128px)] sm:h-[calc(50vh-128px)] p-4 overflow-auto border border-foreground"
       id={`tab-content-${slugify(tab.title)}`}
     >
       {/* Title + Links */}
@@ -94,7 +94,7 @@ export const ProjectTab = ({
             rel="noopener noreferrer"
             aria-label="GitHub"
           >
-            <FaGithubSquare className="size-6 sm:size-8 hover:fill-blue-300" />
+            <FaGithubSquare className="size-6 sm:size-8 hover:fill-accent-hover" />
           </a>
         )}
         {tab.youtubeLink && (
@@ -104,7 +104,7 @@ export const ProjectTab = ({
             rel="noopener noreferrer"
             aria-label="Youtube"
           >
-            <FaYoutube className="size-6 sm:size-8 fill-red-600 hover:fill-blue-300" />
+            <FaYoutube className="size-6 sm:size-8 fill-red-600 hover:fill-accent-hover" />
           </a>
         )}
       </div>
@@ -113,14 +113,14 @@ export const ProjectTab = ({
         {tab.technologies?.map((tech) => (
           <span
             key={tech}
-            className="bg-reversed rounded-full px-4 text-reversed text-sm sm:text-xl"
+            className="bg-foreground rounded-full px-4 text-background text-sm sm:text-xl"
           >
             {tech}
           </span>
         ))}
       </div>
       {/* Info */}
-      <div className="text-sm sm:text-lg font-mono text-primary-2 text-justify flex flex-col gap-4">
+      <div className="text-sm sm:text-lg font-mono text-subtle text-justify flex flex-col gap-4">
         {tab.imageName && (
           <div className="flex justify-center">
             <Image
@@ -128,7 +128,7 @@ export const ProjectTab = ({
               alt={tab.title}
               width={1000}
               height={500}
-              className="bg-reversed w-full sm:w-3/4 mb-2 border border-primary h-auto rounded-sm"
+              className="bg-foreground w-full sm:w-3/4 mb-2 border border-foreground h-auto rounded-sm"
               priority
             />
           </div>
@@ -148,7 +148,7 @@ export const ProjectTab = ({
       if (tabContainerRef.current) {
         tabContainerRef.current.scrollLeft += scrollAmount;
       }
-    }, 16); // About 60fps
+    }, 16);
   };
 
   const stopScrolling = () => {
@@ -169,7 +169,7 @@ export const ProjectTab = ({
         />
         <div
           ref={tabContainerRef}
-          className="border border-primary border-t-0 border-b-0 border-l-1 border-r-1 w-full flex overflow-x-auto scrollbar-hide"
+          className="border border-foreground border-t-0 border-b-0 border-l-1 border-r-1 w-full flex overflow-x-auto scrollbar-hide"
         >
           {tabs.map((tab) => (
             <button

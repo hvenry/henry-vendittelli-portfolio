@@ -18,7 +18,7 @@ export default function CopyUrlButton() {
   return (
     <button
       onClick={handleCopy}
-      className="text-sm text-primary-2 hover:text-primary-1 transition-colors underline hover:no-underline"
+      className="text-sm text-subtle hover:text-muted transition-colors underline hover:no-underline"
     >
       {copied ? "Copied!" : "Copy URL"}
     </button>

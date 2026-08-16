@@ -37,7 +37,7 @@ function formatBodyWithLink(
   return (
     <>
       {parts[0]}
-      <a href={url} className="text-blue-600 hover:text-blue-300">
+      <a href={url} className="text-accent hover:text-accent-hover">
         {linkText}
       </a>
       {parts[1]}
@@ -49,12 +49,12 @@ export default function Page() {
   return (
     <main className="pt-8 pb-16 sm:pb-24">
       {/* intro */}
-      <div className="border border-primary mx-2 p-4">
+      <div className="border border-foreground mx-2 p-4">
         <div className="flex flex-row items-center gap-4">
           <Image
             src={headshot}
             alt="Henry Vendittelli"
-            className="border border-primary size-28 mb-4 p-1"
+            className="border border-foreground size-28 mb-4 p-1"
           />
           <div>
             <div className="flex flex-col sm:flex-row sm:items-end sm:gap-4 sm:pb-4">
@@ -62,16 +62,16 @@ export default function Page() {
                 <RockLink />
                 <p className="sm:text-3xl text-lg">Henry Vendittelli</p>
               </div>
-              <p className="sm:text-xl text-md text-primary-2">
+              <p className="sm:text-xl text-md text-subtle">
                 {getAge()} (he/him)
               </p>
             </div>
-            <p className="sm:w-3/4 text-primary-1 sm:text-xl md:text-2xl text-sm text-justify pb-4">
+            <p className="sm:w-3/4 text-muted sm:text-xl md:text-2xl text-sm text-justify pb-4">
               {intro.intro}
             </p>
           </div>
         </div>
-        <p className="sm:text-md text-sm font-mono text-primary-1 ">
+        <p className="sm:text-md text-sm font-mono text-muted ">
           {intro.description}{" "}
           {formatBodyWithLink(intro.body, "reach out", "/reach-out")}
         </p>
@@ -93,7 +93,7 @@ export default function Page() {
       {/* project demos */}
       <p className="mt-16 mb-6 sm:text-5xl text-3xl font-bold">
         Some {""}
-        <Link href="/projects" className="text-blue-600 hover:text-blue-300">
+        <Link href="/projects" className="text-accent hover:text-accent-hover">
           Project
         </Link>
         {""} Demos

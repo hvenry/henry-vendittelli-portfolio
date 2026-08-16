@@ -13,19 +13,19 @@ export default function Page() {
   return (
     <main className="pt-8 pb-16 sm:pb-24">
       {/* intro */}
-      <div className="border border-primary mx-2 p-4">
+      <div className="border border-foreground mx-2 p-4">
         <div className="flex items-end gap-4 pb-4">
           <div className="flex items-center gap-2">
             <BiInfoSquare size={30} />
             <p className="text-3xl">
               More About {""}
-              <Link href="/" className="text-blue-600 hover:text-blue-300">
+              <Link href="/" className="text-accent hover:text-accent-hover">
                 Me
               </Link>
             </p>
           </div>
         </div>
-        <p className="sm:text-2xl text-xl text-justify text-primary-1">
+        <p className="sm:text-2xl text-xl text-justify text-muted">
           Some information about my formal education in computer science and my
           involvement in clubs.
         </p>

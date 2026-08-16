@@ -124,7 +124,7 @@ export default function Page() {
         onClose={() => setShowAuthModal(false)}
       />
       <div className="h-1/3 w-full px-4 pb-4 sm:pb-8">
-        <div className="h-full border transition-transform duration-300 ease-in-out border-primary rounded-xl basic-glow hover:scale-105 p-1 sm:p-4 grid grid-cols-2 ">
+        <div className="h-full border transition-transform duration-300 ease-in-out border-foreground rounded-xl basic-glow hover:scale-105 p-1 sm:p-4 grid grid-cols-2 ">
           {/* Left Side - Auth & Comment Section */}
           <div className="overflow-y-auto mx-auto px-2">
             <div className="min-h-full flex flex-col justify-center">
@@ -141,7 +141,7 @@ export default function Page() {
                 </div>
               ) : !user ? (
                 <button
-                  className="flex justify-center items-center gap-1 sm:gap-2 w-full bg-reversed text-reversed rounded-xl h-8 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105"
+                  className="flex justify-center items-center gap-1 sm:gap-2 w-full bg-foreground text-background rounded-xl h-8 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105"
                   onClick={handleLogin}
                 >
                   <SiAuth0 className="size-3 sm:size-5" />
@@ -151,11 +151,11 @@ export default function Page() {
                 <>
                   {hasCommented ? (
                     <>
-                      <p className="h-8 sm:h-12 flex justify-center items-center text-sm sm:text-xl p-2 sm:p-4 mt-4 border border-primary mb-4">
+                      <p className="h-8 sm:h-12 flex justify-center items-center text-sm sm:text-xl p-2 sm:p-4 mt-4 border border-foreground mb-4">
                         Thank you for signing!
                       </p>
                       <button
-                        className="flex justify-center items-center gap-2 w-full bg-reversed text-reversed rounded-xl h-6 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105"
+                        className="flex justify-center items-center gap-2 w-full bg-foreground text-background rounded-xl h-6 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105"
                         onClick={handleLogout}
                       >
                         <p className="text-sm sm:text-xl">Logout</p>
@@ -184,7 +184,7 @@ export default function Page() {
                         maxLength={CHAR_LIMIT}
                       />
                       <button
-                        className="mt-2 w-full border border-primary h-6 sm:h-12 text-sm sm:text-lg bg-primary hover:invert"
+                        className="mt-2 w-full border border-foreground h-6 sm:h-12 text-sm sm:text-lg bg-background hover:invert"
                         onClick={handleSubmit}
                       >
                         Submit
@@ -197,7 +197,7 @@ export default function Page() {
           </div>
 
           {/* Right Side - Comments List */}
-          <div className="overflow-y-auto overflow-x-hidden border border-primary border-r-0 border-t-0 border-b-0">
+          <div className="overflow-y-auto overflow-x-hidden border border-foreground border-r-0 border-t-0 border-b-0">
             {isCommentsLoading ? (
               <div className="flex justify-center items-center h-full">
                 <ImSpinner2 className="animate-spin size-5 sm:size-6" />
@@ -221,7 +221,7 @@ export default function Page() {
                         href={`https://github.com/${comment.name}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-md sm:text-2xl hover:text-blue-600"
+                        className="text-md sm:text-2xl hover:text-accent"
                       >
                         {comment.name}
                       </a>

@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <main className="pt-8 pb-16 sm:pb-24">
       {/* main box */}
-      <div className="border border-primary p-4 mx-2 mb-16">
+      <div className="border border-foreground p-4 mx-2 mb-16">
         {/* title */}
         <div className="flex items-end gap-4 pb-4">
           <div className="flex items-center gap-2">
@@ -19,7 +19,7 @@ export default function Page() {
           </div>
         </div>
         {/* desc */}
-        <p className="sm:text-2xl text-xl text-justify text-primary-1">
+        <p className="sm:text-2xl text-xl text-justify text-muted">
           Setup, OS, Configs, Software, Books, and more!
         </p>
       </div>

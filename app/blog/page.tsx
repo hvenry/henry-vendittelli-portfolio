@@ -19,11 +19,11 @@ export default function BlogPage() {
           posts.map((post) => (
             <article
               key={post.slug}
-              className="border border-transparent hover:border-primary basic-glow transition-transform duration-300 ease-in-out hover:scale-[1.02] p-4"
+              className="border border-transparent hover:border-foreground basic-glow transition-transform duration-300 ease-in-out hover:scale-[1.02] p-4"
             >
               <Link href={`/blog/${post.slug}`}>
                 <div className="flex flex-col gap-2">
-                  <h2 className="text-xl sm:text-2xl font-bold text-primary-1">
+                  <h2 className="text-xl sm:text-2xl font-bold text-muted">
                     {post.title}
                   </h2>
                   <p className="text-sm opacity-75">

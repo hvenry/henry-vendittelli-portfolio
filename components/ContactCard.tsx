@@ -12,16 +12,16 @@ export default function ContactCard() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="p-4 border transition-transform duration-300 ease-in-out border-primary basic-glow hover:scale-105">
+      <div className="p-4 border transition-transform duration-300 ease-in-out border-foreground basic-glow hover:scale-105">
         <div className="text-3xl font-bold pb-4 flex justify-center">
           Contact Me
         </div>
-        <div className="sm:text-2xl text-lg text-primary-1">
+        <div className="sm:text-2xl text-lg text-muted">
           <div className="flex justify-between gap-6 sm:gap-12">
             <p>Email:</p>
             <a
               href="mailto:hvendittelli@gmail.com"
-              className="hover:text-blue-300"
+              className="hover:text-accent-hover"
             >
               hvendittelli@gmail.com
             </a>
@@ -33,7 +33,7 @@ export default function ContactCard() {
           <div className="flex justify-between">
             <p>More Info:</p>
             <a
-              className="text-blue-600 hover:text-blue-300"
+              className="text-accent hover:text-accent-hover"
               href={resume}
               target="_blank"
               rel="noopener noreferrer"

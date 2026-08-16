@@ -173,37 +173,37 @@ export default function BlogContent({ content }: { content: string }) {
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => (
-            <h1 className="text-3xl sm:text-4xl font-bold text-primary-1 mt-12 mb-6 pb-2 border-b border-primary">
+            <h1 className="text-3xl sm:text-4xl font-bold text-muted mt-12 mb-6 pb-2 border-b border-foreground">
               {children}
             </h1>
           ),
           h2: ({ children }) => (
-            <h2 className="text-2xl sm:text-3xl font-bold text-primary-1 mt-10 mb-5 pb-2 border-b border-primary">
+            <h2 className="text-2xl sm:text-3xl font-bold text-muted mt-10 mb-5 pb-2 border-b border-foreground">
               {children}
             </h2>
           ),
           h3: ({ children }) => (
-            <h3 className="text-xl sm:text-2xl font-bold text-primary-1 mt-8 mb-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-muted mt-8 mb-4">
               {children}
             </h3>
           ),
           h4: ({ children }) => (
-            <h4 className="text-lg sm:text-xl font-bold text-primary-1 mt-6 mb-3">
+            <h4 className="text-lg sm:text-xl font-bold text-muted mt-6 mb-3">
               {children}
             </h4>
           ),
           h5: ({ children }) => (
-            <h5 className="text-base sm:text-lg font-bold text-primary-1 mt-5 mb-2">
+            <h5 className="text-base sm:text-lg font-bold text-muted mt-5 mb-2">
               {children}
             </h5>
           ),
           h6: ({ children }) => (
-            <h6 className="text-base font-bold text-primary-1 mt-4 mb-2">
+            <h6 className="text-base font-bold text-muted mt-4 mb-2">
               {children}
             </h6>
           ),
           p: ({ children }) => (
-            <p className="text-base sm:text-lg leading-relaxed mb-6 text-primary-2">
+            <p className="text-base sm:text-lg leading-relaxed mb-6 text-subtle">
               {children}
             </p>
           ),
@@ -218,7 +218,7 @@ export default function BlogContent({ content }: { content: string }) {
             </ol>
           ),
           li: ({ children }) => (
-            <li className="text-base sm:text-lg leading-relaxed text-primary-2">
+            <li className="text-base sm:text-lg leading-relaxed text-subtle">
               {children}
             </li>
           ),
@@ -250,7 +250,7 @@ export default function BlogContent({ content }: { content: string }) {
           a: ({ children, href }) => (
             <a
               href={href}
-              className="text-primary-1 underline decoration-2 underline-offset-2 hover:opacity-70 transition-opacity"
+              className="text-muted underline decoration-2 underline-offset-2 hover:opacity-70 transition-opacity"
               target={href?.startsWith("http") ? "_blank" : undefined}
               rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
             >
@@ -258,44 +258,44 @@ export default function BlogContent({ content }: { content: string }) {
             </a>
           ),
           blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-primary-1 pl-6 py-2 italic my-6 bg-reversed/5">
+            <blockquote className="border-l-4 border-muted pl-6 py-2 italic my-6 bg-foreground/5">
               {children}
             </blockquote>
           ),
-          hr: () => <hr className="border-primary my-8" />,
+          hr: () => <hr className="border-foreground my-8" />,
           strong: ({ children }) => (
-            <strong className="font-bold text-primary-1">{children}</strong>
+            <strong className="font-bold text-muted">{children}</strong>
           ),
           em: ({ children }) => (
-            <em className="italic text-primary-2">{children}</em>
+            <em className="italic text-subtle">{children}</em>
           ),
           table: ({ children }) => (
             <div className="overflow-x-auto my-6">
-              <table className="min-w-full border border-primary">
+              <table className="min-w-full border border-foreground">
                 {children}
               </table>
             </div>
           ),
           thead: ({ children }) => (
-            <thead className="bg-reversed/10 border-b-2 border-primary">
+            <thead className="bg-foreground/10 border-b-2 border-foreground">
               {children}
             </thead>
           ),
           tbody: ({ children }) => (
-            <tbody className="divide-y divide-primary">{children}</tbody>
+            <tbody className="divide-y divide-foreground">{children}</tbody>
           ),
           tr: ({ children }) => (
-            <tr className="hover:bg-reversed/5 transition-colors">
+            <tr className="hover:bg-foreground/5 transition-colors">
               {children}
             </tr>
           ),
           th: ({ children }) => (
-            <th className="px-4 py-3 text-left text-sm font-bold text-primary-1">
+            <th className="px-4 py-3 text-left text-sm font-bold text-muted">
               {children}
             </th>
           ),
           td: ({ children }) => (
-            <td className="px-4 py-3 text-base text-primary-2">{children}</td>
+            <td className="px-4 py-3 text-base text-subtle">{children}</td>
           )
         }}
       >

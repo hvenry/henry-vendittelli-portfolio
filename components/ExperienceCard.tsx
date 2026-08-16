@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -20,7 +19,6 @@ interface ExperienceProps {
 }
 
 const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -83,7 +81,7 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
     <div className="flex flex-col gap-8">
       {Object.keys(groupedExperiences).map((name) => (
         <div key={name} className="mr-4">
-          <div className="pl-4 pr-6 pt-3 pb-5 hover:translate-x-2 transition-transform transition-border-color duration-300 ease-in-out border border-transparent hover:border-primary basic-glow">
+          <div className="pl-4 pr-6 pt-3 pb-5 hover:translate-x-2 transition-transform transition-border-color duration-300 ease-in-out border border-transparent hover:border-foreground basic-glow">
             <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 gap-2">
               <div className="flex justify-center items-center gap-2">
                 <Image
@@ -91,20 +89,14 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
                   alt={name}
                   width={128}
                   height={128}
-                  className={
-                    groupedExperiences[name][0].image === "partisans_icon"
-                      ? theme === "light"
-                        ? "size-9 icon-light"
-                        : "size-9 icon-dark"
-                      : "size-9"
-                  }
+                  className={`size-9 ${groupedExperiences[name][0].image === "partisans_icon" ? "icon-invert" : ""}`}
                   priority={true}
                 />
                 <a
                   href={groupedExperiences[name][0].link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="sm:text-3xl text-2xl hover:text-blue-300"
+                  className="sm:text-3xl text-2xl hover:text-accent-hover"
                 >
                   {name}
                 </a>
@@ -119,26 +111,26 @@ const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
                   {/* Position Title Bullet */}
                   <div className="flex flex-col items-center">
                     <div className="flex h-full items-center justify-center">
-                      <div className="w-[6px] h-[6px] sm:w-2 sm:h-2 bg-primary-2"></div>
+                      <div className="w-[6px] h-[6px] sm:w-2 sm:h-2 bg-subtle"></div>
                     </div>
                   </div>
                   {/* Position Title */}
                   <div className="py-2 flex justify-between items-center">
-                    <p className="sm:text-2xl text-md text-primary-1">
+                    <p className="sm:text-2xl text-md text-muted">
                       {role.position}
                     </p>
-                    <p className="pt-1 flex justify-end sm:text-xl text-sm text-primary-2">
+                    <p className="pt-1 flex justify-end sm:text-xl text-sm text-subtle">
                       {role.time}
                     </p>
                   </div>
                   {/* Description Vertical Line */}
                   <div className="flex items-start justify-center">
                     {idx < groupedExperiences[name].length && (
-                      <div className="w-[2px] bg-primary-2 h-full"></div>
+                      <div className="w-[2px] bg-subtle h-full"></div>
                     )}
                   </div>
                   {/* Description */}
-                  <p className="lg:text-xl sm:text-lg text-xs font-mono text-primary-2 text-justify">
+                  <p className="lg:text-xl sm:text-lg text-xs font-mono text-subtle text-justify">
                     {role.desc}
                   </p>
                 </div>

@@ -8,6 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        background: "rgb(var(--background) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        subtle: "rgb(var(--subtle) / <alpha-value>)",
+        accent: {
+          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+          hover: "rgb(var(--accent-hover) / <alpha-value>)"
+        }
+      },
       animation: {
         shake: "shake 0.5s ease-in-out"
       },
@@ -23,9 +33,6 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))"
-      },
-      variants: {
-        fill: ["hover", "focus"]
       },
       screens: {
         sm: "640px",
