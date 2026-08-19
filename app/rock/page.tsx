@@ -7,11 +7,9 @@ import dynamic from "next/dynamic";
 const RotatingRockCanvas = dynamic(() => import("@/components/RotatingRock"), {
   ssr: false
 });
-import { SiAuth0 } from "react-icons/si";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { useUser, SignInButton, SignOutButton } from "@clerk/nextjs";
 import { ImSpinner2 } from "react-icons/im";
 import { FaGithub } from "react-icons/fa";
-import AuthModal from "@/components/AuthModal";
 
 type Comment = {
   id: string;
@@ -29,16 +27,15 @@ export default function Page() {
   const [hasCommented, setHasCommented] = useState(false);
 
   // Loading states
-  const { user, error, isLoading: isAuthLoading } = useUser();
-  const [showAuthModal, setShowAuthModal] = useState(false);
+  const { user, isLoaded } = useUser();
   const [isCommentsLoading, setIsCommentsLoading] = useState(true);
 
   useEffect(() => {
-    if (!isAuthLoading && user && comments.length > 0) {
-      const userComment = comments.find((c) => c.userId === user.sub);
+    if (isLoaded && user && comments.length > 0) {
+      const userComment = comments.find((c) => c.userId === user.id);
       setHasCommented(!!userComment);
     }
-  }, [user, comments, isAuthLoading]);
+  }, [user, comments, isLoaded]);
 
   const fetchComments = async () => {
     try {
@@ -59,12 +56,7 @@ export default function Page() {
   const CHAR_LIMIT = 25;
 
   const handleSubmit = async () => {
-    if (!user?.nickname) {
-      setShowAuthModal(true);
-      return;
-    }
-
-    if (comment.length > CHAR_LIMIT) {
+    if (!user || comment.length > CHAR_LIMIT) {
       return;
     }
 
@@ -72,12 +64,7 @@ export default function Page() {
       const response = await fetch("/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userId: user.sub,
-          name: user.nickname,
-          profileUrl: user.picture,
-          content: comment.trim()
-        })
+        body: JSON.stringify({ content: comment.trim() })
       });
 
       if (!response.ok) {
@@ -92,25 +79,13 @@ export default function Page() {
     }
   };
 
-  const handleLogin = () => {
-    window.location.href = "/api/auth/login?returnTo=/rock";
-  };
-
-  const handleLogout = () => {
-    window.location.href = "/api/auth/logout";
-  };
-
-  // Early return for loading and error states
-  if (isAuthLoading) {
+  // Early return for loading state
+  if (!isLoaded) {
     return (
       <div className="h-full w-full flex justify-center items-center">
         <ImSpinner2 className="animate-spin" />
       </div>
     );
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
   }
 
   // Main render
@@ -119,10 +94,6 @@ export default function Page() {
       <div className="h-2/3 w-full">
         <RotatingRockCanvas />
       </div>
-      <AuthModal
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-      />
       <div className="h-1/3 w-full px-4 pb-4 sm:pb-8">
         <div className="h-full border transition-transform duration-300 ease-in-out border-foreground rounded-xl basic-glow hover:scale-105 p-1 sm:p-4 grid grid-cols-2 ">
           {/* Left Side - Auth & Comment Section */}
@@ -140,13 +111,12 @@ export default function Page() {
                   <ImSpinner2 className="animate-spin size-3 sm:size-5" />
                 </div>
               ) : !user ? (
-                <button
-                  className="flex justify-center items-center gap-1 sm:gap-2 w-full bg-foreground text-background rounded-xl h-8 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105"
-                  onClick={handleLogin}
-                >
-                  <SiAuth0 className="size-3 sm:size-5" />
-                  <p className="text-sm sm:text-xl">Authenticate</p>
-                </button>
+                <SignInButton mode="modal">
+                  <button className="flex justify-center items-center gap-1 sm:gap-2 w-full bg-foreground text-background rounded-xl h-8 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105">
+                    <FaGithub className="size-3 sm:size-5" />
+                    <p className="text-sm sm:text-xl">Authenticate</p>
+                  </button>
+                </SignInButton>
               ) : (
                 <>
                   {hasCommented ? (
@@ -154,12 +124,11 @@ export default function Page() {
                       <p className="h-8 sm:h-12 flex justify-center items-center text-sm sm:text-xl p-2 sm:p-4 mt-4 border border-foreground mb-4">
                         Thank you for signing!
                       </p>
-                      <button
-                        className="flex justify-center items-center gap-2 w-full bg-foreground text-background rounded-xl h-6 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105"
-                        onClick={handleLogout}
-                      >
-                        <p className="text-sm sm:text-xl">Logout</p>
-                      </button>
+                      <SignOutButton>
+                        <button className="flex justify-center items-center gap-2 w-full bg-foreground text-background rounded-xl h-6 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105">
+                          <p className="text-sm sm:text-xl">Logout</p>
+                        </button>
+                      </SignOutButton>
                     </>
                   ) : (
                     <div className="mt-4">

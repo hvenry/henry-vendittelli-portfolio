@@ -1,15 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSession } from "@auth0/nextjs-auth0";
+import { currentUser } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/db";
 
 // Comments are user-generated; never prerender or cache this route
 export const dynamic = "force-dynamic";
 
+const CHAR_LIMIT = 25;
+
 export async function POST(request: NextRequest) {
   try {
-    // Verify authentication
-    const session = await getSession();
-    if (!session?.user) {
+    const user = await currentUser();
+    if (!user) {
       return NextResponse.json(
         { error: "Authentication required" },
         { status: 401 }
@@ -17,24 +18,14 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { userId, name, profileUrl, content } = body;
+    const content = typeof body.content === "string" ? body.content.trim() : "";
 
-    // validate data fields
-    if (!userId || !name || !profileUrl) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
+    if (content.length > CHAR_LIMIT) {
+      return NextResponse.json({ error: "Comment too long" }, { status: 400 });
     }
 
-    // Verify the user ID matches the authenticated user
-    if (userId !== session.user.sub) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
-    }
-
-    // Check if user already commented
     const existingComment = await prisma.comment.findFirst({
-      where: { userId }
+      where: { userId: user.id }
     });
 
     if (existingComment) {
@@ -44,13 +35,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create new comment in Prisma
     const comment = await prisma.comment.create({
       data: {
-        userId,
-        name,
-        profileUrl,
-        content: content || ""
+        userId: user.id,
+        name: user.username ?? user.firstName ?? "anonymous",
+        profileUrl: user.imageUrl,
+        content
       }
     });
 

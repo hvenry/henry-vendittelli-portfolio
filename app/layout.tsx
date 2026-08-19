@@ -3,7 +3,7 @@ import { Oswald } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { navItems } from "@/data";
 import { ThemeProvider } from "next-themes";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import ViewportHeightSetter from "@/components/ViewportHeightSetter";
 import React from "react";
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={oswald.className} suppressHydrationWarning>
-        <UserProvider>
+        <ClerkProvider>
           <ViewportHeightSetter />
           <ThemeProvider
             attribute="data-theme"
@@ -46,7 +46,7 @@ export default function RootLayout({
               </div>
             </div>
           </ThemeProvider>
-        </UserProvider>
+        </ClerkProvider>
       </body>
     </html>
   );
