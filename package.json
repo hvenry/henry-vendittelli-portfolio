@@ -12,7 +12,8 @@
     "lint:fix": "eslint . --fix --ext .ts,.tsx",
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.5.0",
@@ -48,6 +49,7 @@
     "three": "^0.171.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@types/node": "^22.1.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

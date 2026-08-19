@@ -42,3 +42,7 @@ next-env.d.ts
 
 CLAUDE.md
 docs/
+
+# playwright
+test-results/
+playwright-report/

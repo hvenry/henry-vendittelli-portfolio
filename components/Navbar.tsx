@@ -78,18 +78,15 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
 
   if (!mounted) return null;
 
-  const themeToggle =
-    resolvedTheme === "dark" ? (
-      <MdLightMode
-        onClick={toggleTheme}
-        className="size-6 cursor-pointer hover:text-yellow-500"
-      />
-    ) : (
-      <MdDarkMode
-        onClick={toggleTheme}
-        className="size-6 cursor-pointer hover:text-accent-hover"
-      />
-    );
+  const themeToggle = (
+    <button aria-label="toggle theme" onClick={toggleTheme}>
+      {resolvedTheme === "dark" ? (
+        <MdLightMode className="size-6 cursor-pointer hover:text-yellow-500" />
+      ) : (
+        <MdDarkMode className="size-6 cursor-pointer hover:text-accent-hover" />
+      )}
+    </button>
+  );
 
   return (
     <div className="bg-background/10 w-full md:w-[calc(67vw)] lg:w-[calc(50vw)] xl:w-1/3 fixed top-4 z-50 px-4 flex justify-between h-16 backdrop-blur rounded-3xl">
