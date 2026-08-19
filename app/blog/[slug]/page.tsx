@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import CopyUrlButton from "@/components/CopyUrlButton";
-import CommentSection from "@/components/CommentSection";
 import BlogContent from "@/components/BlogContent";
 
 type Props = {
@@ -55,8 +54,6 @@ export default async function BlogPostPage({ params }: Props) {
 
         <BlogContent content={post.content} />
       </article>
-
-      <CommentSection postSlug={slug} />
     </div>
   );
 }
