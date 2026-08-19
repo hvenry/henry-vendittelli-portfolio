@@ -1,5 +1,8 @@
 # Henry Vendittelli's Next.js Portfolio
 
+![CI](https://github.com/hvenry/henry-vendittelli-portfolio/actions/workflows/ci.yml/badge.svg)
+![Smoke](https://github.com/hvenry/henry-vendittelli-portfolio/actions/workflows/smoke.yml/badge.svg)
+
 ![screenshot](public/assets/images/projects/portfolio_project.png?raw=true "Layer 0")
 
 ## About
@@ -15,6 +18,16 @@ Welcome to my portfolio website! This site is a showcase of my work, skills, and
 ## Hosting
 
 - **Vercel**: The site is hosted on Vercel, which offers seamless integration with Next.js, automatic HTTPS, and a serverless architecture. Vercel was chosen for its performance, scalability, and zero cost.
+
+## Pipeline
+
+Trunk-based development with a protected `main` branch — every change ships through a pull request.
+
+1. **PR opened** → GitHub Actions runs lint, type-check, format check, and a production build; Vercel deploys an isolated preview with its own Neon database branch (copy-on-write, via the Neon × Vercel integration).
+2. **Preview ready** → a Playwright smoke suite runs against the live preview URL.
+3. **All checks green** → the PR can merge; merging to `main` deploys to production, running `prisma migrate deploy` before the build.
+
+Auth is handled by Clerk (GitHub sign-in); the preview environment uses Clerk's development instance so previews can never mint production sessions.
 
 ## Pages
 
@@ -34,20 +47,20 @@ Welcome to my portfolio website! This site is a showcase of my work, skills, and
 Install packages:
 
 ```bash
-npm install
+pnpm install
 ```
 
 Run the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Deployment
 
-This portfolio is hosted on Vercel so deployment is streamlined and automated. Every push to the `main` branch triggers a deployment, ensuring that this live site is always up to date.
+This portfolio is hosted on Vercel. Changes merge to `main` only after passing CI checks (lint, type-check, format) and a Playwright smoke suite running against the Vercel preview. Once merged, `prisma migrate deploy` runs before the production build, ensuring database schema and code stay in sync.
 
 ## Contact
 
