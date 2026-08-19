@@ -100,10 +100,7 @@ const skillCategories: { title: string; skills: SkillType[] }[] = [
 const SkillBox: React.FC<{
   Icon: React.ComponentType<{ className?: string }>;
   name: string;
-}> = ({
-  Icon,
-  name
-}) => {
+}> = ({ Icon, name }) => {
   return (
     <div className="flex flex-grow sm:p-2 p-1.5 gap-2 border border-foreground justify-center max-w-[150px] sm:max-w-[200px]">
       <Icon className={"sm:w-7 w-5 sm:h-7 h-5"} />

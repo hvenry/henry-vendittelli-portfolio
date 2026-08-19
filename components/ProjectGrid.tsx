@@ -43,9 +43,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projectSlugs }) => {
                 )}
               </div>
             </div>
-            <p className="text-lg lg:text-xl text-muted">
-              {project.bodyTitle}
-            </p>
+            <p className="text-lg lg:text-xl text-muted">{project.bodyTitle}</p>
             <p className="mb-2 mt-1 text-subtle font-mono text-sm md:text-md lg:text-lg">
               {project.smallDescription}
             </p>

@@ -31,18 +31,12 @@ function SceneLighting({ isLight }: { isLight: boolean }) {
   return (
     <>
       <ambientLight intensity={isLight ? 4.0 : 0.5} />
-      <directionalLight
-        position={[5, 5, 5]}
-        intensity={isLight ? 6.0 : 1.2}
-      />
+      <directionalLight position={[5, 5, 5]} intensity={isLight ? 6.0 : 1.2} />
       <directionalLight
         position={[-3, 2, -4]}
         intensity={isLight ? 5.0 : 0.5}
       />
-      <directionalLight
-        position={[0, -3, 3]}
-        intensity={isLight ? 3.0 : 0.3}
-      />
+      <directionalLight position={[0, -3, 3]} intensity={isLight ? 3.0 : 0.3} />
     </>
   );
 }
@@ -58,7 +52,10 @@ export default function RotatingRockCanvas() {
       fallback={<div>WebGL not supported</div>}
     >
       <Suspense fallback={null}>
-        <Environment files={studioUrl} environmentIntensity={isLight ? 5.0 : 1.0} />
+        <Environment
+          files={studioUrl}
+          environmentIntensity={isLight ? 5.0 : 1.0}
+        />
       </Suspense>
       <SceneLighting isLight={isLight} />
       <RotatingRock />

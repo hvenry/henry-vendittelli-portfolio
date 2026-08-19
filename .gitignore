@@ -46,3 +46,4 @@ docs/
 # playwright
 test-results/
 playwright-report/
+.superpowers/
