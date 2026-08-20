@@ -58,6 +58,11 @@ test("guestbook shows sign-in state for anonymous visitors", async ({
   page
 }) => {
   await page.goto("/rock");
-  await expect(page.getByText("Sign my site!")).toBeVisible();
-  await expect(page.getByText("Authenticate")).toBeVisible();
+  // Clerk initializes client-side; allow extra time on cold preview deploys
+  await expect(page.getByText("Sign my site!")).toBeVisible({
+    timeout: 15_000
+  });
+  await expect(page.getByText("Authenticate")).toBeVisible({
+    timeout: 15_000
+  });
 });
