@@ -47,3 +47,6 @@ docs/
 test-results/
 playwright-report/
 .superpowers/
+
+# Playwright auth state (Vercel bypass cookie)
+e2e/.auth/
