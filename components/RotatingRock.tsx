@@ -1,7 +1,7 @@
 "use client";
 
 import * as THREE from "three";
-import React, { useRef, useMemo, Suspense } from "react";
+import React, { useRef, useMemo, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import { useTheme } from "next-themes";
@@ -9,13 +9,25 @@ import { useTheme } from "next-themes";
 const studioUrl =
   "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/studio_small_09_1k.hdr";
 
-function RockModel({ ref }: { ref?: React.Ref<THREE.Object3D> }) {
+function RockModel({
+  ref,
+  onReady
+}: {
+  ref?: React.Ref<THREE.Object3D>;
+  onReady?: () => void;
+}) {
   const { scene } = useGLTF("/models/rock.glb");
   const clone = useMemo(() => scene.clone(), [scene]);
+
+  // useGLTF suspends, so this effect fires once the model has loaded
+  useEffect(() => {
+    onReady?.();
+  }, [onReady]);
+
   return <primitive object={clone} ref={ref} />;
 }
 
-function RotatingRock() {
+function RotatingRock({ onReady }: { onReady?: () => void }) {
   const rockRef = useRef<THREE.Object3D>(null);
 
   useFrame(() => {
@@ -24,7 +36,7 @@ function RotatingRock() {
     }
   });
 
-  return <RockModel ref={rockRef} />;
+  return <RockModel ref={rockRef} onReady={onReady} />;
 }
 
 function SceneLighting({ isLight }: { isLight: boolean }) {
@@ -44,23 +56,30 @@ function SceneLighting({ isLight }: { isLight: boolean }) {
 export default function RotatingRockCanvas() {
   const { theme } = useTheme();
   const isLight = theme === "light";
+  const [ready, setReady] = useState(false);
 
   return (
-    <Canvas
-      style={{ height: "100%", width: "100%" }}
-      dpr={[1, 2]}
-      fallback={<div>WebGL not supported</div>}
+    <div
+      className={`h-full w-full transition-opacity duration-1000 ease-out ${
+        ready ? "opacity-100" : "opacity-0"
+      }`}
     >
-      <Suspense fallback={null}>
-        <Environment
-          files={studioUrl}
-          environmentIntensity={isLight ? 5.0 : 1.0}
-        />
-      </Suspense>
-      <SceneLighting isLight={isLight} />
-      <RotatingRock />
-      <OrbitControls target={[0, 0, 0]} minDistance={1.1} maxDistance={1.1} />
-    </Canvas>
+      <Canvas
+        style={{ height: "100%", width: "100%" }}
+        dpr={[1, 2]}
+        fallback={<div>WebGL not supported</div>}
+      >
+        <Suspense fallback={null}>
+          <Environment
+            files={studioUrl}
+            environmentIntensity={isLight ? 5.0 : 1.0}
+          />
+        </Suspense>
+        <SceneLighting isLight={isLight} />
+        <RotatingRock onReady={() => setReady(true)} />
+        <OrbitControls target={[0, 0, 0]} minDistance={1.1} maxDistance={1.1} />
+      </Canvas>
+    </div>
   );
 }
 

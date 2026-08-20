@@ -1,17 +1,26 @@
 import { Metadata } from "next";
-import { Oswald } from "next/font/google";
+import { Inter, Oswald } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { navItems } from "@/data";
 import { ThemeProvider } from "next-themes";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import ViewportHeightSetter from "@/components/ViewportHeightSetter";
+import ScrollToTop from "@/components/ScrollToTop";
+import Footer from "@/components/Footer";
 import React from "react";
 import "./globals.css";
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap"
+});
+
 const oswald = Oswald({
   subsets: ["latin"],
-  weight: ["400", "700"]
+  variable: "--font-oswald",
+  display: "swap"
 });
 
 export const metadata: Metadata = {
@@ -26,23 +35,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={oswald.className} suppressHydrationWarning>
+      <body
+        className={`${inter.variable} ${oswald.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
         <ClerkProvider>
           <ViewportHeightSetter />
+          <ScrollToTop />
           <ThemeProvider
             attribute="data-theme"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            {/* nav rendered independently of page content */}
             <div className="flex justify-center">
               <Navbar navItems={navItems} />
             </div>
-            {/* page content */}
-            <div className="flex justify-center w-full overflow-y-auto pb-20">
-              <div className="h-[calc(var(--vh)_*100)] px-0 mx-2 sm:mx-4 sm:px-4 pt-20 w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
-                {children}
+            <div className="flex justify-center w-full">
+              <div className="flex min-h-[calc(var(--vh)_*100)] flex-col px-0 mx-2 sm:mx-4 sm:px-4 pt-20 pb-20 w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
+                <div className="flex-1">{children}</div>
+                <Footer />
               </div>
             </div>
           </ThemeProvider>

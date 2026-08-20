@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import { formatDate } from "@/lib/date";
+import Panel from "@/components/Panel";
 
 export const metadata = {
   title: "Blog - henryvendittelli.com",
@@ -11,32 +13,32 @@ export default function BlogPage() {
 
   return (
     <main className="pt-8 pb-16 sm:pb-24">
-      {/* Blog posts */}
-      <div className="space-y-6">
+      <div className="mx-2 space-y-5">
         {posts.length === 0 ? (
-          <p className="text-lg">No blog posts yet. Check back soon!</p>
+          <p className="text-lg text-muted">
+            No blog posts yet. Check back soon!
+          </p>
         ) : (
           posts.map((post) => (
-            <article
-              key={post.slug}
-              className="border border-transparent hover:border-foreground basic-glow transition-transform duration-300 ease-in-out hover:scale-[1.02] p-4"
-            >
-              <Link href={`/blog/${post.slug}`}>
-                <div className="flex flex-col gap-2">
-                  <h2 className="text-xl sm:text-2xl font-bold text-muted">
-                    {post.title}
-                  </h2>
-                  <p className="text-sm opacity-75">
-                    {new Date(post.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric"
-                    })}
-                  </p>
-                  <p className="text-base opacity-90">{post.description}</p>
-                </div>
-              </Link>
-            </article>
+            <Panel key={post.slug} interactive>
+              <article>
+                <Link href={`/blog/${post.slug}`} className="block p-5">
+                  <div className="flex flex-col gap-1.5">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h2 className="font-display text-lg font-medium tracking-wide text-foreground sm:text-xl">
+                        {post.title}
+                      </h2>
+                      <p className="whitespace-nowrap text-xs tabular-nums text-subtle">
+                        {formatDate(post.date)}
+                      </p>
+                    </div>
+                    <p className="text-sm leading-relaxed text-subtle sm:text-base">
+                      {post.description}
+                    </p>
+                  </div>
+                </Link>
+              </article>
+            </Panel>
           ))
         )}
       </div>

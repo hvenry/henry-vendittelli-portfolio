@@ -7,6 +7,8 @@ import Skills from "@/components/Skills";
 import Socials from "@/components/Socials";
 import Link from "next/link";
 import ProjectsGrid from "@/components/ProjectGrid";
+import SectionHeading from "@/components/SectionHeading";
+import Panel from "@/components/Panel";
 import headshot from "@/public/assets/images/headshot.jpeg";
 import RockLink from "@/components/RockLink";
 
@@ -37,7 +39,7 @@ function formatBodyWithLink(
   return (
     <>
       {parts[0]}
-      <a href={url} className="text-accent hover:text-accent-hover">
+      <a href={url} className="link">
         {linkText}
       </a>
       {parts[1]}
@@ -48,57 +50,64 @@ function formatBodyWithLink(
 export default function Page() {
   return (
     <main className="pt-8 pb-16 sm:pb-24">
-      {/* intro */}
-      <div className="border border-foreground mx-2 p-4">
-        <div className="flex flex-row items-center gap-4">
-          <Image
-            src={headshot}
-            alt="Henry Vendittelli"
-            className="border border-foreground size-28 mb-4 p-1"
-          />
-          <div>
-            <div className="flex flex-col sm:flex-row sm:items-end sm:gap-4 sm:pb-4">
-              <div className="flex items-end gap-2">
-                <RockLink />
-                <p className="sm:text-3xl text-lg">Henry Vendittelli</p>
+      <div className="reveal mx-2">
+        <Panel ticks>
+          <div className="p-5 sm:p-6">
+            <div className="flex flex-row items-start gap-4 sm:gap-5">
+              <Image
+                src={headshot}
+                alt="Henry Vendittelli"
+                className="size-24 border border-line p-1 sm:size-28"
+              />
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:gap-3">
+                  <div className="flex items-end gap-2">
+                    <RockLink />
+                    <h1 className="font-display text-xl font-semibold tracking-wide text-foreground sm:text-2xl">
+                      Henry Vendittelli
+                    </h1>
+                  </div>
+                  <p className="text-sm text-subtle sm:text-base">
+                    {getAge()} (he/him)
+                  </p>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted sm:text-base">
+                  {intro.intro}
+                </p>
               </div>
-              <p className="sm:text-xl text-md text-subtle">
-                {getAge()} (he/him)
-              </p>
             </div>
-            <p className="sm:w-3/4 text-muted sm:text-xl md:text-2xl text-sm text-justify pb-4">
-              {intro.intro}
+            <p className="mt-4 text-sm leading-relaxed text-subtle">
+              {intro.description}{" "}
+              {formatBodyWithLink(intro.body, "reach out", "/reach-out")}
             </p>
           </div>
-        </div>
-        <p className="sm:text-md text-sm font-mono text-muted ">
-          {intro.description}{" "}
-          {formatBodyWithLink(intro.body, "reach out", "/reach-out")}
-        </p>
+        </Panel>
       </div>
-      {/* socials */}
-      <div className="pt-4 w-full flex items-center justify-end gap-2">
+      <div className="reveal reveal-1 flex w-full items-center justify-end gap-2 px-2 pt-4">
         <Socials />
       </div>
-      {/* work experience */}
-      <p className="mt-6 mb-4 sm:text-5xl text-3xl font-bold">
-        Work Experience
-      </p>
-      <ExperienceCard info={work} />
-      {/* skills */}
-      <p className="mt-12 mb-4 sm:text-5xl text-3xl font-bold">
-        Technologies I Build With
-      </p>
-      <Skills />
-      {/* project demos */}
-      <p className="mt-16 mb-6 sm:text-5xl text-3xl font-bold">
-        Some {""}
-        <Link href="/projects" className="text-accent hover:text-accent-hover">
-          Project
-        </Link>
-        {""} Demos
-      </p>
-      <ProjectsGrid projectSlugs={["parking-app", "rag-system", "c-game"]} />
+      <div className="reveal reveal-2">
+        <SectionHeading className="mt-8 mb-4">Work Experience</SectionHeading>
+        <ExperienceCard info={work} />
+      </div>
+      <div className="reveal reveal-3">
+        <SectionHeading className="mt-12 mb-4">
+          Technologies I Build With
+        </SectionHeading>
+        <Skills />
+      </div>
+      <div className="reveal reveal-4">
+        <SectionHeading className="mt-12 mb-6">
+          <Link
+            href="/projects"
+            className="transition-colors hover:text-subtle"
+          >
+            Project
+          </Link>{" "}
+          Demos
+        </SectionHeading>
+        <ProjectsGrid projectSlugs={["parking-app", "rag-system", "c-game"]} />
+      </div>
     </main>
   );
 }

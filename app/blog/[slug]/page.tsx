@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import CopyUrlButton from "@/components/CopyUrlButton";
+import { formatDate } from "@/lib/date";
 import BlogContent from "@/components/BlogContent";
 
 type Props = {
@@ -27,28 +28,19 @@ export default async function BlogPostPage({ params }: Props) {
     <div className="flex flex-col mt-8 pb-32">
       <Link
         href="/blog"
-        className="text-sm opacity-75 hover:text-muted hover:underline mb-6 block text-center"
+        className="link-quiet mb-6 block text-center text-xs uppercase tracking-[0.2em]"
       >
         ← blog
       </Link>
 
-      <article className="border border-foreground p-8 sm:p-16 md:p-20 max-w-4xl mx-auto w-full">
+      <article className="px-2 sm:px-4 max-w-4xl mx-auto w-full">
         <header className="mb-8">
-          <h1
-            className="text-4xl sm:text-5xl font-bold text-muted mb-6 text-center"
-            style={{ WebkitTextStroke: "0.5px currentColor" }}
-          >
+          <h1 className="mb-6 text-center font-display text-3xl font-semibold tracking-wide text-foreground sm:text-4xl">
             {post.title}
           </h1>
-          <div className="flex justify-between items-center text-sm text-subtle pb-6 border-b border-foreground">
+          <div className="flex items-center justify-between border-b border-line pb-6 text-sm text-subtle">
             <CopyUrlButton />
-            <span>
-              {new Date(post.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric"
-              })}
-            </span>
+            <span>{formatDate(post.date)}</span>
           </div>
         </header>
 

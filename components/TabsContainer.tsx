@@ -1,15 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { setup, mac_software } from "@/data";
 import Image from "next/image";
-import { CollapsibleTab } from "@/components/CollapsibleTab";
-import { ZIndexProvider } from "@/components/ZIndexContext";
-import { ImSpinner2 } from "react-icons/im";
+import { CollapsibleTab, ZIndexProvider } from "@/components/CollapsibleTab";
+import Loader from "@/components/Loader";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { getIconPath } from "@/lib/images";
 
-const getImagePath = (imageName: string) =>
-  `/assets/images/icons/${imageName}.png`;
+// Layout effect on the client so cards position before first paint (no loader flash)
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const TabsContainer = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -18,7 +19,6 @@ const TabsContainer = () => {
   );
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
-  // Function to shuffle an array
   const shuffleArray = (array: number[]) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -27,31 +27,29 @@ const TabsContainer = () => {
     return array;
   };
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!containerRef.current) return;
 
-    // Measure the container
     const rect = containerRef.current.getBoundingClientRect();
     const numberOfTabs = 6;
-    const gridRows = 3;
-    const gridCols = 2;
+    const gridRows = 2;
+    const gridCols = 3;
 
-    // Generate shuffled grid positions
     const gridPositions = shuffleArray(
       Array.from({ length: gridRows * gridCols }, (_, i) => i)
     );
 
-    // Generate random positions within grid cells
+    // One tab per shuffled grid cell, jittered; ranges leave room for the
+    // largest card so nothing spawns clipped by the canvas edges
+    const estCardWidth = 500;
+    const estCardHeight = 380;
+    const xSpan = Math.max(0, rect.width - estCardWidth) / (gridCols - 1);
+    const ySpan = Math.max(0, rect.height - estCardHeight) / (gridRows - 1);
     const newPositions = gridPositions.slice(0, numberOfTabs).map((pos) => {
       const row = Math.floor(pos / gridCols);
       const col = pos % gridCols;
-      const x =
-        col * (rect.width / gridCols) +
-        (rect.width / gridCols) * 0.25 * Math.random() +
-        rect.width * 0.1;
-      const y =
-        row * (rect.height / gridRows) +
-        (rect.height / gridRows) * 0.25 * Math.random();
+      const x = col * xSpan + Math.random() * 40;
+      const y = row * ySpan + Math.random() * 24;
       return { x, y };
     });
 
@@ -62,29 +60,32 @@ const TabsContainer = () => {
     <div
       className={`${
         isSmallScreen
-          ? "relative h-auto overflow-y-scroll mx-2"
-          : "fixed h-[calc(100vh-16rem)] overflow-hidden w-screen right-0 top-64"
+          ? "relative mx-2 flex h-auto flex-col gap-4"
+          : // sm-scoped geometry: pre-hydration this branch also renders on compact
+            // screens (media query defaults false); unscoped w-screen would force
+            // the column's min-content width past its margins and shift the layout
+            "tab-canvas relative overflow-hidden sm:left-1/2 sm:h-[calc(100%+5rem)] sm:min-h-[420px] sm:w-screen sm:-translate-x-1/2"
       }`}
       ref={containerRef}
     >
       {positions === null ? (
-        <div className="flex h-full animate-spin justify-center items-center">
-          <ImSpinner2 />
+        <div className="loader-delayed flex h-full items-center justify-center">
+          <Loader />
         </div>
       ) : (
         <ZIndexProvider>
-          {/* Tab 1: MacBook Software */}
           <CollapsibleTab
             title="MacBook Software"
             initialPosition={positions[0]}
           >
-            <div className="max-h-[400px] max-w-xl overflow-y-auto">
+            {/* Negative margin makes scrolled text clip at the title bar, not the padding */}
+            <div className="-m-4 max-h-[292px] max-w-xl overflow-y-auto p-4">
               <ul className="flex flex-col gap-4 sm:gap-6">
                 {mac_software.map((software, index) => (
                   <li key={index}>
                     <div className="flex flex-row items-center gap-2 mb-2">
                       <Image
-                        src={getImagePath(software.icon)}
+                        src={getIconPath(software.icon)}
                         alt={software.name}
                         width={128}
                         height={128}
@@ -95,13 +96,13 @@ const TabsContainer = () => {
                         href={software.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="sm:text-2xl text-xl hover:text-accent-hover"
+                        className="link-hover text-base sm:text-lg"
                         draggable="false"
                       >
                         {software.name}
                       </a>
                     </div>
-                    <p className="lg:text-lg sm:text-md text-sm font-mono text-justify text-subtle">
+                    <p className="text-sm leading-relaxed text-subtle sm:text-base">
                       {software.description}
                     </p>
                   </li>
@@ -109,7 +110,6 @@ const TabsContainer = () => {
               </ul>
             </div>
           </CollapsibleTab>
-          {/* Tab 2: Setup Equipment */}
           <CollapsibleTab
             title="Setup Equipment"
             initialPosition={positions[1]}
@@ -118,13 +118,15 @@ const TabsContainer = () => {
               {setup.map((item, index) => (
                 <li key={index}>
                   <div className="flex flex-col sm:gap-2 sm:flex-row">
-                    <p className="text-xl">{item.name}:</p>
+                    <p className="text-sm font-medium text-foreground sm:text-base">
+                      {item.name}:
+                    </p>
                     <div>
                       <a
                         target="_blank"
                         rel="noopener noreferrer"
                         href={item.link}
-                        className="font-mono text-md sm:text-lg text-accent hover:text-accent-hover"
+                        className="text-sm text-subtle underline underline-offset-4 hover:text-foreground sm:text-base"
                         draggable="false"
                       >
                         {item.description}
@@ -135,7 +137,6 @@ const TabsContainer = () => {
               ))}
             </ul>
           </CollapsibleTab>
-          {/* Tab 3: Currently Reading */}
           <CollapsibleTab
             title="Currently Reading"
             initialPosition={positions[2]}
@@ -146,16 +147,16 @@ const TabsContainer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   href="https://www.amazon.ca/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882"
-                  className="text-2xl hover:text-accent-hover inline-block"
+                  className="link-hover inline-block text-base sm:text-lg"
                   draggable="false"
                 >
                   Clean Code
                 </a>
               </div>
-              <p className="text-xl text-muted">
+              <p className="text-sm text-muted sm:text-base">
                 A Handbook of Agile Software Craftsmanship
               </p>
-              <p className="text-md text-subtle font-mono">
+              <p className="text-xs text-subtle sm:text-sm">
                 By: Robert C. Martin
               </p>
             </div>
@@ -165,15 +166,14 @@ const TabsContainer = () => {
                 alt="Clean Code"
                 width={1920}
                 height={1080}
-                className="border border-foreground p-1 h-48 w-auto"
+                className="h-48 w-auto border border-line p-1"
                 priority
                 draggable="false"
               />
             </div>
           </CollapsibleTab>
-          {/* Tab 4: Hobbies */}
           <CollapsibleTab title="Hobbies" initialPosition={positions[3]}>
-            <ul className="text-2xl">
+            <ul className="flex flex-col gap-1 text-sm text-muted sm:text-base">
               <li>Espresso</li>
               <li>Cooking</li>
               <li>Music</li>
@@ -183,7 +183,6 @@ const TabsContainer = () => {
               <li>Graphic Design</li>
             </ul>
           </CollapsibleTab>
-          {/* Tab 5: Album Rec */}
           <CollapsibleTab title="Album Rec" initialPosition={positions[4]}>
             <div className="flex flex-col justify-center items-center gap-2">
               <Image
@@ -191,7 +190,7 @@ const TabsContainer = () => {
                 alt="Velocity Design Comfort"
                 width={512}
                 height={512}
-                className="border border-foreground p-1 h-48 w-auto"
+                className="h-48 w-auto border border-line p-1"
                 priority
                 draggable="false"
               />
@@ -199,14 +198,13 @@ const TabsContainer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://open.spotify.com/album/0eUUQ4rly8Q8PyJPWLgde2"
-                className="text-lg hover:text-accent-hover inline-block"
+                className="link-hover inline-block text-base"
                 draggable="false"
               >
                 Velocity : Design : Comfort
               </a>
             </div>
           </CollapsibleTab>
-          {/* Tab 6: Rocco */}
           <CollapsibleTab title="My Dog (Rocco)" initialPosition={positions[5]}>
             <div className="flex justify-center items-center">
               <Image
@@ -214,7 +212,7 @@ const TabsContainer = () => {
                 alt="Rocco"
                 width={512}
                 height={512}
-                className="border border-foreground p-1 h-64 w-auto"
+                className="h-64 w-auto border border-line p-1"
                 priority
                 draggable="false"
               />

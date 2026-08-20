@@ -8,15 +8,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
+        display: [
+          "var(--font-oswald)",
+          "Impact",
+          "Haettenschweiler",
+          "sans-serif"
+        ]
+      },
       colors: {
         foreground: "rgb(var(--foreground) / <alpha-value>)",
         background: "rgb(var(--background) / <alpha-value>)",
         muted: "rgb(var(--muted) / <alpha-value>)",
         subtle: "rgb(var(--subtle) / <alpha-value>)",
-        accent: {
-          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
-          hover: "rgb(var(--accent-hover) / <alpha-value>)"
-        }
+        line: "rgb(var(--line) / var(--line-alpha))"
       },
       animation: {
         shake: "shake 0.5s ease-in-out"

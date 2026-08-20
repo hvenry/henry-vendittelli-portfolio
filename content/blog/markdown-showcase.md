@@ -3,6 +3,7 @@ title: "Markdown Showcase"
 date: "2026-02-14"
 description: "A comprehensive reference for every markdown feature supported by this blog — headings, code blocks, tables, lists, inline formatting, and edge cases."
 tags: ["demo", "markdown", "reference"]
+draft: true
 ---
 
 This post is a living reference for every markdown feature my blog renders. It doubles as an edge case detector — if something looks off, this is where I'll catch it.

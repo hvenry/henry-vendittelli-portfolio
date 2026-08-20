@@ -1,8 +1,9 @@
-import { BiInfoSquare } from "react-icons/bi";
-import Link from "next/link";
+import { PiInfo } from "react-icons/pi";
 import { clubs } from "@/data";
 import { education } from "@/data";
 import ExperienceCard from "@/components/ExperienceCard";
+import PageHeader from "@/components/PageHeader";
+import SectionHeading from "@/components/SectionHeading";
 
 export const metadata = {
   title: "About Me - henryvendittelli.com",
@@ -12,29 +13,14 @@ export const metadata = {
 export default function Page() {
   return (
     <main className="pt-8 pb-16 sm:pb-24">
-      {/* intro */}
-      <div className="border border-foreground mx-2 p-4">
-        <div className="flex items-end gap-4 pb-4">
-          <div className="flex items-center gap-2">
-            <BiInfoSquare size={30} />
-            <p className="text-3xl">
-              More About {""}
-              <Link href="/" className="text-accent hover:text-accent-hover">
-                Me
-              </Link>
-            </p>
-          </div>
-        </div>
-        <p className="sm:text-2xl text-xl text-justify text-muted">
-          Some information about my formal education in computer science and my
-          involvement in clubs.
-        </p>
-      </div>
-      {/* education */}
-      <p className="mt-16 mb-4 text-4xl font-bold">Education</p>
+      <PageHeader
+        icon={<PiInfo size={26} />}
+        title="More About Me"
+        description="Some information about my formal education in computer science and my involvement in clubs."
+      />
+      <SectionHeading className="mt-10 mb-4">Education</SectionHeading>
       <ExperienceCard info={education} />
-      {/* clubs */}
-      <p className="mt-8 mb-4 text-4xl font-bold">Club Involvement</p>
+      <SectionHeading className="mt-8 mb-4">Club Involvement</SectionHeading>
       <ExperienceCard info={clubs} />
     </main>
   );

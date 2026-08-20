@@ -1,66 +1,58 @@
-# Henry Vendittelli's Next.js Portfolio
+# henryvendittelli.com
 
 ![CI](https://github.com/hvenry/henry-vendittelli-portfolio/actions/workflows/ci.yml/badge.svg)
 ![Smoke](https://github.com/hvenry/henry-vendittelli-portfolio/actions/workflows/smoke.yml/badge.svg)
 
-![screenshot](public/assets/images/projects/portfolio_project.png?raw=true "Layer 0")
+Personal portfolio and blog, designed and built from scratch — live at [henryvendittelli.com](https://henryvendittelli.com).
 
-## About
+## Tech Stack
 
-Welcome to my portfolio website! This site is a showcase of my work, skills, and projects built from the ground up. This site was iteratively prototyped, with constant feedback from peers and professionals in the industry.
+| Layer          | Technology                                                                                                  |
+| -------------- | ----------------------------------------------------------------------------------------------------------- |
+| Framework      | [Next.js 16](https://nextjs.org) (App Router, React Server Components), React 19, TypeScript                |
+| Styling        | Tailwind CSS, CSS custom-property design tokens, `next-themes` (light/dark), Oswald + Inter via `next/font` |
+| Content        | Markdown blog — `gray-matter` frontmatter, `react-markdown` + `remark-gfm`, `react-syntax-highlighter`      |
+| Database       | PostgreSQL on [Neon](https://neon.tech) via Prisma (guestbook)                                              |
+| Authentication | [Clerk](https://clerk.com) — GitHub sign-in                                                                 |
+| 3D             | Three.js via `@react-three/fiber` and `@react-three/drei`                                                   |
+| Icons          | `react-icons` — Phosphor (UI), Simple Icons (technology logos), Font Awesome (social)                       |
+| Testing        | Playwright end-to-end smoke suite                                                                           |
+| Tooling        | pnpm, ESLint, Prettier                                                                                      |
+| Hosting        | [Vercel](https://vercel.com), with the Neon × Vercel integration for per-preview database branches          |
 
-## Technology Stack
+## Development
 
-- **Next.js**: A framework that handles React config, many optimizations, and also enables server-side rendering.
-- **TypeScript**: For type safety.
-- **Tailwind CSS**: I just personally love tailwind over regular CSS.
+```bash
+pnpm install        # install dependencies (runs prisma generate)
+pnpm dev            # development server at http://localhost:3000
+```
 
-## Hosting
-
-- **Vercel**: The site is hosted on Vercel, which offers seamless integration with Next.js, automatic HTTPS, and a serverless architecture. Vercel was chosen for its performance, scalability, and zero cost.
+| Command             | Purpose                                                       |
+| ------------------- | ------------------------------------------------------------- |
+| `pnpm lint`         | ESLint                                                        |
+| `pnpm format:check` | Prettier (`pnpm format` to write)                             |
+| `pnpm type-check`   | Route typegen + `tsc --noEmit`                                |
+| `pnpm build`        | Production build                                              |
+| `pnpm test:e2e`     | Playwright suite (expects a server on `:3000`, or `BASE_URL`) |
 
 ## Pipeline
 
 Trunk-based development with a protected `main` branch — every change ships through a pull request.
 
 1. **PR opened** → GitHub Actions runs lint, type-check, format check, and a production build; Vercel deploys an isolated preview with its own Neon database branch (copy-on-write, via the Neon × Vercel integration).
-2. **Preview ready** → a Playwright smoke suite runs against the live preview URL.
+2. **Preview ready** → the Playwright smoke suite runs against the live preview URL.
 3. **All checks green** → the PR can merge; merging to `main` deploys to production, running `prisma migrate deploy` before the build.
 
-Auth is handled by Clerk (GitHub sign-in); the preview environment uses Clerk's development instance so previews can never mint production sessions.
+Auth uses Clerk's development instance in previews, so preview deployments can never mint production sessions.
 
 ## Pages
 
-- [**henryvendittelli.com/**](https://henryvendittelli.com/): Introduction, work experience, and some projects
-- [**henryvendittelli.com/about**](https://henryvendittelli.com/about): Education, volunteer experience
-- [**henryvendittelli.com/random**:](https://henryvendittelli.com/random) Setup, OS, Configs, Books, etc
-- [**henryvendittelli.com/reach-out**:](https://henryvendittelli.com/reach-out) Contact information
-
-## Key Features
-
-- **Light and Dark Modes:** To enhance accessibility and provide a comfortable viewing experience, the website includes both light and dark themes, allowing users to switch based on their preference.
-- **Responsive Design:** The layout adapts seamlessly to any device, whether it's a desktop, tablet, or mobile phone, ensuring a consistent and optimized user experience.
-- **Attention to Detail:** Every element of the site reflects my commitment to quality, from the smooth transitions to the thoughtfully chosen color schemes and typography.
-
-## Setup
-
-Install packages:
-
-```bash
-pnpm install
-```
-
-Run the development server:
-
-```bash
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Deployment
-
-This portfolio is hosted on Vercel. Changes merge to `main` only after passing CI checks (lint, type-check, format) and a Playwright smoke suite running against the Vercel preview. Once merged, `prisma migrate deploy` runs before the production build, ensuring database schema and code stay in sync.
+- [/](https://henryvendittelli.com/) — introduction, work experience, skills, and featured projects
+- [/about](https://henryvendittelli.com/about) — education and club involvement
+- [/projects](https://henryvendittelli.com/projects) — project deep-dives with technology filtering
+- [/blog](https://henryvendittelli.com/blog) — writing, rendered from markdown
+- [/random](https://henryvendittelli.com/random) — setup, software, and other miscellany
+- [/reach-out](https://henryvendittelli.com/reach-out) — contact information
 
 ## Contact
 

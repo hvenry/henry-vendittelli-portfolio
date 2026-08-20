@@ -9,7 +9,7 @@ export default function RockLink() {
   const [isShaking, setIsShaking] = useState(false);
   const [hasClicked, setHasClicked] = useState(false);
 
-  // Check localStorage on mount to see if the animation should be disabled
+  // Shake until the rock has been visited once (tracked in localStorage)
   useEffect(() => {
     const clicked = localStorage.getItem("rockClicked");
     if (!clicked) {
@@ -24,7 +24,6 @@ export default function RockLink() {
     }
   }, []);
 
-  // Handle link click
   const handleClick = () => {
     localStorage.setItem("rockClicked", "true");
     setHasClicked(true);

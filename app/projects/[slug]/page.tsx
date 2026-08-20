@@ -1,12 +1,13 @@
-import { FancyCard } from "@/components/FancyCard";
-import { IoHammerSharp } from "react-icons/io5";
 import { ProjectTab } from "@/components/ProjectTab";
 import { projects } from "@/data";
 import { slugify } from "@/lib/string";
+import { parseTechFilter } from "@/lib/techFilter";
 
 type Params = Promise<{
   slug: string;
 }>;
+
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
 export async function generateMetadata({ params }: { params: Params }) {
   const { slug } = await params;
@@ -28,29 +29,31 @@ export async function generateMetadata({ params }: { params: Params }) {
   };
 }
 
-export default async function ProjectsPage({ params }: { params: Params }) {
+export default async function ProjectsPage({
+  params,
+  searchParams
+}: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
   const { slug } = await params;
   const tabs = projects;
   const initialTab = slug || slugify(projects[0].title);
 
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(await searchParams)) {
+    if (typeof value === "string") query.set(key, value);
+  }
+  const initialFilter = parseTechFilter(query);
+
   return (
-    <main className="px-2 gap-4 sm:gap-8 w-full h-full flex flex-col items-center justify-center">
-      <div className="w-full sm:w-4/5 h-1/5 sm:h-1/4">
-        <FancyCard className="border border-foreground">
-          <div className="text-3xl text-white flex justify-center p-2 gap-2 items-center backdrop-blur-sm">
-            <IoHammerSharp size={30} />
-            <span>My Projects</span>
-          </div>
-        </FancyCard>
-      </div>
-      <div className="w-full sm:w-4/5 mb-4">
-        <ProjectTab
-          tabs={tabs}
-          activeTab={initialTab}
-          tabClassName="border hover:text-accent-hover border-transparent border-l-0 border-r-0"
-          activeTabClassName="border border-foreground border-l-0 border-r-0"
-        />
-      </div>
+    <main className="pt-8 pb-16 sm:pb-24 px-2">
+      <ProjectTab
+        tabs={tabs}
+        activeTab={initialTab}
+        initialTechs={initialFilter.techs}
+        initialMatchAll={initialFilter.matchAll}
+      />
     </main>
   );
 }
