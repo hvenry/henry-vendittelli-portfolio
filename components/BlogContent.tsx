@@ -173,37 +173,37 @@ export default function BlogContent({ content }: { content: string }) {
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => (
-            <h1 className="text-3xl sm:text-4xl font-bold text-muted mt-12 mb-6 pb-2 border-b border-foreground">
+            <h1 className="font-display text-3xl sm:text-4xl font-semibold tracking-wide text-foreground mt-12 mb-6 pb-2 border-b border-line">
               {children}
             </h1>
           ),
           h2: ({ children }) => (
-            <h2 className="text-2xl sm:text-3xl font-bold text-muted mt-10 mb-5 pb-2 border-b border-foreground">
+            <h2 className="font-display text-2xl sm:text-3xl font-semibold tracking-wide text-foreground mt-10 mb-5 pb-2 border-b border-line">
               {children}
             </h2>
           ),
           h3: ({ children }) => (
-            <h3 className="text-xl sm:text-2xl font-bold text-muted mt-8 mb-4">
+            <h3 className="font-display text-xl sm:text-2xl font-semibold tracking-wide text-foreground mt-8 mb-4">
               {children}
             </h3>
           ),
           h4: ({ children }) => (
-            <h4 className="text-lg sm:text-xl font-bold text-muted mt-6 mb-3">
+            <h4 className="font-display text-lg sm:text-xl font-semibold text-foreground mt-6 mb-3">
               {children}
             </h4>
           ),
           h5: ({ children }) => (
-            <h5 className="text-base sm:text-lg font-bold text-muted mt-5 mb-2">
+            <h5 className="font-display text-base sm:text-lg font-semibold text-foreground mt-5 mb-2">
               {children}
             </h5>
           ),
           h6: ({ children }) => (
-            <h6 className="text-base font-bold text-muted mt-4 mb-2">
+            <h6 className="font-display text-base font-semibold text-foreground mt-4 mb-2">
               {children}
             </h6>
           ),
           p: ({ children }) => (
-            <p className="text-base sm:text-lg leading-relaxed mb-6 text-subtle">
+            <p className="text-base sm:text-lg leading-relaxed mb-6 text-muted">
               {children}
             </p>
           ),
@@ -218,7 +218,7 @@ export default function BlogContent({ content }: { content: string }) {
             </ol>
           ),
           li: ({ children }) => (
-            <li className="text-base sm:text-lg leading-relaxed text-subtle">
+            <li className="text-base sm:text-lg leading-relaxed text-muted">
               {children}
             </li>
           ),
@@ -250,7 +250,7 @@ export default function BlogContent({ content }: { content: string }) {
           a: ({ children, href }) => (
             <a
               href={href}
-              className="text-muted underline decoration-2 underline-offset-2 hover:opacity-70 transition-opacity"
+              className="link"
               target={href?.startsWith("http") ? "_blank" : undefined}
               rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
             >
@@ -258,31 +258,33 @@ export default function BlogContent({ content }: { content: string }) {
             </a>
           ),
           blockquote: ({ children }) => (
-            <blockquote className="border-l-4 border-muted pl-6 py-2 italic my-6 bg-foreground/5">
+            <blockquote className="border-l-2 border-foreground/40 pl-6 py-2 italic my-6 bg-foreground/5">
               {children}
             </blockquote>
           ),
-          hr: () => <hr className="border-foreground my-8" />,
+          hr: () => <hr className="border-line my-8" />,
           strong: ({ children }) => (
-            <strong className="font-bold text-muted">{children}</strong>
+            <strong className="font-semibold text-foreground">
+              {children}
+            </strong>
           ),
           em: ({ children }) => (
-            <em className="italic text-subtle">{children}</em>
+            <em className="italic text-muted">{children}</em>
           ),
           table: ({ children }) => (
             <div className="overflow-x-auto my-6">
-              <table className="min-w-full border border-foreground">
+              <table className="min-w-full border border-line">
                 {children}
               </table>
             </div>
           ),
           thead: ({ children }) => (
-            <thead className="bg-foreground/10 border-b-2 border-foreground">
+            <thead className="bg-foreground/10 border-b border-foreground/40">
               {children}
             </thead>
           ),
           tbody: ({ children }) => (
-            <tbody className="divide-y divide-foreground">{children}</tbody>
+            <tbody className="divide-y divide-line">{children}</tbody>
           ),
           tr: ({ children }) => (
             <tr className="hover:bg-foreground/5 transition-colors">
@@ -290,12 +292,12 @@ export default function BlogContent({ content }: { content: string }) {
             </tr>
           ),
           th: ({ children }) => (
-            <th className="px-4 py-3 text-left text-sm font-bold text-muted">
+            <th className="px-4 py-3 text-left text-sm font-semibold text-foreground">
               {children}
             </th>
           ),
           td: ({ children }) => (
-            <td className="px-4 py-3 text-base text-subtle">{children}</td>
+            <td className="px-4 py-3 text-base text-muted">{children}</td>
           )
         }}
       >

@@ -12,28 +12,27 @@ export default function ContactCard() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="p-4 border transition-transform duration-300 ease-in-out border-foreground basic-glow hover:scale-105">
-        <div className="text-3xl font-bold pb-4 flex justify-center">
-          Contact Me
+      <div className="panel-ticks glow relative border border-line bg-background">
+        <div className="border-b border-line px-6 py-4">
+          <p className="font-display text-xl font-semibold tracking-wide text-foreground sm:text-2xl">
+            Contact Me
+          </p>
         </div>
-        <div className="sm:text-2xl text-lg text-muted">
-          <div className="flex justify-between gap-6 sm:gap-12">
-            <p>Email:</p>
-            <a
-              href="mailto:hvendittelli@gmail.com"
-              className="hover:text-accent-hover"
-            >
+        <div className="flex flex-col gap-3 px-6 py-5 text-sm text-muted sm:text-base">
+          <div className="flex justify-between gap-10 sm:gap-16">
+            <p className="text-subtle">Email</p>
+            <a href="mailto:hvendittelli@gmail.com" className="link">
               hvendittelli@gmail.com
             </a>
           </div>
-          <div className="flex justify-between">
-            <p>Phone:</p>
+          <div className="flex justify-between gap-10 sm:gap-16">
+            <p className="text-subtle">Phone</p>
             <p>647-926-6820</p>
           </div>
-          <div className="flex justify-between">
-            <p>More Info:</p>
+          <div className="flex justify-between gap-10 sm:gap-16">
+            <p className="text-subtle">More Info</p>
             <a
-              className="text-accent hover:text-accent-hover"
+              className="link"
               href={resume}
               target="_blank"
               rel="noopener noreferrer"

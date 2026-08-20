@@ -1,5 +1,6 @@
 import TabsContainer from "@/components/TabsContainer";
-import { LiaRandomSolid } from "react-icons/lia";
+import PageHeader from "@/components/PageHeader";
+import { PiShuffle } from "react-icons/pi";
 
 export const metadata = {
   title: "Random - henryvendittelli.com",
@@ -8,23 +9,15 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <main className="pt-8 pb-16 sm:pb-24">
-      {/* main box */}
-      <div className="border border-foreground p-4 mx-2 mb-16">
-        {/* title */}
-        <div className="flex items-end gap-4 pb-4">
-          <div className="flex items-center gap-2">
-            <LiaRandomSolid size={30} />
-            <p className="text-3xl">Random</p>
-          </div>
-        </div>
-        {/* desc */}
-        <p className="sm:text-2xl text-xl text-justify text-muted">
-          Setup, OS, Configs, Software, Books, and more!
-        </p>
+    <main className="flex flex-col pt-8 pb-16 sm:h-[calc(var(--vh)_*100-10rem)] sm:pb-0">
+      <PageHeader
+        icon={<PiShuffle size={26} />}
+        title="Random"
+        description="Setup, OS, configs, software, books, and more!"
+      />
+      <div className="mt-8 sm:min-h-0 sm:flex-1">
+        <TabsContainer />
       </div>
-      {/* Tabs container */}
-      <TabsContainer />
     </main>
   );
 }

@@ -1,9 +1,7 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import Panel from "@/components/Panel";
+import { getIconPath } from "@/lib/images";
 
 interface Experience {
   name: string;
@@ -15,132 +13,97 @@ interface Experience {
 }
 
 interface ExperienceProps {
-  info: Experience[] | null;
+  info: Experience[];
 }
 
-const ExperienceCard: React.FC<ExperienceProps> = ({ info }) => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const getImagePath = (imageName: string) =>
-    `/assets/images/icons/${imageName}.png`;
-
-  // Group experiences by 'name'
-  const groupedExperiences = info
-    ? info.reduce((acc: Record<string, Experience[]>, experience) => {
-        if (!acc[experience.name]) {
-          acc[experience.name] = [];
-        }
-        acc[experience.name].push(experience);
-        return acc;
-      }, {})
-    : {};
-
-  if (!mounted || !info) {
-    const skeletons = Array.from(
-      { length: info ? info.length : 1 },
-      (_, index) => (
-        <div key={index} className="pr-4">
-          <div className="px-4 py-2">
-            <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 gap-2 pb-2">
-              <div className="flex justify-center items-center gap-2">
-                <Skeleton height={24} width={24} circle className="skeleton" />
-                <Skeleton height={30} width={150} className="skeleton" />
-              </div>
-              <Skeleton height={20} width={100} className="skeleton" />
-            </div>
-            <Skeleton
-              height={15}
-              width={"100%"}
-              count={5}
-              className="skeleton"
-            />
-            <div className="sm:hidden">
-              <Skeleton
-                height={15}
-                width={"100%"}
-                count={5}
-                className="skeleton"
-              />
-            </div>
-            <Skeleton height={15} width={"40%"} className="skeleton" />
-            <div className="mt-1 flex justify-end">
-              <Skeleton height={15} width={125} className="skeleton" />
-            </div>
-          </div>
-        </div>
-      )
-    );
-    return <div className="flex flex-col gap-8">{skeletons}</div>;
+function groupByName(info: Experience[]) {
+  const groups: { name: string; entries: Experience[] }[] = [];
+  for (const entry of info) {
+    const existing = groups.find((group) => group.name === entry.name);
+    if (existing) {
+      existing.entries.push(entry);
+    } else {
+      groups.push({ name: entry.name, entries: [entry] });
+    }
   }
+  return groups;
+}
 
+export default function ExperienceCard({ info }: ExperienceProps) {
   return (
-    <div className="flex flex-col gap-8">
-      {Object.keys(groupedExperiences).map((name) => (
-        <div key={name} className="mr-4">
-          <div className="pl-4 pr-6 pt-3 pb-5 hover:translate-x-2 transition-transform transition-border-color duration-300 ease-in-out border border-transparent hover:border-foreground basic-glow">
-            <div className="flex flex-col items-start sm:flex-row sm:items-end sm:gap-4 gap-2">
-              <div className="flex justify-center items-center gap-2">
-                <Image
-                  src={getImagePath(groupedExperiences[name][0].image)}
-                  alt={name}
-                  width={128}
-                  height={128}
-                  className={`size-9 ${groupedExperiences[name][0].image === "partisans_icon" ? "icon-invert" : ""}`}
-                  priority={true}
-                />
-                <a
-                  href={groupedExperiences[name][0].link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="sm:text-3xl text-2xl hover:text-accent-hover"
+    <div className="mx-2 flex flex-col gap-5">
+      {groupByName(info).map(({ name, entries }) => (
+        <Panel key={name} interactive>
+          <header className="flex items-center gap-3 border-b border-line px-4 py-3 sm:px-5">
+            <Image
+              src={getIconPath(entries[0].image)}
+              alt={name}
+              width={128}
+              height={128}
+              className={`size-8 ${
+                entries[0].image === "partisans_icon" ? "icon-invert" : ""
+              }`}
+              priority
+            />
+            <a
+              href={entries[0].link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-title text-lg sm:text-xl"
+            >
+              {name}
+            </a>
+            {entries.length > 1 && (
+              <span className="ml-auto text-[10px] uppercase tracking-[0.2em] text-subtle">
+                {entries.length} roles
+              </span>
+            )}
+          </header>
+          <ol className="px-4 py-2 sm:px-5">
+            {entries.map((role, idx) => {
+              const isFirst = idx === 0;
+              const isLast = idx === entries.length - 1;
+              return (
+                <li
+                  key={`${role.position}-${role.time}`}
+                  className="relative pl-6"
                 >
-                  {name}
-                </a>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              {groupedExperiences[name].map((role, idx) => (
-                <div
-                  key={idx}
-                  className="grid grid-cols-[36px_auto] transition-transform duration-300 ease-in-out hover:scale-[1.02]"
-                >
-                  {/* Position Title Bullet */}
-                  <div className="flex flex-col items-center">
-                    <div className="flex h-full items-center justify-center">
-                      <div className="w-[6px] h-[6px] sm:w-2 sm:h-2 bg-subtle"></div>
+                  {/* Timeline rail; the node at top-[26px] aligns with the title line */}
+                  {!isFirst && (
+                    <span
+                      aria-hidden
+                      className="absolute left-[3px] top-0 h-[26px] w-px bg-foreground/25"
+                    />
+                  )}
+                  {!isLast && (
+                    <span
+                      aria-hidden
+                      className="absolute bottom-0 left-[3px] top-[33px] w-px bg-foreground/25"
+                    />
+                  )}
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-[26px] size-[7px] border border-foreground/50 bg-background"
+                  />
+                  <div className="py-4">
+                    <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+                      <h3 className="font-display text-base font-medium tracking-wide text-foreground sm:text-lg">
+                        {role.position}
+                      </h3>
+                      <p className="whitespace-nowrap text-xs tabular-nums tracking-wide text-subtle">
+                        {role.time}
+                      </p>
                     </div>
-                  </div>
-                  {/* Position Title */}
-                  <div className="py-2 flex justify-between items-center">
-                    <p className="sm:text-2xl text-md text-muted">
-                      {role.position}
-                    </p>
-                    <p className="pt-1 flex justify-end sm:text-xl text-sm text-subtle">
-                      {role.time}
+                    <p className="mt-1.5 text-sm leading-relaxed text-subtle">
+                      {role.desc}
                     </p>
                   </div>
-                  {/* Description Vertical Line */}
-                  <div className="flex items-start justify-center">
-                    {idx < groupedExperiences[name].length && (
-                      <div className="w-[2px] bg-subtle h-full"></div>
-                    )}
-                  </div>
-                  {/* Description */}
-                  <p className="lg:text-xl sm:text-lg text-xs font-mono text-subtle text-justify">
-                    {role.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+                </li>
+              );
+            })}
+          </ol>
+        </Panel>
       ))}
     </div>
   );
-};
-
-export default ExperienceCard;
+}

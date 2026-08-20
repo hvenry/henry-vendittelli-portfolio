@@ -150,11 +150,6 @@ export const setup = [
     link: "https://github.com/Bastardkb/TBK-Mini"
   },
   {
-    name: "Work Keyboard",
-    description: "Apple Magic Keyboard",
-    link: "https://www.apple.com/ca/shop/product/MMMR3LL/A/magic-keyboard-with-touch-id-and-numeric-keypad-for-mac-models-with-apple-silicon-us-english-black-keys?afid=p238%7Cs15cBR7Gb-dc_mtid_1870765e38482_pcrid_703843849102_pgrid_169137981492_pntwk_g_pchan_online_pexid__ptid_pla-2298479982371_&cid=aos-ca-kwgo-pla---slid---product-MMMR3LL/A-CA"
-  },
-  {
     name: "Mouse",
     description: "Logitech G Pro X Superlight",
     link: "https://www.logitechg.com/en-ca/products/gaming-mice/pro-x-superlight-wireless-mouse.910-005940.html"

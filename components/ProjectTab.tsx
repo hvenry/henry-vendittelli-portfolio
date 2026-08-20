@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FaGithubSquare, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import { MdArrowRight, MdArrowLeft } from "react-icons/md";
 import { slugify } from "@/lib/string";
+import { getProjectImagePath } from "@/lib/images";
+import { matchesTechFilter, buildTechQuery } from "@/lib/techFilter";
+import TechBadge from "@/components/TechBadge";
 
 interface Tab {
   title: string;
@@ -19,24 +21,46 @@ interface Tab {
 
 interface ProjectTabProps {
   tabs: Tab[];
-  activeTabClassName?: string;
-  tabClassName?: string;
   activeTab: string;
+  initialTechs: string[];
+  initialMatchAll: boolean;
 }
 
 export const ProjectTab = ({
   tabs,
-  activeTabClassName,
-  tabClassName,
-  activeTab
+  activeTab,
+  initialTechs,
+  initialMatchAll
 }: ProjectTabProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const initialSlug = pathname.split("/").pop() || slugify(activeTab);
+
   const [currentSlug, setCurrentSlug] = useState(initialSlug);
+  const [selectedTechs, setSelectedTechs] = useState<string[]>(initialTechs);
+  const [matchAll, setMatchAll] = useState(initialMatchAll);
+  const [filtersOpen, setFiltersOpen] = useState(initialTechs.length > 0);
   const tabContainerRef = useRef<HTMLDivElement>(null);
 
-  // Save scroll position on tab container scroll
+  const allTechs = useMemo(
+    () =>
+      Array.from(new Set(tabs.flatMap((tab) => tab.technologies ?? []))).sort(
+        (a, b) => a.localeCompare(b)
+      ),
+    [tabs]
+  );
+
+  const visibleTabs = useMemo(
+    () =>
+      tabs.filter((tab) =>
+        matchesTechFilter(tab.technologies, selectedTechs, matchAll)
+      ),
+    [tabs, selectedTechs, matchAll]
+  );
+
+  const query = buildTechQuery(selectedTechs, matchAll);
+
+  // Persist horizontal tab-strip scroll across project navigations
   useEffect(() => {
     const handleScroll = () => {
       if (tabContainerRef.current) {
@@ -52,7 +76,6 @@ export const ProjectTab = ({
     return () => tabContainer?.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Restore scroll position on component mount
   useEffect(() => {
     const savedScrollPosition = localStorage.getItem("tabScrollPosition");
     if (tabContainerRef.current && savedScrollPosition) {
@@ -60,41 +83,74 @@ export const ProjectTab = ({
     }
   }, []);
 
-  // Update URL and scroll to top
+  // Sync URL: push on tab change, replace on filter change
+  const prevSlugRef = useRef(currentSlug);
   useEffect(() => {
-    if (currentSlug) {
-      router.push(`/projects/${currentSlug}`);
-      const activeContentElement = document.getElementById(
-        `tab-content-${currentSlug}`
-      );
-      if (activeContentElement) {
-        activeContentElement.scrollTop = 0;
-      }
+    if (!currentSlug) return;
+    const url = `/projects/${currentSlug}${query}`;
+    if (prevSlugRef.current !== currentSlug) {
+      prevSlugRef.current = currentSlug;
+      router.push(url);
+    } else {
+      router.replace(url, { scroll: false });
     }
-  }, [currentSlug, router]);
+  }, [currentSlug, query, router]);
+
+  useEffect(() => {
+    const slugs = visibleTabs.map((tab) => slugify(tab.title));
+    if (slugs.length > 0 && !slugs.includes(currentSlug)) {
+      setCurrentSlug(slugs[0]);
+    }
+  }, [visibleTabs, currentSlug]);
 
   const handleTabChange = (tab: Tab) => {
-    const slug = slugify(tab.title);
-    setCurrentSlug(slug);
+    setCurrentSlug(slugify(tab.title));
   };
 
+  const toggleTech = (tech: string) => {
+    setSelectedTechs((prev) =>
+      prev.includes(tech)
+        ? prev.filter((item) => item !== tech)
+        : [...prev, tech]
+    );
+  };
+
+  const clearFilters = () => setSelectedTechs([]);
+
+  const modeButton = (label: string, value: boolean) => (
+    <button
+      type="button"
+      onClick={() => setMatchAll(value)}
+      aria-pressed={matchAll === value}
+      className={`px-2.5 py-1 transition-colors ${
+        matchAll === value
+          ? "bg-foreground text-background"
+          : "text-subtle hover:text-foreground"
+      }`}
+    >
+      {label}
+    </button>
+  );
+
   const renderTabContent = (tab: Tab) => (
-    <div
+    <article
       key={`content-${slugify(tab.title)}`}
-      className="flex flex-col gap-4 h-[calc(60vh-128px)] sm:h-[calc(50vh-128px)] p-4 overflow-auto border border-foreground"
+      className="flex flex-col gap-4 pt-6"
       id={`tab-content-${slugify(tab.title)}`}
     >
-      {/* Title + Links */}
-      <div className="flex items-end gap-2">
-        <p className="text-xl sm:text-3xl">{tab.bodyTitle}</p>
+      <div className="flex items-end gap-3">
+        <h1 className="font-display text-xl font-semibold tracking-wide text-foreground sm:text-2xl">
+          {tab.bodyTitle}
+        </h1>
         {tab.githubLink && (
           <a
             href={tab.githubLink}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
+            className="link-quiet"
           >
-            <FaGithubSquare className="size-6 sm:size-8 hover:fill-accent-hover" />
+            <FaGithubSquare className="size-6 sm:size-7" />
           </a>
         )}
         {tab.youtubeLink && (
@@ -103,99 +159,128 @@ export const ProjectTab = ({
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Youtube"
+            className="link-quiet"
           >
-            <FaYoutube className="size-6 sm:size-8 fill-red-600 hover:fill-accent-hover" />
+            <FaYoutube className="size-6 sm:size-7" />
           </a>
         )}
       </div>
-      {/* Technologies */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1.5">
         {tab.technologies?.map((tech) => (
-          <span
+          <TechBadge
             key={tech}
-            className="bg-foreground rounded-full px-4 text-background text-sm sm:text-xl"
-          >
-            {tech}
-          </span>
+            name={tech}
+            size="sm"
+            selected={selectedTechs.includes(tech)}
+            onClick={() => toggleTech(tech)}
+          />
         ))}
       </div>
-      {/* Info */}
-      <div className="text-sm sm:text-lg font-mono text-subtle text-justify flex flex-col gap-4">
+      <div className="flex flex-col gap-4 text-sm leading-relaxed text-muted sm:text-base">
         {tab.imageName && (
-          <div className="flex justify-center">
-            <Image
-              src={`/assets/images/projects/${tab.imageName}`}
-              alt={tab.title}
-              width={1000}
-              height={500}
-              className="bg-foreground w-full sm:w-3/4 mb-2 border border-foreground h-auto rounded-sm"
-              priority
-            />
-          </div>
+          <Image
+            src={getProjectImagePath(tab.imageName)}
+            alt={tab.title}
+            width={1000}
+            height={500}
+            className="h-auto w-full border border-line"
+            priority
+          />
         )}
         {tab.description.split("\n").map((line, index) => (
           <p key={`desc-${index}`}>{line}</p>
         ))}
       </div>
-    </div>
+    </article>
   );
-
-  // Scroll functionality for holding down the arrow buttons
-  const scrollInterval = useRef<ReturnType<typeof setInterval> | null>(null);
-  const startScrolling = (direction: "left" | "right") => {
-    const scrollAmount = direction === "left" ? -8 : 8;
-    scrollInterval.current = setInterval(() => {
-      if (tabContainerRef.current) {
-        tabContainerRef.current.scrollLeft += scrollAmount;
-      }
-    }, 16);
-  };
-
-  const stopScrolling = () => {
-    if (scrollInterval.current) {
-      clearInterval(scrollInterval.current);
-    }
-  };
 
   return (
     <>
-      {/* Scroll prompt and arrows */}
-      <div className="flex mb-4">
-        <MdArrowLeft
-          className="cursor-pointer size-10"
-          onMouseDown={() => startScrolling("left")}
-          onMouseUp={stopScrolling}
-          onMouseLeave={stopScrolling}
-        />
-        <div
-          ref={tabContainerRef}
-          className="border border-foreground border-t-0 border-b-0 border-l-1 border-r-1 w-full flex overflow-x-auto scrollbar-hide"
+      <div className="mb-3 flex items-center justify-between">
+        <button
+          type="button"
+          onClick={() => setFiltersOpen(!filtersOpen)}
+          aria-expanded={filtersOpen}
+          className="link-quiet font-display text-xs uppercase tracking-wider"
         >
-          {tabs.map((tab) => (
-            <button
-              key={slugify(tab.title)}
-              onClick={() => handleTabChange(tab)}
-              className={`flex-shrink-0 sm:text-xl text-md px-2 mx-2 ${
-                slugify(tab.title) === currentSlug
-                  ? activeTabClassName
-                  : tabClassName
-              }`}
-            >
-              {tab.title}
-            </button>
-          ))}
-        </div>
-        <MdArrowRight
-          className="cursor-pointer size-10"
-          onMouseDown={() => startScrolling("right")}
-          onMouseUp={stopScrolling}
-          onMouseLeave={stopScrolling}
-        />
+          {filtersOpen ? "▾" : "▸"} Filter by technology
+          {selectedTechs.length > 0 && ` (${selectedTechs.length})`}
+        </button>
+        {selectedTechs.length > 0 && (
+          <button
+            type="button"
+            onClick={clearFilters}
+            className="link-quiet font-display text-xs uppercase tracking-wider"
+          >
+            Clear
+          </button>
+        )}
       </div>
-      {/* Tab content */}
-      {tabs
-        .filter((tab) => slugify(tab.title) === currentSlug)
-        .map((tab) => renderTabContent(tab))}
+      {filtersOpen && (
+        <div className="mb-4 border border-line p-3">
+          <div className="flex flex-wrap gap-1.5">
+            {allTechs.map((tech) => (
+              <TechBadge
+                key={tech}
+                name={tech}
+                size="sm"
+                selected={selectedTechs.includes(tech)}
+                onClick={() => toggleTech(tech)}
+              />
+            ))}
+          </div>
+          <div className="mt-3 flex items-center gap-3 border-t border-line pt-3">
+            <span className="text-[11px] uppercase tracking-[0.15em] text-subtle">
+              Match
+            </span>
+            <div className="flex border border-line font-display text-[11px] uppercase tracking-wider">
+              {modeButton("All", true)}
+              {modeButton("Any", false)}
+            </div>
+            <span className="ml-auto text-xs tabular-nums text-subtle">
+              {visibleTabs.length}/{tabs.length} projects
+            </span>
+          </div>
+        </div>
+      )}
+      {visibleTabs.length === 0 ? (
+        <div className="border border-line p-8 text-center">
+          <p className="text-sm text-subtle">
+            No projects match the selected filters.
+          </p>
+          <button
+            type="button"
+            onClick={clearFilters}
+            className="link mt-3 text-sm"
+          >
+            Clear filters
+          </button>
+        </div>
+      ) : (
+        <>
+          <div
+            ref={tabContainerRef}
+            className="scrollbar-hide flex w-full gap-1 overflow-x-auto border-b border-line"
+          >
+            {visibleTabs.map((tab) => (
+              <button
+                key={slugify(tab.title)}
+                onClick={() => handleTabChange(tab)}
+                className={`flex-shrink-0 px-3 py-2 font-display text-xs uppercase tracking-wider transition-colors sm:text-sm ${
+                  slugify(tab.title) === currentSlug
+                    ? "bg-foreground text-background"
+                    : "text-subtle hover:text-foreground"
+                }`}
+              >
+                {tab.title}
+              </button>
+            ))}
+          </div>
+          {visibleTabs
+            .filter((tab) => slugify(tab.title) === currentSlug)
+            .map((tab) => renderTabContent(tab))}
+        </>
+      )}
     </>
   );
 };

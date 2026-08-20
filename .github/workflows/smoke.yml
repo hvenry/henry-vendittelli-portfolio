@@ -21,3 +21,4 @@ jobs:
       - run: pnpm exec playwright test
         env:
           BASE_URL: ${{ github.event.deployment_status.environment_url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}

@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <main className="h-full flex flex-col justify-center items-center">
+    <main className="flex min-h-[calc(var(--vh)_*100-12rem)] flex-col items-center justify-center">
       <ContactCard />
     </main>
   );

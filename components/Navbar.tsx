@@ -1,11 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { RiMenu3Fill } from "react-icons/ri";
-import { IoMdClose } from "react-icons/io";
-import { MdLightMode, MdDarkMode } from "react-icons/md";
+import { PiSun, PiMoon, PiList, PiX } from "react-icons/pi";
 import { useTheme } from "next-themes";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
@@ -20,7 +18,6 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 1024px)");
@@ -50,117 +47,124 @@ export const Navbar: React.FC<NavbarProps> = ({ navItems }) => {
     }
   }, [pathname]);
 
-  // Close mobile nav on resize to desktop
   useEffect(() => {
     if (isDesktop) setIsOpen(false);
   }, [isDesktop]);
 
-  // Close on outside click
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
+    document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "";
     };
+  }, [isOpen]);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
   }, []);
 
   const handleNavItemClick = (path: string) => {
     setActiveItem(path);
     setIsOpen(false);
+    // Same-route clicks don't navigate, so ScrollToTop never fires
+    if (path === pathname) window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (!mounted) return null;
-
+  // Theme is unknown until hydration; render a placeholder so nothing shifts
   const themeToggle = (
-    <button aria-label="toggle theme" onClick={toggleTheme}>
-      {resolvedTheme === "dark" ? (
-        <MdLightMode className="size-6 cursor-pointer hover:text-yellow-500" />
+    <button
+      aria-label="toggle theme"
+      onClick={toggleTheme}
+      className="link-quiet"
+    >
+      {mounted ? (
+        resolvedTheme === "dark" ? (
+          <PiSun className="size-5 cursor-pointer" />
+        ) : (
+          <PiMoon className="size-5 cursor-pointer" />
+        )
       ) : (
-        <MdDarkMode className="size-6 cursor-pointer hover:text-accent-hover" />
+        <span className="block size-5" />
       )}
     </button>
   );
 
   return (
-    <div className="bg-background/10 w-full md:w-[calc(67vw)] lg:w-[calc(50vw)] xl:w-1/3 fixed top-4 z-50 px-4 flex justify-between h-16 backdrop-blur rounded-3xl">
-      {/* Desktop nav */}
-      <div className="hidden md:flex w-full h-full justify-between items-center">
-        <Link
-          href="/"
-          onClick={() => handleNavItemClick("/")}
-          className="text-foreground text-xl font-bold hover:text-accent-hover"
-        >
-          henryvendittelli.com/
-        </Link>
-        <div className="gap-4 flex items-center">
-          {navItems.map((item, index) => (
+    <>
+      <div className="fixed top-0 z-50 h-16 w-full md:w-[calc(67vw)] lg:w-[calc(50vw)] xl:w-1/3">
+        {/* Progressive blur: stacked masked layers fading strong -> none */}
+        <div aria-hidden className="progressive-blur absolute inset-0">
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="relative z-10 flex h-full items-center justify-between px-4">
+          <Link
+            href="/"
+            onClick={() => handleNavItemClick("/")}
+            className="font-display text-lg font-medium tracking-wide text-foreground transition-opacity hover:opacity-70"
+          >
+            henryvendittelli.com/
+          </Link>
+          <div className="nav-links hidden items-center gap-1 md:flex">
+            {navItems.map((item, index) => (
+              <Link
+                key={index}
+                href={item.path}
+                onClick={() => handleNavItemClick(item.path)}
+                className={`nav-link px-2 py-1 font-display text-sm tracking-wide transition-colors ${
+                  activeItem === item.path
+                    ? "bg-foreground text-background"
+                    : "text-subtle hover:text-foreground"
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <div className="ml-3">{themeToggle}</div>
+          </div>
+          <div className="flex items-center gap-4 md:hidden">
+            {themeToggle}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-label={isOpen ? "close navigation" : "open navigation"}
+              className="link-quiet text-2xl"
+            >
+              {isOpen ? <PiX /> : <PiList />}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-hidden={!isOpen}
+        className={`fixed inset-0 z-40 bg-background/85 backdrop-blur-xl transition-transform duration-500 ease-in-out md:hidden ${
+          isOpen ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <nav className="flex h-full flex-col justify-center">
+          {navItems.map((item) => (
             <Link
-              key={index}
+              key={item.path}
               href={item.path}
               onClick={() => handleNavItemClick(item.path)}
-              className={`text-foreground text-lg px-2 pb-[2px] ${
+              tabIndex={isOpen ? 0 : -1}
+              className={`block w-full px-6 py-4 font-display text-5xl font-semibold tracking-wide text-foreground transition-opacity hover:opacity-60 ${
                 activeItem === item.path
-                  ? "border border-r-0 border-l-0 border-foreground"
-                  : "hover:text-accent-hover"
+                  ? "underline decoration-2 underline-offset-8"
+                  : ""
               }`}
             >
               {item.name}
             </Link>
           ))}
-          {themeToggle}
-        </div>
+        </nav>
       </div>
-      {/* Mobile nav */}
-      <div className="md:hidden flex w-full h-full justify-between items-center">
-        <Link
-          href="/"
-          onClick={() => handleNavItemClick("/")}
-          className="text-foreground text-xl font-bold hover:text-accent-hover"
-        >
-          henryvendittelli.com/
-        </Link>
-        <div className="flex items-center gap-4">
-          {themeToggle}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="font-bold text-3xl hover:text-accent-hover"
-          >
-            {isOpen ? (
-              <IoMdClose aria-label="close navigation" />
-            ) : (
-              <RiMenu3Fill aria-label="open navigation" />
-            )}
-          </button>
-        </div>
-      </div>
-      <div
-        ref={dropdownRef}
-        className={`absolute flex-col top-full z-50 right-[24px] bg-background rounded-b-lg nav-dropdown ${
-          isOpen ? "open" : ""
-        }`}
-      >
-        {navItems.map((item, index) => (
-          <Link
-            key={index}
-            href={item.path}
-            onClick={() => handleNavItemClick(item.path)}
-            className={`text-foreground px-3 my-1 flex justify-end h-8 text-lg ${
-              activeItem === item.path
-                ? "border border-r-0 border-l-0 border-t-0 border-foreground"
-                : "hover:text-accent-hover"
-            }`}
-          >
-            {item.name}
-          </Link>
-        ))}
-      </div>
-    </div>
+    </>
   );
 };

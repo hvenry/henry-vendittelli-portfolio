@@ -1,128 +1,72 @@
 import React from "react";
-import { FaAws, FaPython, FaJava } from "react-icons/fa";
-import {
-  SiGooglecloud,
-  SiGit,
-  SiJavascript,
-  SiTypescript,
-  SiReact,
-  SiExpo,
-  SiFirebase,
-  SiGraphql,
-  SiLua,
-  SiAuth0,
-  SiGithubactions,
-  SiNodedotjs,
-  SiFastapi,
-  SiGunicorn,
-  SiPytorch,
-  SiMysql,
-  SiC,
-  SiRust,
-  SiGnubash,
-  SiPostgresql,
-  SiOpencv,
-  SiMongodb,
-  SiSqlite,
-  SiRedis,
-  SiTailwindcss,
-  SiNextdotjs,
-  SiExpress,
-  SiVim,
-  SiVite,
-  SiPostman,
-  SiTerraform
-} from "react-icons/si";
+import TechBadge from "@/components/TechBadge";
 
-type SkillType = {
-  Icon: React.ComponentType<{ className?: string }>;
-  name: string;
-};
-
-const skillCategories: { title: string; skills: SkillType[] }[] = [
+const skillCategories: { title: string; skills: string[] }[] = [
   {
     title: "Programming Languages",
     skills: [
-      { Icon: FaPython, name: "Python" },
-      { Icon: SiGnubash, name: "Bash" },
-      { Icon: SiLua, name: "Lua" },
-      { Icon: FaJava, name: "Java" },
-      { Icon: SiC, name: "" },
-      { Icon: SiRust, name: "Rust" },
-      { Icon: SiTypescript, name: "TypeScript" },
-      { Icon: SiJavascript, name: "JavaScript" }
+      "Python",
+      "Bash",
+      "Lua",
+      "Java",
+      "C",
+      "Rust",
+      "TypeScript",
+      "JavaScript"
     ]
   },
   {
     title: "Libraries & Frameworks",
     skills: [
-      { Icon: SiReact, name: "React" },
-      { Icon: SiNextdotjs, name: "Next.js" },
-      { Icon: SiExpress, name: "Express.js" },
-      { Icon: SiReact, name: "React Native" },
-      { Icon: SiExpo, name: "Expo" },
-      { Icon: SiTailwindcss, name: "Tailwind CSS" },
-      { Icon: SiFastapi, name: "FastAPI" },
-      { Icon: SiGunicorn, name: "Gunicorn" },
-      { Icon: SiOpencv, name: "OpenCV" },
-      { Icon: SiPytorch, name: "PyTorch" }
+      "React",
+      "Next.js",
+      "Express.js",
+      "React Native",
+      "Expo",
+      "Tailwind CSS",
+      "FastAPI",
+      "Gunicorn",
+      "OpenCV",
+      "PyTorch"
     ]
   },
   {
     title: "Database Technologies",
-    skills: [
-      { Icon: SiMysql, name: "MySQL" },
-      { Icon: SiRedis, name: "Redis" },
-      { Icon: SiPostgresql, name: "PostgreSQL" },
-      { Icon: SiMongodb, name: "MongoDB" },
-      { Icon: SiSqlite, name: "SQLite" },
-      { Icon: SiFirebase, name: "Firebase" }
-    ]
+    skills: ["MySQL", "Redis", "PostgreSQL", "MongoDB", "SQLite", "Firebase"]
   },
   {
     title: "Developer Tools",
     skills: [
-      { Icon: SiGit, name: "Git" },
-      { Icon: SiGooglecloud, name: "GCP" },
-      { Icon: FaAws, name: "AWS" },
-      { Icon: SiAuth0, name: "Auth0" },
-      { Icon: SiVim, name: "Vim" },
-      { Icon: SiVite, name: "Vite" },
-      { Icon: SiNodedotjs, name: "Node.js" },
-      { Icon: SiGraphql, name: "GraphQL" },
-      { Icon: SiPostman, name: "Postman" },
-      { Icon: SiTerraform, name: "Terraform" },
-      { Icon: SiGithubactions, name: "GitHub Actions" }
+      "Git",
+      "GCP",
+      "AWS",
+      "Auth0",
+      "Vim",
+      "Vite",
+      "Node.js",
+      "GraphQL",
+      "Postman",
+      "Terraform",
+      "GitHub Actions"
     ]
   }
 ];
 
-const SkillBox: React.FC<{
-  Icon: React.ComponentType<{ className?: string }>;
-  name: string;
-}> = ({ Icon, name }) => {
-  return (
-    <div className="flex flex-grow sm:p-2 p-1.5 gap-2 border border-foreground justify-center max-w-[150px] sm:max-w-[200px]">
-      <Icon className={"sm:w-7 w-5 sm:h-7 h-5"} />
-      {name !== "" && <p className="font-bold text-sm sm:text-xl">{name}</p>}
-    </div>
-  );
-};
-
 const Skills = () => {
   return (
-    <div className="flex flex-col">
+    <div className="mx-2 flex flex-col gap-6">
       {skillCategories.map((category) => (
-        <div
-          key={category.title}
-          className="px-2 py-4 border transition-transform duration-300 ease-in-out border-transparent hover:border-foreground basic-glow hover:scale-[1.02] "
-        >
-          <p className="sm:text-2xl text-xl font-bold pl-2 pb-2 text-muted">
-            [ {category.title} ]
+        <div key={category.title}>
+          <p className="pb-3 font-display text-sm font-medium uppercase tracking-[0.15em] text-subtle">
+            {category.title}
           </p>
-          <div className="mx-2 gap-4 flex flex-wrap justify-start">
+          <div className="flex flex-wrap gap-2">
             {category.skills.map((skill) => (
-              <SkillBox key={skill.name} Icon={skill.Icon} name={skill.name} />
+              <TechBadge
+                key={skill}
+                name={skill}
+                href={`/projects?tech=${encodeURIComponent(skill)}`}
+              />
             ))}
           </div>
         </div>

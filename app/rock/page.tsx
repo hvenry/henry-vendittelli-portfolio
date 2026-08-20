@@ -8,7 +8,7 @@ const RotatingRockCanvas = dynamic(() => import("@/components/RotatingRock"), {
   ssr: false
 });
 import { useUser, SignInButton, SignOutButton } from "@clerk/nextjs";
-import { ImSpinner2 } from "react-icons/im";
+import Loader from "@/components/Loader";
 import { FaGithub } from "react-icons/fa";
 
 type Comment = {
@@ -21,12 +21,10 @@ type Comment = {
 };
 
 export default function Page() {
-  // Comment states
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState<Comment[]>([]);
   const [hasCommented, setHasCommented] = useState(false);
 
-  // Loading states
   const { user, isLoaded } = useUser();
   const [isCommentsLoading, setIsCommentsLoading] = useState(true);
 
@@ -41,7 +39,8 @@ export default function Page() {
     try {
       const response = await fetch("/api/comments");
       const data: Comment[] = await response.json();
-      setComments(data);
+      // A failed request returns an error object; never let it reach comments.map
+      setComments(Array.isArray(data) ? data : []);
     } catch (error) {
       console.error("Failed to fetch comments:", error);
     } finally {
@@ -79,65 +78,67 @@ export default function Page() {
     }
   };
 
-  // Early return for loading state
   if (!isLoaded) {
     return (
-      <div className="h-full w-full flex justify-center items-center">
-        <ImSpinner2 className="animate-spin" />
+      <div className="flex h-[calc(var(--vh)_*100-10rem)] w-full items-center justify-center">
+        <Loader />
       </div>
     );
   }
 
-  // Main render
   return (
-    <main className="h-full flex flex-col justify-center items-center">
+    <main className="flex h-[calc(var(--vh)_*100-10rem)] flex-col items-center justify-center">
       <div className="h-2/3 w-full">
         <RotatingRockCanvas />
       </div>
       <div className="h-1/3 w-full px-4 pb-4 sm:pb-8">
-        <div className="h-full border transition-transform duration-300 ease-in-out border-foreground rounded-xl basic-glow hover:scale-105 p-1 sm:p-4 grid grid-cols-2 ">
-          {/* Left Side - Auth & Comment Section */}
+        <div className="glow grid h-full grid-cols-2 border border-line bg-background p-1 sm:p-4">
           <div className="overflow-y-auto mx-auto px-2">
             <div className="min-h-full flex flex-col justify-center">
               {!user && (
                 <div className="pb-2 sm:pb-4 flex justify-center items-center gap-1 sm:gap-2">
                   <FaGithub className="size-5 sm:size-6" />
-                  <p className="text-xl sm:text-2xl font-bold">Sign my site!</p>
+                  <p className="font-display text-lg font-semibold tracking-wide text-foreground sm:text-xl">
+                    Sign my site!
+                  </p>
                 </div>
               )}
-              {/* comments */}
               {isCommentsLoading ? (
                 <div className="flex justify-center items-center h-12">
-                  <ImSpinner2 className="animate-spin size-3 sm:size-5" />
+                  <Loader />
                 </div>
               ) : !user ? (
                 <SignInButton mode="modal">
-                  <button className="flex justify-center items-center gap-1 sm:gap-2 w-full bg-foreground text-background rounded-xl h-8 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105">
+                  <button className="flex h-8 w-full items-center justify-center gap-1 bg-foreground text-background transition-opacity duration-200 hover:opacity-80 sm:h-12 sm:gap-2">
                     <FaGithub className="size-3 sm:size-5" />
-                    <p className="text-sm sm:text-xl">Authenticate</p>
+                    <p className="text-sm font-medium sm:text-base">
+                      Authenticate
+                    </p>
                   </button>
                 </SignInButton>
               ) : (
                 <>
                   {hasCommented ? (
                     <>
-                      <p className="h-8 sm:h-12 flex justify-center items-center text-sm sm:text-xl p-2 sm:p-4 mt-4 border border-foreground mb-4">
+                      <p className="mb-4 mt-4 flex h-8 items-center justify-center border border-line p-2 text-sm text-muted sm:h-12 sm:p-4 sm:text-base">
                         Thank you for signing!
                       </p>
                       <SignOutButton>
-                        <button className="flex justify-center items-center gap-2 w-full bg-foreground text-background rounded-xl h-6 sm:h-12 transition-transform ease-in-out duration-300 hover:scale-105">
-                          <p className="text-sm sm:text-xl">Logout</p>
+                        <button className="flex h-6 w-full items-center justify-center gap-2 bg-foreground text-background transition-opacity duration-200 hover:opacity-80 sm:h-12">
+                          <p className="text-sm font-medium sm:text-base">
+                            Logout
+                          </p>
                         </button>
                       </SignOutButton>
                     </>
                   ) : (
                     <div className="mt-4">
                       <div className="flex justify-between">
-                        <p className="text-sm sm:text-xl">
+                        <p className="text-sm text-muted sm:text-base">
                           Comment (optional):
                         </p>
                         <span
-                          className={`text-sm sm:text-xl ${
+                          className={`text-sm tabular-nums text-subtle sm:text-base ${
                             comment.length > CHAR_LIMIT ? "text-red-500" : ""
                           }`}
                         >
@@ -145,7 +146,7 @@ export default function Page() {
                         </span>
                       </div>
                       <input
-                        className={`w-full h-max border p-1 sm:p-2 text-xs sm:text-lg font-mono ${
+                        className={`h-max w-full border border-line bg-background p-1 text-xs text-foreground focus:border-foreground/60 sm:p-2 sm:text-base ${
                           comment.length > CHAR_LIMIT ? "border-red-500" : ""
                         }`}
                         value={comment}
@@ -153,7 +154,7 @@ export default function Page() {
                         maxLength={CHAR_LIMIT}
                       />
                       <button
-                        className="mt-2 w-full border border-foreground h-6 sm:h-12 text-sm sm:text-lg bg-background hover:invert"
+                        className="mt-2 h-6 w-full border border-line bg-background text-sm transition-colors duration-200 hover:bg-foreground hover:text-background sm:h-12 sm:text-base"
                         onClick={handleSubmit}
                       >
                         Submit
@@ -165,19 +166,15 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Right Side - Comments List */}
-          <div className="overflow-y-auto overflow-x-hidden border border-foreground border-r-0 border-t-0 border-b-0">
+          <div className="overflow-y-auto overflow-x-hidden border-l border-line">
             {isCommentsLoading ? (
               <div className="flex justify-center items-center h-full">
-                <ImSpinner2 className="animate-spin size-5 sm:size-6" />
+                <Loader />
               </div>
             ) : (
               <ul className="flex flex-col gap-1 sm:gap-4 ml-4">
                 {comments.map((comment) => (
-                  <li
-                    key={comment.id}
-                    className="border border-gray-500 border-t-0 border-x-0"
-                  >
+                  <li key={comment.id} className="border-b border-line">
                     <div className="flex items-center gap-1 sm:gap-2">
                       <Image
                         src={comment.profileUrl}
@@ -190,12 +187,12 @@ export default function Page() {
                         href={`https://github.com/${comment.name}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-md sm:text-2xl hover:text-accent"
+                        className="link-hover text-sm sm:text-lg"
                       >
                         {comment.name}
                       </a>
                     </div>
-                    <p className="font-mono text-xs sm:text-lg pb-2">
+                    <p className="pb-2 text-xs text-subtle sm:text-base">
                       {comment.content}
                     </p>
                   </li>
