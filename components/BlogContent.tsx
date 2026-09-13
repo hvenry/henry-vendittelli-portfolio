@@ -3,7 +3,11 @@
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import Mermaid from "./Mermaid";
 import React, { useState } from "react";
+import "katex/dist/katex.min.css";
 
 const codeTheme: { [key: string]: React.CSSProperties } = {
   'code[class*="language-"]': {
@@ -170,7 +174,8 @@ export default function BlogContent({ content }: { content: string }) {
   return (
     <div className="prose prose-lg max-w-none">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeKatex]}
         components={{
           h1: ({ children }) => (
             <h1 className="font-display text-3xl sm:text-4xl font-semibold tracking-wide text-foreground mt-12 mb-6 pb-2 border-b border-line">
@@ -229,6 +234,11 @@ export default function BlogContent({ content }: { content: string }) {
 
             // Fenced code blocks always have a trailing newline; inline code never does
             const isBlock = rawString.includes("\n") || !!language;
+
+            // Mermaid fences become rendered diagrams, not syntax-highlighted source
+            if (language === "mermaid") {
+              return <Mermaid chart={rawString} />;
+            }
 
             if (!isBlock) {
               return (

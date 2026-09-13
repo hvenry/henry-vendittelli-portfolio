@@ -49,6 +49,8 @@ export function getAllPosts(): Post[] {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
+  // Slug comes from the URL; reject anything that could traverse the filesystem
+  if (!/^[a-z0-9-]+$/i.test(slug)) return null;
   const fullPath = path.join(postsDirectory, `${slug}.md`);
 
   if (!fs.existsSync(fullPath)) {

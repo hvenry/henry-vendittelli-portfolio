@@ -106,7 +106,7 @@ export default function Page() {
           </Link>{" "}
           Demos
         </SectionHeading>
-        <ProjectsGrid projectSlugs={["parking-app", "rag-system", "c-game"]} />
+        <ProjectsGrid />
       </div>
     </main>
   );

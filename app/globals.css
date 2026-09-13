@@ -187,6 +187,29 @@ body {
   }
 }
 
+/* Theme-swapped images (project previews with light/dark variants) */
+.theme-light-only {
+  display: none;
+}
+[data-theme="light"] .theme-dark-only {
+  display: none;
+}
+[data-theme="light"] .theme-light-only {
+  display: block;
+}
+
+/* Mermaid diagrams (rendered by components/Mermaid.tsx)
+
+   Mermaid sizes its SVG to the container width and preserves the aspect ratio,
+   and the article column is only ~656px wide. That cuts both ways: a diagram
+   taller than it is wide never scales down and renders at full height, while a
+   very wide, flat one is squeezed until the text is unreadable. Author diagrams
+   at roughly 1.5:1 to 2.5:1 (width:height) to stay legible here. */
+.mermaid-diagram svg {
+  height: auto;
+  max-width: 100%;
+}
+
 /* Icons designed for dark backgrounds - auto-invert in light mode */
 [data-theme="light"] .icon-invert {
   filter: invert(100%);
@@ -329,4 +352,19 @@ code[class*="language-"] {
 [data-theme="light"] .prose {
   --tw-prose-bullets: rgb(55, 65, 81);
   --tw-prose-counters: rgb(55, 65, 81);
+}
+
+/* KaTeX blocks render as their own element rather than through the paragraph
+   renderer, so they miss its colour and fall back to Tailwind Typography's
+   default body grey — near-invisible on the dark ground. */
+.prose .katex,
+.prose .katex-display {
+  color: rgb(var(--muted));
+}
+
+/* Wide formulas scroll in place instead of stretching the page */
+.prose .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.25rem;
 }

@@ -1,59 +1,113 @@
-import { ProjectTab } from "@/components/ProjectTab";
-import { projects } from "@/data";
-import { slugify } from "@/lib/string";
-import { parseTechFilter } from "@/lib/techFilter";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { FaGithubSquare, FaYoutube } from "react-icons/fa";
+import { PiGlobeSimple } from "react-icons/pi";
+import { getProjectBySlug, getAllProjectSlugs } from "@/lib/projects";
+import TechBadge from "@/components/TechBadge";
+import BlogContent from "@/components/BlogContent";
+import ProjectImage from "@/components/ProjectImage";
 
-type Params = Promise<{
-  slug: string;
-}>;
+type Params = Promise<{ slug: string }>;
 
-type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+export function generateStaticParams() {
+  return getAllProjectSlugs().map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: { params: Params }) {
   const { slug } = await params;
-  const currentTab = projects.find(
-    (project) => slugify(project.title) === slug
-  );
-
-  const title = currentTab
-    ? `${currentTab.title} Project - henryvendittelli.com`
-    : "Projects - henryvendittelli.com";
-
-  const description = currentTab
-    ? `Information about the ${currentTab.title} project by Henry Vendittelli.`
-    : "Explore various projects by Henry Vendittelli.";
+  const project = getProjectBySlug(slug);
 
   return {
-    title,
-    description
+    title: project
+      ? `${project.title} Project - henryvendittelli.com`
+      : "Projects - henryvendittelli.com",
+    description: project
+      ? project.summary
+      : "Explore various projects by Henry Vendittelli."
   };
 }
 
-export default async function ProjectsPage({
-  params,
-  searchParams
-}: {
-  params: Params;
-  searchParams: SearchParams;
-}) {
+export default async function ProjectPage({ params }: { params: Params }) {
   const { slug } = await params;
-  const tabs = projects;
-  const initialTab = slug || slugify(projects[0].title);
+  const project = getProjectBySlug(slug);
 
-  const query = new URLSearchParams();
-  for (const [key, value] of Object.entries(await searchParams)) {
-    if (typeof value === "string") query.set(key, value);
+  if (!project) {
+    notFound();
   }
-  const initialFilter = parseTechFilter(query);
 
   return (
-    <main className="pt-8 pb-16 sm:pb-24 px-2">
-      <ProjectTab
-        tabs={tabs}
-        activeTab={initialTab}
-        initialTechs={initialFilter.techs}
-        initialMatchAll={initialFilter.matchAll}
-      />
+    <main className="mx-auto w-full max-w-2xl px-2 pt-8 pb-16 sm:pb-24">
+      <Link
+        href="/projects"
+        className="link-quiet mb-6 block text-xs uppercase tracking-[0.2em]"
+      >
+        ← projects
+      </Link>
+      <div className="flex items-end gap-3">
+        <h1 className="font-display text-2xl font-semibold tracking-wide text-foreground sm:text-3xl">
+          {project.bodyTitle}
+        </h1>
+        {project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="link-quiet"
+          >
+            <FaGithubSquare className="size-6 sm:size-7" />
+          </a>
+        )}
+        {project.youtube && (
+          <a
+            href={project.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Youtube"
+            className="link-quiet"
+          >
+            <FaYoutube className="size-6 sm:size-7" />
+          </a>
+        )}
+        {project.live && (
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Live site"
+            className="link-quiet"
+          >
+            <PiGlobeSimple className="size-6 sm:size-7" />
+          </a>
+        )}
+      </div>
+      {(project.year || project.role) && (
+        <p className="mt-2 text-xs uppercase tracking-[0.15em] text-subtle">
+          {[project.year, project.role].filter(Boolean).join(" · ")}
+        </p>
+      )}
+      <div className="mt-4 flex flex-wrap gap-1.5">
+        {project.technologies.map((tech) => (
+          <TechBadge
+            key={tech}
+            name={tech}
+            size="sm"
+            href={`/projects?tech=${encodeURIComponent(tech)}`}
+          />
+        ))}
+      </div>
+      {project.image && (
+        <ProjectImage
+          image={project.image}
+          imageLight={project.imageLight}
+          alt={project.title}
+          className="mt-6 h-auto w-full border border-line"
+          priority
+        />
+      )}
+      <div className="mt-6">
+        <BlogContent content={project.content} />
+      </div>
     </main>
   );
 }

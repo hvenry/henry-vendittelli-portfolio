@@ -19,13 +19,10 @@ for (const route of routes) {
 }
 
 test("a project detail page renders", async ({ page }) => {
-  // /projects has no list of <a> links: it redirects client-side to the
-  // first project's detail page, and switching projects uses <button> tabs
-  // (client-side router.push), not anchor tags. Selector adjusted to match.
   await page.goto("/projects");
-  await expect(page).toHaveURL(/\/projects\/.+/);
-  await page.getByRole("button", { name: "RAG System" }).click();
-  await expect(page).toHaveURL(/\/projects\/rag-system/);
+  await page.locator('a[href="/projects/clear-rag"]').first().click();
+  await expect(page).toHaveURL(/\/projects\/clear-rag/);
+  await expect(page.getByRole("heading", { name: "clear-rag" })).toBeVisible();
 });
 
 test("a blog post renders", async ({ page }) => {

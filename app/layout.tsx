@@ -23,9 +23,27 @@ const oswald = Oswald({
   display: "swap"
 });
 
+const siteDescription =
+  "Software developer based in Toronto. Projects, writing, and work experience.";
+
 export const metadata: Metadata = {
+  // Required for the opengraph-image / twitter-image file conventions to
+  // resolve to absolute URLs
+  metadataBase: new URL("https://henryvendittelli.com"),
   title: "henryvendittelli.com",
-  description: "Henry Vendittelli's portfolio website."
+  description: siteDescription,
+  openGraph: {
+    type: "website",
+    siteName: "henryvendittelli.com",
+    title: "Henry Vendittelli",
+    description: siteDescription,
+    url: "/"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Henry Vendittelli",
+    description: siteDescription
+  }
 };
 
 export default function RootLayout({

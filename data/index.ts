@@ -166,150 +166,58 @@ export const setup = [
   }
 ];
 
-export const mac_software = [
+export const workflow = [
   {
-    name: "Homebrew",
-    description: "Package manager for macOS.",
-    link: "https://brew.sh/",
-    icon: "homebrew_icon"
-  },
-  {
-    name: "iTerm2",
-    description: "Terminal emulator for macOS.",
-    link: "https://iterm2.com/",
-    icon: "iterm2_icon"
-  },
-  {
-    name: "oh my zsh",
+    name: "Neovim",
     description:
-      "Open source framework for managing Zsh configuration. I also use zsh-autosuggestions and zsh-syntax-highlighting plugins with it.",
-    link: "https://ohmyz.sh/",
-    icon: "ohmyzsh_icon"
+      "Primary editor. Lua config with lazy.nvim, Mason-managed LSP servers, and Telescope for fuzzy finding.",
+    link: "https://neovim.io/",
+    icon: "Neovim"
+  },
+  {
+    name: "Ghostty",
+    description:
+      "Terminal emulator on both macOS and Arch, so a single config covers every machine.",
+    link: "https://ghostty.org/"
+  },
+  {
+    name: "tmux",
+    description:
+      "Session persistence for long-running work. ctrl+space prefix, vi copy-mode, and ctrl+hjkl moving between tmux panes and Neovim splits as one thing.",
+    link: "https://github.com/tmux/tmux/wiki",
+    icon: "tmux"
+  },
+  {
+    name: "Zsh + Powerlevel10k",
+    description:
+      "Login shell and prompt, with autosuggestions and syntax highlighting.",
+    link: "https://github.com/romkatv/powerlevel10k",
+    icon: "Zsh"
+  },
+  {
+    name: "fzf, zoxide & ripgrep",
+    description:
+      "The search-and-navigate layer everything else leans on, alongside fd, bat, and eza.",
+    link: "https://github.com/junegunn/fzf"
+  },
+  {
+    name: "AeroSpace",
+    description:
+      "i3-style workspaces on macOS, driven from a versioned TOML. Rectangle handles the window snapping it deliberately leaves alone.",
+    link: "https://github.com/nikitabobko/AeroSpace"
   },
   {
     name: "Raycast",
     description:
-      "Spotlight search replacement, offers fast access to applications, files, clipboard, and much more.",
+      "Spotlight replacement: fast access to applications, files, and clipboard history.",
     link: "https://raycast.com/",
-    icon: "raycast_icon"
+    icon: "Raycast"
   },
   {
-    name: "Rectangle",
+    name: "Homebrew",
     description:
-      "Window manager, used to move and resize windows using keyboard shortcuts or snap areas.",
-    link: "https://rectangleapp.com/",
-    icon: "rectangle_icon"
-  },
-  {
-    name: "AltTab",
-    description:
-      "Brings the power of Windows's alt+tab window switcher to macOS.",
-    link: "https://alt-tab-macos.netlify.app/",
-    icon: "alttab_icon"
-  },
-  {
-    name: "Stats",
-    description:
-      "Monitor my macOS system, I use it for CPU utilization, memory usage, and network usage.",
-    link: "https://formulae.brew.sh/cask/stats",
-    icon: "stats_icon"
-  },
-  {
-    name: "HiddenBar",
-    description:
-      "Grants the ability to hide menu bar items, reducing clutter for a cleaner look.",
-    link: "https://formulae.brew.sh/cask/hiddenbar",
-    icon: "hiddenbar_icon"
-  }
-];
-
-// PROJECTS PAGE
-export const projects = [
-  {
-    title: "Portfolio",
-    bodyTitle: "henryvendittelli.com",
-    githubLink: "https://github.com/hvenry/henry-vendittelli-portfolio",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Auth0",
-      "Prisma",
-      "Neon PostgreSQL",
-      "Vercel"
-    ],
-    description:
-      "This portfolio website you are currently reading this on was built with Next.js, TypeScript, and Tailwind CSS from the ground up with no template. This website has been developed iteratively with constant feedback from peers and other people in the industry, leading to it's extensive version history. \n This portfolio is hosted on Vercel, which excels in deployment due to its seamless integration with Next.js and was also selected because it costs a grand total of zero dollars to use, allowing for easy scalability while making my wallet happy. \n The website features light and dark modes for enhanced accessibility, a responsive design using Tailwind CSS that looks seamless on any device and exemplifies my attention to detail and commitment to high-quality experiences.",
-    smallDescription:
-      "Responsive portfolio using Next.js, TypeScript, and Tailwind CSS with Vercel hosting for seamless deployment and accessibility.",
-    imageName: "portfolio_project.png"
-  },
-  {
-    title: "RAG System",
-    bodyTitle: "Local RAG System",
-    githubLink: "https://github.com/hvenry/Local-RAG-System",
-    youtubeLink:
-      "https://www.loom.com/share/da198d42181a49499ee7a808308f3a31?sid=eb6969fb-a676-4505-84ad-0bfe38e98bc0",
-    technologies: ["Python", "Langchain", "Ollama", "Lama3.2", "FAISS"],
-    description:
-      "A local implementation of a Retrieval-Augmented Generation (RAG) pipeline using a local Llama 3.2 via Ollama. This project allows document-based question answering by integrating document loading, vector database storage, and a conversational retrieval system. \n This project was derived from a Caselaw RAG project I worked on using Harvard's Caselaw Access Project which used the OpenAI API and Pinecone. This project is an extension of it's capabilities, but takes into consideration privacy concerns by doing the augmentation locally instead of with a vector store in the cloud.",
-    smallDescription:
-      "A local RAG system that embeds PDF, CSV, and docx files for improved LLM context.",
-    imageName: "local_rag_system.png"
-  },
-  {
-    title: "Simple Shell",
-    bodyTitle: "Simple C Shell",
-    githubLink: "https://github.com/hvenry/simple-c-shell",
-    technologies: ["C", "Unix", "Makefile"],
-    description:
-      "The Simple C Shell is a command-line shell program developed in C to explore the essential workings of shell environments. It supports several built-in commands, including $cd for changing directories, $help for displaying command information, $exit to terminate the session, and $history to review previously executed commands in the current session. Additionally, this shell allows for executing external commands available within the system's PATH, such as $ls, $pwd, and $echo. \n This project is based on Stephen Brennan's lsh and serves as an educational tool to demonstrate the primary loop in a shell program, which involves reading, parsing, and executing commands. The shell emphasizes fundamental shell operations and provides insights into how command-line interfaces function at a basic level.",
-    smallDescription:
-      "A basic Unix shell built in C, supporting essential commands like cd, help, and external command execution.",
-    imageName: "simple_c_shell_project.png"
-  },
-  {
-    title: "Sentiment NLP",
-    bodyTitle: "Sentiment Analysis NLP for QMIND",
-    technologies: ["Python", "PyTorch", "spaCy", "NLTK", "Pandas"],
-    description:
-      "For QMIND (Canada's largest undergraduate artificial intelligence and machine learning organization), I was part of an innovation design team that developed a machine learning program to analyze sentiment from typed text using large quantities of data and natural language processing techniques. \n On the team, I researched use cases of multiple ML models and helped source data to develop an innovative solution for mapping sentiment to text by using a dataset of Reddit comments representing 1 of 27 emotions provided by Google. We used NLP techniques such as tokenization, stemming, lemmatization, and stop word removal to preprocess our dataset, then fine-tune an ALBERT model to classify a sentence based on which emotion is most prevalent.",
-    smallDescription:
-      "Developed NLP model for sentiment analysis using ALBERT and Reddit data to classify emotions in text."
-  },
-  {
-    title: "Rental Database",
-    bodyTitle: "Kingston Rental Webapp",
-    githubLink: "https://github.com/hvenry/kingston-rental-webapp",
-    youtubeLink: "https://youtu.be/bHJxmLcjUco",
-    technologies: ["MySQL", "PHP", "HTML", "CSS", "Apache"],
-    description:
-      "The Kingston Rental Property Database is a web application designed to manage and display rental property listings in Kingston. \n This database was originally designed using an entity relation diagram composed of entity types with relationships. It was then implemented using a MySQL database for database implementation, PHP for server-side scripting, Apache as the web server, and HTML/CSS for the front-end interface.",
-    smallDescription:
-      "Web app for managing rental listings using MySQL, PHP, HTML/CSS and an Apache HTTP server.",
-    imageName: "rental_database_project.png"
-  },
-  {
-    title: "C# Game",
-    bodyTitle: "Bear the Animal Tosser",
-    githubLink: "https://github.com/hvenry/CISC-226-GAME",
-    youtubeLink: "https://youtu.be/YPBpoDEXPhQ",
-    technologies: ["C#", "Unity", "Git"],
-    description:
-      "Bear The Animal Tosser is an arcade-style game where players control a zookeeper named Bear, who captures escaped zoo animals. The game's unique stacking mechanic lets players pick up and stack animals on their heads based on weight, requiring strategic planning and a LIFO mindset. \n Developed in C#, the game uses principles such as state machines for animal behavior and physics-based collision systems. This project aimed to build a minimal viable product with the core novel mechanics from user feedback before expanding with optional features like power-ups and cosmetics. \n The core gameplay revolved around the stacking mechanic, so players would have to strategically stack and throw animals into pens based on location, time remaining, and the animal's weight constraints. The game features a charming 2D-pixel art aesthetic with a cartoony and humorous tone, created from original assets and maps with diverse zoo settings worldwide.",
-    smallDescription:
-      "Arcade game developed in C# and Unity, featuring a unique animal stacking mechanic and 2D-pixel art.",
-    imageName: "bear_project.png"
-  },
-  {
-    title: "Parking App",
-    bodyTitle: "parkQu",
-    youtubeLink: "https://youtu.be/3u5slpDZprw",
-    technologies: ["Figma"],
-    description:
-      "ParkQu is a parking app designed for university students at Queen's University to successfully address and reduce the challenges faced by those who lack parking passes. Through user-centred design principles and conducting multiple interviews, we identified an issue and user group to tailor a service that would accommodate their needs. \n Utilizing Figma for high-fidelity prototyping and iterative testing, parkQu delivers an innovative solution that allows students to book parking spots near campus through people with access to extra parking on their properties, similar to how Airbnb operates. Still, instead of people listing their homes, they list their driveways, parking lots, dirt roads, and any piece of private property that a car can park. \n The project shows how to plan and deliver large-scale applications that tackle a niche problem by incorporating user feedback and iterative prototyping to have a user-centred app that does not stray from its original mission statement.",
-    smallDescription:
-      " Parking app for students to book spots near campus, iteratively designed using user feedback.",
-    imageName: "parkqu_project.png"
+      "Package manager for macOS; installs the shared core plus casks.",
+    link: "https://brew.sh/",
+    icon: "Homebrew"
   }
 ];

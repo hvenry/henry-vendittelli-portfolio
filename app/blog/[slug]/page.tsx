@@ -33,7 +33,7 @@ export default async function BlogPostPage({ params }: Props) {
         ← blog
       </Link>
 
-      <article className="px-2 sm:px-4 max-w-4xl mx-auto w-full">
+      <article className="mx-auto w-full max-w-2xl px-2 sm:px-4">
         <header className="mb-8">
           <h1 className="mb-6 text-center font-display text-3xl font-semibold tracking-wide text-foreground sm:text-4xl">
             {post.title}

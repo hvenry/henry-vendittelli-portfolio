@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { setup, mac_software } from "@/data";
+import Link from "next/link";
+import { setup, workflow } from "@/data";
 import Image from "next/image";
 import { CollapsibleTab, ZIndexProvider } from "@/components/CollapsibleTab";
 import Loader from "@/components/Loader";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { getIconPath } from "@/lib/images";
+import { techIcons } from "@/components/TechBadge";
 
 // Layout effect on the client so cards position before first paint (no loader flash)
 const useIsomorphicLayoutEffect =
@@ -74,40 +75,44 @@ const TabsContainer = () => {
         </div>
       ) : (
         <ZIndexProvider>
-          <CollapsibleTab
-            title="MacBook Software"
-            initialPosition={positions[0]}
-          >
+          <CollapsibleTab title="Daily Drivers" initialPosition={positions[0]}>
             {/* Negative margin makes scrolled text clip at the title bar, not the padding */}
             <div className="-m-4 max-h-[292px] max-w-xl overflow-y-auto p-4">
               <ul className="flex flex-col gap-4 sm:gap-6">
-                {mac_software.map((software, index) => (
-                  <li key={index}>
-                    <div className="flex flex-row items-center gap-2 mb-2">
-                      <Image
-                        src={getIconPath(software.icon)}
-                        alt={software.name}
-                        width={128}
-                        height={128}
-                        className="size-7"
-                        draggable="false"
-                      />
-                      <a
-                        href={software.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="link-hover text-base sm:text-lg"
-                        draggable="false"
-                      >
-                        {software.name}
-                      </a>
-                    </div>
-                    <p className="text-sm leading-relaxed text-subtle sm:text-base">
-                      {software.description}
-                    </p>
-                  </li>
-                ))}
+                {workflow.map((tool) => {
+                  const Icon = tool.icon ? techIcons[tool.icon] : undefined;
+                  return (
+                    <li key={tool.name}>
+                      <div className="flex flex-row items-center gap-2 mb-2">
+                        {Icon && <Icon className="size-5 shrink-0" />}
+                        <a
+                          href={tool.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link-hover text-base sm:text-lg"
+                          draggable="false"
+                        >
+                          {tool.name}
+                        </a>
+                      </div>
+                      <p className="text-sm leading-relaxed text-subtle sm:text-base">
+                        {tool.description}
+                      </p>
+                    </li>
+                  );
+                })}
               </ul>
+              <p className="mt-6 border-t border-line pt-4 text-sm text-subtle">
+                All of it is configured in one repo:{" "}
+                <Link
+                  href="/projects/dotfiles"
+                  className="link"
+                  draggable="false"
+                >
+                  see the dotfiles project
+                </Link>
+                .
+              </p>
             </div>
           </CollapsibleTab>
           <CollapsibleTab

@@ -16,7 +16,7 @@ export default function Footer({ force = false }: { force?: boolean }) {
 
   return (
     <footer
-      className={`site-footer mt-16 border-t border-line px-2 pt-8 ${
+      className={`site-footer mt-16 px-2 pt-8 ${
         force ? "site-footer-forced" : ""
       }`}
     >

@@ -2,9 +2,16 @@ import React from "react";
 import Link from "next/link";
 import { IconType } from "react-icons";
 import { FaAws, FaPython, FaJava } from "react-icons/fa";
+import { PiCodeSimple } from "react-icons/pi";
 import {
   SiApache,
   SiAuth0,
+  SiClerk,
+  SiHomebrew,
+  SiNeovim,
+  SiRaycast,
+  SiTmux,
+  SiZsh,
   SiC,
   SiCss3,
   SiExpo,
@@ -45,6 +52,7 @@ import {
   SiSqlite,
   SiTailwindcss,
   SiTerraform,
+  SiThreedotjs,
   SiTypescript,
   SiUnity,
   SiVercel,
@@ -53,7 +61,7 @@ import {
 } from "react-icons/si";
 
 /** Technology icon registry shared by Skills and project pages */
-const techIcons: Record<string, IconType> = {
+export const techIcons: Record<string, IconType> = {
   Python: FaPython,
   Bash: SiGnubash,
   Lua: SiLua,
@@ -69,6 +77,7 @@ const techIcons: Record<string, IconType> = {
   "Express.js": SiExpress,
   Expo: SiExpo,
   "Tailwind CSS": SiTailwindcss,
+  "Three.js": SiThreedotjs,
   FastAPI: SiFastapi,
   Gunicorn: SiGunicorn,
   OpenCV: SiOpencv,
@@ -80,7 +89,13 @@ const techIcons: Record<string, IconType> = {
   MongoDB: SiMongodb,
   SQLite: SiSqlite,
   Firebase: SiFirebase,
+  Clerk: SiClerk,
   Git: SiGit,
+  Neovim: SiNeovim,
+  tmux: SiTmux,
+  Zsh: SiZsh,
+  Homebrew: SiHomebrew,
+  Raycast: SiRaycast,
   GCP: SiGooglecloud,
   AWS: FaAws,
   Auth0: SiAuth0,
@@ -109,6 +124,10 @@ const techIcons: Record<string, IconType> = {
   Vercel: SiVercel
 };
 
+/** Icon for a technology name; unknown names get a generic code glyph */
+export const getTechIcon = (name: string): IconType =>
+  techIcons[name] ?? PiCodeSimple;
+
 type TechBadgeProps = {
   name: string;
   size?: "sm" | "md";
@@ -117,6 +136,7 @@ type TechBadgeProps = {
   /** Render as a toggle button (filter chip) */
   onClick?: () => void;
   selected?: boolean;
+  className?: string;
 };
 
 export default function TechBadge({
@@ -124,12 +144,13 @@ export default function TechBadge({
   size = "md",
   href,
   onClick,
-  selected = false
+  selected = false,
+  className: extraClassName = ""
 }: TechBadgeProps) {
-  const Icon = techIcons[name];
+  const Icon = getTechIcon(name);
   const isSm = size === "sm";
 
-  const className = `inline-flex items-center border transition-colors duration-200 ${
+  const className = `${extraClassName} inline-flex items-center border transition-colors duration-200 ${
     isSm ? "gap-1.5 px-2 py-1" : "gap-2 px-2.5 py-1.5"
   } ${
     selected
@@ -139,7 +160,7 @@ export default function TechBadge({
 
   const content = (
     <>
-      {Icon && <Icon className={isSm ? "size-3.5" : "size-4"} />}
+      <Icon className={isSm ? "size-3.5" : "size-4"} />
       <span
         className={`font-medium ${
           isSm ? "text-[11px] sm:text-xs" : "text-xs sm:text-sm"
