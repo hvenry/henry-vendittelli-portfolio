@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { IconType } from "react-icons";
 import { FaAws, FaPython, FaJava } from "react-icons/fa";
-import { PiCodeSimple } from "react-icons/pi";
+import { PiCodeSimple, PiMaskHappy } from "react-icons/pi";
 import {
   SiApache,
+  SiArchlinux,
   SiAuth0,
   SiClerk,
   SiHomebrew,
@@ -39,6 +40,7 @@ import {
   SiOpencv,
   SiPandas,
   SiPhp,
+  SiPnpm,
   SiPostgresql,
   SiPostman,
   SiPrisma,
@@ -100,6 +102,9 @@ export const techIcons: Record<string, IconType> = {
   Auth0: SiAuth0,
   Vim: SiVim,
   Vite: SiVite,
+  pnpm: SiPnpm,
+  // Playwright has no brand icon in react-icons; its logo is a theatre mask
+  Playwright: PiMaskHappy,
   "Node.js": SiNodedotjs,
   GraphQL: SiGraphql,
   Postman: SiPostman,
@@ -116,7 +121,9 @@ export const techIcons: Record<string, IconType> = {
   CSS: SiCss3,
   Apache: SiApache,
   Unix: SiLinux,
+  "Arch Linux": SiArchlinux,
   Makefile: SiGnu,
+  "GNU Stow": SiGnu,
   Unity: SiUnity,
   Figma: SiFigma,
   Prisma: SiPrisma,

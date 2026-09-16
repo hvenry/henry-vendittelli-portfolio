@@ -1,15 +1,24 @@
 ---
 title: "Portfolio"
 bodyTitle: "henryvendittelli.com"
-summary: "A personal site and blog built to be correct before JavaScript runs, with token-driven theming, markdown content, and a PR-gated deploy pipeline."
+summary: "A personal site and blog built to be correct before JavaScript runs: CSS-token theming, markdown-driven writing and projects, and a PR-gated deploy pipeline."
 technologies:
   - "Next.js"
   - "TypeScript"
+  - "React"
   - "Tailwind CSS"
+  - "CSS"
+  - "Node.js"
   - "Clerk"
   - "Prisma"
+  - "PostgreSQL"
   - "Neon PostgreSQL"
+  - "Three.js"
   - "Vercel"
+  - "GitHub Actions"
+  - "Git"
+  - "Playwright"
+  - "pnpm"
 github: "https://github.com/hvenry/henry-vendittelli-portfolio"
 live: "https://henryvendittelli.com"
 image: "portfolio_og.png"
@@ -44,6 +53,14 @@ the one you are pointing at. At 0.35 on black that is a subtle cue, and on
 white it makes the text unreadable, so `--nav-dim` shifts to 0.78. Both are
 tokens rather than component overrides, so nothing drifts.
 
+Project previews extend the same idea to images. A project with its own light
+and dark screenshots ships both, and the page renders both, with one hidden by
+a CSS class the theme attribute controls. Picking in JavaScript would mean
+either guessing on the server or rendering nothing until hydration, and this
+does neither. Because `display: none` also removes an element from the
+accessibility tree, the two images can carry identical alt text and exactly one
+gets announced.
+
 ## What breaks before hydration
 
 Four bugs, all the same shape: a browser-only hook forcing a second, different
@@ -64,7 +81,7 @@ was absent from the initial HTML and appeared a beat later. Now the header
 always renders and only the icon is gated, behind a placeholder of exactly the
 same size.
 
-**`useSearchParams` opts its subtree into streaming.** The project page read
+**`useSearchParams` opts its subtree into streaming.** The projects page read
 the technology filter from the URL with it, so the initial HTML shipped with
 that whole region empty and the footer sat mid-viewport until the payload
 arrived. The page is a server component that already receives `searchParams`, so
@@ -81,13 +98,50 @@ connection it never appears at all.
 
 Blog posts and these project writeups are markdown with frontmatter, parsed
 with `gray-matter` and rendered through one component. Publishing is adding a
-file. `draft: true` keeps an entry visible in development and strips it from
-production builds, so unfinished writing lives in the repo rather than a branch.
-Slugs are validated against an allowlist before touching the filesystem, since
-they arrive from the URL.
+file.
 
-The same renderer powers mermaid diagrams and KaTeX math. The diagram below is
-a fenced block in this file, re-rendered when you flip the theme.
+The projects were not always like this. They began as an array of objects in a
+TypeScript file, rendered through a tabbed component, which meant every new
+project was a code change and every writeup was a string literal with `\n` in
+it. Moving them to `content/projects/*.md` made the filename the URL slug and
+pushed the rest into frontmatter: `order` sorts the index, `featured` promotes
+an entry onto the home page grid and fixes its position there, and `draft: true`
+keeps an entry visible in development while stripping it from production
+builds, so unfinished writing lives in the repo rather than on a branch. Slugs
+are validated against an allowlist before touching the filesystem, since they
+arrive from the URL.
+
+The payoff is that prose gets the same tools as code. The same renderer powers
+mermaid diagrams and KaTeX math, so a pipeline can be drawn instead of
+described and a scoring rule can be written as an equation. The diagram below
+is a fenced block in this file, re-rendered when you flip the theme.
+
+## Filtering without giving up the server
+
+The projects index filters by technology, and the filter lives in the URL so a
+filtered view can be linked. That splits awkwardly across the server and client
+boundary: the server knows the query string on the first request, and only the
+browser knows about the click that comes next.
+
+```mermaid
+flowchart LR
+  U["/projects?tech=React"] --> S["server component<br/>parses searchParams"]
+  S -->|"plain props"| C["client index<br/>owns the selection"]
+  C -->|"router.replace"| U
+```
+
+The server component parses the query and hands down plain props, so the first
+paint is already filtered with no loading state and no streaming boundary. The
+client component owns the interaction from there and writes the selection back
+with a replace rather than a push, which keeps the back button pointed at the
+page you arrived from instead of at every filter you tried. Technology badges
+on a project page are links into that same filtered index, so the two routes
+agree on one query format.
+
+Badges resolve their logos through a registry keyed by technology name. A name
+with no entry falls back to a generic glyph rather than rendering nothing, so
+adding a project that uses something new is never blocked on adding an icon
+first.
 
 ## Shipping it
 
@@ -114,5 +168,6 @@ writing to justify them. The guestbook allows one comment per user, enforced by
 a unique constraint on the Clerk user ID, with no editing or deletion; it is an
 easter egg, not a comment system. Mermaid is a ~3MB dependency, dynamically
 imported so it never enters the initial bundle, but any page carrying a diagram
-still pays for the library. And preview images are still produced by hand at
-1200×630 rather than generated per page at request time.
+still pays for the library. The technology filter is single-select, so there is
+no way to ask for the intersection of two. And preview images are still
+produced by hand at 1200×630 rather than generated per page at request time.
