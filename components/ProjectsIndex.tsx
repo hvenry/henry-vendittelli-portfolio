@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaYoutube } from "react-icons/fa";
 import { PiMagnifyingGlass, PiX } from "react-icons/pi";
-import { matchesTechFilter, buildTechQuery } from "@/lib/techFilter";
+import { buildTechQuery } from "@/lib/techFilter";
 import TechBadge, { getTechIcon } from "@/components/TechBadge";
 import Panel from "@/components/Panel";
 import ProjectImage from "@/components/ProjectImage";
@@ -57,13 +57,12 @@ export default function ProjectsIndex({
     return allTechs.filter((tech) => tech.toLowerCase().includes(query));
   }, [allTechs, search]);
 
-  const visibleProjects = useMemo(
-    () =>
-      projects.filter((project) =>
-        matchesTechFilter(project.technologies, selectedTech)
-      ),
-    [projects, selectedTech]
-  );
+  const visibleProjects = useMemo(() => {
+    if (!selectedTech) return projects;
+    return projects.filter((project) =>
+      project.technologies.includes(selectedTech)
+    );
+  }, [projects, selectedTech]);
 
   // Keep the filter shareable via the URL
   const query = buildTechQuery(selectedTech);
@@ -133,13 +132,15 @@ export default function ProjectsIndex({
             ) : (
               searchedTechs.map((tech) => {
                 const Icon = getTechIcon(tech);
+                const isSelected = selectedTech === tech;
+                const count = techCounts.get(tech);
                 return (
                   <button
                     key={tech}
                     type="button"
                     onClick={() => selectTech(tech)}
                     className={`flex w-full items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors hover:bg-foreground/10 ${
-                      selectedTech === tech
+                      isSelected
                         ? "bg-foreground text-background hover:bg-foreground"
                         : "text-muted"
                     }`}
@@ -148,13 +149,10 @@ export default function ProjectsIndex({
                     <span className="font-medium">{tech}</span>
                     <span
                       className={`ml-auto text-xs tabular-nums ${
-                        selectedTech === tech
-                          ? "text-background/70"
-                          : "text-subtle"
+                        isSelected ? "text-background/70" : "text-subtle"
                       }`}
                     >
-                      {techCounts.get(tech)}{" "}
-                      {techCounts.get(tech) === 1 ? "project" : "projects"}
+                      {count} {count === 1 ? "project" : "projects"}
                     </span>
                   </button>
                 );
@@ -165,29 +163,23 @@ export default function ProjectsIndex({
       </div>
       {/* Active filter */}
       <div className="mb-5 mt-3 flex min-h-8 items-center gap-2">
-        {selectedTech ? (
-          <>
-            <span className="text-xs uppercase tracking-[0.15em] text-subtle">
-              Filtering by
+        <span className="text-xs uppercase tracking-[0.15em] text-subtle">
+          {selectedTech ? "Filtering by" : "All projects"}
+        </span>
+        {selectedTech && (
+          <span className="inline-flex items-center gap-2 border border-foreground bg-foreground px-2.5 py-1 text-background">
+            {SelectedIcon && <SelectedIcon className="size-4" />}
+            <span className="text-xs font-medium sm:text-sm">
+              {selectedTech}
             </span>
-            <span className="inline-flex items-center gap-2 border border-foreground bg-foreground px-2.5 py-1 text-background">
-              {SelectedIcon && <SelectedIcon className="size-4" />}
-              <span className="text-xs font-medium sm:text-sm">
-                {selectedTech}
-              </span>
-              <button
-                type="button"
-                aria-label={`Remove ${selectedTech} filter`}
-                onClick={() => setSelectedTech(null)}
-                className="cursor-pointer transition-opacity hover:opacity-60"
-              >
-                <PiX className="size-4" />
-              </button>
-            </span>
-          </>
-        ) : (
-          <span className="text-xs uppercase tracking-[0.15em] text-subtle">
-            All projects
+            <button
+              type="button"
+              aria-label={`Remove ${selectedTech} filter`}
+              onClick={() => setSelectedTech(null)}
+              className="cursor-pointer transition-opacity hover:opacity-60"
+            >
+              <PiX className="size-4" />
+            </button>
           </span>
         )}
         <span className="ml-auto text-xs tabular-nums text-subtle">

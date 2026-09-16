@@ -14,12 +14,11 @@ export default async function ProjectsPage({
 }: {
   searchParams: SearchParams;
 }) {
-  const params = new URLSearchParams();
-  for (const [key, value] of Object.entries(await searchParams)) {
-    if (typeof value === "string") params.set(key, value);
-  }
-  const initialTech = parseTechFilter(params);
+  const { tech } = await searchParams;
+  const initialTech = parseTechFilter(tech);
 
+  // Only the card fields cross the server/client boundary; `content` holds the
+  // full markdown body of every project and would bloat the payload
   const projects = getAllProjects().map(
     ({
       slug,

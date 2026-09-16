@@ -232,13 +232,13 @@ export default function BlogContent({ content }: { content: string }) {
             const language = match ? match[1] : "";
             const rawString = String(children);
 
-            // Fenced code blocks always have a trailing newline; inline code never does
-            const isBlock = rawString.includes("\n") || !!language;
-
             // Mermaid fences become rendered diagrams, not syntax-highlighted source
             if (language === "mermaid") {
               return <Mermaid chart={rawString} />;
             }
+
+            // Fenced code blocks always have a trailing newline; inline code never does
+            const isBlock = rawString.includes("\n") || !!language;
 
             if (!isBlock) {
               return (

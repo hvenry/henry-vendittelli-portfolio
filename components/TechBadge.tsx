@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { IconType } from "react-icons";
 import { FaAws, FaPython, FaJava } from "react-icons/fa";
@@ -150,13 +149,11 @@ export default function TechBadge({
   const Icon = getTechIcon(name);
   const isSm = size === "sm";
 
-  const className = `${extraClassName} inline-flex items-center border transition-colors duration-200 ${
-    isSm ? "gap-1.5 px-2 py-1" : "gap-2 px-2.5 py-1.5"
-  } ${
-    selected
-      ? "border-foreground bg-foreground text-background"
-      : "border-line text-muted hover:border-foreground/50 hover:text-foreground"
-  }`;
+  const sizeClassName = isSm ? "gap-1.5 px-2 py-1" : "gap-2 px-2.5 py-1.5";
+  const stateClassName = selected
+    ? "border-foreground bg-foreground text-background"
+    : "border-line text-muted hover:border-foreground/50 hover:text-foreground";
+  const className = `${extraClassName} inline-flex items-center border transition-colors duration-200 ${sizeClassName} ${stateClassName}`;
 
   const content = (
     <>

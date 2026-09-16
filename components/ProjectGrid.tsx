@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { FaYoutube } from "react-icons/fa";
 import { getFeaturedProjects } from "@/lib/projects";

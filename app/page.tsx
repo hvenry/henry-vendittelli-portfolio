@@ -1,12 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import ExperienceCard from "@/components/ExperienceCard";
-import { work } from "@/data";
-import { intro } from "@/data";
+import { intro, work } from "@/data";
 import Skills from "@/components/Skills";
 import Socials from "@/components/Socials";
 import Link from "next/link";
-import ProjectsGrid from "@/components/ProjectGrid";
+import ProjectGrid from "@/components/ProjectGrid";
 import SectionHeading from "@/components/SectionHeading";
 import Panel from "@/components/Panel";
 import headshot from "@/public/assets/images/headshot.jpeg";
@@ -106,7 +105,7 @@ export default function Page() {
           </Link>{" "}
           Demos
         </SectionHeading>
-        <ProjectsGrid />
+        <ProjectGrid />
       </div>
     </main>
   );

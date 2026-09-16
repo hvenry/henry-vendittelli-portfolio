@@ -15,7 +15,7 @@ export type Post = {
 };
 
 /** Drafts (frontmatter `draft: true`) are only visible outside production */
-const isVisible = (draft: boolean) =>
+const isVisible = (draft?: boolean) =>
   !draft || process.env.NODE_ENV !== "production";
 
 function readPost(fileName: string): Post {
@@ -44,21 +44,21 @@ export function getAllPosts(): Post[] {
     .readdirSync(postsDirectory)
     .filter((fileName) => fileName.endsWith(".md"))
     .map(readPost)
-    .filter((post) => isVisible(post.draft ?? false))
+    .filter((post) => isVisible(post.draft))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   // Slug comes from the URL; reject anything that could traverse the filesystem
   if (!/^[a-z0-9-]+$/i.test(slug)) return null;
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fileName = `${slug}.md`;
 
-  if (!fs.existsSync(fullPath)) {
+  if (!fs.existsSync(path.join(postsDirectory, fileName))) {
     return null;
   }
 
-  const post = readPost(`${slug}.md`);
-  return isVisible(post.draft ?? false) ? post : null;
+  const post = readPost(fileName);
+  return isVisible(post.draft) ? post : null;
 }
 
 export function getAllPostSlugs(): string[] {

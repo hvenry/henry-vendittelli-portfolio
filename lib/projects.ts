@@ -25,7 +25,7 @@ export type Project = {
 };
 
 /** Drafts (frontmatter `draft: true`) are only visible outside production */
-const isVisible = (draft: boolean) =>
+const isVisible = (draft?: boolean) =>
   !draft || process.env.NODE_ENV !== "production";
 
 function readProject(fileName: string): Project {
@@ -64,21 +64,21 @@ export function getAllProjects(): Project[] {
     .readdirSync(projectsDirectory)
     .filter((fileName) => fileName.endsWith(".md") && !fileName.startsWith("_"))
     .map(readProject)
-    .filter((project) => isVisible(project.draft ?? false))
+    .filter((project) => isVisible(project.draft))
     .sort((a, b) => a.order - b.order);
 }
 
 export function getProjectBySlug(slug: string): Project | null {
   // Slug comes from the URL; reject anything that could traverse the filesystem
   if (!/^[a-z0-9-]+$/i.test(slug)) return null;
-  const fullPath = path.join(projectsDirectory, `${slug}.md`);
+  const fileName = `${slug}.md`;
 
-  if (!fs.existsSync(fullPath)) {
+  if (!fs.existsSync(path.join(projectsDirectory, fileName))) {
     return null;
   }
 
-  const project = readProject(`${slug}.md`);
-  return isVisible(project.draft ?? false) ? project : null;
+  const project = readProject(fileName);
+  return isVisible(project.draft) ? project : null;
 }
 
 export function getFeaturedProjects(): Project[] {

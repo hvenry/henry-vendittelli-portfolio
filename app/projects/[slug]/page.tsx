@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { FaGithubSquare, FaYoutube } from "react-icons/fa";
 import { PiGlobeSimple } from "react-icons/pi";
 import { getProjectBySlug, getAllProjectSlugs } from "@/lib/projects";
+import { buildTechQuery } from "@/lib/techFilter";
 import TechBadge from "@/components/TechBadge";
 import BlogContent from "@/components/BlogContent";
 import ProjectImage from "@/components/ProjectImage";
@@ -17,13 +18,16 @@ export async function generateMetadata({ params }: { params: Params }) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 
+  if (!project) {
+    return {
+      title: "Projects - henryvendittelli.com",
+      description: "Explore various projects by Henry Vendittelli."
+    };
+  }
+
   return {
-    title: project
-      ? `${project.title} Project - henryvendittelli.com`
-      : "Projects - henryvendittelli.com",
-    description: project
-      ? project.summary
-      : "Explore various projects by Henry Vendittelli."
+    title: `${project.title} Project - henryvendittelli.com`,
+    description: project.summary
   };
 }
 
@@ -34,6 +38,12 @@ export default async function ProjectPage({ params }: { params: Params }) {
   if (!project) {
     notFound();
   }
+
+  const externalLinks = [
+    { href: project.github, label: "GitHub", Icon: FaGithubSquare },
+    { href: project.youtube, label: "Youtube", Icon: FaYoutube },
+    { href: project.live, label: "Live site", Icon: PiGlobeSimple }
+  ].filter((link) => Boolean(link.href));
 
   return (
     <main className="mx-auto w-full max-w-2xl px-2 pt-8 pb-16 sm:pb-24">
@@ -47,39 +57,18 @@ export default async function ProjectPage({ params }: { params: Params }) {
         <h1 className="font-display text-2xl font-semibold tracking-wide text-foreground sm:text-3xl">
           {project.bodyTitle}
         </h1>
-        {project.github && (
+        {externalLinks.map(({ href, label, Icon }) => (
           <a
-            href={project.github}
+            key={label}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub"
+            aria-label={label}
             className="link-quiet"
           >
-            <FaGithubSquare className="size-6 sm:size-7" />
+            <Icon className="size-6 sm:size-7" />
           </a>
-        )}
-        {project.youtube && (
-          <a
-            href={project.youtube}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Youtube"
-            className="link-quiet"
-          >
-            <FaYoutube className="size-6 sm:size-7" />
-          </a>
-        )}
-        {project.live && (
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Live site"
-            className="link-quiet"
-          >
-            <PiGlobeSimple className="size-6 sm:size-7" />
-          </a>
-        )}
+        ))}
       </div>
       {(project.year || project.role) && (
         <p className="mt-2 text-xs uppercase tracking-[0.15em] text-subtle">
@@ -92,7 +81,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
             key={tech}
             name={tech}
             size="sm"
-            href={`/projects?tech=${encodeURIComponent(tech)}`}
+            href={`/projects${buildTechQuery(tech)}`}
           />
         ))}
       </div>

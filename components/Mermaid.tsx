@@ -4,6 +4,70 @@ import { useEffect, useId, useState } from "react";
 import { useTheme } from "next-themes";
 
 /**
+ * Mirrors the --foreground / --background / --line tokens in globals.css so
+ * diagrams read as part of the page rather than as default mermaid.
+ */
+const palettes = {
+  dark: {
+    background: "#0a0a0a",
+    clusterBackground: "#0a0a0a",
+    surface: "#18181b",
+    surfaceAlt: "#27272a",
+    text: "#e4e4e7",
+    strongText: "#f4f4f5",
+    border: "rgba(255, 255, 255, 0.35)",
+    softBorder: "rgba(255, 255, 255, 0.2)",
+    noteBorder: "rgba(255, 255, 255, 0.25)",
+    line: "rgba(255, 255, 255, 0.45)"
+  },
+  light: {
+    background: "#ffffff",
+    clusterBackground: "#fafafa",
+    surface: "#f4f4f5",
+    surfaceAlt: "#e4e4e7",
+    text: "#121215",
+    strongText: "#09090b",
+    border: "rgba(9, 9, 11, 0.35)",
+    softBorder: "rgba(9, 9, 11, 0.2)",
+    noteBorder: "rgba(9, 9, 11, 0.25)",
+    line: "rgba(9, 9, 11, 0.5)"
+  }
+};
+
+/** Spreads one palette across every mermaid variable that needs it */
+function themeVariablesFor(mode: "dark" | "light") {
+  const palette = palettes[mode];
+
+  return {
+    background: palette.background,
+    primaryColor: palette.surface,
+    primaryTextColor: palette.strongText,
+    primaryBorderColor: palette.border,
+    secondaryColor: palette.surfaceAlt,
+    tertiaryColor: palette.background,
+    lineColor: palette.line,
+    textColor: palette.text,
+    nodeBorder: palette.border,
+    clusterBkg: palette.clusterBackground,
+    clusterBorder: palette.softBorder,
+    edgeLabelBackground: palette.background,
+    actorBkg: palette.surface,
+    actorBorder: palette.border,
+    actorTextColor: palette.strongText,
+    signalColor: palette.line,
+    signalTextColor: palette.text,
+    labelBoxBkgColor: palette.surface,
+    labelBoxBorderColor: palette.border,
+    labelTextColor: palette.strongText,
+    loopTextColor: palette.text,
+    noteBkgColor: palette.surfaceAlt,
+    noteBorderColor: palette.noteBorder,
+    noteTextColor: palette.text,
+    sequenceNumberColor: palette.background
+  };
+}
+
+/**
  * Renders a mermaid diagram from a ```mermaid fenced code block.
  *
  * Mermaid is browser-only and heavy (~3MB), so it is dynamically imported
@@ -23,71 +87,11 @@ export default function Mermaid({ chart }: { chart: string }) {
   const id = `mermaid-${rawId.replace(/[^a-zA-Z0-9]/g, "")}`;
 
   useEffect(() => {
-    let cancelled = false;
-
     // resolvedTheme is undefined until next-themes hydrates; waiting avoids
     // rendering the diagram once in the wrong palette and then again.
     if (!resolvedTheme) return;
 
-    const isDark = resolvedTheme === "dark";
-
-    // Mirrors the --foreground / --background / --line tokens in globals.css
-    // so diagrams read as part of the page rather than as default mermaid.
-    const themeVariables = isDark
-      ? {
-          background: "#0a0a0a",
-          primaryColor: "#18181b",
-          primaryTextColor: "#f4f4f5",
-          primaryBorderColor: "rgba(255, 255, 255, 0.35)",
-          secondaryColor: "#27272a",
-          tertiaryColor: "#0a0a0a",
-          lineColor: "rgba(255, 255, 255, 0.45)",
-          textColor: "#e4e4e7",
-          nodeBorder: "rgba(255, 255, 255, 0.35)",
-          clusterBkg: "#0a0a0a",
-          clusterBorder: "rgba(255, 255, 255, 0.2)",
-          edgeLabelBackground: "#0a0a0a",
-          actorBkg: "#18181b",
-          actorBorder: "rgba(255, 255, 255, 0.35)",
-          actorTextColor: "#f4f4f5",
-          signalColor: "rgba(255, 255, 255, 0.45)",
-          signalTextColor: "#e4e4e7",
-          labelBoxBkgColor: "#18181b",
-          labelBoxBorderColor: "rgba(255, 255, 255, 0.35)",
-          labelTextColor: "#f4f4f5",
-          loopTextColor: "#e4e4e7",
-          noteBkgColor: "#27272a",
-          noteBorderColor: "rgba(255, 255, 255, 0.25)",
-          noteTextColor: "#e4e4e7",
-          sequenceNumberColor: "#0a0a0a"
-        }
-      : {
-          background: "#ffffff",
-          primaryColor: "#f4f4f5",
-          primaryTextColor: "#09090b",
-          primaryBorderColor: "rgba(9, 9, 11, 0.35)",
-          secondaryColor: "#e4e4e7",
-          tertiaryColor: "#ffffff",
-          lineColor: "rgba(9, 9, 11, 0.5)",
-          textColor: "#121215",
-          nodeBorder: "rgba(9, 9, 11, 0.35)",
-          clusterBkg: "#fafafa",
-          clusterBorder: "rgba(9, 9, 11, 0.2)",
-          edgeLabelBackground: "#ffffff",
-          actorBkg: "#f4f4f5",
-          actorBorder: "rgba(9, 9, 11, 0.35)",
-          actorTextColor: "#09090b",
-          signalColor: "rgba(9, 9, 11, 0.5)",
-          signalTextColor: "#121215",
-          labelBoxBkgColor: "#f4f4f5",
-          labelBoxBorderColor: "rgba(9, 9, 11, 0.35)",
-          labelTextColor: "#09090b",
-          loopTextColor: "#121215",
-          noteBkgColor: "#e4e4e7",
-          noteBorderColor: "rgba(9, 9, 11, 0.25)",
-          noteTextColor: "#121215",
-          sequenceNumberColor: "#ffffff"
-        };
+    let cancelled = false;
 
     (async () => {
       try {
@@ -99,7 +103,9 @@ export default function Mermaid({ chart }: { chart: string }) {
           theme: "base",
           fontFamily:
             "var(--font-sans), Inter, ui-sans-serif, system-ui, sans-serif",
-          themeVariables
+          themeVariables: themeVariablesFor(
+            resolvedTheme === "dark" ? "dark" : "light"
+          )
         });
 
         const { svg: rendered } = await mermaid.render(id, chart.trim());
